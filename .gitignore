@@ -1,5 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
+.vs/
+*.blend[0-9]
 
 # Godot-specific ignores
 .import/
