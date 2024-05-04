@@ -17,3 +17,7 @@ config/icon="res://icon.svg"
 [dotnet]
 
 project/assembly_name="ManiaMap.Godot"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/mpewsey.maniamap/plugin.cfg")
