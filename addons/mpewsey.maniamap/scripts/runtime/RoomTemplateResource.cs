@@ -10,10 +10,12 @@ namespace MPewsey.Game
     [GlobalClass]
     public partial class RoomTemplateResource : Resource
     {
-        [Export] public int Id { get; set; }
-        [Export] public string Name { get; set; }
+        [Export] public int Id { get; set; } = ManiaMapManager.AutoAssignId();
+        [Export] public string TemplateName { get; set; }
         [Export] public string ScenePath { get; set; }
         [Export] public string SceneUidPath { get; set; }
+
+        [ExportGroup("Serialized Text")]
         [Export(PropertyHint.MultilineText)] public string SerializedText { get; set; }
 
         private RoomTemplate _template;
@@ -33,8 +35,8 @@ namespace MPewsey.Game
             Template = null;
             var node = (Node)room;
             var scenePath = node.SceneFilePath;
-            var sceneUidPath = ResourceUid.GetIdPath(ResourceLoader.GetResourceUid(scenePath));
-            var template = room.CreateTemplate(Id, Name);
+            var sceneUidPath = ResourceUid.IdToText(ResourceLoader.GetResourceUid(scenePath));
+            var template = room.CreateRoomTemplate(Id, TemplateName);
             SerializedText = JsonSerialization.GetJsonString(template, new JsonWriterSettings());
             ScenePath = scenePath;
             SceneUidPath = sceneUidPath;

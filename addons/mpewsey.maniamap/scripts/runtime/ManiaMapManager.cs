@@ -49,7 +49,12 @@ namespace MPewsey.ManiaMapGodot
 
         public static int AutoAssignId(int id)
         {
-            return id <= 0 ? Random.Next(1, int.MaxValue) : id;
+            return id <= 0 ? AutoAssignId() : id;
+        }
+
+        public static int AutoAssignId()
+        {
+            return Random.Next(1, int.MaxValue);
         }
     }
 }

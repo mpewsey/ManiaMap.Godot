@@ -1,18 +1,22 @@
 using Godot;
+using MPewsey.Common.Collections;
+using MPewsey.Common.Mathematics;
 using MPewsey.Game;
 using MPewsey.ManiaMap;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace MPewsey.ManiaMapGodot
 {
     [Tool]
     [GlobalClass]
-    public partial class RoomNode2D : Node2D
+    public partial class RoomNode2D : Node2D, IRoomNode
     {
         [Export] public bool RunAutoAssign { get; set; }
         [Export] public bool SaveRoomTemplate { get; set; }
+        [Export] public bool DisplayCells { get; set; } = true;
         [Export] public RoomTemplateResource RoomTemplate { get; set; }
         [Export(PropertyHint.Range, "1,10,1,or_greater")] public int Rows { get; set; } = 1;
         [Export(PropertyHint.Range, "1,10,1,or_greater")] public int Columns { get; set; } = 1;
@@ -47,6 +51,7 @@ namespace MPewsey.ManiaMapGodot
             if (!Engine.IsEditorHint())
                 return;
 
+            QueueRedraw();
             SizeActiveCells();
 
             if (RunAutoAssign)
@@ -54,6 +59,23 @@ namespace MPewsey.ManiaMapGodot
                 RunAutoAssign = false;
                 AutoAssign();
             }
+
+            if (SaveRoomTemplate)
+            {
+                SaveRoomTemplate = false;
+                SaveRoomTemplateResource();
+            }
+        }
+
+        public override void _Draw()
+        {
+            base._Draw();
+
+            if (!Engine.IsEditorHint())
+                return;
+
+            if (DisplayCells)
+                DrawCells();
         }
 #endif
 
@@ -107,13 +129,50 @@ namespace MPewsey.ManiaMapGodot
 
         public void AutoAssign()
         {
+            RoomTemplate ??= new RoomTemplateResource();
+            RoomTemplate.Id = ManiaMapManager.AutoAssignId(RoomTemplate.Id);
             SizeActiveCells();
             var nodes = FindChildren("*", nameof(CellChild2D));
 
             foreach (var node in nodes)
             {
-                if (node is CellChild2D child)
-                    child.AutoAssign(this);
+                var child = (CellChild2D)node;
+                child.AutoAssign(this);
+            }
+        }
+
+        public void ToggleCellActivity(Vector2I index)
+        {
+            if ((uint)index.X < (uint)ActiveCells.Count && (uint)index.Y < (uint)ActiveCells[index.X].Count)
+                ActiveCells[index.X][index.Y] = !ActiveCells[index.X][index.Y];
+        }
+
+        private void DrawCells()
+        {
+            var activeFillColor = new Color(0, 0, 1, 0.1f);
+            var inactiveFillColor = new Color(1, 0, 0, 0.1f);
+            var activeLineColor = activeFillColor with { A = 1 };
+            var inactiveLineColor = inactiveFillColor with { A = 1 };
+            DrawCellLayer(inactiveFillColor, inactiveLineColor, false);
+            DrawCellLayer(activeFillColor, activeLineColor, true);
+        }
+
+        private void DrawCellLayer(Color fillColor, Color lineColor, bool active)
+        {
+            for (int i = 0; i < ActiveCells.Count; i++)
+            {
+                var row = ActiveCells[i];
+
+                for (int j = 0; j < row.Count; j++)
+                {
+                    if (row[j] == active)
+                    {
+                        var position = CellPosition(i, j);
+                        var rect = new Rect2(position, CellSize);
+                        DrawRect(rect, fillColor);
+                        DrawRect(rect, lineColor, false);
+                    }
+                }
             }
         }
 
@@ -133,13 +192,13 @@ namespace MPewsey.ManiaMapGodot
 
                 while (row.Count < Columns)
                 {
-                    row.Add(false);
+                    row.Add(true);
                 }
             }
 
             while (ActiveCells.Count < Rows)
             {
-                ActiveCells.Add(new Godot.Collections.Array<bool>(Enumerable.Repeat(false, Columns)));
+                ActiveCells.Add(new Godot.Collections.Array<bool>(Enumerable.Repeat(true, Columns)));
             }
         }
 
@@ -156,8 +215,7 @@ namespace MPewsey.ManiaMapGodot
                 {
                     if (row[j])
                     {
-                        var cellPosition = new Vector2(j * CellSize.X, i * CellSize.Y) + GlobalPosition;
-                        var delta = cellPosition - position;
+                        var delta = CellPosition(i, j) - position;
                         var distance = delta.LengthSquared();
 
                         if (distance < minDistance)
@@ -190,6 +248,131 @@ namespace MPewsey.ManiaMapGodot
         {
             var position = RoomLayout.Position;
             Position = new Vector2(CellSize.X * position.Y, CellSize.Y * position.X);
+        }
+
+        public Vector2 CellPosition(Vector2I index)
+        {
+            return CellPosition(index.X, index.Y);
+        }
+
+        public Vector2 CellPosition(int row, int column)
+        {
+            return new Vector2(column * CellSize.X, row * CellSize.Y) + GlobalPosition;
+        }
+
+        public Vector2I PointToCellIndex(Vector2 position)
+        {
+            position -= GlobalPosition;
+            var column = Mathf.FloorToInt(position.X / CellSize.X);
+            var row = Mathf.FloorToInt(position.Y / CellSize.Y);
+
+            if ((uint)row < (uint)Rows && (uint)column < (uint)Columns)
+                return new Vector2I(row, column);
+
+            return new Vector2I(-1, -1);
+        }
+
+        public RoomTemplate CreateRoomTemplate(int id, string name)
+        {
+            var cells = CreateCellTemplates();
+            AddDoorTemplates(cells);
+            AddFeatureTemplates(cells);
+            var spots = CreateCollectableSpotTemplates();
+            var template = new RoomTemplate(id, name, cells, spots);
+            template.Validate();
+            ValidateRoomFlags();
+            return template;
+        }
+
+        private HashMap<int, CollectableSpot> CreateCollectableSpotTemplates()
+        {
+            var nodes = FindChildren("*", nameof(CollectableSpot2D));
+            var result = new HashMap<int, CollectableSpot>();
+
+            foreach (var node in nodes)
+            {
+                var spot = (CollectableSpot2D)node;
+                var index = new Vector2DInt(spot.CellIndex.X, spot.CellIndex.Y);
+                result.Add(spot.Id, new CollectableSpot(index, spot.CollectableGroup.GroupName, spot.Weight));
+            }
+
+            return result;
+        }
+
+        private void AddDoorTemplates(Array2D<Cell> cells)
+        {
+            var nodes = FindChildren("*", nameof(DoorNode2D));
+
+            foreach (var node in nodes)
+            {
+                var door = (DoorNode2D)node;
+                var cell = cells[door.CellIndex.X, door.CellIndex.Y];
+                cell.SetDoor(door.Direction, new Door(door.Type, (DoorCode)door.Code));
+            }
+        }
+
+        private Array2D<Cell> CreateCellTemplates()
+        {
+            var cells = new Array2D<Cell>(Rows, Columns);
+
+            for (int i = 0; i < Rows; i++)
+            {
+                var row = ActiveCells[i];
+
+                for (int j = 0; j < Columns; j++)
+                {
+                    if (row[j])
+                        cells[i, j] = Cell.New;
+                }
+            }
+
+            return cells;
+        }
+
+        private void AddFeatureTemplates(Array2D<Cell> cells)
+        {
+            var nodes = FindChildren("*", nameof(Feature2D));
+
+            foreach (var node in nodes)
+            {
+                var feature = (Feature2D)node;
+                var cell = cells[feature.CellIndex.X, feature.CellIndex.Y];
+                cell.AddFeature(feature.FeatureName);
+            }
+        }
+
+        private void ValidateRoomFlags()
+        {
+            var nodes = FindChildren("*", nameof(RoomFlag2D));
+            var flags = new HashSet<int>(nodes.Count);
+
+            foreach (var node in nodes)
+            {
+                var flag = (RoomFlag2D)node;
+
+                if (!flags.Add(flag.Id))
+                    throw new Exception($"Duplicate room flag: {flag}.");
+            }
+        }
+
+        private string RoomTemplateSavePath()
+        {
+            var path = ProjectSettings.GlobalizePath(SceneFilePath);
+            return ProjectSettings.LocalizePath(Path.ChangeExtension(path, ".mmrt.tres"));
+        }
+
+        private void SaveRoomTemplateResource()
+        {
+            AutoAssign();
+            RoomTemplate.Initialize(this);
+            var resourcePath = RoomTemplate.ResourcePath;
+
+            if (string.IsNullOrWhiteSpace(resourcePath) || resourcePath.StartsWith(SceneFilePath))
+            {
+                var path = RoomTemplateSavePath();
+                ResourceSaver.Save(RoomTemplate, path);
+                RoomTemplate = ResourceLoader.Load<RoomTemplateResource>(path);
+            }
         }
     }
 }

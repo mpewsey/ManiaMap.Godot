@@ -4,6 +4,6 @@ namespace MPewsey.ManiaMapGodot
 {
     public interface IRoomNode
     {
-        public RoomTemplate CreateTemplate(int id, string name);
+        public RoomTemplate CreateRoomTemplate(int id, string name);
     }
 }
