@@ -6,7 +6,7 @@ namespace MPewsey.ManiaMapGodot
     [GlobalClass]
     public partial class CollectableSpot2D : CellChild2D
     {
-        [Export] public int Id { get; set; } = ManiaMapManager.AutoAssignId();
+        [Export] public int Id { get; set; } = ManiaMapManager.GetRandomId();
         [Export] public CollectableGroup CollectableGroup { get; set; }
         [Export(PropertyHint.Range, "0,2,0.1,or_greater")] public float Weight { get; set; } = 1;
 

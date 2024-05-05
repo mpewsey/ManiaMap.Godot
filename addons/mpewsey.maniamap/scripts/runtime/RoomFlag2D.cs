@@ -6,7 +6,7 @@ namespace MPewsey.ManiaMapGodot
     [GlobalClass]
     public partial class RoomFlag2D : CellChild2D
     {
-        [Export] public int Id { get; set; } = ManiaMapManager.AutoAssignId();
+        [Export] public int Id { get; set; } = ManiaMapManager.GetRandomId();
 
         public override void AutoAssign(RoomNode2D room)
         {

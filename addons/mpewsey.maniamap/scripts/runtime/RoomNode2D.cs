@@ -5,7 +5,6 @@ using MPewsey.Game;
 using MPewsey.ManiaMap;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace MPewsey.ManiaMapGodot
@@ -14,8 +13,8 @@ namespace MPewsey.ManiaMapGodot
     [GlobalClass]
     public partial class RoomNode2D : Node2D, IRoomNode
     {
-        [Export] public bool RunAutoAssign { get; set; }
-        [Export] public bool SaveRoomTemplate { get; set; }
+        [Export] public bool RunAutoAssign { get => false; set => AutoAssign(value); }
+        [Export] public bool UpdateRoomTemplate { get => false; set => UpdateRoomTemplateResource(value); }
         [Export] public bool DisplayCells { get; set; } = true;
         [Export] public RoomTemplateResource RoomTemplate { get; set; }
         [Export(PropertyHint.Range, "1,10,1,or_greater")] public int Rows { get; set; } = 1;
@@ -53,18 +52,6 @@ namespace MPewsey.ManiaMapGodot
 
             QueueRedraw();
             SizeActiveCells();
-
-            if (RunAutoAssign)
-            {
-                RunAutoAssign = false;
-                AutoAssign();
-            }
-
-            if (SaveRoomTemplate)
-            {
-                SaveRoomTemplate = false;
-                SaveRoomTemplateResource();
-            }
         }
 
         public override void _Draw()
@@ -127,8 +114,11 @@ namespace MPewsey.ManiaMapGodot
             IsInitialized = true;
         }
 
-        public void AutoAssign()
+        public void AutoAssign(bool run = true)
         {
+            if (!run)
+                return;
+
             RoomTemplate ??= new RoomTemplateResource();
             RoomTemplate.Id = ManiaMapManager.AutoAssignId(RoomTemplate.Id);
             SizeActiveCells();
@@ -139,6 +129,8 @@ namespace MPewsey.ManiaMapGodot
                 var child = (CellChild2D)node;
                 child.AutoAssign(this);
             }
+
+            GD.Print($"Performed auto assign on {nodes.Count} cell children.");
         }
 
         public void ToggleCellActivity(Vector2I index)
@@ -355,24 +347,40 @@ namespace MPewsey.ManiaMapGodot
             }
         }
 
-        private string RoomTemplateSavePath()
+        public void UpdateRoomTemplateResource(bool run = true)
         {
-            var path = ProjectSettings.GlobalizePath(SceneFilePath);
-            return ProjectSettings.LocalizePath(Path.ChangeExtension(path, ".mmrt.tres"));
-        }
+            if (!run)
+                return;
 
-        private void SaveRoomTemplateResource()
-        {
+            if (!SceneIsSavedToFile())
+            {
+                GD.PrintErr("Scene must be saved to file first.");
+                return;
+            }
+
             AutoAssign();
             RoomTemplate.Initialize(this);
-            var resourcePath = RoomTemplate.ResourcePath;
 
-            if (string.IsNullOrWhiteSpace(resourcePath) || resourcePath.StartsWith(SceneFilePath))
+            if (!ResourceIsSavedToFile(RoomTemplate))
             {
-                var path = RoomTemplateSavePath();
+                var path = SceneFilePath.GetBaseName() + ".room_template.tres";
                 ResourceSaver.Save(RoomTemplate, path);
                 RoomTemplate = ResourceLoader.Load<RoomTemplateResource>(path);
+                GD.Print($"Saved room template to: {path}");
             }
+
+            GD.Print("Room template updated.");
+        }
+
+        private bool ResourceIsSavedToFile(Resource resource)
+        {
+            var path = resource.ResourcePath;
+            return !string.IsNullOrEmpty(path) && !path.StartsWith(SceneFilePath);
+        }
+
+        private bool SceneIsSavedToFile()
+        {
+            return !string.IsNullOrEmpty(SceneFilePath);
         }
     }
 }
