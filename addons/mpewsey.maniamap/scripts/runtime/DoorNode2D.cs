@@ -62,7 +62,7 @@ namespace MPewsey.ManiaMapGodot
             base.AutoAssign(room);
 
             if (AutoAssignDirection)
-                Direction = FindClosestDirection(room.CellPosition(CellIndex));
+                Direction = FindClosestDirection(room.CellCenterPosition(Row, Column));
         }
 
         public bool DoorExists()
@@ -73,7 +73,7 @@ namespace MPewsey.ManiaMapGodot
         private DoorConnection FindDoorConnection()
         {
             var roomId = Room.RoomLayout.Id;
-            var position = new Vector2DInt(CellIndex.X, CellIndex.Y);
+            var position = new Vector2DInt(Row, Column);
 
             foreach (var connection in Room.DoorConnections)
             {
@@ -149,9 +149,9 @@ namespace MPewsey.ManiaMapGodot
 
             Span<Vector2> vectors = stackalloc Vector2[]
             {
-                new Vector2(0, 1),
-                new Vector2(1, 0),
                 new Vector2(0, -1),
+                new Vector2(1, 0),
+                new Vector2(0, 1),
                 new Vector2(-1, 0),
             };
 
@@ -161,8 +161,13 @@ namespace MPewsey.ManiaMapGodot
 
             for (int i = 0; i < vectors.Length; i++)
             {
-                if (position.Dot(vectors[i]) > maxDistance)
+                var distance = delta.Dot(vectors[i]);
+
+                if (distance > maxDistance)
+                {
+                    maxDistance = distance;
                     index = i;
+                }
             }
 
             return directions[index];

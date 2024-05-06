@@ -30,6 +30,25 @@ namespace MPewsey.Game
             private set => _template = value;
         }
 
+#if TOOLS
+        public override void _ValidateProperty(Godot.Collections.Dictionary property)
+        {
+            base._ValidateProperty(property);
+            var name = property["name"].AsStringName();
+            var usage = property["usage"].As<PropertyUsageFlags>();
+
+            if (IsReadOnlyProperty(name))
+                property["usage"] = (int)(usage | PropertyUsageFlags.ReadOnly);
+        }
+
+        private static bool IsReadOnlyProperty(StringName name)
+        {
+            return name == PropertyName.ScenePath
+                || name == PropertyName.SceneUidPath
+                || name == PropertyName.SerializedText;
+        }
+#endif
+
         public void Initialize(IRoomNode room)
         {
             Template = null;

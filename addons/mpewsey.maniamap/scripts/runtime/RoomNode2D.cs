@@ -13,9 +13,16 @@ namespace MPewsey.ManiaMapGodot
     [GlobalClass]
     public partial class RoomNode2D : Node2D, IRoomNode
     {
+
+#if TOOLS
         [Export] public bool RunAutoAssign { get => false; set => AutoAssign(value); }
         [Export] public bool UpdateRoomTemplate { get => false; set => UpdateRoomTemplateResource(value); }
         [Export] public bool DisplayCells { get; set; } = true;
+        [Export] public CellActivity CellEditMode { get; set; }
+        private bool MouseButtonPressed { get; set; }
+        private Vector2 MouseButtonDownPosition { get; set; }
+#endif
+
         [Export] public RoomTemplateResource RoomTemplate { get; set; }
         [Export(PropertyHint.Range, "1,10,1,or_greater")] public int Rows { get; set; } = 1;
         [Export(PropertyHint.Range, "1,10,1,or_greater")] public int Columns { get; set; } = 1;
@@ -43,6 +50,16 @@ namespace MPewsey.ManiaMapGodot
         }
 
 #if TOOLS
+        public override void _ValidateProperty(Godot.Collections.Dictionary property)
+        {
+            base._ValidateProperty(property);
+            var name = property["name"].AsStringName();
+            var usage = property["usage"].As<PropertyUsageFlags>();
+
+            if (name == PropertyName.ActiveCells)
+                property["usage"] = (int)(usage | PropertyUsageFlags.ReadOnly);
+        }
+
         public override void _Process(double delta)
         {
             base._Process(delta);
@@ -52,6 +69,26 @@ namespace MPewsey.ManiaMapGodot
 
             QueueRedraw();
             SizeActiveCells();
+
+            if (DisplayCells)
+                ProcessEditCellInputs();
+        }
+
+        private void ProcessEditCellInputs()
+        {
+            if (Input.IsMouseButtonPressed(MouseButton.Left))
+            {
+                if (!MouseButtonPressed)
+                    MouseButtonDownPosition = GetViewport().GetMousePosition();
+
+                MouseButtonPressed = true;
+                return;
+            }
+
+            if (MouseButtonPressed)
+                SetCellActivities(MouseButtonDownPosition, GetViewport().GetMousePosition(), CellEditMode);
+
+            MouseButtonPressed = false;
         }
 
         public override void _Draw()
@@ -63,6 +100,54 @@ namespace MPewsey.ManiaMapGodot
 
             if (DisplayCells)
                 DrawCells();
+        }
+
+        private void DrawCells()
+        {
+            var activeFillColor = new Color(0, 0, 1, 0.1f);
+            var inactiveFillColor = new Color(1, 0, 0, 0.1f);
+            var activeLineColor = new Color(0.5f, 0.5f, 0.5f);
+            var inactiveLineColor = new Color(0.5f, 0.5f, 0.5f);
+            DrawCellRects(inactiveFillColor, inactiveLineColor, false);
+            DrawCellXs(inactiveLineColor, false);
+            DrawCellRects(activeFillColor, activeLineColor, true);
+        }
+
+        private void DrawCellRects(Color fillColor, Color lineColor, bool active)
+        {
+            for (int i = 0; i < ActiveCells.Count; i++)
+            {
+                var row = ActiveCells[i];
+
+                for (int j = 0; j < row.Count; j++)
+                {
+                    if (row[j] == active)
+                    {
+                        var rect = new Rect2(CellCenterPosition(i, j) - 0.5f * CellSize, CellSize);
+                        DrawRect(rect, fillColor);
+                        DrawRect(rect, lineColor, false);
+                    }
+                }
+            }
+        }
+
+        private void DrawCellXs(Color lineColor, bool active)
+        {
+            for (int i = 0; i < ActiveCells.Count; i++)
+            {
+                var row = ActiveCells[i];
+
+                for (int j = 0; j < row.Count; j++)
+                {
+                    if (row[j] == active)
+                    {
+                        var topLeft = CellCenterPosition(i, j) - 0.5f * CellSize;
+                        var bottomRight = topLeft + CellSize;
+                        DrawLine(topLeft, bottomRight, lineColor);
+                        DrawLine(new Vector2(topLeft.X, bottomRight.Y), new Vector2(bottomRight.X, topLeft.Y), lineColor);
+                    }
+                }
+            }
         }
 #endif
 
@@ -133,36 +218,37 @@ namespace MPewsey.ManiaMapGodot
             GD.Print($"Performed auto assign on {nodes.Count} cell children.");
         }
 
-        public void ToggleCellActivity(Vector2I index)
+        public void SetCellActivities(Vector2 startPosition, Vector2 endPosition, CellActivity activity)
         {
-            if ((uint)index.X < (uint)ActiveCells.Count && (uint)index.Y < (uint)ActiveCells[index.X].Count)
-                ActiveCells[index.X][index.Y] = !ActiveCells[index.X][index.Y];
-        }
+            var startIndex = PointToCellIndex(startPosition);
+            var endIndex = PointToCellIndex(endPosition);
+            var outsideIndex = new Vector2I(-1, -1);
 
-        private void DrawCells()
-        {
-            var activeFillColor = new Color(0, 0, 1, 0.1f);
-            var inactiveFillColor = new Color(1, 0, 0, 0.1f);
-            var activeLineColor = activeFillColor with { A = 1 };
-            var inactiveLineColor = inactiveFillColor with { A = 1 };
-            DrawCellLayer(inactiveFillColor, inactiveLineColor, false);
-            DrawCellLayer(activeFillColor, activeLineColor, true);
-        }
-
-        private void DrawCellLayer(Color fillColor, Color lineColor, bool active)
-        {
-            for (int i = 0; i < ActiveCells.Count; i++)
+            if (activity != CellActivity.None && startIndex != outsideIndex && endIndex != outsideIndex)
             {
-                var row = ActiveCells[i];
+                var startRow = Mathf.Min(startIndex.X, endIndex.X);
+                var endRow = Mathf.Max(startIndex.X, endIndex.X);
+                var startColumn = Mathf.Min(startIndex.Y, endIndex.Y);
+                var endColumn = Mathf.Max(startIndex.Y, endIndex.Y);
 
-                for (int j = 0; j < row.Count; j++)
+                for (int i = startRow; i <= endRow; i++)
                 {
-                    if (row[j] == active)
+                    for (int j = startColumn; j <= endColumn; j++)
                     {
-                        var position = CellPosition(i, j);
-                        var rect = new Rect2(position, CellSize);
-                        DrawRect(rect, fillColor);
-                        DrawRect(rect, lineColor, false);
+                        switch (activity)
+                        {
+                            case CellActivity.Activate:
+                                ActiveCells[i][j] = true;
+                                break;
+                            case CellActivity.Deactivate:
+                                ActiveCells[i][j] = false;
+                                break;
+                            case CellActivity.Toggle:
+                                ActiveCells[i][j] = !ActiveCells[i][j];
+                                break;
+                            default:
+                                throw new NotImplementedException($"Unhandled cell activity: {activity}.");
+                        }
                     }
                 }
             }
@@ -207,7 +293,7 @@ namespace MPewsey.ManiaMapGodot
                 {
                     if (row[j])
                     {
-                        var delta = CellPosition(i, j) - position;
+                        var delta = CellCenterPosition(i, j) - position;
                         var distance = delta.LengthSquared();
 
                         if (distance < minDistance)
@@ -242,14 +328,9 @@ namespace MPewsey.ManiaMapGodot
             Position = new Vector2(CellSize.X * position.Y, CellSize.Y * position.X);
         }
 
-        public Vector2 CellPosition(Vector2I index)
+        public Vector2 CellCenterPosition(int row, int column)
         {
-            return CellPosition(index.X, index.Y);
-        }
-
-        public Vector2 CellPosition(int row, int column)
-        {
-            return new Vector2(column * CellSize.X, row * CellSize.Y) + GlobalPosition;
+            return new Vector2(column * CellSize.X, row * CellSize.Y) + GlobalPosition + 0.5f * CellSize;
         }
 
         public Vector2I PointToCellIndex(Vector2 position)
@@ -284,7 +365,7 @@ namespace MPewsey.ManiaMapGodot
             foreach (var node in nodes)
             {
                 var spot = (CollectableSpot2D)node;
-                var index = new Vector2DInt(spot.CellIndex.X, spot.CellIndex.Y);
+                var index = new Vector2DInt(spot.Row, spot.Column);
                 result.Add(spot.Id, new CollectableSpot(index, spot.CollectableGroup.GroupName, spot.Weight));
             }
 
@@ -298,7 +379,7 @@ namespace MPewsey.ManiaMapGodot
             foreach (var node in nodes)
             {
                 var door = (DoorNode2D)node;
-                var cell = cells[door.CellIndex.X, door.CellIndex.Y];
+                var cell = cells[door.Row, door.Column];
                 cell.SetDoor(door.Direction, new Door(door.Type, (DoorCode)door.Code));
             }
         }
@@ -328,7 +409,7 @@ namespace MPewsey.ManiaMapGodot
             foreach (var node in nodes)
             {
                 var feature = (Feature2D)node;
-                var cell = cells[feature.CellIndex.X, feature.CellIndex.Y];
+                var cell = cells[feature.Row, feature.Column];
                 cell.AddFeature(feature.FeatureName);
             }
         }

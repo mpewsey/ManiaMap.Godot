@@ -7,7 +7,8 @@ namespace MPewsey.ManiaMapGodot
     public abstract partial class CellChild2D : Node2D
     {
         [Export] public bool AutoAssignCell { get; set; } = true;
-        [Export] public Vector2I CellIndex { get; set; }
+        [Export] public int Row { get; set; }
+        [Export] public int Column { get; set; }
         [Export] public RoomNode2D Room { get; set; }
 
         public virtual void AutoAssign(RoomNode2D room)
@@ -15,7 +16,7 @@ namespace MPewsey.ManiaMapGodot
             Room = room;
 
             if (AutoAssignCell)
-                CellIndex = room.FindClosestCellIndex(GlobalPosition);
+                (Row, Column) = room.FindClosestCellIndex(GlobalPosition);
         }
     }
 }
