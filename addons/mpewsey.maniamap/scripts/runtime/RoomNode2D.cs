@@ -24,8 +24,13 @@ namespace MPewsey.ManiaMapGodot
 #endif
 
         [Export] public RoomTemplateResource RoomTemplate { get; set; }
-        [Export(PropertyHint.Range, "1,10,1,or_greater")] public int Rows { get; set; } = 1;
-        [Export(PropertyHint.Range, "1,10,1,or_greater")] public int Columns { get; set; } = 1;
+
+        private int _rows = 1;
+        [Export(PropertyHint.Range, "1,10,1,or_greater")] public int Rows { get => _rows; set => SetSizeField(ref _rows, value); }
+
+        private int _columns = 1;
+        [Export(PropertyHint.Range, "1,10,1,or_greater")] public int Columns { get => _columns; set => SetSizeField(ref _columns, value); }
+
         [Export(PropertyHint.Range, "0,100,0.1,or_greater")] public Vector2 CellSize { get; set; } = new Vector2(20, 20);
         [Export] public Godot.Collections.Array<Godot.Collections.Array<bool>> ActiveCells { get; set; } = new Godot.Collections.Array<Godot.Collections.Array<bool>>();
 
@@ -36,17 +41,21 @@ namespace MPewsey.ManiaMapGodot
         public IReadOnlyList<DoorConnection> DoorConnections { get; private set; }
         public bool IsInitialized { get; private set; }
 
+        private void SetSizeField<T>(ref T field, T value)
+        {
+            field = value;
+            SizeActiveCells();
+        }
+
         public override void _Ready()
         {
             base._Ready();
 
-#if TOOLS
-            if (Engine.IsEditorHint())
-                return;
-#endif
-
-            if (!IsInitialized)
-                throw new Exception($"Room is not initialized: {this}");
+            if (!Engine.IsEditorHint())
+            {
+                if (!IsInitialized)
+                    throw new Exception($"Room is not initialized: {this}");
+            }
         }
 
 #if TOOLS
@@ -64,14 +73,14 @@ namespace MPewsey.ManiaMapGodot
         {
             base._Process(delta);
 
-            if (!Engine.IsEditorHint())
-                return;
+            if (Engine.IsEditorHint())
+            {
+                QueueRedraw();
+                SizeActiveCells();
 
-            QueueRedraw();
-            SizeActiveCells();
-
-            if (DisplayCells)
-                ProcessEditCellInputs();
+                if (DisplayCells)
+                    ProcessEditCellInputs();
+            }
         }
 
         private void ProcessEditCellInputs()
@@ -95,11 +104,11 @@ namespace MPewsey.ManiaMapGodot
         {
             base._Draw();
 
-            if (!Engine.IsEditorHint())
-                return;
-
-            if (DisplayCells)
-                DrawCells();
+            if (Engine.IsEditorHint())
+            {
+                if (DisplayCells)
+                    DrawCells();
+            }
         }
 
         private void DrawCells()

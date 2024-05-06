@@ -25,36 +25,24 @@ namespace MPewsey.ManiaMapGodot
         {
             base._Ready();
 
-#if TOOLS
-            if (Engine.IsEditorHint())
-                return;
-#endif
-
-            DoorConnection = FindDoorConnection();
+            if (!Engine.IsEditorHint())
+                DoorConnection = FindDoorConnection();
         }
 
         public override void _EnterTree()
         {
             base._EnterTree();
 
-#if TOOLS
-            if (Engine.IsEditorHint())
-                return;
-#endif
-
-            AddToActiveRoomDoors();
+            if (!Engine.IsEditorHint())
+                AddToActiveRoomDoors();
         }
 
         public override void _ExitTree()
         {
             base._ExitTree();
 
-#if TOOLS
-            if (Engine.IsEditorHint())
-                return;
-#endif
-
-            RemoveFromActiveRoomDoors();
+            if (!Engine.IsEditorHint())
+                RemoveFromActiveRoomDoors();
         }
 
         public override void AutoAssign(RoomNode2D room)
