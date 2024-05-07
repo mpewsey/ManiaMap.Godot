@@ -36,7 +36,6 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         private static bool UpdateRoomTemplate(string path)
         {
-            path = ProjectSettings.LocalizePath(path);
             var scene = ResourceLoader.Load<PackedScene>(path);
             var node = scene.Instantiate<Node>(PackedScene.GenEditState.Instance);
 
