@@ -10,7 +10,6 @@ namespace MPewsey.ManiaMapGodot
     [GlobalClass]
     public partial class DoorNode2D : CellChild2D
     {
-        public const string DoorCodeFlags = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
         private static Dictionary<Uid, LinkedList<DoorNode2D>> ActiveRoomDoors { get; } = new Dictionary<Uid, LinkedList<DoorNode2D>>();
 
         [Export] public bool AutoAssignDirection { get; set; } = true;
@@ -18,7 +17,7 @@ namespace MPewsey.ManiaMapGodot
         [Export] public DoorType Type { get; set; }
 
         [ExportGroup("Code")]
-        [Export(PropertyHint.Flags, DoorCodeFlags)] public int Code { get; set; }
+        [Export(PropertyHint.Flags, ManiaMapResources.DoorCodeFlags)] public int Code { get; set; }
         public DoorConnection DoorConnection { get; private set; }
 
         public override void _Ready()

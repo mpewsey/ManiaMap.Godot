@@ -24,6 +24,9 @@ namespace MPewsey.Game
 
             get
             {
+                if (string.IsNullOrWhiteSpace(SerializedText))
+                    throw new Exception($"Serialized text has not been assigned: {this}");
+
                 _template ??= JsonSerialization.LoadJsonString<RoomTemplate>(SerializedText);
                 return _template;
             }
@@ -35,10 +38,9 @@ namespace MPewsey.Game
         {
             base._ValidateProperty(property);
             var name = property["name"].AsStringName();
-            var usage = property["usage"].As<PropertyUsageFlags>();
 
             if (IsReadOnlyProperty(name))
-                property["usage"] = (int)(usage | PropertyUsageFlags.ReadOnly);
+                property["usage"] = (int)(property["usage"].As<PropertyUsageFlags>() | PropertyUsageFlags.ReadOnly);
         }
 
         private static bool IsReadOnlyProperty(StringName name)
