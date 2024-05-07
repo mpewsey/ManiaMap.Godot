@@ -395,6 +395,7 @@ namespace MPewsey.ManiaMapGodot
 
         private Array2D<Cell> CreateCellTemplates()
         {
+            SizeActiveCells();
             var cells = new Array2D<Cell>(Rows, Columns);
 
             for (int i = 0; i < Rows; i++)
