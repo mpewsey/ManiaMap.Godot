@@ -7,7 +7,6 @@ namespace MPewsey.ManiaMapGodot
 {
     public partial class ManiaMapManager : GodotObject
     {
-        private static Random Random { get; } = new Random();
         public static ManiaMapManager Current { get; private set; }
 
         public Layout Layout { get; private set; }
@@ -45,16 +44,6 @@ namespace MPewsey.ManiaMapGodot
             if (RoomConnections.TryGetValue(id, out var connections))
                 return connections;
             return Array.Empty<DoorConnection>();
-        }
-
-        public static int AutoAssignId(int id)
-        {
-            return id <= 0 ? GetRandomId() : id;
-        }
-
-        public static int GetRandomId()
-        {
-            return Random.Next(1, int.MaxValue);
         }
     }
 }

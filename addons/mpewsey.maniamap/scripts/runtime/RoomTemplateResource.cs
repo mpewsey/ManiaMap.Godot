@@ -10,7 +10,7 @@ namespace MPewsey.Game
     [GlobalClass]
     public partial class RoomTemplateResource : Resource
     {
-        [Export] public int Id { get; set; } = ManiaMapManager.GetRandomId();
+        [Export] public int Id { get; set; } = Rand.GetRandomId();
         [Export] public string TemplateName { get; set; }
         [Export] public string ScenePath { get; set; }
         [Export] public string SceneUidPath { get; set; }

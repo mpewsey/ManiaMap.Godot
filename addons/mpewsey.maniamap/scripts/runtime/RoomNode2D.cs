@@ -214,7 +214,7 @@ namespace MPewsey.ManiaMapGodot
                 return;
 
             RoomTemplate ??= new RoomTemplateResource();
-            RoomTemplate.Id = ManiaMapManager.AutoAssignId(RoomTemplate.Id);
+            RoomTemplate.Id = Rand.AutoAssignId(RoomTemplate.Id);
             SizeActiveCells();
             var nodes = FindChildren("*", nameof(CellChild2D));
 

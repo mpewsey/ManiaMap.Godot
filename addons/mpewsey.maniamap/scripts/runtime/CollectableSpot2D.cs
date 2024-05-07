@@ -6,14 +6,14 @@ namespace MPewsey.ManiaMapGodot
     [GlobalClass]
     public partial class CollectableSpot2D : CellChild2D
     {
-        [Export] public int Id { get; set; } = ManiaMapManager.GetRandomId();
+        [Export] public int Id { get; set; } = Rand.GetRandomId();
         [Export] public CollectableGroup CollectableGroup { get; set; }
         [Export(PropertyHint.Range, "0,2,0.1,or_greater")] public float Weight { get; set; } = 1;
 
         public override void AutoAssign(RoomNode2D room)
         {
             base.AutoAssign(room);
-            Id = ManiaMapManager.AutoAssignId(Id);
+            Id = Rand.AutoAssignId(Id);
         }
 
         public int CollectableId()
