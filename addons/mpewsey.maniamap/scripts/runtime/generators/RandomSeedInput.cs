@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapGodot.Generators
 {
+    [Tool]
     [GlobalClass]
     public partial class RandomSeedInput : GenerationInput
     {

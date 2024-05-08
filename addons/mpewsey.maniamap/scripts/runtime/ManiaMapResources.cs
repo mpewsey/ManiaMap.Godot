@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 namespace MPewsey.ManiaMapGodot
 {
     public static class ManiaMapResources

@@ -8,7 +8,7 @@ namespace MPewsey.ManiaMapGodot
     [GlobalClass]
     public partial class CollectableGroup : Resource
     {
-        [Export] public string GroupName { get; set; }
+        [Export] public string GroupName { get; set; } = "<None>";
         [Export] public CollectableGroupEntry[] Entries { get; set; } = Array.Empty<CollectableGroupEntry>();
 
         public List<int> GetCollectableIds()

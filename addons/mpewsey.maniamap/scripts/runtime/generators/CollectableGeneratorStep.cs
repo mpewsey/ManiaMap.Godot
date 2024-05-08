@@ -5,6 +5,7 @@ using System;
 
 namespace MPewsey.ManiaMapGodot.Generators
 {
+    [Tool]
     [GlobalClass]
     public partial class CollectableGeneratorStep : GenerationStep
     {

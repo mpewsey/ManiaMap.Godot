@@ -9,35 +9,60 @@ using System.Threading.Tasks;
 
 namespace MPewsey.ManiaMapGodot.Generators
 {
+    [Tool]
     [GlobalClass]
     public partial class GenerationPipeline : Node
     {
         [Export] public string[] ManualInputNames { get; set; } = Array.Empty<string>();
 
+#if TOOLS
         public override string[] _GetConfigurationWarnings()
         {
-            var warnings = base._GetConfigurationWarnings();
-
             try
             {
                 Validate();
             }
             catch (Exception exception)
             {
-                return warnings.Append(exception.Message).ToArray();
+                return new string[] { exception.Message };
             }
 
-            return warnings;
+            return Array.Empty<string>();
         }
+
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
+
+            if (Engine.IsEditorHint())
+                UpdateConfigurationWarnings();
+        }
+#endif
 
         public List<GenerationStep> FindStepNodes()
         {
-            return FindChildren("*", nameof(GenerationStep)).Cast<GenerationStep>().ToList();
+            var nodes = FindChildren("*", nameof(GenerationStep));
+            var result = new List<GenerationStep>(nodes.Count);
+
+            foreach (var node in nodes)
+            {
+                result.Add((GenerationStep)node);
+            }
+
+            return result;
         }
 
         public List<GenerationInput> FindInputNodes()
         {
-            return FindChildren("*", nameof(GenerationInput)).Cast<GenerationInput>().ToList();
+            var nodes = FindChildren("*", nameof(GenerationInput));
+            var result = new List<GenerationInput>(nodes.Count);
+
+            foreach (var node in nodes)
+            {
+                result.Add((GenerationInput)node);
+            }
+
+            return result;
         }
 
         public Task<PipelineResults> RunAsync(Dictionary<string, object> manualInputs = null, CancellationToken cancellationToken = default)
@@ -119,7 +144,7 @@ namespace MPewsey.ManiaMapGodot.Generators
                 foreach (var name in node.InputNames())
                 {
                     if (!names.Add(name))
-                        throw new Exception($"Duplicate input name: (Name = {name}, NodePath = {node.GetPath()})");
+                        throw new Exception($"Duplicate input name: (Name = {name}, NodePath = {GetPathTo(node)})");
                 }
             }
         }
@@ -133,7 +158,7 @@ namespace MPewsey.ManiaMapGodot.Generators
                 foreach (var name in node.RequiredInputNames())
                 {
                     if (!names.Contains(name))
-                        throw new Exception($"Missing input name: (Name = {name}, NodePath = {node.GetPath()})");
+                        throw new Exception($"Missing input name: (Name = {name}, NodePath = {GetPathTo(node)})");
                 }
 
                 foreach (var name in node.OutputNames())

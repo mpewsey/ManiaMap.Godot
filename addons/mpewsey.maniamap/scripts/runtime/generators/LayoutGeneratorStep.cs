@@ -4,6 +4,7 @@ using MPewsey.ManiaMap.Generators;
 
 namespace MPewsey.ManiaMapGodot.Generators
 {
+    [Tool]
     [GlobalClass]
     public partial class LayoutGeneratorStep : GenerationStep
     {
