@@ -10,10 +10,6 @@ namespace MPewsey.ManiaMapGodot
 
         public static CellArea2D CreateInstance(int row, int column, RoomNode2D room, uint collisionMask)
         {
-            var size = room.CellSize;
-            var x = column * size.X + 0.5f * size.X;
-            var y = row * size.Y + 0.5f * size.Y;
-
             var cell = new CellArea2D()
             {
                 Row = row,
@@ -21,10 +17,10 @@ namespace MPewsey.ManiaMapGodot
                 Room = room,
                 CollisionLayer = 0,
                 CollisionMask = collisionMask,
-                Position = new Vector2(x, y),
+                Position = room.CellCenterLocalPosition(row, column),
             };
 
-            var shape = new RectangleShape2D() { Size = size };
+            var shape = new RectangleShape2D() { Size = room.CellSize };
             var collisionShape = new CollisionShape2D() { Shape = shape };
             cell.AddChild(collisionShape);
             room.AddChild(cell);
@@ -40,17 +36,18 @@ namespace MPewsey.ManiaMapGodot
 
         private void OnBodyEntered(Node body)
         {
-            SetCellVisibility();
+            EmitOnCellEntered(body);
         }
 
         private void OnAreaEntered(Area2D area)
         {
-            SetCellVisibility();
+            EmitOnCellEntered(area);
         }
 
-        private void SetCellVisibility()
+        private void EmitOnCellEntered(Node collision)
         {
             Room.RoomState.SetCellVisibility(Row, Column, true);
+            Room.EmitOnCellAreaEntered(this, collision);
         }
     }
 }

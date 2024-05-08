@@ -49,7 +49,7 @@ namespace MPewsey.ManiaMapGodot
             base.AutoAssign(room);
 
             if (AutoAssignDirection)
-                Direction = FindClosestDirection(room.CellCenterPosition(Row, Column));
+                Direction = FindClosestDirection(room.CellCenterGlobalPosition(Row, Column));
         }
 
         public bool DoorExists()

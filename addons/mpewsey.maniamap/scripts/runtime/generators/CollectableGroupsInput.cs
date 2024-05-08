@@ -1,11 +1,9 @@
 using Godot;
 using MPewsey.ManiaMap;
-using MPewsey.ManiaMapGodot;
-using MPewsey.ManiaMapGodot.Generators;
 using System;
 using System.Collections.Generic;
 
-namespace MPewsey.Game
+namespace MPewsey.ManiaMapGodot.Generators
 {
     [Tool]
     [GlobalClass]

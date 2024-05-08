@@ -1,3 +1,4 @@
+#if TOOLS
 using Godot;
 using System.IO;
 
@@ -85,3 +86,4 @@ namespace MPewsey.ManiaMapGodot.Editor
         }
     }
 }
+#endif

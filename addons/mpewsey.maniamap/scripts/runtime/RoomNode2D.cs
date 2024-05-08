@@ -13,6 +13,8 @@ namespace MPewsey.ManiaMapGodot
     [GlobalClass]
     public partial class RoomNode2D : Node2D, IRoomNode
     {
+        [Signal] public delegate void OnCellAreaEnteredEventHandler(CellArea2D cell, Node collision);
+        public Error EmitOnCellAreaEntered(CellArea2D cell, Node collision) => EmitSignal(SignalName.OnCellAreaEntered, cell, collision);
 
 #if TOOLS
         [Export] public bool RunAutoAssign { get => false; set => AutoAssign(value); }
@@ -131,7 +133,7 @@ namespace MPewsey.ManiaMapGodot
                 {
                     if (row[j] == active)
                     {
-                        var rect = new Rect2(CellCenterPosition(i, j) - 0.5f * CellSize, CellSize);
+                        var rect = new Rect2(CellCenterGlobalPosition(i, j) - 0.5f * CellSize, CellSize);
                         DrawRect(rect, fillColor);
                         DrawRect(rect, lineColor, false);
                     }
@@ -149,7 +151,7 @@ namespace MPewsey.ManiaMapGodot
                 {
                     if (row[j] == active)
                     {
-                        var topLeft = CellCenterPosition(i, j) - 0.5f * CellSize;
+                        var topLeft = CellCenterGlobalPosition(i, j) - 0.5f * CellSize;
                         var bottomRight = topLeft + CellSize;
                         DrawLine(topLeft, bottomRight, lineColor);
                         DrawLine(new Vector2(topLeft.X, bottomRight.Y), new Vector2(bottomRight.X, topLeft.Y), lineColor);
@@ -228,8 +230,8 @@ namespace MPewsey.ManiaMapGodot
 
         public void SetCellActivities(Vector2 startPosition, Vector2 endPosition, CellActivity activity)
         {
-            var startIndex = PointToCellIndex(startPosition);
-            var endIndex = PointToCellIndex(endPosition);
+            var startIndex = GlobalPositionToCellIndex(startPosition);
+            var endIndex = GlobalPositionToCellIndex(endPosition);
             var outsideIndex = new Vector2I(-1, -1);
 
             if (activity != CellActivity.None && startIndex != outsideIndex && endIndex != outsideIndex)
@@ -301,7 +303,7 @@ namespace MPewsey.ManiaMapGodot
                 {
                     if (row[j])
                     {
-                        var delta = CellCenterPosition(i, j) - position;
+                        var delta = CellCenterGlobalPosition(i, j) - position;
                         var distance = delta.LengthSquared();
 
                         if (distance < minDistance)
@@ -336,14 +338,23 @@ namespace MPewsey.ManiaMapGodot
             Position = new Vector2(CellSize.X * position.Y, CellSize.Y * position.X);
         }
 
-        public Vector2 CellCenterPosition(int row, int column)
+        public Vector2 CellCenterGlobalPosition(int row, int column)
         {
-            return new Vector2(column * CellSize.X, row * CellSize.Y) + GlobalPosition + 0.5f * CellSize;
+            return CellCenterLocalPosition(row, column) + GlobalPosition;
         }
 
-        public Vector2I PointToCellIndex(Vector2 position)
+        public Vector2 CellCenterLocalPosition(int row, int column)
         {
-            position -= GlobalPosition;
+            return new Vector2(column * CellSize.X, row * CellSize.Y) + 0.5f * CellSize;
+        }
+
+        public Vector2I GlobalPositionToCellIndex(Vector2 position)
+        {
+            return LocalPositionToCellIndex(position - GlobalPosition);
+        }
+
+        public Vector2I LocalPositionToCellIndex(Vector2 position)
+        {
             var column = Mathf.FloorToInt(position.X / CellSize.X);
             var row = Mathf.FloorToInt(position.Y / CellSize.Y);
 
