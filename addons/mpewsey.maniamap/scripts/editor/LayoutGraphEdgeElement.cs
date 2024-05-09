@@ -33,17 +33,17 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         private void DrawEdgeLine()
         {
-            if (!IsInstanceValid(GraphEditor))
-                return;
-
-            GraphEditor.NodeElements.TryGetValue(EdgeResource.FromNode, out var fromNode);
-            GraphEditor.NodeElements.TryGetValue(EdgeResource.ToNode, out var toNode);
-
-            if (fromNode != null && toNode != null)
+            if (IsInstanceValid(GraphEditor))
             {
-                var fromPosition = fromNode.GlobalPosition + 0.5f * fromNode.Size;
-                var toPosition = toNode.GlobalPosition + 0.5f * toNode.Size;
-                DrawLine(fromPosition, toPosition, EdgeResource.Color);
+                GraphEditor.NodeElements.TryGetValue(EdgeResource.FromNode, out var fromNode);
+                GraphEditor.NodeElements.TryGetValue(EdgeResource.ToNode, out var toNode);
+
+                if (IsInstanceValid(fromNode) && IsInstanceValid(toNode))
+                {
+                    var fromPosition = fromNode.CenterPosition();
+                    var toPosition = toNode.CenterPosition();
+                    DrawLine(fromPosition, toPosition, EdgeResource.Color);
+                }
             }
         }
     }

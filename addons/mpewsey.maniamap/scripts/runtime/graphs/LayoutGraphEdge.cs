@@ -12,10 +12,10 @@ namespace MPewsey.ManiaMapGodot.Graphs
         [Export] public string Name { get; set; }
         [Export] public TemplateGroup TemplateGroup { get; set; }
         [Export] public EdgeDirection EdgeDirection { get; set; }
-        [Export] public int Z { get; set; }
-        [Export] public float RoomChance { get; set; }
-        [Export] public bool RequireRoom { get; set; }
         [Export] public Color Color { get; set; }
+        [Export] public int Z { get; set; }
+        [Export] public bool RequireRoom { get; set; }
+        [Export] public float RoomChance { get; set; }
         [Export] public string[] Tags { get; set; } = Array.Empty<string>();
 
         [ExportGroup("Code")]

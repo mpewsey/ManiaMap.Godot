@@ -10,9 +10,21 @@ namespace MPewsey.ManiaMapGodot.Editor
         [Export] public Label IdValueLabel { get; set; }
         public LayoutGraphNode NodeResource { get; private set; }
 
+        public override void _Ready()
+        {
+            base._Ready();
+            PositionOffsetChanged += OnPositionOffsetChanged;
+        }
+
+        private void OnPositionOffsetChanged()
+        {
+            NodeResource.Position = PositionOffset;
+        }
+
         public void Initialize(LayoutGraphNode nodeResource)
         {
             NodeResource = nodeResource;
+            PositionOffset = nodeResource.Position;
             Populate();
         }
 
@@ -20,6 +32,11 @@ namespace MPewsey.ManiaMapGodot.Editor
         {
             Title = NodeResource.Name;
             IdValueLabel.Text = NodeResource.Id.ToString();
+        }
+
+        public Vector2 CenterPosition()
+        {
+            return GlobalPosition + 0.5f * Size;
         }
     }
 }

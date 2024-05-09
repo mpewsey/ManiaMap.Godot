@@ -4,6 +4,7 @@ using System;
 namespace MPewsey.ManiaMapGodot.Graphs
 {
     [Tool]
+    [GlobalClass]
     public partial class LayoutGraphResource : Resource
     {
         [Export] public int Id { get; set; } = Rand.GetRandomId();
@@ -60,12 +61,14 @@ namespace MPewsey.ManiaMapGodot.Graphs
 
         public LayoutGraphEdge AddEdge(int fromNode, int toNode)
         {
-            if (ContainsEdge(fromNode, toNode))
-                throw new Exception($"Edge already exists: ({fromNode}, {toNode}).");
+            if (!ContainsEdge(fromNode, toNode))
+            {
+                var edge = new LayoutGraphEdge(fromNode, toNode);
+                Edges.Add(new Vector2I(fromNode, toNode), edge);
+                return edge;
+            }
 
-            var edge = new LayoutGraphEdge(fromNode, toNode);
-            Edges.Add(new Vector2I(fromNode, toNode), edge);
-            return edge;
+            return null;
         }
     }
 }
