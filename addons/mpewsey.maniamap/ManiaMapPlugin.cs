@@ -12,11 +12,14 @@ namespace MPewsey.ManiaMapGodot.Editor
         private const string GraphEditorDockButtonName = "Graph Editor";
         private const string BatchUpdateSearchPathSetting = "mania_map/settings/batch_update_search_path";
 
+        public static ManiaMapPlugin Current { get; private set; }
+
         private LayoutGraphEditor GraphEditor { get; set; }
         private Button GraphEditorDockButton { get; set; }
 
         public override void _EnterTree()
         {
+            Current = this;
             CreateProjectSettings();
             AddToolMenu();
             AddGraphEditorDock();
@@ -24,6 +27,7 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         public override void _ExitTree()
         {
+            Current = null;
             RemoveToolMenuItem(MenuName);
             RemoveGraphEditorDock();
         }
@@ -81,6 +85,14 @@ namespace MPewsey.ManiaMapGodot.Editor
 
             if (IsInstanceValid(GraphEditorDockButton))
                 GraphEditorDockButton.QueueFree();
+        }
+
+        public void HideGraphEditorDock()
+        {
+            if (IsInstanceValid(GraphEditorDockButton))
+                GraphEditorDockButton.Visible = false;
+
+            HideBottomPanel();
         }
 
         private void OnMenuIndexPressed(long index)

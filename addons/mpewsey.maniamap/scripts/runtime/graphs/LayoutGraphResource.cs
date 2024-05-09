@@ -7,11 +7,21 @@ namespace MPewsey.ManiaMapGodot.Graphs
     [GlobalClass]
     public partial class LayoutGraphResource : Resource
     {
-        [Export] public int Id { get; set; } = Rand.GetRandomId();
-        [Export] public string Name { get; set; } = "<None>";
+        private int _id = Rand.GetRandomId();
+        [Export] public int Id { get => _id; set => SetField(ref _id, value); }
+
+        private string _name = "<None>";
+        [Export] public string Name { get => _name; set => SetField(ref _name, value); }
+
         [Export] public Godot.Collections.Dictionary<int, LayoutGraphNode> Nodes { get; set; } = new Godot.Collections.Dictionary<int, LayoutGraphNode>();
         [Export] public Godot.Collections.Dictionary<Vector2I, LayoutGraphEdge> Edges { get; set; } = new Godot.Collections.Dictionary<Vector2I, LayoutGraphEdge>();
         private bool IsDirty { get; set; }
+
+        private void SetField<T>(ref T field, T value)
+        {
+            field = value;
+            EmitChanged();
+        }
 
         public void RegisterOnSubresourceChangedSignals()
         {
@@ -26,6 +36,19 @@ namespace MPewsey.ManiaMapGodot.Graphs
             }
         }
 
+        public void UnregisterOnSubresourceChangedSignals()
+        {
+            foreach (var node in Nodes.Values)
+            {
+                node.Changed -= OnSubresourceChanged;
+            }
+
+            foreach (var edge in Edges.Values)
+            {
+                edge.Changed -= OnSubresourceChanged;
+            }
+        }
+
         private void OnSubresourceChanged()
         {
             SetDirty();
@@ -34,6 +57,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
         public void SetDirty()
         {
             IsDirty = true;
+            EmitChanged();
         }
 
         public bool SaveIfDirty()

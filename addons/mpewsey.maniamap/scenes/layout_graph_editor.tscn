@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckyjrhwvcs6fi"]
+[gd_scene load_steps=5 format=3 uid="uid://ckyjrhwvcs6fi"]
 
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/LayoutGraphEditor.cs" id="1_2rqd2"]
 [ext_resource type="PackedScene" uid="uid://5euxn0pgqyv4" path="res://addons/mpewsey.maniamap/scenes/layout_graph_node_element.tscn" id="2_ycjoq"]
 [ext_resource type="PackedScene" uid="uid://ypdf7hu0sc5i" path="res://addons/mpewsey.maniamap/scenes/layout_graph_edge_element.tscn" id="3_gn3wy"]
+[ext_resource type="Texture2D" uid="uid://ci7cnxalkypmb" path="res://icon.svg" id="4_16wnk"]
 
-[node name="LayoutGraphEditor" type="Control" node_paths=PackedStringArray("GraphEdit")]
+[node name="LayoutGraphEditor" type="Control" node_paths=PackedStringArray("GraphEdit", "FileNameLabel", "CloseButton", "SaveButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +16,9 @@ script = ExtResource("1_2rqd2")
 GraphEdit = NodePath("GraphEdit")
 NodeElementScene = ExtResource("2_ycjoq")
 EdgeElementScene = ExtResource("3_gn3wy")
+FileNameLabel = NodePath("HBoxContainer/FileNameLabel")
+CloseButton = NodePath("HBoxContainer/CloseButton")
+SaveButton = NodePath("HBoxContainer/SaveButton")
 
 [node name="GraphEdit" type="GraphEdit" parent="."]
 layout_mode = 1
@@ -23,3 +27,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -172.0
+offset_top = 11.0
+offset_right = -20.0
+offset_bottom = 34.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="FileNameLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "File Name"
+
+[node name="SaveButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("4_16wnk")
+expand_icon = true
+
+[node name="CloseButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("4_16wnk")
+expand_icon = true
