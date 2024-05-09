@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/LayoutGraphEdgeElement.cs" id="1_714fn"]
 
 [node name="LayoutGraphEdgeElement" type="GraphNode" node_paths=PackedStringArray("EdgeValueLabel")]
-offset_right = 9.0
-offset_bottom = 55.0
+offset_right = 150.0
+offset_bottom = 78.0
+draggable = false
 title = "Title"
 slot/0/left_enabled = false
 slot/0/left_type = 0
@@ -24,7 +25,9 @@ layout_mode = 2
 [node name="EdgeLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "Edge:"
+vertical_alignment = 1
 
 [node name="EdgeValueLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2
-text = "(999, 1000)"
+text = "(1, 2)"
+vertical_alignment = 1

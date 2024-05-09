@@ -65,9 +65,10 @@ namespace MPewsey.ManiaMapGodot
         {
             base._ValidateProperty(property);
             var name = property["name"].AsStringName();
+            var usage = property["usage"].As<PropertyUsageFlags>();
 
             if (name == PropertyName.ActiveCells)
-                property["usage"] = (int)(property["usage"].As<PropertyUsageFlags>() | PropertyUsageFlags.ReadOnly);
+                property["usage"] = (int)(usage & ~PropertyUsageFlags.Editor);
         }
 
         public override void _Process(double delta)

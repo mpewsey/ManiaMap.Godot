@@ -16,13 +16,13 @@ namespace MPewsey.ManiaMapGodot.Graphs
         private string _name;
         [Export] public string Name { get => _name; set => SetField(ref _name, value); }
 
-        private TemplateGroup _templateGroup;
-        [Export] public TemplateGroup TemplateGroup { get => _templateGroup; set => SetField(ref _templateGroup, value); }
-
         private EdgeDirection _edgeDirection;
         [Export] public EdgeDirection EdgeDirection { get => _edgeDirection; set => SetField(ref _edgeDirection, value); }
 
-        private Color _color;
+        private TemplateGroup _templateGroup;
+        [Export] public TemplateGroup TemplateGroup { get => _templateGroup; set => SetField(ref _templateGroup, value); }
+
+        private Color _color = new Color(1, 1, 1);
         [Export] public Color Color { get => _color; set => SetField(ref _color, value); }
 
         private int _z;
@@ -32,7 +32,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
         [Export] public bool RequireRoom { get => _requireRoom; set => SetField(ref _requireRoom, value); }
 
         private float _roomChance;
-        [Export] public float RoomChance { get => _roomChance; set => SetField(ref _roomChance, value); }
+        [Export(PropertyHint.Range, "0,1,")] public float RoomChance { get => _roomChance; set => SetField(ref _roomChance, value); }
 
         private string[] _tags = Array.Empty<string>();
         [Export] public string[] Tags { get => _tags; set => SetField(ref _tags, value); }
@@ -45,6 +45,16 @@ namespace MPewsey.ManiaMapGodot.Graphs
         {
             field = value;
             EmitChanged();
+        }
+
+        public override void _ValidateProperty(Godot.Collections.Dictionary property)
+        {
+            base._ValidateProperty(property);
+            var name = property["name"].AsStringName();
+            var usage = property["usage"].As<PropertyUsageFlags>();
+
+            if (name == PropertyName.FromNode || name == PropertyName.ToNode)
+                property["usage"] = (int)(usage | PropertyUsageFlags.ReadOnly);
         }
 
         public LayoutGraphEdge()

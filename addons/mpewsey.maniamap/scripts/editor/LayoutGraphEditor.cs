@@ -25,6 +25,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
             base._Ready();
             GraphEdit.NodeSelected += OnNodeSelected;
             GraphEdit.GuiInput += OnGuiInput;
+            GraphEdit.ConnectionRequest += OnConnectionRequest;
             SaveButton.Pressed += OnSubmitSaveButton;
             CloseButton.Pressed += OnSubmitCloseButton;
         }
@@ -46,6 +47,15 @@ namespace MPewsey.ManiaMapGodot.Graphs
             CloseOutGraphResource();
             ClearCanvas();
             ManiaMapPlugin.Current?.HideGraphEditorDock();
+        }
+
+        private void OnConnectionRequest(StringName fromNodeName, long fromSlot, StringName toNodeName, long toSlot)
+        {
+            var fromNode = GraphEdit.GetNode<GraphNode>(fromNodeName.ToString()) as LayoutGraphNodeElement;
+            var toNode = GraphEdit.GetNode<GraphNode>(toNodeName.ToString()) as LayoutGraphNodeElement;
+
+            if (fromNode != null && toNode != null)
+                AddEdge(fromNode.NodeResource.Id, toNode.NodeResource.Id);
         }
 
         private void OnGraphResourceChanged()
@@ -106,13 +116,29 @@ namespace MPewsey.ManiaMapGodot.Graphs
             }
         }
 
+        private LayoutGraphNodeElement CreateNodeElement(LayoutGraphNode node)
+        {
+            var element = NodeElementScene.Instantiate<LayoutGraphNodeElement>();
+            GraphEdit.AddChild(element);
+            NodeElements.Add(node.Id, element);
+            element.Initialize(node);
+            return element;
+        }
+
+        private LayoutGraphEdgeElement CreateEdgeElement(LayoutGraphEdge edge)
+        {
+            var element = EdgeElementScene.Instantiate<LayoutGraphEdgeElement>();
+            GraphEdit.AddChild(element);
+            EdgeElements.Add(new Vector2I(edge.FromNode, edge.ToNode), element);
+            element.Initialize(this, edge);
+            return element;
+        }
+
         private void CreateNodeElements()
         {
             foreach (var node in GraphResource.Nodes.Values)
             {
-                var element = NodeElementScene.Instantiate<LayoutGraphNodeElement>();
-                GraphEdit.AddChild(element);
-                element.Initialize(node);
+                CreateNodeElement(node);
             }
         }
 
@@ -120,30 +146,24 @@ namespace MPewsey.ManiaMapGodot.Graphs
         {
             foreach (var edge in GraphResource.Edges.Values)
             {
-                var element = EdgeElementScene.Instantiate<LayoutGraphEdgeElement>();
-                GraphEdit.AddChild(element);
-                element.Initialize(this, edge);
+                CreateEdgeElement(edge);
             }
         }
 
         public void AddNode(Vector2 position)
         {
-            var nodeResource = GraphResource.AddNode(position);
-            var element = NodeElementScene.Instantiate<LayoutGraphNodeElement>();
-            GraphEdit.AddChild(element);
-            element.Initialize(nodeResource);
+            var node = GraphResource.AddNode(position);
+            CreateNodeElement(node);
             GraphResource.SetDirty();
         }
 
         public void AddEdge(int fromNode, int toNode)
         {
-            var edgeResource = GraphResource.AddEdge(fromNode, toNode);
+            var edge = GraphResource.AddEdge(fromNode, toNode);
 
-            if (edgeResource != null)
+            if (edge != null)
             {
-                var element = EdgeElementScene.Instantiate<LayoutGraphEdgeElement>();
-                GraphEdit.AddChild(element);
-                element.Initialize(this, edgeResource);
+                CreateEdgeElement(edge);
                 GraphResource.SetDirty();
             }
         }

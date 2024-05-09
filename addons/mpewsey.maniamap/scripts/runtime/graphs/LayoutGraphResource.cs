@@ -23,6 +23,16 @@ namespace MPewsey.ManiaMapGodot.Graphs
             EmitChanged();
         }
 
+        public override void _ValidateProperty(Godot.Collections.Dictionary property)
+        {
+            base._ValidateProperty(property);
+            var name = property["name"].AsStringName();
+            var usage = property["usage"].As<PropertyUsageFlags>();
+
+            if (name == PropertyName.Nodes || name == PropertyName.Edges)
+                property["usage"] = (int)(usage & ~PropertyUsageFlags.Editor);
+        }
+
         public void RegisterOnSubresourceChangedSignals()
         {
             foreach (var node in Nodes.Values)

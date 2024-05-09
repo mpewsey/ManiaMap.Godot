@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/LayoutGraphNodeElement.cs" id="1_jqtx3"]
 
 [node name="LayoutGraphNodeElement" type="GraphNode" node_paths=PackedStringArray("IdValueLabel")]
-offset_right = 163.0
+offset_right = 150.0
 offset_bottom = 78.0
 title = "Title"
 slot/0/left_enabled = true
@@ -24,8 +24,10 @@ layout_mode = 2
 [node name="IdLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "ID:"
+vertical_alignment = 1
 
 [node name="IdValueLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "9999"
+vertical_alignment = 1

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckyjrhwvcs6fi"]
+[gd_scene load_steps=7 format=3 uid="uid://ckyjrhwvcs6fi"]
 
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/LayoutGraphEditor.cs" id="1_2rqd2"]
-[ext_resource type="PackedScene" uid="uid://5euxn0pgqyv4" path="res://addons/mpewsey.maniamap/scenes/layout_graph_node_element.tscn" id="2_ycjoq"]
-[ext_resource type="PackedScene" uid="uid://ypdf7hu0sc5i" path="res://addons/mpewsey.maniamap/scenes/layout_graph_edge_element.tscn" id="3_gn3wy"]
-[ext_resource type="Texture2D" uid="uid://ci7cnxalkypmb" path="res://icon.svg" id="4_16wnk"]
+[ext_resource type="PackedScene" uid="uid://5euxn0pgqyv4" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/layout_graph_node_element.tscn" id="2_ycjoq"]
+[ext_resource type="PackedScene" uid="uid://ypdf7hu0sc5i" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/layout_graph_edge_element.tscn" id="3_gn3wy"]
+[ext_resource type="Theme" uid="uid://dvrncovf7ri1c" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/layout_graph_editor_theme.tres" id="4_e5taf"]
+[ext_resource type="Texture2D" uid="uid://p2afcp3bxlbx" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/close_button_icon.svg" id="5_hail8"]
+[ext_resource type="Texture2D" uid="uid://b4x833hcsmdrl" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/save_button_icon.svg" id="5_n0wko"]
 
 [node name="LayoutGraphEditor" type="Control" node_paths=PackedStringArray("GraphEdit", "FileNameLabel", "CloseButton", "SaveButton")]
 layout_mode = 3
@@ -27,6 +29,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+minimap_enabled = false
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_top = 11.0
+offset_right = -20.0
+offset_bottom = 34.0
+grow_horizontal = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -38,22 +52,31 @@ offset_top = 11.0
 offset_right = -20.0
 offset_bottom = 34.0
 grow_horizontal = 0
+theme = ExtResource("4_e5taf")
 alignment = 2
 
 [node name="FileNameLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "File Name"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="SaveButton" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
+tooltip_text = "Save"
 focus_mode = 0
-icon = ExtResource("4_16wnk")
+icon = ExtResource("5_n0wko")
+flat = true
+icon_alignment = 1
 expand_icon = true
 
 [node name="CloseButton" type="Button" parent="HBoxContainer"]
-custom_minimum_size = Vector2(23, 0)
+custom_minimum_size = Vector2(23, 23)
 layout_mode = 2
+tooltip_text = "Save & Close"
 focus_mode = 0
-icon = ExtResource("4_16wnk")
+icon = ExtResource("5_hail8")
+flat = true
+icon_alignment = 1
 expand_icon = true

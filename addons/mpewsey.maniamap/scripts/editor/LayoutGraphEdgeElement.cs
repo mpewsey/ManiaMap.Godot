@@ -23,34 +23,11 @@ namespace MPewsey.ManiaMapGodot.Editor
         {
             Title = EdgeResource.Name;
             EdgeValueLabel.Text = $"({EdgeResource.FromNode}, {EdgeResource.ToNode})";
-            QueueRedraw();
         }
 
         private void OnResourceChanged()
         {
             Populate();
-        }
-
-        public override void _Draw()
-        {
-            base._Draw();
-            DrawEdgeLine();
-        }
-
-        private void DrawEdgeLine()
-        {
-            if (GraphEditor != null)
-            {
-                var fromFound = GraphEditor.NodeElements.TryGetValue(EdgeResource.FromNode, out var fromNode);
-                var toFound = GraphEditor.NodeElements.TryGetValue(EdgeResource.ToNode, out var toNode);
-
-                if (fromFound && toFound)
-                {
-                    var fromPosition = fromNode.CenterPosition();
-                    var toPosition = toNode.CenterPosition();
-                    DrawLine(fromPosition, toPosition, EdgeResource.Color);
-                }
-            }
         }
     }
 }
