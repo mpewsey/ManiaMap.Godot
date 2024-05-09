@@ -22,6 +22,12 @@ namespace MPewsey.ManiaMapGodot.Graphs
             GraphEdit.GuiInput += OnGuiInput;
         }
 
+        public override void _ExitTree()
+        {
+            base._ExitTree();
+            GraphResource?.SaveIfDirty();
+        }
+
         private void OnGuiInput(InputEvent input)
         {
             if (input is InputEventMouseButton mouseInput)
@@ -33,12 +39,19 @@ namespace MPewsey.ManiaMapGodot.Graphs
             }
         }
 
-        public void Initialize(LayoutGraphResource graphResource)
+        public void SetEditorTarget(LayoutGraphResource graphResource)
         {
+            GraphResource?.SaveIfDirty();
             GraphResource = graphResource;
+            RegisterChangedSignals();
             ClearCanvas();
             CreateEdgeElements();
             CreateNodeElements();
+        }
+
+        private void RegisterChangedSignals()
+        {
+            GraphResource.RegisterOnSubresourceChangedSignals();
         }
 
         private void OnNodeSelected(Node node)
@@ -56,53 +69,43 @@ namespace MPewsey.ManiaMapGodot.Graphs
 
         private void CreateNodeElements()
         {
-            if (IsInstanceValid(GraphResource))
+            foreach (var node in GraphResource.Nodes.Values)
             {
-                foreach (var node in GraphResource.Nodes.Values)
-                {
-                    var element = NodeElementScene.Instantiate<LayoutGraphNodeElement>();
-                    GraphEdit.AddChild(element);
-                    element.Initialize(node);
-                }
+                var element = NodeElementScene.Instantiate<LayoutGraphNodeElement>();
+                GraphEdit.AddChild(element);
+                element.Initialize(node);
             }
         }
 
         private void CreateEdgeElements()
         {
-            if (IsInstanceValid(GraphResource))
+            foreach (var edge in GraphResource.Edges.Values)
             {
-                foreach (var edge in GraphResource.Edges.Values)
-                {
-                    var element = EdgeElementScene.Instantiate<LayoutGraphEdgeElement>();
-                    GraphEdit.AddChild(element);
-                    element.Initialize(this, edge);
-                }
+                var element = EdgeElementScene.Instantiate<LayoutGraphEdgeElement>();
+                GraphEdit.AddChild(element);
+                element.Initialize(this, edge);
             }
         }
 
         public void AddNode(Vector2 position)
         {
-            if (IsInstanceValid(GraphResource))
-            {
-                var nodeResource = GraphResource.AddNode(position);
-                var element = NodeElementScene.Instantiate<LayoutGraphNodeElement>();
-                GraphEdit.AddChild(element);
-                element.Initialize(nodeResource);
-            }
+            var nodeResource = GraphResource.AddNode(position);
+            var element = NodeElementScene.Instantiate<LayoutGraphNodeElement>();
+            GraphEdit.AddChild(element);
+            element.Initialize(nodeResource);
+            GraphResource.SetDirty();
         }
 
         public void AddEdge(int fromNode, int toNode)
         {
-            if (IsInstanceValid(GraphResource))
-            {
-                var edgeResource = GraphResource.AddEdge(fromNode, toNode);
+            var edgeResource = GraphResource.AddEdge(fromNode, toNode);
 
-                if (IsInstanceValid(edgeResource))
-                {
-                    var element = EdgeElementScene.Instantiate<LayoutGraphEdgeElement>();
-                    GraphEdit.AddChild(element);
-                    element.Initialize(this, edgeResource);
-                }
+            if (edgeResource != null)
+            {
+                var element = EdgeElementScene.Instantiate<LayoutGraphEdgeElement>();
+                GraphEdit.AddChild(element);
+                element.Initialize(this, edgeResource);
+                GraphResource.SetDirty();
             }
         }
 

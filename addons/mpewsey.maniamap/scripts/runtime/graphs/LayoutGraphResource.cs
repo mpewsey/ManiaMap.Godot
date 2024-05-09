@@ -11,6 +11,42 @@ namespace MPewsey.ManiaMapGodot.Graphs
         [Export] public string Name { get; set; } = "<None>";
         [Export] public Godot.Collections.Dictionary<int, LayoutGraphNode> Nodes { get; set; } = new Godot.Collections.Dictionary<int, LayoutGraphNode>();
         [Export] public Godot.Collections.Dictionary<Vector2I, LayoutGraphEdge> Edges { get; set; } = new Godot.Collections.Dictionary<Vector2I, LayoutGraphEdge>();
+        private bool IsDirty { get; set; }
+
+        public void RegisterOnSubresourceChangedSignals()
+        {
+            foreach (var node in Nodes.Values)
+            {
+                node.Changed += OnSubresourceChanged;
+            }
+
+            foreach (var edge in Edges.Values)
+            {
+                edge.Changed += OnSubresourceChanged;
+            }
+        }
+
+        private void OnSubresourceChanged()
+        {
+            SetDirty();
+        }
+
+        public void SetDirty()
+        {
+            IsDirty = true;
+        }
+
+        public bool SaveIfDirty()
+        {
+            if (IsDirty && FileAccess.FileExists(ResourcePath))
+            {
+                ResourceSaver.Save(this);
+                IsDirty = false;
+                return true;
+            }
+
+            return false;
+        }
 
         public bool ContainsEdge(int node1, int node2)
         {
@@ -56,6 +92,8 @@ namespace MPewsey.ManiaMapGodot.Graphs
 
             var node = new LayoutGraphNode(nodeId, position);
             Nodes.Add(nodeId, node);
+            node.Changed += OnSubresourceChanged;
+            SetDirty();
             return node;
         }
 
@@ -65,6 +103,8 @@ namespace MPewsey.ManiaMapGodot.Graphs
             {
                 var edge = new LayoutGraphEdge(fromNode, toNode);
                 Edges.Add(new Vector2I(fromNode, toNode), edge);
+                edge.Changed += OnSubresourceChanged;
+                SetDirty();
                 return edge;
             }
 

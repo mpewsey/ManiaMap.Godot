@@ -39,7 +39,7 @@ namespace MPewsey.ManiaMapGodot.Editor
             {
                 GraphEditorDockButton.Visible = true;
                 MakeBottomPanelItemVisible(GraphEditor);
-                GraphEditor.Initialize(graph);
+                GraphEditor.SetEditorTarget(graph);
             }
         }
 

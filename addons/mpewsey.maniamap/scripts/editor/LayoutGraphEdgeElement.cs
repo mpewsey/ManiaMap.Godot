@@ -15,6 +15,7 @@ namespace MPewsey.ManiaMapGodot.Editor
         {
             GraphEditor = graphEditor;
             EdgeResource = edgeResource;
+            edgeResource.Changed += OnResourceChanged;
             Populate();
         }
 
@@ -25,6 +26,11 @@ namespace MPewsey.ManiaMapGodot.Editor
             QueueRedraw();
         }
 
+        private void OnResourceChanged()
+        {
+            Populate();
+        }
+
         public override void _Draw()
         {
             base._Draw();
@@ -33,12 +39,12 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         private void DrawEdgeLine()
         {
-            if (IsInstanceValid(GraphEditor))
+            if (GraphEditor != null)
             {
-                GraphEditor.NodeElements.TryGetValue(EdgeResource.FromNode, out var fromNode);
-                GraphEditor.NodeElements.TryGetValue(EdgeResource.ToNode, out var toNode);
+                var fromFound = GraphEditor.NodeElements.TryGetValue(EdgeResource.FromNode, out var fromNode);
+                var toFound = GraphEditor.NodeElements.TryGetValue(EdgeResource.ToNode, out var toNode);
 
-                if (IsInstanceValid(fromNode) && IsInstanceValid(toNode))
+                if (fromFound && toFound)
                 {
                     var fromPosition = fromNode.CenterPosition();
                     var toPosition = toNode.CenterPosition();

@@ -6,14 +6,35 @@ namespace MPewsey.ManiaMapGodot.Graphs
     [Tool]
     public partial class LayoutGraphNode : Resource
     {
-        [Export] public int Id { get; set; }
-        [Export] public string Name { get; set; }
-        [Export] public TemplateGroup TemplateGroup { get; set; }
-        [Export] public Color Color { get; set; }
-        [Export] public int Z { get; set; }
-        [Export] public string VariationGroup { get; set; }
-        [Export] public string[] Tags { get; set; } = Array.Empty<string>();
-        [Export] public Vector2 Position { get; set; }
+        private int _id;
+        [Export] public int Id { get => _id; set => SetField(ref _id, value); }
+
+        private string _name;
+        [Export] public string Name { get => _name; set => SetField(ref _name, value); }
+
+        private TemplateGroup _templateGroup;
+        [Export] public TemplateGroup TemplateGroup { get => _templateGroup; set => SetField(ref _templateGroup, value); }
+
+        private Color _color;
+        [Export] public Color Color { get => _color; set => SetField(ref _color, value); }
+
+        private int _z;
+        [Export] public int Z { get => _z; set => SetField(ref _z, value); }
+
+        private string _variationGroup;
+        [Export] public string VariationGroup { get => _variationGroup; set => SetField(ref _variationGroup, value); }
+
+        private string[] _tags = Array.Empty<string>();
+        [Export] public string[] Tags { get => _tags; set => SetField(ref _tags, value); }
+
+        private Vector2 _position;
+        [Export] public Vector2 Position { get => _position; set => SetField(ref _position, value); }
+
+        private void SetField<T>(ref T field, T value)
+        {
+            field = value;
+            EmitChanged();
+        }
 
         public LayoutGraphNode()
         {

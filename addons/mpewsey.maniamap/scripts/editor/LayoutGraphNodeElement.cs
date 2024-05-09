@@ -25,6 +25,7 @@ namespace MPewsey.ManiaMapGodot.Editor
         {
             NodeResource = nodeResource;
             PositionOffset = nodeResource.Position;
+            nodeResource.Changed += OnResourceChanged;
             Populate();
         }
 
@@ -37,6 +38,11 @@ namespace MPewsey.ManiaMapGodot.Editor
         public Vector2 CenterPosition()
         {
             return GlobalPosition + 0.5f * Size;
+        }
+
+        private void OnResourceChanged()
+        {
+            Populate();
         }
     }
 }

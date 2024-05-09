@@ -21,6 +21,12 @@ namespace MPewsey.ManiaMapGodot.Graphs
         [ExportGroup("Code")]
         [Export] public DoorCode Code { get; set; }
 
+        private void SetField<T>(ref T field, T value)
+        {
+            field = value;
+            EmitChanged();
+        }
+
         public LayoutGraphEdge()
         {
 
