@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://5euxn0pgqyv4"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/LayoutGraphNodeElement.cs" id="1_jqtx3"]
+
+[node name="LayoutGraphNodeElement" type="GraphNode" node_paths=PackedStringArray("IdValueLabel")]
+offset_right = 163.0
+offset_bottom = 78.0
+title = "Title"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_jqtx3")
+IdValueLabel = NodePath("HBoxContainer/IdValueLabel")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="IdLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "ID:"
+
+[node name="IdValueLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "9999"

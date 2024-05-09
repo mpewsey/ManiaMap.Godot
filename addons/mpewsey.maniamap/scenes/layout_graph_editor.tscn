@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckyjrhwvcs6fi"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/LayoutGraphEditor.cs" id="1_2rqd2"]
+[ext_resource type="PackedScene" uid="uid://5euxn0pgqyv4" path="res://addons/mpewsey.maniamap/scenes/layout_graph_node_element.tscn" id="2_ycjoq"]
+[ext_resource type="PackedScene" uid="uid://ypdf7hu0sc5i" path="res://addons/mpewsey.maniamap/scenes/layout_graph_edge_element.tscn" id="3_gn3wy"]
+
+[node name="LayoutGraphEditor" type="Control" node_paths=PackedStringArray("GraphEdit")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2rqd2")
+GraphEdit = NodePath("GraphEdit")
+NodeElementScene = ExtResource("2_ycjoq")
+EdgeElementScene = ExtResource("3_gn3wy")
+
+[node name="GraphEdit" type="GraphEdit" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

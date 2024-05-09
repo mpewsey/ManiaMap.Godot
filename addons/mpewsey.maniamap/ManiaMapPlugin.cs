@@ -56,7 +56,7 @@ namespace MPewsey.ManiaMapGodot.Editor
         private static void BatchUpdateRoomTemplates()
         {
             var path = ProjectSettings.GetSetting(BatchUpdateSearchPathSetting, "res://").AsString();
-            BatchUpdater.BatchUpdateRoomTemplates(path);
+            BatchUpdaterTool.BatchUpdateRoomTemplates(path);
         }
     }
 }

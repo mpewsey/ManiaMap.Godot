@@ -4,7 +4,7 @@ using System.IO;
 
 namespace MPewsey.ManiaMapGodot.Editor
 {
-    public static class BatchUpdater
+    public static class BatchUpdaterTool
     {
         private const string Room2DScriptReference = "[ext_resource type=\"Script\" path=\"res://addons/mpewsey.maniamap/scripts/runtime/RoomNode2D.cs\"";
 
