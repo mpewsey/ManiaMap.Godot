@@ -2,12 +2,15 @@
 using Godot;
 using MPewsey.ManiaMapGodot.Editor;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MPewsey.ManiaMapGodot.Graphs
 {
     [Tool]
     public partial class LayoutGraphEditor : Control
     {
+        private static StringName DeleteAction { get; } = "ui_graph_delete";
+
         [Export] public GraphEdit GraphEdit { get; set; }
         [Export] public PackedScene NodeElementScene { get; set; }
         [Export] public PackedScene EdgeElementScene { get; set; }
@@ -18,7 +21,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
 
         private LayoutGraphResource GraphResource { get; set; }
         public Dictionary<int, LayoutGraphNodeElement> NodeElements { get; } = new Dictionary<int, LayoutGraphNodeElement>();
-        public Dictionary<Vector2I, LayoutGraphEdgeElement> EdgeElements { get; } = new Dictionary<Vector2I, LayoutGraphEdgeElement>();
+        public HashSet<LayoutGraphEdgeElement> EdgeElements { get; } = new HashSet<LayoutGraphEdgeElement>();
 
         public override void _Ready()
         {
@@ -36,6 +39,106 @@ namespace MPewsey.ManiaMapGodot.Graphs
             CloseOutGraphResource();
         }
 
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
+            QueueRedraw();
+        }
+
+        public override void _Draw()
+        {
+            base._Draw();
+
+            foreach (var edge in EdgeElements)
+            {
+                var fromFound = NodeElements.TryGetValue(edge.EdgeResource.FromNode, out var fromNode);
+                var toFound = NodeElements.TryGetValue(edge.EdgeResource.ToNode, out var toNode);
+
+                if (fromFound && toFound)
+                {
+                    var edgePosition = (fromNode.Position + toNode.Position) * 0.5f;
+                    edge.PositionOffset = GetPositionOffset(edgePosition);
+                }
+            }
+        }
+
+        private void OnGuiInput(InputEvent input)
+        {
+            if (input is InputEventMouseButton mouseInput)
+            {
+                if (mouseInput.ButtonIndex == MouseButton.Right && mouseInput.Pressed)
+                {
+                    AddNode(GetPositionOffset(mouseInput.Position));
+                }
+            }
+            else if (input.IsActionPressed(DeleteAction))
+            {
+                DeleteSelectedElements();
+            }
+        }
+
+        private void SelectAllElements()
+        {
+            foreach (var node in NodeElements.Values)
+            {
+                node.Selected = true;
+            }
+
+            foreach (var edge in EdgeElements)
+            {
+                edge.Selected = true;
+            }
+        }
+
+        private void DeleteSelectedElements()
+        {
+            foreach (var edge in EdgeElements.Where(x => x.Selected).ToList())
+            {
+                RemoveEdge(edge);
+            }
+
+            foreach (var node in NodeElements.Values.Where(x => x.Selected).ToList())
+            {
+                RemoveNode(node);
+            }
+        }
+
+        private void RemoveNode(LayoutGraphNodeElement node)
+        {
+            RemoveNodeEdges(node.NodeResource.Id);
+            GraphResource.RemoveNode(node.NodeResource.Id);
+            NodeElements.Remove(node.NodeResource.Id);
+            node.QueueFree();
+        }
+
+        private void RemoveNodeEdges(int nodeId)
+        {
+            foreach (var edge in NodeEdges(nodeId))
+            {
+                RemoveEdge(edge);
+            }
+        }
+
+        private List<LayoutGraphEdgeElement> NodeEdges(int nodeId)
+        {
+            var result = new List<LayoutGraphEdgeElement>();
+
+            foreach (var edge in EdgeElements)
+            {
+                if (edge.EdgeResource.ContainsNode(nodeId))
+                    result.Add(edge);
+            }
+
+            return result;
+        }
+
+        private void RemoveEdge(LayoutGraphEdgeElement element)
+        {
+            GraphResource.RemoveEdge(element.EdgeResource.FromNode, element.EdgeResource.ToNode);
+            EdgeElements.Remove(element);
+            element.QueueFree();
+        }
+
         private void OnSubmitSaveButton()
         {
             GraphResource?.SaveIfDirty();
@@ -51,10 +154,10 @@ namespace MPewsey.ManiaMapGodot.Graphs
 
         private void OnConnectionRequest(StringName fromNodeName, long fromSlot, StringName toNodeName, long toSlot)
         {
-            var fromNode = GraphEdit.GetNode<GraphNode>(fromNodeName.ToString()) as LayoutGraphNodeElement;
-            var toNode = GraphEdit.GetNode<GraphNode>(toNodeName.ToString()) as LayoutGraphNodeElement;
+            var node1 = GraphEdit.GetNode<GraphNode>(fromNodeName.ToString());
+            var node2 = GraphEdit.GetNode<GraphNode>(toNodeName.ToString());
 
-            if (fromNode != null && toNode != null)
+            if (node1 is LayoutGraphNodeElement fromNode && node2 is LayoutGraphNodeElement toNode)
                 AddEdge(fromNode.NodeResource.Id, toNode.NodeResource.Id);
         }
 
@@ -63,15 +166,9 @@ namespace MPewsey.ManiaMapGodot.Graphs
             SaveButton.Disabled = false;
         }
 
-        private void OnGuiInput(InputEvent input)
+        public Vector2 GetPositionOffset(Vector2 position)
         {
-            if (input is InputEventMouseButton mouseInput)
-            {
-                if (mouseInput.ButtonIndex == MouseButton.Right && mouseInput.Pressed)
-                {
-                    AddNode((mouseInput.Position + GraphEdit.ScrollOffset) / GraphEdit.Zoom);
-                }
-            }
+            return (position + GraphEdit.ScrollOffset) / GraphEdit.Zoom;
         }
 
         public void SetEditorTarget(LayoutGraphResource graphResource)
@@ -129,7 +226,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
         {
             var element = EdgeElementScene.Instantiate<LayoutGraphEdgeElement>();
             GraphEdit.AddChild(element);
-            EdgeElements.Add(new Vector2I(edge.FromNode, edge.ToNode), element);
+            EdgeElements.Add(element);
             element.Initialize(this, edge);
             return element;
         }
@@ -170,11 +267,14 @@ namespace MPewsey.ManiaMapGodot.Graphs
 
         public void ClearCanvas()
         {
-            var nodes = GraphEdit.FindChildren("*", nameof(GraphNode), true, false);
-
-            foreach (var node in nodes)
+            foreach (var node in NodeElements.Values)
             {
                 node.QueueFree();
+            }
+
+            foreach (var edge in EdgeElements)
+            {
+                edge.QueueFree();
             }
 
             NodeElements.Clear();

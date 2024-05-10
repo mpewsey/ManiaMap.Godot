@@ -68,5 +68,10 @@ namespace MPewsey.ManiaMapGodot.Graphs
             ToNode = toNode;
             Name = $"Edge ({fromNode}, {toNode})";
         }
+
+        public bool ContainsNode(int nodeId)
+        {
+            return FromNode == nodeId || ToNode == nodeId;
+        }
     }
 }

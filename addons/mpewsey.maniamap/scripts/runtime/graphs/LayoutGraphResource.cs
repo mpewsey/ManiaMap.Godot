@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapGodot.Graphs
 {
@@ -131,6 +132,41 @@ namespace MPewsey.ManiaMapGodot.Graphs
             return node;
         }
 
+        public bool RemoveNode(int nodeId)
+        {
+            if (Nodes.Remove(nodeId))
+            {
+                RemoveNodeEdges(nodeId);
+                SetDirty();
+                return true;
+            }
+
+            return false;
+        }
+
+        public void RemoveNodeEdges(int nodeId)
+        {
+            foreach (var index in NodeEdgeIndexes(nodeId))
+            {
+                Edges.Remove(index);
+            }
+
+            SetDirty();
+        }
+
+        public List<Vector2I> NodeEdgeIndexes(int nodeId)
+        {
+            var result = new List<Vector2I>();
+
+            foreach (var pair in Edges)
+            {
+                if (pair.Value.ContainsNode(nodeId))
+                    result.Add(pair.Key);
+            }
+
+            return result;
+        }
+
         public LayoutGraphEdge AddEdge(int fromNode, int toNode)
         {
             if (!ContainsEdge(fromNode, toNode))
@@ -143,6 +179,17 @@ namespace MPewsey.ManiaMapGodot.Graphs
             }
 
             return null;
+        }
+
+        public bool RemoveEdge(int node1, int node2)
+        {
+            if (Edges.Remove(new Vector2I(node1, node2)) || Edges.Remove(new Vector2I(node2, node1)))
+            {
+                SetDirty();
+                return true;
+            }
+
+            return false;
         }
     }
 }

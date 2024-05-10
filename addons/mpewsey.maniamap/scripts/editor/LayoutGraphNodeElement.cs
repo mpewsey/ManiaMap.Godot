@@ -35,11 +35,6 @@ namespace MPewsey.ManiaMapGodot.Editor
             IdValueLabel.Text = NodeResource.Id.ToString();
         }
 
-        public Vector2 CenterPosition()
-        {
-            return GlobalPosition + 0.5f * Size;
-        }
-
         private void OnResourceChanged()
         {
             Populate();
