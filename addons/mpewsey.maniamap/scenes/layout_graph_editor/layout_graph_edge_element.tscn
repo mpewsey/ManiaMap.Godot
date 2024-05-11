@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/LayoutGraphEdgeElement.cs" id="1_714fn"]
 
-[node name="LayoutGraphEdgeElement" type="GraphNode" node_paths=PackedStringArray("EdgeValueLabel")]
+[node name="LayoutGraphEdgeElement" type="GraphNode" node_paths=PackedStringArray("EdgeValueLabel", "ColorPicker")]
 offset_right = 150.0
 offset_bottom = 78.0
 draggable = false
@@ -16,18 +16,44 @@ slot/0/right_type = 0
 slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
 script = ExtResource("1_714fn")
 EdgeValueLabel = NodePath("HBoxContainer/EdgeValueLabel")
+ColorPicker = NodePath("HBoxContainer2/ColorPickerButton")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
 [node name="EdgeLabel" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "Edge:"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="EdgeValueLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "(1, 2)"
 vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ColorLabel" type="Label" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Color:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3

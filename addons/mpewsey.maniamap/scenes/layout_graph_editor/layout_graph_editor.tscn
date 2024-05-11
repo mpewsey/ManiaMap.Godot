@@ -14,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_e5taf")
 script = ExtResource("1_2rqd2")
 GraphEdit = NodePath("GraphEdit")
 NodeElementScene = ExtResource("2_ycjoq")
@@ -30,6 +31,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 minimap_enabled = false
+show_arrange_button = false
 
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 1
@@ -61,7 +63,6 @@ anchor_bottom = 1.0
 offset_left = -132.0
 grow_horizontal = 0
 grow_vertical = 2
-theme = ExtResource("4_e5taf")
 alignment = 2
 
 [node name="FileNameLabel" type="Label" parent="Buttons/HBoxContainer"]

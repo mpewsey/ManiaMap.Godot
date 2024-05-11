@@ -10,6 +10,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
     public partial class LayoutGraphEditor : Control
     {
         private static StringName DeleteAction { get; } = "ui_graph_delete";
+        private static StringName SelectAllAction { get; } = "ui_text_select_all";
 
         [Export] public GraphEdit GraphEdit { get; set; }
         [Export] public PackedScene NodeElementScene { get; set; }
@@ -42,23 +43,26 @@ namespace MPewsey.ManiaMapGodot.Graphs
         public override void _Process(double delta)
         {
             base._Process(delta);
-            QueueRedraw();
+            MoveEdgesToMidpointsOfNodes();
         }
 
-        public override void _Draw()
+        public void MoveEdgesToMidpointsOfNodes()
         {
-            base._Draw();
-
             foreach (var edge in EdgeElements)
             {
-                var fromFound = NodeElements.TryGetValue(edge.EdgeResource.FromNode, out var fromNode);
-                var toFound = NodeElements.TryGetValue(edge.EdgeResource.ToNode, out var toNode);
+                MoveEdgeToMidpointOfNodes(edge);
+            }
+        }
 
-                if (fromFound && toFound)
-                {
-                    var edgePosition = (fromNode.Position + toNode.Position) * 0.5f;
-                    edge.PositionOffset = GetPositionOffset(edgePosition);
-                }
+        public void MoveEdgeToMidpointOfNodes(LayoutGraphEdgeElement element)
+        {
+            var fromFound = NodeElements.TryGetValue(element.EdgeResource.FromNode, out var fromNode);
+            var toFound = NodeElements.TryGetValue(element.EdgeResource.ToNode, out var toNode);
+
+            if (fromFound && toFound)
+            {
+                var edgePosition = (fromNode.Position + toNode.Position) * 0.5f;
+                element.PositionOffset = GetPositionOffset(edgePosition);
             }
         }
 
@@ -69,11 +73,18 @@ namespace MPewsey.ManiaMapGodot.Graphs
                 if (mouseInput.ButtonIndex == MouseButton.Right && mouseInput.Pressed)
                 {
                     AddNode(GetPositionOffset(mouseInput.Position));
+                    GetViewport().SetInputAsHandled();
                 }
             }
             else if (input.IsActionPressed(DeleteAction))
             {
                 DeleteSelectedElements();
+                GetViewport().SetInputAsHandled();
+            }
+            else if (input.IsActionPressed(SelectAllAction))
+            {
+                SelectAllElements();
+                GetViewport().SetInputAsHandled();
             }
         }
 
