@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckyjrhwvcs6fi"]
+[gd_scene load_steps=8 format=3 uid="uid://ckyjrhwvcs6fi"]
 
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/LayoutGraphEditor.cs" id="1_2rqd2"]
 [ext_resource type="PackedScene" uid="uid://5euxn0pgqyv4" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/layout_graph_node_element.tscn" id="2_ycjoq"]
 [ext_resource type="PackedScene" uid="uid://ypdf7hu0sc5i" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/layout_graph_edge_element.tscn" id="3_gn3wy"]
 [ext_resource type="Theme" uid="uid://dvrncovf7ri1c" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/layout_graph_editor_theme.tres" id="4_e5taf"]
 [ext_resource type="Texture2D" uid="uid://p2afcp3bxlbx" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/close_button_icon.svg" id="5_hail8"]
+[ext_resource type="PackedScene" uid="uid://d3ywwaoyv35qf" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/edge_line.tscn" id="5_lbopo"]
 [ext_resource type="Texture2D" uid="uid://b4x833hcsmdrl" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/save_button_icon.svg" id="5_n0wko"]
 
-[node name="LayoutGraphEditor" type="Control" node_paths=PackedStringArray("GraphEdit", "FileNameLabel", "CloseButton", "SaveButton")]
+[node name="LayoutGraphEditor" type="Control" node_paths=PackedStringArray("GraphEdit", "EdgeLineContainer", "FileNameLabel", "CloseButton", "SaveButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,8 +18,10 @@ grow_vertical = 2
 theme = ExtResource("4_e5taf")
 script = ExtResource("1_2rqd2")
 GraphEdit = NodePath("GraphEdit")
+EdgeLineContainer = NodePath("GraphEdit/EdgeLinesContainer")
 NodeElementScene = ExtResource("2_ycjoq")
 EdgeElementScene = ExtResource("3_gn3wy")
+EdgeLineScene = ExtResource("5_lbopo")
 FileNameLabel = NodePath("Buttons/HBoxContainer/FileNameLabel")
 CloseButton = NodePath("Buttons/HBoxContainer/CloseButton")
 SaveButton = NodePath("Buttons/HBoxContainer/SaveButton")
@@ -32,6 +35,8 @@ grow_horizontal = 2
 grow_vertical = 2
 minimap_enabled = false
 show_arrange_button = false
+
+[node name="EdgeLinesContainer" type="Node2D" parent="GraphEdit"]
 
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 1

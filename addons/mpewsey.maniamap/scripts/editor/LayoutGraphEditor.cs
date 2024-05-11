@@ -13,8 +13,10 @@ namespace MPewsey.ManiaMapGodot.Graphs
         private static StringName SelectAllAction { get; } = "ui_text_select_all";
 
         [Export] public GraphEdit GraphEdit { get; set; }
+        [Export] public Node EdgeLineContainer { get; set; }
         [Export] public PackedScene NodeElementScene { get; set; }
         [Export] public PackedScene EdgeElementScene { get; set; }
+        [Export] public PackedScene EdgeLineScene { get; set; }
 
         [Export] public Label FileNameLabel { get; set; }
         [Export] public Button CloseButton { get; set; }
@@ -23,6 +25,8 @@ namespace MPewsey.ManiaMapGodot.Graphs
         private LayoutGraphResource GraphResource { get; set; }
         public Dictionary<int, LayoutGraphNodeElement> NodeElements { get; } = new Dictionary<int, LayoutGraphNodeElement>();
         public HashSet<LayoutGraphEdgeElement> EdgeElements { get; } = new HashSet<LayoutGraphEdgeElement>();
+        private List<Line2D> EdgeLines { get; } = new List<Line2D>();
+        private float LineWidth { get; set; }
 
         public override void _Ready()
         {
@@ -44,25 +48,71 @@ namespace MPewsey.ManiaMapGodot.Graphs
         {
             base._Process(delta);
             MoveEdgesToMidpointsOfNodes();
+            PopulateEdgeLines();
         }
 
-        public void MoveEdgesToMidpointsOfNodes()
+        private void MoveEdgesToMidpointsOfNodes()
         {
-            foreach (var edge in EdgeElements)
+            foreach (var element in EdgeElements)
             {
-                MoveEdgeToMidpointOfNodes(edge);
+                var edge = element.EdgeResource;
+                var fromFound = NodeElements.TryGetValue(edge.FromNode, out var fromNode);
+                var toFound = NodeElements.TryGetValue(edge.ToNode, out var toNode);
+
+                if (fromFound && toFound)
+                {
+                    var edgePosition = (fromNode.Position + toNode.Position) * 0.5f;
+                    element.PositionOffset = GetPositionOffset(edgePosition);
+                }
             }
         }
 
-        public void MoveEdgeToMidpointOfNodes(LayoutGraphEdgeElement element)
+        private void PopulateEdgeLines()
         {
-            var fromFound = NodeElements.TryGetValue(element.EdgeResource.FromNode, out var fromNode);
-            var toFound = NodeElements.TryGetValue(element.EdgeResource.ToNode, out var toNode);
+            SizeEdgeLinesList();
+            var index = 0;
+            var zoom = GraphEdit.Zoom;
 
-            if (fromFound && toFound)
+            foreach (var element in EdgeElements)
             {
-                var edgePosition = (fromNode.Position + toNode.Position) * 0.5f;
-                element.PositionOffset = GetPositionOffset(edgePosition);
+                var line = EdgeLines[index++];
+                var edge = element.EdgeResource;
+                var fromPosition = Vector2.Zero;
+                var toPosition = Vector2.Zero;
+                var fromFound = NodeElements.TryGetValue(edge.FromNode, out var fromNode);
+                var toFound = NodeElements.TryGetValue(edge.ToNode, out var toNode);
+
+                if (fromFound && toFound)
+                {
+                    fromPosition = fromNode.Position + 0.5f * zoom * fromNode.Size;
+                    toPosition = toNode.Position + 0.5f * zoom * toNode.Size;
+                }
+
+                if (line.Points.Length != 2)
+                    line.Points = new Vector2[2];
+
+                line.Width = Mathf.Max(LineWidth * zoom, 1);
+                line.DefaultColor = edge.Color;
+                line.SetPointPosition(0, fromPosition);
+                line.SetPointPosition(1, toPosition);
+            }
+        }
+
+        private void SizeEdgeLinesList()
+        {
+            while (EdgeLines.Count > EdgeElements.Count)
+            {
+                var index = EdgeLines.Count - 1;
+                EdgeLines[index].QueueFree();
+                EdgeLines.RemoveAt(index);
+            }
+
+            while (EdgeLines.Count < EdgeElements.Count)
+            {
+                var line = EdgeLineScene.Instantiate<Line2D>();
+                LineWidth = line.Width;
+                EdgeLineContainer.AddChild(line);
+                EdgeLines.Add(line);
             }
         }
 
@@ -238,7 +288,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
             var element = EdgeElementScene.Instantiate<LayoutGraphEdgeElement>();
             GraphEdit.AddChild(element);
             EdgeElements.Add(element);
-            element.Initialize(this, edge);
+            element.Initialize(edge);
             return element;
         }
 
@@ -288,8 +338,14 @@ namespace MPewsey.ManiaMapGodot.Graphs
                 edge.QueueFree();
             }
 
+            foreach (var line in EdgeLines)
+            {
+                line.QueueFree();
+            }
+
             NodeElements.Clear();
             EdgeElements.Clear();
+            EdgeLines.Clear();
         }
     }
 }

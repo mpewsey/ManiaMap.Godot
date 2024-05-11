@@ -9,7 +9,6 @@ namespace MPewsey.ManiaMapGodot.Editor
     {
         [Export] public Label EdgeValueLabel { get; set; }
         [Export] public ColorPickerButton ColorPicker { get; set; }
-        private LayoutGraphEditor GraphEditor { get; set; }
         public LayoutGraphEdge EdgeResource { get; private set; }
 
         public override void _Ready()
@@ -28,9 +27,8 @@ namespace MPewsey.ManiaMapGodot.Editor
             }
         }
 
-        public void Initialize(LayoutGraphEditor graphEditor, LayoutGraphEdge edgeResource)
+        public void Initialize(LayoutGraphEdge edgeResource)
         {
-            GraphEditor = graphEditor;
             EdgeResource = edgeResource;
             edgeResource.Changed += OnResourceChanged;
             Populate();
