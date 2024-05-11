@@ -18,9 +18,9 @@ script = ExtResource("1_2rqd2")
 GraphEdit = NodePath("GraphEdit")
 NodeElementScene = ExtResource("2_ycjoq")
 EdgeElementScene = ExtResource("3_gn3wy")
-FileNameLabel = NodePath("HBoxContainer/FileNameLabel")
-CloseButton = NodePath("HBoxContainer/CloseButton")
-SaveButton = NodePath("HBoxContainer/SaveButton")
+FileNameLabel = NodePath("Buttons/HBoxContainer/FileNameLabel")
+CloseButton = NodePath("Buttons/HBoxContainer/CloseButton")
+SaveButton = NodePath("Buttons/HBoxContainer/SaveButton")
 
 [node name="GraphEdit" type="GraphEdit" parent="."]
 layout_mode = 1
@@ -31,37 +31,46 @@ grow_horizontal = 2
 grow_vertical = 2
 minimap_enabled = false
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Buttons" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -70.0
+offset_left = -20.0
 offset_top = 11.0
 offset_right = -20.0
 offset_bottom = 34.0
 grow_horizontal = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Panel" type="Panel" parent="Buttons"]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -172.0
-offset_top = 11.0
-offset_right = -20.0
-offset_bottom = 34.0
+anchor_bottom = 1.0
+offset_left = -50.0
 grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+grow_horizontal = 0
+grow_vertical = 2
 theme = ExtResource("4_e5taf")
 alignment = 2
 
-[node name="FileNameLabel" type="Label" parent="HBoxContainer"]
+[node name="FileNameLabel" type="Label" parent="Buttons/HBoxContainer"]
 layout_mode = 2
 text = "File Name"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="SaveButton" type="Button" parent="HBoxContainer"]
+[node name="SaveButton" type="Button" parent="Buttons/HBoxContainer"]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
 tooltip_text = "Save"
@@ -71,7 +80,7 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="CloseButton" type="Button" parent="HBoxContainer"]
+[node name="CloseButton" type="Button" parent="Buttons/HBoxContainer"]
 custom_minimum_size = Vector2(23, 23)
 layout_mode = 2
 tooltip_text = "Save & Close"

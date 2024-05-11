@@ -23,6 +23,7 @@ namespace MPewsey.ManiaMapGodot.Editor
         {
             Title = EdgeResource.Name;
             EdgeValueLabel.Text = $"({EdgeResource.FromNode}, {EdgeResource.ToNode})";
+            SelfModulate = EdgeResource.Color;
         }
 
         private void OnResourceChanged()
