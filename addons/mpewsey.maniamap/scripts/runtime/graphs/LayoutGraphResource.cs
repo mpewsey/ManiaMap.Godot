@@ -3,7 +3,6 @@ using MPewsey.ManiaMap;
 using MPewsey.ManiaMap.Graphs;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MPewsey.ManiaMapGodot.Graphs
 {
@@ -193,6 +192,24 @@ namespace MPewsey.ManiaMapGodot.Graphs
             }
 
             return false;
+        }
+
+        public HashSet<TemplateGroup> GetTemplateGroups()
+        {
+            var result = new HashSet<TemplateGroup>();
+
+            foreach (var node in Nodes.Values)
+            {
+                result.Add(node.TemplateGroup);
+            }
+
+            foreach (var edge in Edges.Values)
+            {
+                if (edge.TemplateGroup != null)
+                    result.Add(edge.TemplateGroup);
+            }
+
+            return result;
         }
 
         public LayoutGraph CreateGraph()

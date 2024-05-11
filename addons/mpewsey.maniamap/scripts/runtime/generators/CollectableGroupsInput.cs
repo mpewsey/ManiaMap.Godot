@@ -21,7 +21,7 @@ namespace MPewsey.ManiaMapGodot.Generators
             return new string[] { "CollectableGroups" };
         }
 
-        private CollectableGroups CreateGroups()
+        public CollectableGroups CreateGroups()
         {
             var groups = new CollectableGroups();
 

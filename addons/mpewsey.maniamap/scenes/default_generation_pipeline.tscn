@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqt1eah14j5y3"]
+[gd_scene load_steps=10 format=3 uid="uid://cqt1eah14j5y3"]
 
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationPipeline.cs" id="1_fm0gv"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/RandomSeedInput.cs" id="2_tiqkf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphSelectorStep.cs" id="3_bsq45"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphRandomizerStep.cs" id="4_cmuwc"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationIntInput.cs" id="4_oflev"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphsInput.cs" id="5_4cf1a"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGeneratorStep.cs" id="5_hcujg"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGeneratorStep.cs" id="6_e1q0w"]
 
@@ -20,6 +21,9 @@ InputName = "LayoutId"
 
 [node name="RandomSeedInput" type="Node" parent="Inputs"]
 script = ExtResource("2_tiqkf")
+
+[node name="LayoutGraphsInput" type="Node" parent="Inputs"]
+script = ExtResource("5_4cf1a")
 
 [node name="CollectableGroupsInput" type="Node" parent="Inputs"]
 script = ExtResource("3_aaspg")
