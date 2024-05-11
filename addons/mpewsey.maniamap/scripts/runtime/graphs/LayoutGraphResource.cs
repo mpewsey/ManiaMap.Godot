@@ -1,6 +1,9 @@
 using Godot;
+using MPewsey.ManiaMap;
+using MPewsey.ManiaMap.Graphs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MPewsey.ManiaMapGodot.Graphs
 {
@@ -190,6 +193,53 @@ namespace MPewsey.ManiaMapGodot.Graphs
             }
 
             return false;
+        }
+
+        public LayoutGraph CreateGraph()
+        {
+            var graph = new LayoutGraph(Id, Name);
+            AddNodes(graph);
+            AddEdges(graph);
+            graph.Validate();
+            return graph;
+        }
+
+        private void AddNodes(LayoutGraph graph)
+        {
+            foreach (var resource in Nodes.Values)
+            {
+                var node = graph.AddNode(resource.Id);
+                node.Name = resource.Name;
+                node.Color = ConvertColorToColor4(resource.Color);
+                node.TemplateGroup = resource.TemplateGroup.Name;
+                node.Z = resource.Z;
+                node.Tags = new List<string>(resource.Tags);
+
+                if (!string.IsNullOrWhiteSpace(resource.VariationGroup))
+                    graph.AddNodeVariation(resource.VariationGroup, node.Id);
+            }
+        }
+
+        private void AddEdges(LayoutGraph graph)
+        {
+            foreach (var resource in Edges.Values)
+            {
+                var edge = graph.AddEdge(resource.FromNode, resource.ToNode);
+                edge.Name = resource.Name;
+                edge.Direction = resource.Direction;
+                edge.TemplateGroup = resource.TemplateGroup?.Name;
+                edge.Color = ConvertColorToColor4(resource.Color);
+                edge.Z = resource.Z;
+                edge.RequireRoom = resource.RequireRoom;
+                edge.RoomChance = resource.RoomChance;
+                edge.Tags = new List<string>(resource.Tags);
+                edge.DoorCode = (DoorCode)resource.DoorCode;
+            }
+        }
+
+        private static Color4 ConvertColorToColor4(Color color)
+        {
+            return new Color4((byte)color.R8, (byte)color.G8, (byte)color.B8, (byte)color.A8);
         }
     }
 }

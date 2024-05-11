@@ -16,8 +16,8 @@ namespace MPewsey.ManiaMapGodot.Graphs
         private string _name;
         [Export] public string Name { get => _name; set => SetField(ref _name, value); }
 
-        private EdgeDirection _edgeDirection;
-        [Export] public EdgeDirection EdgeDirection { get => _edgeDirection; set => SetField(ref _edgeDirection, value); }
+        private EdgeDirection _direction;
+        [Export] public EdgeDirection Direction { get => _direction; set => SetField(ref _direction, value); }
 
         private TemplateGroup _templateGroup;
         [Export] public TemplateGroup TemplateGroup { get => _templateGroup; set => SetField(ref _templateGroup, value); }
@@ -37,9 +37,9 @@ namespace MPewsey.ManiaMapGodot.Graphs
         private string[] _tags = Array.Empty<string>();
         [Export] public string[] Tags { get => _tags; set => SetField(ref _tags, value); }
 
-        private int _code;
-        [ExportGroup("Code")]
-        [Export(PropertyHint.Flags, ManiaMapResources.DoorCodeFlags)] public int Code { get => _code; set => SetField(ref _code, value); }
+        private int _doorCode;
+        [ExportGroup("Door Code")]
+        [Export(PropertyHint.Flags, ManiaMapResources.DoorCodeFlags)] public int DoorCode { get => _doorCode; set => SetField(ref _doorCode, value); }
 
         private void SetField<T>(ref T field, T value)
         {

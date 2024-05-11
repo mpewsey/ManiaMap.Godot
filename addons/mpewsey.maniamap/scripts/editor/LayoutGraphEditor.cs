@@ -72,7 +72,10 @@ namespace MPewsey.ManiaMapGodot.Graphs
 
                 if (fromFound && toFound)
                 {
-                    var edgePosition = (fromNode.Position + toNode.Position) * 0.5f;
+                    var zoom = GraphEdit.Zoom;
+                    var fromPosition = fromNode.Position + 0.5f * zoom * fromNode.Size;
+                    var toPosition = toNode.Position + 0.5f * zoom * toNode.Size;
+                    var edgePosition = (fromPosition + toPosition) * 0.5f - 0.5f * zoom * element.Size;
                     element.PositionOffset = GetPositionOffset(edgePosition);
                 }
             }
