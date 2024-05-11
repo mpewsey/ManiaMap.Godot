@@ -4,6 +4,7 @@ namespace MPewsey.ManiaMapGodot
 {
     [Tool]
     [GlobalClass]
+    [Icon(ManiaMapResources.Icons.RoomFlag2DIcon)]
     public partial class RoomFlag2D : CellChild2D
     {
         [Export] public int Id { get; set; } = Rand.GetRandomId();

@@ -39,7 +39,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
 
         private int _doorCode;
         [ExportGroup("Door Code")]
-        [Export(PropertyHint.Flags, ManiaMapResources.DoorCodeFlags)] public int DoorCode { get => _doorCode; set => SetField(ref _doorCode, value); }
+        [Export(PropertyHint.Flags, ManiaMapResources.Enums.DoorCodeFlags)] public int DoorCode { get => _doorCode; set => SetField(ref _doorCode, value); }
 
         private void SetField<T>(ref T field, T value)
         {

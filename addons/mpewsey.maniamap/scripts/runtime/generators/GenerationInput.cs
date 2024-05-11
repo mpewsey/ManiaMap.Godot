@@ -5,6 +5,7 @@ namespace MPewsey.ManiaMapGodot.Generators
 {
     [Tool]
     [GlobalClass]
+    [Icon(ManiaMapResources.Icons.GenerationInputIcon)]
     public abstract partial class GenerationInput : Node
     {
         public abstract string[] InputNames();

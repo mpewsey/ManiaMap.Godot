@@ -8,6 +8,7 @@ namespace MPewsey.ManiaMapGodot
 {
     [Tool]
     [GlobalClass]
+    [Icon(ManiaMapResources.Icons.DoorNode2DIcon)]
     public partial class DoorNode2D : CellChild2D
     {
         private static Dictionary<Uid, LinkedList<DoorNode2D>> ActiveRoomDoors { get; } = new Dictionary<Uid, LinkedList<DoorNode2D>>();
@@ -17,7 +18,7 @@ namespace MPewsey.ManiaMapGodot
         [Export] public DoorType Type { get; set; }
 
         [ExportGroup("Code")]
-        [Export(PropertyHint.Flags, ManiaMapResources.DoorCodeFlags)] public int Code { get; set; }
+        [Export(PropertyHint.Flags, ManiaMapResources.Enums.DoorCodeFlags)] public int Code { get; set; }
         public DoorConnection DoorConnection { get; private set; }
 
         public override void _Ready()

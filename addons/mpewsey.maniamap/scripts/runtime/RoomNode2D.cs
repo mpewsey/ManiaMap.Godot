@@ -11,6 +11,7 @@ namespace MPewsey.ManiaMapGodot
 {
     [Tool]
     [GlobalClass]
+    [Icon(ManiaMapResources.Icons.RoomNode2DIcon)]
     public partial class RoomNode2D : Node2D, IRoomNode
     {
         [Signal] public delegate void OnCellAreaEnteredEventHandler(CellArea2D cell, Node collision);

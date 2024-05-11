@@ -11,6 +11,7 @@ namespace MPewsey.ManiaMapGodot.Generators
 {
     [Tool]
     [GlobalClass]
+    [Icon(ManiaMapResources.Icons.GenerationPipelineIcon)]
     public partial class GenerationPipeline : Node
     {
         [Export] public string[] ManualInputNames { get; set; } = Array.Empty<string>();

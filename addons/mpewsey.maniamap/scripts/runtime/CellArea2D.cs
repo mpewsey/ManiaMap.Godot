@@ -4,9 +4,9 @@ namespace MPewsey.ManiaMapGodot
 {
     public partial class CellArea2D : Area2D
     {
-        private int Row { get; set; }
-        private int Column { get; set; }
-        private RoomNode2D Room { get; set; }
+        public int Row { get; private set; }
+        public int Column { get; private set; }
+        public RoomNode2D Room { get; private set; }
 
         public static CellArea2D CreateInstance(int row, int column, RoomNode2D room, uint collisionMask)
         {

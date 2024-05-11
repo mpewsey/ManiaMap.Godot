@@ -69,7 +69,7 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         private void AddGraphEditorDock()
         {
-            var scene = ResourceLoader.Load<PackedScene>(ManiaMapResources.LayoutGraphEditorScene);
+            var scene = ResourceLoader.Load<PackedScene>(ManiaMapResources.Scenes.LayoutGraphEditorScene);
             GraphEditor = scene.Instantiate<LayoutGraphEditor>();
             GraphEditorDockButton = AddControlToBottomPanel(GraphEditor, GraphEditorDockButtonName);
             GraphEditorDockButton.Visible = false;

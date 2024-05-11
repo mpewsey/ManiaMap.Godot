@@ -4,6 +4,7 @@ namespace MPewsey.ManiaMapGodot
 {
     [Tool]
     [GlobalClass]
+    [Icon(ManiaMapResources.Icons.CollectableSpot2Dicon)]
     public partial class CollectableSpot2D : CellChild2D
     {
         [Export] public int Id { get; set; } = Rand.GetRandomId();
