@@ -21,6 +21,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
         [Export] public Label FileNameLabel { get; set; }
         [Export] public Button CloseButton { get; set; }
         [Export] public Button SaveButton { get; set; }
+        [Export] public Button EdgeDisplayButton { get; set; }
 
         private LayoutGraphResource GraphResource { get; set; }
         public Dictionary<int, LayoutGraphNodeElement> NodeElements { get; } = new Dictionary<int, LayoutGraphNodeElement>();
@@ -36,6 +37,8 @@ namespace MPewsey.ManiaMapGodot.Graphs
             GraphEdit.ConnectionRequest += OnConnectionRequest;
             SaveButton.Pressed += OnSubmitSaveButton;
             CloseButton.Pressed += OnSubmitCloseButton;
+            EdgeDisplayButton.Toggled += OnToggleEdgeDisplayButton;
+            OnToggleEdgeDisplayButton(true);
         }
 
         public override void _ExitTree()
@@ -49,6 +52,14 @@ namespace MPewsey.ManiaMapGodot.Graphs
             base._Process(delta);
             MoveEdgesToMidpointsOfNodes();
             PopulateEdgeLines();
+        }
+
+        private void DisplayEdges(bool visible)
+        {
+            foreach (var edge in EdgeElements)
+            {
+                edge.Visible = visible;
+            }
         }
 
         private void MoveEdgesToMidpointsOfNodes()
@@ -200,6 +211,13 @@ namespace MPewsey.ManiaMapGodot.Graphs
             element.QueueFree();
         }
 
+        private void OnToggleEdgeDisplayButton(bool toggled)
+        {
+            EdgeDisplayButton.SetPressedNoSignal(toggled);
+            EdgeDisplayButton.Flat = !toggled;
+            DisplayEdges(toggled);
+        }
+
         private void OnSubmitSaveButton()
         {
             GraphResource?.SaveIfDirty();
@@ -287,8 +305,10 @@ namespace MPewsey.ManiaMapGodot.Graphs
         {
             var element = EdgeElementScene.Instantiate<LayoutGraphEdgeElement>();
             GraphEdit.AddChild(element);
+            GraphEdit.MoveChild(element, 1);
             EdgeElements.Add(element);
             element.Initialize(edge);
+            element.Visible = EdgeDisplayButton.ButtonPressed;
             return element;
         }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckyjrhwvcs6fi"]
+[gd_scene load_steps=9 format=3 uid="uid://ckyjrhwvcs6fi"]
 
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/LayoutGraphEditor.cs" id="1_2rqd2"]
 [ext_resource type="PackedScene" uid="uid://5euxn0pgqyv4" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/layout_graph_node_element.tscn" id="2_ycjoq"]
@@ -7,8 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://p2afcp3bxlbx" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/close_button_icon.svg" id="5_hail8"]
 [ext_resource type="PackedScene" uid="uid://d3ywwaoyv35qf" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/edge_line.tscn" id="5_lbopo"]
 [ext_resource type="Texture2D" uid="uid://b4x833hcsmdrl" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/save_button_icon.svg" id="5_n0wko"]
+[ext_resource type="Texture2D" uid="uid://cujhpyp0ssikr" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/edge_display_button_icon.svg" id="6_nxncv"]
 
-[node name="LayoutGraphEditor" type="Control" node_paths=PackedStringArray("GraphEdit", "EdgeLineContainer", "FileNameLabel", "CloseButton", "SaveButton")]
+[node name="LayoutGraphEditor" type="Control" node_paths=PackedStringArray("GraphEdit", "EdgeLineContainer", "FileNameLabel", "CloseButton", "SaveButton", "EdgeDisplayButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +26,7 @@ EdgeLineScene = ExtResource("5_lbopo")
 FileNameLabel = NodePath("Buttons/HBoxContainer/FileNameLabel")
 CloseButton = NodePath("Buttons/HBoxContainer/CloseButton")
 SaveButton = NodePath("Buttons/HBoxContainer/SaveButton")
+EdgeDisplayButton = NodePath("Buttons/HBoxContainer/ToggleEdgesButton")
 
 [node name="GraphEdit" type="GraphEdit" parent="."]
 layout_mode = 1
@@ -46,7 +48,7 @@ anchor_right = 1.0
 offset_left = -20.0
 offset_top = 11.0
 offset_right = -20.0
-offset_bottom = 34.0
+offset_bottom = 37.0
 grow_horizontal = 0
 
 [node name="Panel" type="Panel" parent="Buttons"]
@@ -55,17 +57,21 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -50.0
+offset_left = -82.0
 grow_horizontal = 0
 grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
 layout_mode = 1
-anchors_preset = 11
+anchors_preset = 6
 anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -132.0
+anchor_bottom = 0.5
+offset_left = -167.0
+offset_top = -12.0
+offset_right = -1.0
+offset_bottom = 12.0
 grow_horizontal = 0
 grow_vertical = 2
 alignment = 2
@@ -76,8 +82,19 @@ text = "File Name"
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="ToggleEdgesButton" type="Button" parent="Buttons/HBoxContainer"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+tooltip_text = "Toggle Edge Element Display"
+focus_mode = 0
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("6_nxncv")
+icon_alignment = 1
+expand_icon = true
+
 [node name="SaveButton" type="Button" parent="Buttons/HBoxContainer"]
-custom_minimum_size = Vector2(23, 0)
+custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 tooltip_text = "Save"
 focus_mode = 0
@@ -87,7 +104,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="CloseButton" type="Button" parent="Buttons/HBoxContainer"]
-custom_minimum_size = Vector2(23, 23)
+custom_minimum_size = Vector2(24, 23)
 layout_mode = 2
 tooltip_text = "Save & Close"
 focus_mode = 0
