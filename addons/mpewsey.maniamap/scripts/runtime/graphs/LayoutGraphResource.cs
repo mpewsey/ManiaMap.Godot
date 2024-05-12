@@ -227,7 +227,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
             {
                 var node = graph.AddNode(resource.Id);
                 node.Name = resource.Name;
-                node.Color = ConvertColorToColor4(resource.Color);
+                node.Color = ColorUtility.ConvertColorToColor4(resource.Color);
                 node.TemplateGroup = resource.TemplateGroup.Name;
                 node.Z = resource.Z;
                 node.Tags = new List<string>(resource.Tags);
@@ -245,18 +245,13 @@ namespace MPewsey.ManiaMapGodot.Graphs
                 edge.Name = resource.Name;
                 edge.Direction = resource.Direction;
                 edge.TemplateGroup = resource.TemplateGroup?.Name;
-                edge.Color = ConvertColorToColor4(resource.Color);
+                edge.Color = ColorUtility.ConvertColorToColor4(resource.Color);
                 edge.Z = resource.Z;
                 edge.RequireRoom = resource.RequireRoom;
                 edge.RoomChance = resource.RoomChance;
                 edge.Tags = new List<string>(resource.Tags);
                 edge.DoorCode = (DoorCode)resource.DoorCode;
             }
-        }
-
-        private static Color4 ConvertColorToColor4(Color color)
-        {
-            return new Color4((byte)color.R8, (byte)color.G8, (byte)color.B8, (byte)color.A8);
         }
     }
 }

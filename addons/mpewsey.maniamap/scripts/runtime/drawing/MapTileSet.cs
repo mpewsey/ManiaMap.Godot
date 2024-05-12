@@ -57,6 +57,9 @@ namespace MPewsey.ManiaMapGodot.Drawing
         {
             PopulateIfDirty();
 
+            if (string.IsNullOrWhiteSpace(name))
+                return new Vector2I(-1, -1);
+
             if (TileCoordinates.TryGetValue(name, out var coordinate))
                 return coordinate;
 
