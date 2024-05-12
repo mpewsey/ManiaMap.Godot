@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="MapTileSet" load_steps=5 format=3 uid="uid://bwrla0hqiarrv"]
+
+[ext_resource type="Texture2D" uid="uid://cl0l7sxjxbofv" path="res://addons/mpewsey.maniamap/map_tiles/default/default_map_tiles.png" id="1_4e460"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/drawing/MapTileSet.cs" id="1_ulj6u"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_58g22"]
+resource_name = "default_map_tiles"
+texture = ExtResource("1_4e460")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bkdav"]
+sources/0 = SubResource("TileSetAtlasSource_58g22")
+
+[resource]
+script = ExtResource("1_ulj6u")
+TileSet = SubResource("TileSet_bkdav")
+Background = Vector2i(0, 0)
+NorthWall = Vector2i(1, 0)
+EastWall = Vector2i(2, 0)
+SouthWall = Vector2i(3, 0)
+WestWall = Vector2i(4, 0)
+NorthDoor = Vector2i(5, 0)
+EastDoor = Vector2i(6, 0)
+SouthDoor = Vector2i(7, 0)
+WestDoor = Vector2i(0, 1)
+TopDoor = Vector2i(1, 1)
+BottomDoor = Vector2i(2, 1)
