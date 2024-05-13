@@ -22,7 +22,7 @@ namespace MPewsey.ManiaMapGodot.Drawing
         [Export] public Vector2I WestDoor { get; set; } = new Vector2I(0, 1);
         [Export] public Vector2I TopDoor { get; set; } = new Vector2I(1, 1);
         [Export] public Vector2I BottomDoor { get; set; } = new Vector2I(2, 1);
-        [Export] public FeatureCoordinate[] Features { get; set; } = Array.Empty<FeatureCoordinate>();
+        [Export] public FeatureAtlasCoordinate[] Features { get; set; } = Array.Empty<FeatureAtlasCoordinate>();
 
         private Dictionary<string, Vector2I> TileCoordinates { get; } = new Dictionary<string, Vector2I>();
         private Dictionary<Color, int> BackgroundAlternativeTileIds { get; } = new Dictionary<Color, int>();

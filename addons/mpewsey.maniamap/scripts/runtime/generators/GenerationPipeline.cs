@@ -14,6 +14,10 @@ namespace MPewsey.ManiaMapGodot.Generators
     [Icon(ManiaMapResources.Icons.GenerationPipelineIcon)]
     public partial class GenerationPipeline : Node
     {
+#if TOOLS
+        [Export] public bool AddDefaultNodes { get => false; set => CreateDefaultNodes(value); }
+#endif
+
         [Export] public string[] ManualInputNames { get; set; } = Array.Empty<string>();
 
 #if TOOLS
@@ -39,6 +43,65 @@ namespace MPewsey.ManiaMapGodot.Generators
                 UpdateConfigurationWarnings();
         }
 #endif
+
+        public void CreateDefaultNodes(bool run = true)
+        {
+            if (!run)
+                return;
+
+            var owner = Engine.IsEditorHint() ? EditorInterface.Singleton.GetEditedSceneRoot() : null;
+            AddDefaultInputNodes(owner);
+            AddDefaultStepNodes(owner);
+        }
+
+        private void AddDefaultInputNodes(Node owner)
+        {
+            var inputs = new Node() { Name = "Inputs" };
+
+            var layoutIdInput = new GenerationIntInput()
+            {
+                Name = "LayoutIdInput",
+                InputName = "LayoutId",
+                Value = Rand.GetRandomId(),
+            };
+
+            var randomSeedInput = new RandomSeedInput() { Name = nameof(RandomSeedInput) };
+            var layoutGraphsInput = new LayoutGraphsInput() { Name = nameof(LayoutGraphsInput) };
+            var collectableGroupsInput = new CollectableGroupsInput() { Name = nameof(CollectableGroupsInput) };
+
+            inputs.AddChild(layoutIdInput);
+            inputs.AddChild(randomSeedInput);
+            inputs.AddChild(layoutGraphsInput);
+            inputs.AddChild(collectableGroupsInput);
+            AddChild(inputs);
+
+            inputs.Owner = owner;
+            layoutIdInput.Owner = owner;
+            randomSeedInput.Owner = owner;
+            layoutGraphsInput.Owner = owner;
+            collectableGroupsInput.Owner = owner;
+        }
+
+        private void AddDefaultStepNodes(Node owner)
+        {
+            var steps = new Node() { Name = "Steps" };
+            var layoutGraphSelectorStep = new LayoutGraphSelectorStep() { Name = nameof(LayoutGraphSelectorStep) };
+            var layoutGraphRandomizerStep = new LayoutGraphRandomizerStep() { Name = nameof(LayoutGraphRandomizerStep) };
+            var layoutGeneratorStep = new LayoutGeneratorStep() { Name = nameof(LayoutGeneratorStep) };
+            var collectableGeneratorStep = new CollectableGeneratorStep() { Name = nameof(CollectableGeneratorStep) };
+
+            steps.AddChild(layoutGraphSelectorStep);
+            steps.AddChild(layoutGraphRandomizerStep);
+            steps.AddChild(layoutGeneratorStep);
+            steps.AddChild(collectableGeneratorStep);
+            AddChild(steps);
+
+            steps.Owner = owner;
+            layoutGraphSelectorStep.Owner = owner;
+            layoutGraphRandomizerStep.Owner = owner;
+            layoutGeneratorStep.Owner = owner;
+            collectableGeneratorStep.Owner = owner;
+        }
 
         public List<GenerationStep> FindStepNodes()
         {
@@ -71,7 +134,7 @@ namespace MPewsey.ManiaMapGodot.Generators
             return BuildPipeline().RunAsync(BuildInputs(manualInputs), logger, cancellationToken);
         }
 
-        public async Task<PipelineResults> RunAttemptsAsync(int seed, int attempts = 10, int timeout = 5000, Dictionary<string, object> manualInputs = null, Action<string> logger)
+        public async Task<PipelineResults> RunAttemptsAsync(int seed, int attempts = 10, int timeout = 5000, Dictionary<string, object> manualInputs = null, Action<string> logger = null)
         {
             manualInputs ??= new Dictionary<string, object>();
 

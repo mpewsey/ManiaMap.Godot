@@ -59,14 +59,6 @@ namespace MPewsey.ManiaMapGodot.Editor
             ProjectSettings.SetInitialValue(name, defaultValue);
         }
 
-        private void AddToolMenu()
-        {
-            var menu = new PopupMenu();
-            menu.IndexPressed += OnMenuIndexPressed;
-            menu.AddItem("Batch Update Room Templates");
-            AddToolSubmenuItem(MenuName, menu);
-        }
-
         private void AddGraphEditorDock()
         {
             var scene = ResourceLoader.Load<PackedScene>(ManiaMapResources.Scenes.LayoutGraphEditorScene);
@@ -93,6 +85,14 @@ namespace MPewsey.ManiaMapGodot.Editor
                 GraphEditorDockButton.Visible = false;
 
             HideBottomPanel();
+        }
+
+        private void AddToolMenu()
+        {
+            var menu = new PopupMenu();
+            menu.IndexPressed += OnMenuIndexPressed;
+            menu.AddItem("Batch Update Room Templates");
+            AddToolSubmenuItem(MenuName, menu);
         }
 
         private void OnMenuIndexPressed(long index)

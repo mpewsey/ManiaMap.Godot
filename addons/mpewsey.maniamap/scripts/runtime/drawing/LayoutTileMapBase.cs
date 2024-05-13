@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapGodot.Drawing
 {
+    [GlobalClass]
     public abstract partial class LayoutTileMapBase : Node2D
     {
         public const int LayerCount = 8;
