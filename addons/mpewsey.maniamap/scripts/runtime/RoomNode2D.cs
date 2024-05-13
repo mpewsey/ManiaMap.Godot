@@ -369,16 +369,16 @@ namespace MPewsey.ManiaMapGodot
         public RoomTemplate CreateRoomTemplate(int id, string name)
         {
             var cells = CreateCellTemplates();
-            AddDoorTemplates(cells);
-            AddFeatureTemplates(cells);
-            var spots = CreateCollectableSpotTemplates();
+            CreateDoors(cells);
+            CreateFeatures(cells);
+            var spots = CreateCollectableSpots();
             var template = new RoomTemplate(id, name, cells, spots);
             template.Validate();
             ValidateRoomFlags();
             return template;
         }
 
-        private HashMap<int, CollectableSpot> CreateCollectableSpotTemplates()
+        private HashMap<int, CollectableSpot> CreateCollectableSpots()
         {
             var nodes = FindChildren("*", nameof(CollectableSpot2D));
             var result = new HashMap<int, CollectableSpot>();
@@ -393,7 +393,7 @@ namespace MPewsey.ManiaMapGodot
             return result;
         }
 
-        private void AddDoorTemplates(Array2D<Cell> cells)
+        private void CreateDoors(Array2D<Cell> cells)
         {
             var nodes = FindChildren("*", nameof(DoorNode2D));
 
@@ -424,7 +424,7 @@ namespace MPewsey.ManiaMapGodot
             return cells;
         }
 
-        private void AddFeatureTemplates(Array2D<Cell> cells)
+        private void CreateFeatures(Array2D<Cell> cells)
         {
             var nodes = FindChildren("*", nameof(Feature2D));
 

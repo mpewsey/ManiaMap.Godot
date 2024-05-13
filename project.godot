@@ -20,4 +20,4 @@ project/assembly_name="ManiaMap.Godot"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/mpewsey.maniamap/plugin.cfg")
+enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg", "res://addons/mpewsey.maniamap/plugin.cfg")

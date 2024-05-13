@@ -102,7 +102,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
                 return edge1;
             if (Edges.TryGetValue(new Vector2I(node2, node1), out var edge2))
                 return edge2;
-            throw new Exception($"Edge does not exist: ({node1}, {node2}).");
+            throw new ArgumentException($"Edge does not exist: ({node1}, {node2}).");
         }
 
         public LayoutGraphNode AddNode(Vector2 position)
@@ -125,7 +125,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
         public LayoutGraphNode AddNode(int nodeId, Vector2 position)
         {
             if (Nodes.ContainsKey(nodeId))
-                throw new Exception($"Node already exists: {nodeId}.");
+                throw new ArgumentException($"Node already exists: {nodeId}.");
 
             var node = new LayoutGraphNode(nodeId, position);
             Nodes.Add(nodeId, node);
@@ -171,6 +171,11 @@ namespace MPewsey.ManiaMapGodot.Graphs
 
         public LayoutGraphEdge AddEdge(int fromNode, int toNode)
         {
+            if (!Nodes.ContainsKey(fromNode))
+                throw new ArgumentException($"{nameof(fromNode)} does not exist: {fromNode}.");
+            if (!Nodes.ContainsKey(toNode))
+                throw new ArgumentException($"{nameof(toNode)} does not exist: {toNode}.");
+
             if (!ContainsEdge(fromNode, toNode))
             {
                 var edge = new LayoutGraphEdge(fromNode, toNode);
@@ -215,13 +220,13 @@ namespace MPewsey.ManiaMapGodot.Graphs
         public LayoutGraph CreateGraph()
         {
             var graph = new LayoutGraph(Id, Name);
-            AddNodes(graph);
-            AddEdges(graph);
+            CreateGraphNodes(graph);
+            CreateGraphEdges(graph);
             graph.Validate();
             return graph;
         }
 
-        private void AddNodes(LayoutGraph graph)
+        private void CreateGraphNodes(LayoutGraph graph)
         {
             foreach (var resource in Nodes.Values)
             {
@@ -237,7 +242,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
             }
         }
 
-        private void AddEdges(LayoutGraph graph)
+        private void CreateGraphEdges(LayoutGraph graph)
         {
             foreach (var resource in Edges.Values)
             {
