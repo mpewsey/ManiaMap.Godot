@@ -83,5 +83,87 @@ namespace MPewsey.ManiaMapGodot.Graphs.Tests
             var graph = new LayoutGraphResource();
             Assertions.AssertThrown(() => graph.GetEdge(1, 2));
         }
+
+        [TestCase]
+        public void TestRemoveEdge()
+        {
+            var graph = new LayoutGraphResource();
+            Assertions.AssertThat(graph.RemoveEdge(1, 2)).IsFalse();
+            Assertions.AssertThat(graph.RemoveEdge(2, 1)).IsFalse();
+
+            graph.AddNode(1, Vector2.Zero);
+            graph.AddNode(2, Vector2.Zero);
+
+            graph.AddEdge(1, 2);
+            Assertions.AssertThat(graph.Edges.Count).IsEqual(1);
+            Assertions.AssertThat(graph.RemoveEdge(1, 2)).IsTrue();
+            Assertions.AssertThat(graph.Edges.Count).IsEqual(0);
+
+            graph.AddEdge(1, 2);
+            Assertions.AssertThat(graph.Edges.Count).IsEqual(1);
+            Assertions.AssertThat(graph.RemoveEdge(2, 1)).IsTrue();
+            Assertions.AssertThat(graph.Edges.Count).IsEqual(0);
+        }
+
+        [TestCase]
+        public void TestRemoveNode()
+        {
+            var graph = new LayoutGraphResource();
+            Assertions.AssertThat(graph.RemoveNode(1)).IsFalse();
+
+            graph.AddNode(1, Vector2.Zero);
+            graph.AddNode(2, Vector2.Zero);
+            graph.AddEdge(1, 2);
+
+            Assertions.AssertThat(graph.RemoveNode(1)).IsTrue();
+            Assertions.AssertThat(graph.Nodes.Count).IsEqual(1);
+            Assertions.AssertThat(graph.Edges.Count).IsEqual(0);
+        }
+
+        [TestCase]
+        public void TestEdgeIndexes()
+        {
+            var graph = new LayoutGraphResource();
+            graph.AddNode(1, Vector2.Zero);
+            graph.AddNode(2, Vector2.Zero);
+            graph.AddNode(3, Vector2.Zero);
+            graph.AddEdge(1, 2);
+            graph.AddEdge(1, 3);
+            graph.AddEdge(2, 3);
+
+            var result = graph.NodeEdgeIndexes(1);
+            Assertions.AssertThat(result.Count).IsEqual(2);
+            Assertions.AssertThat(result.Contains(new Vector2I(1, 2))).IsTrue();
+            Assertions.AssertThat(result.Contains(new Vector2I(1, 3))).IsTrue();
+        }
+
+        [TestCase]
+        public void TestRemoveNodeEdges()
+        {
+            var graph = new LayoutGraphResource();
+            graph.AddNode(1, Vector2.Zero);
+            graph.AddNode(2, Vector2.Zero);
+            graph.AddNode(3, Vector2.Zero);
+            graph.AddEdge(1, 2);
+            graph.AddEdge(1, 3);
+            graph.AddEdge(2, 3);
+
+            graph.RemoveNodeEdges(1);
+            Assertions.AssertThat(graph.Edges.Count).IsEqual(1);
+        }
+
+        [TestCase]
+        public void TestContainsEdge()
+        {
+            var graph = new LayoutGraphResource();
+            graph.AddNode(1, Vector2.Zero);
+            graph.AddNode(2, Vector2.Zero);
+            graph.AddEdge(1, 2);
+
+            Assertions.AssertThat(graph.ContainsEdge(1, 2)).IsTrue();
+            Assertions.AssertThat(graph.ContainsEdge(2, 1)).IsTrue();
+            Assertions.AssertThat(graph.ContainsEdge(1, 3)).IsFalse();
+            Assertions.AssertThat(graph.ContainsEdge(3, 1)).IsFalse();
+        }
     }
 }

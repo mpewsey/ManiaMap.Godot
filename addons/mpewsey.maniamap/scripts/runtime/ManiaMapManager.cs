@@ -20,13 +20,13 @@ namespace MPewsey.ManiaMapGodot
             return Initialize(layout, state, settings);
         }
 
-        public static ManiaMapManager Initialize(Layout layout, LayoutState state, ManiaMapSettings settings)
+        public static ManiaMapManager Initialize(Layout layout, LayoutState state, ManiaMapSettings settings = null)
         {
             var manager = new ManiaMapManager()
             {
                 Layout = layout,
                 LayoutState = state,
-                Settings = settings,
+                Settings = settings ?? new ManiaMapSettings(),
                 RoomConnections = layout.GetRoomConnections(),
             };
 

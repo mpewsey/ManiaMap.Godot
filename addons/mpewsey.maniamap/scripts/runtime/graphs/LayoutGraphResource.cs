@@ -91,11 +91,6 @@ namespace MPewsey.ManiaMapGodot.Graphs
                 || Edges.ContainsKey(new Vector2I(node2, node1));
         }
 
-        public bool ContainsNodes(int node1, int node2)
-        {
-            return Nodes.ContainsKey(node1) && Nodes.ContainsKey(node2);
-        }
-
         public LayoutGraphEdge GetEdge(int node1, int node2)
         {
             if (Edges.TryGetValue(new Vector2I(node1, node2), out var edge1))
@@ -136,9 +131,10 @@ namespace MPewsey.ManiaMapGodot.Graphs
 
         public bool RemoveNode(int nodeId)
         {
+            RemoveNodeEdges(nodeId);
+
             if (Nodes.Remove(nodeId))
             {
-                RemoveNodeEdges(nodeId);
                 SetDirty();
                 return true;
             }
@@ -146,14 +142,19 @@ namespace MPewsey.ManiaMapGodot.Graphs
             return false;
         }
 
-        public void RemoveNodeEdges(int nodeId)
+        public bool RemoveNodeEdges(int nodeId)
         {
+            var result = false;
+
             foreach (var index in NodeEdgeIndexes(nodeId))
             {
-                Edges.Remove(index);
+                result |= Edges.Remove(index);
             }
 
-            SetDirty();
+            if (result)
+                SetDirty();
+
+            return result;
         }
 
         public List<Vector2I> NodeEdgeIndexes(int nodeId)

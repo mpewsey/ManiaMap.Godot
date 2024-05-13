@@ -129,6 +129,11 @@ namespace MPewsey.ManiaMapGodot.Generators
             return result;
         }
 
+        public PipelineResults Run(Dictionary<string, object> manualInputs = null, Action<string> logger = null, CancellationToken cancellationToken = default)
+        {
+            return BuildPipeline().Run(manualInputs, logger, cancellationToken);
+        }
+
         public Task<PipelineResults> RunAsync(Dictionary<string, object> manualInputs = null, Action<string> logger = null, CancellationToken cancellationToken = default)
         {
             return BuildPipeline().RunAsync(BuildInputs(manualInputs), logger, cancellationToken);

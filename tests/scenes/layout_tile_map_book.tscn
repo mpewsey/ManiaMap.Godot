@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://npua7l2tbnn0"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/drawing/LayoutTileMapBook.cs" id="1_m1g5r"]
+[ext_resource type="Resource" uid="uid://bwrla0hqiarrv" path="res://addons/mpewsey.maniamap/map_tiles/default/default_map_tile_set.tres" id="2_g6slx"]
+
+[node name="LayoutTileMapBook" type="Node2D"]
+script = ExtResource("1_m1g5r")
+MapTileSet = ExtResource("2_g6slx")

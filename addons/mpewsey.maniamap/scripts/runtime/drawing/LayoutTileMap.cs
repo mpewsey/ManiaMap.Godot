@@ -16,6 +16,12 @@ namespace MPewsey.ManiaMapGodot.Drawing
             TileMap ??= CreateTileMap();
         }
 
+        public void DrawMap(int? z = null)
+        {
+            var manager = ManiaMapManager.Current;
+            DrawMap(manager.Layout, manager.LayoutState, z);
+        }
+
         public void DrawMap(Layout layout, LayoutState layoutState = null, int? z = null)
         {
             Initialize(layout, layoutState);
