@@ -1,7 +1,13 @@
-[gd_resource type="Resource" script_class="MapTileSet" load_steps=5 format=3 uid="uid://bwrla0hqiarrv"]
+[gd_resource type="Resource" script_class="MapTileSet" load_steps=7 format=3 uid="uid://bwrla0hqiarrv"]
 
 [ext_resource type="Texture2D" uid="uid://cl0l7sxjxbofv" path="res://addons/mpewsey.maniamap/map_tiles/default/default_map_tiles.png" id="1_4e460"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/drawing/FeatureCoordinate.cs" id="1_dcjqj"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/drawing/MapTileSet.cs" id="1_ulj6u"]
+
+[sub_resource type="Resource" id="Resource_pivee"]
+script = ExtResource("1_dcjqj")
+FeatureName = "SavePoint"
+AtlasCoordinate = Vector2i(3, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_58g22"]
 resource_name = "default_map_tiles"
@@ -37,3 +43,4 @@ SouthDoor = Vector2i(7, 0)
 WestDoor = Vector2i(0, 1)
 TopDoor = Vector2i(1, 1)
 BottomDoor = Vector2i(2, 1)
+Features = [SubResource("Resource_pivee")]

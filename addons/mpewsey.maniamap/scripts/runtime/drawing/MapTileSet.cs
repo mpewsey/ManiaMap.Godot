@@ -1,5 +1,6 @@
 using Godot;
 using MPewsey.ManiaMap;
+using System;
 using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapGodot.Drawing
@@ -21,6 +22,7 @@ namespace MPewsey.ManiaMapGodot.Drawing
         [Export] public Vector2I WestDoor { get; set; } = new Vector2I(0, 1);
         [Export] public Vector2I TopDoor { get; set; } = new Vector2I(1, 1);
         [Export] public Vector2I BottomDoor { get; set; } = new Vector2I(2, 1);
+        [Export] public FeatureCoordinate[] Features { get; set; } = Array.Empty<FeatureCoordinate>();
 
         private Dictionary<string, Vector2I> TileCoordinates { get; } = new Dictionary<string, Vector2I>();
         private Dictionary<Color, int> BackgroundAlternativeTileIds { get; } = new Dictionary<Color, int>();
@@ -51,6 +53,11 @@ namespace MPewsey.ManiaMapGodot.Drawing
             TileCoordinates.Add(MapTileType.WestDoor, WestDoor);
             TileCoordinates.Add(MapTileType.TopDoor, TopDoor);
             TileCoordinates.Add(MapTileType.BottomDoor, BottomDoor);
+
+            foreach (var feature in Features)
+            {
+                TileCoordinates.Add(feature.FeatureName, feature.AtlasCoordinate);
+            }
         }
 
         public Vector2I GetTileCoordinate(string name)

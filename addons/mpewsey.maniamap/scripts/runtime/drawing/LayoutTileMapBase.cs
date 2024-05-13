@@ -5,29 +5,27 @@ using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapGodot.Drawing
 {
-    [GlobalClass]
-    public partial class TileMapBook : Node2D
+    public abstract partial class LayoutTileMapBase : Node2D
     {
-        private const int LayerCount = 8;
-        private const int BackgroundLayer = 0;
-        private const int NorthLayer = 1;
-        private const int EastLayer = 2;
-        private const int SouthLayer = 3;
-        private const int WestLayer = 4;
-        private const int TopLayer = 5;
-        private const int BottomLayer = 6;
-        private const int FeatureLayer = 7;
+        public const int LayerCount = 8;
+        public const int BackgroundLayer = 0;
+        public const int NorthLayer = 1;
+        public const int EastLayer = 2;
+        public const int SouthLayer = 3;
+        public const int WestLayer = 4;
+        public const int TopLayer = 5;
+        public const int BottomLayer = 6;
+        public const int FeatureLayer = 7;
 
         [Export] public Node Container { get; set; }
         [Export] public MapTileSet MapTileSet { get; set; }
         [Export] public Color RoomColor { get; set; } = Color.Color8(75, 75, 75);
         [Export] public DoorDrawMode DoorDrawMode { get; set; } = DoorDrawMode.AllDoors;
 
-        private Layout Layout { get; set; }
-        private LayoutState LayoutState { get; set; }
-        private Dictionary<Uid, List<DoorPosition>> RoomDoors { get; set; } = new Dictionary<Uid, List<DoorPosition>>();
-        private List<TileMap> Pages { get; } = new List<TileMap>();
-        private List<int> LayerCoordinates { get; } = new List<int>();
+        public Layout Layout { get; protected set; }
+        public LayoutState LayoutState { get; protected set; }
+        protected Dictionary<int, List<Room>> RoomsByLayer { get; set; } = new Dictionary<int, List<Room>>();
+        protected Dictionary<Uid, List<DoorPosition>> RoomDoors { get; set; } = new Dictionary<Uid, List<DoorPosition>>();
 
         public override void _Ready()
         {
@@ -35,51 +33,20 @@ namespace MPewsey.ManiaMapGodot.Drawing
             Container ??= this;
         }
 
-        public void DrawPages()
-        {
-            var manager = ManiaMapManager.Current;
-            DrawPages(manager.Layout, manager.LayoutState);
-        }
-
-        public void DrawPages(Layout layout, LayoutState layoutState = null)
+        protected virtual void Initialize(Layout layout, LayoutState layoutState)
         {
             Layout = layout;
             LayoutState = layoutState;
             RoomDoors = layout.GetRoomDoors();
-            PopulateLayerCoordinates();
-            SizePages();
-
-            for (int i = 0; i < Pages.Count; i++)
-            {
-                SetTiles(i);
-            }
+            RoomsByLayer = layout.GetRoomsByLayer();
         }
 
-        private void PopulateLayerCoordinates()
+        protected void SetTiles(TileMap tileMap, int z)
         {
-            LayerCoordinates.Clear();
-            var set = new HashSet<int>();
-
-            foreach (var room in Layout.Rooms.Values)
-            {
-                set.Add(room.Position.Z);
-            }
-
-            LayerCoordinates.AddRange(set);
-            LayerCoordinates.Sort();
-        }
-
-        private void SetTiles(int page)
-        {
-            var z = LayerCoordinates[page];
-            var tileMap = Pages[page];
             tileMap.Clear();
 
-            foreach (var room in Layout.Rooms.Values)
+            foreach (var room in RoomsByLayer[z])
             {
-                if (room.Position.Z != z)
-                    continue;
-
                 var cells = room.Template.Cells;
                 var roomState = LayoutState?.RoomStates[room.Id];
 
@@ -130,39 +97,38 @@ namespace MPewsey.ManiaMapGodot.Drawing
 
                         // Draw features only if the cell is completely visible
                         if (isCompletelyVisible)
-                            SetFeatureTile(tileMap, cell, cellPosition);
+                            SetTile(tileMap, FeatureLayer, cellPosition, GetFeatureCoordinate(cell));
                     }
                 }
             }
         }
 
-        private void SetBackgroundTile(TileMap tileMap, Vector2I cellPosition, Color color)
+        protected void SetBackgroundTile(TileMap tileMap, Vector2I cellPosition, Color color)
         {
             var alternativeId = MapTileSet.GetBackgroundAlternativeId(color);
             tileMap.SetCell(BackgroundLayer, cellPosition, 0, MapTileSet.Background, alternativeId);
         }
 
-        private static void SetTile(TileMap tileMap, int layer, Vector2I cellPosition, Vector2I atlasPosition)
+        protected static void SetTile(TileMap tileMap, int layer, Vector2I cellPosition, Vector2I atlasPosition)
         {
             if (atlasPosition != new Vector2I(-1, -1))
                 tileMap.SetCell(layer, cellPosition, 0, atlasPosition, 0);
         }
 
-        private void SetFeatureTile(TileMap tileMap, Cell cell, Vector2I cellPosition)
+        protected Vector2I GetFeatureCoordinate(Cell cell)
         {
             foreach (var feature in cell.Features)
             {
                 var atlasPosition = MapTileSet.GetTileCoordinate(feature);
 
                 if (atlasPosition != new Vector2I(-1, -1))
-                {
-                    tileMap.SetCell(FeatureLayer, cellPosition, 0, atlasPosition, 0);
-                    return;
-                }
+                    return atlasPosition;
             }
+
+            return new Vector2I(-1, -1);
         }
 
-        private Vector2I GetTileCoordinate(Room room, Cell cell, Cell neighbor, Vector2DInt position, DoorDirection direction)
+        protected Vector2I GetTileCoordinate(Room room, Cell cell, Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
             if (Door.ShowDoor(DoorDrawMode, direction) && cell.GetDoor(direction) != null && DoorExists(room, position, direction))
                 return MapTileSet.GetTileCoordinate(MapTileType.GetDoorTileType(direction));
@@ -173,7 +139,7 @@ namespace MPewsey.ManiaMapGodot.Drawing
             return new Vector2I(-1, -1);
         }
 
-        private bool DoorExists(Room room, Vector2DInt position, DoorDirection direction)
+        protected bool DoorExists(Room room, Vector2DInt position, DoorDirection direction)
         {
             if (RoomDoors.TryGetValue(room.Id, out var doors))
             {
@@ -187,25 +153,15 @@ namespace MPewsey.ManiaMapGodot.Drawing
             return false;
         }
 
-        private void SizePages()
+        protected TileMap CreateTileMap()
         {
-            while (Pages.Count > LayerCoordinates.Count)
-            {
-                var index = Pages.Count - 1;
-                Pages[index].QueueFree();
-                Pages.RemoveAt(index);
-            }
-
-            while (Pages.Count < LayerCoordinates.Count)
-            {
-                var page = new TileMap() { TileSet = MapTileSet.TileSet };
-                CreateLayers(page);
-                Container.AddChild(page);
-                Pages.Add(page);
-            }
+            var tileMap = new TileMap() { TileSet = MapTileSet.TileSet };
+            CreateTileMapLayers(tileMap);
+            Container.AddChild(tileMap);
+            return tileMap;
         }
 
-        private static void CreateLayers(TileMap tileMap)
+        protected static void CreateTileMapLayers(TileMap tileMap)
         {
             var count = tileMap.GetLayersCount();
 

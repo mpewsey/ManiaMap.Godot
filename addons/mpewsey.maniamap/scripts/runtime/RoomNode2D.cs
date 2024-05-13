@@ -401,7 +401,7 @@ namespace MPewsey.ManiaMapGodot
             {
                 var door = (DoorNode2D)node;
                 var cell = cells[door.Row, door.Column];
-                cell.SetDoor(door.Direction, new Door(door.Type, (DoorCode)door.Code));
+                cell.SetDoor(door.DoorDirection, new Door(door.DoorType, (DoorCode)door.DoorCode));
             }
         }
 

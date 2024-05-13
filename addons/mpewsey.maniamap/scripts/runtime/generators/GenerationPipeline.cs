@@ -66,32 +66,31 @@ namespace MPewsey.ManiaMapGodot.Generators
             return result;
         }
 
-        public Task<PipelineResults> RunAsync(Dictionary<string, object> manualInputs = null, CancellationToken cancellationToken = default)
+        public Task<PipelineResults> RunAsync(Dictionary<string, object> manualInputs = null, Action<string> logger = null, CancellationToken cancellationToken = default)
         {
-            return BuildPipeline().RunAsync(BuildInputs(manualInputs), x => GD.Print(x), cancellationToken);
+            return BuildPipeline().RunAsync(BuildInputs(manualInputs), logger, cancellationToken);
         }
 
-        public async Task<PipelineResults> RunAttemptsAsync(int seed, int attempts = 10, int timeout = 5000, Dictionary<string, object> manualInputs = null)
+        public async Task<PipelineResults> RunAttemptsAsync(int seed, int attempts = 10, int timeout = 5000, Dictionary<string, object> manualInputs = null, Action<string> logger)
         {
             manualInputs ??= new Dictionary<string, object>();
 
             for (int i = 0; i < attempts; i++)
             {
-                GD.Print($"[Generation Pipeline] Beginning attempt {i + 1} / {attempts}...");
-
+                logger?.Invoke($"[Generation Pipeline] Beginning attempt {i + 1} / {attempts}...");
                 var inputs = new Dictionary<string, object>(manualInputs);
                 inputs.Add("RandomSeed", new RandomSeed(seed + i * 1447));
                 var token = new CancellationTokenSource(timeout).Token;
-                var results = await RunAsync(inputs, token);
+                var results = await RunAsync(inputs, logger, token);
 
                 if (results.Success)
                 {
-                    GD.Print("[Generation Pipeline] Attempt successful.");
+                    logger?.Invoke("[Generation Pipeline] Attempt successful.");
                     return results;
                 }
             }
 
-            GD.Print("[Generation Pipeline] Generation failed for all attempts.");
+            logger?.Invoke("[Generation Pipeline] Generation failed for all attempts.");
             return new PipelineResults(manualInputs);
         }
 

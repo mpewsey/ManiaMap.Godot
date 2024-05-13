@@ -14,11 +14,12 @@ namespace MPewsey.ManiaMapGodot
         private static Dictionary<Uid, LinkedList<DoorNode2D>> ActiveRoomDoors { get; } = new Dictionary<Uid, LinkedList<DoorNode2D>>();
 
         [Export] public bool AutoAssignDirection { get; set; } = true;
-        [Export] public DoorDirection Direction { get; set; }
-        [Export] public DoorType Type { get; set; }
+        [Export] public DoorDirection DoorDirection { get; set; }
+        [Export] public DoorType DoorType { get; set; }
 
-        [ExportGroup("Code")]
-        [Export(PropertyHint.Flags, ManiaMapResources.Enums.DoorCodeFlags)] public int Code { get; set; }
+        [ExportGroup("Door Code")]
+        [Export(PropertyHint.Flags, ManiaMapResources.Enums.DoorCodeFlags)] public int DoorCode { get; set; }
+
         public DoorConnection DoorConnection { get; private set; }
 
         public override void _Ready()
@@ -50,7 +51,7 @@ namespace MPewsey.ManiaMapGodot
             base.AutoAssign(room);
 
             if (AutoAssignDirection)
-                Direction = FindClosestDirection(room.CellCenterGlobalPosition(Row, Column));
+                DoorDirection = FindClosestDirection(room.CellCenterGlobalPosition(Row, Column));
         }
 
         public bool DoorExists()
@@ -65,7 +66,7 @@ namespace MPewsey.ManiaMapGodot
 
             foreach (var connection in Room.DoorConnections)
             {
-                if (connection.ContainsDoor(roomId, position, Direction))
+                if (connection.ContainsDoor(roomId, position, DoorDirection))
                     return connection;
             }
 
@@ -74,17 +75,10 @@ namespace MPewsey.ManiaMapGodot
 
         public Uid ToRoomId()
         {
-            if (DoorExists())
-            {
-                var roomId = Room.RoomLayout.Id;
+            if (!DoorExists())
+                return new Uid(-1, -1, -1);
 
-                if (DoorConnection.FromRoom == roomId)
-                    return DoorConnection.ToRoom;
-                if (DoorConnection.ToRoom == roomId)
-                    return DoorConnection.FromRoom;
-            }
-
-            return new Uid(-1, -1, -1);
+            return DoorConnection.GetConnectingRoom(Room.RoomLayout.Id);
         }
 
         private void AddToActiveRoomDoors()
