@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cl0l7sxjxbofv"
-path="res://.godot/imported/default_map_tiles.png-dce2ff0e8ea548a1eccaff5ea10c30a7.ctex"
+path="res://.godot/imported/default_map_tiles.png-08b63b3a469da47aee54598dda439cce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/mpewsey.maniamap/map_tiles/default/default_map_tiles.png"
-dest_files=["res://.godot/imported/default_map_tiles.png-dce2ff0e8ea548a1eccaff5ea10c30a7.ctex"]
+source_file="res://addons/mpewsey.maniamap/map_tiles/default_map_tiles.png"
+dest_files=["res://.godot/imported/default_map_tiles.png-08b63b3a469da47aee54598dda439cce.ctex"]
 
 [params]
 

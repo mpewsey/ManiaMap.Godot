@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6kteenwbvjcj"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/DoorNode2D.cs" id="1_2jhvr"]
+[ext_resource type="TileSet" uid="uid://ykn7rmdr2b4y" path="res://samples/tile_sets/dungeon_tile_set.tres" id="2_ig1s0"]
+
+[node name="EastDoorNode2D" type="Node2D"]
+script = ExtResource("1_2jhvr")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_ig1s0")
+format = 2
+layer_0/name = "Wall"
+layer_0/tile_data = PackedInt32Array(-131072, 327680, 1, -65536, 327680, 2, 0, 327680, 3, 65536, 327680, 2)
+layer_1/name = "Door"
+layer_1/tile_data = PackedInt32Array(-131072, 0, 196613, -65536, 589824, 7, 0, 589824, 7, 65536, 0, 5)

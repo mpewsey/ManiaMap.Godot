@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MapTileSet" load_steps=7 format=3 uid="uid://bwrla0hqiarrv"]
 
-[ext_resource type="Texture2D" uid="uid://cl0l7sxjxbofv" path="res://addons/mpewsey.maniamap/map_tiles/default/default_map_tiles.png" id="1_4e460"]
+[ext_resource type="Texture2D" uid="uid://cl0l7sxjxbofv" path="res://addons/mpewsey.maniamap/map_tiles/default_map_tiles.png" id="1_4e460"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/drawing/FeatureAtlasCoordinate.cs" id="1_dcjqj"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/drawing/MapTileSet.cs" id="1_ulj6u"]
 
