@@ -1,22 +1,20 @@
 #if TOOLS
 using Godot;
-using MPewsey.ManiaMapGodot.Graphs;
 
-namespace MPewsey.ManiaMapGodot.Editor
+namespace MPewsey.ManiaMapGodot.Graphs.Editor
 {
     [Tool]
-    public partial class LayoutGraphNodeElement : GraphNode
+    public partial class LayoutGraphEdgeElement : GraphNode
     {
-        [Export] public Label IdValueLabel { get; set; }
+        [Export] public Label EdgeValueLabel { get; set; }
         [Export] public ColorPickerButton ColorPicker { get; set; }
-        public LayoutGraphNode NodeResource { get; private set; }
+        public LayoutGraphEdge EdgeResource { get; private set; }
 
         public override void _Ready()
         {
             base._Ready();
             GuiInput += OnGuiInput;
             ColorPicker.ColorChanged += OnColorChanged;
-            PositionOffsetChanged += OnPositionOffsetChanged;
         }
 
         private void OnGuiInput(InputEvent input)
@@ -28,24 +26,18 @@ namespace MPewsey.ManiaMapGodot.Editor
             }
         }
 
-        private void OnPositionOffsetChanged()
+        public void Initialize(LayoutGraphEdge edgeResource)
         {
-            NodeResource.Position = PositionOffset;
-        }
-
-        public void Initialize(LayoutGraphNode nodeResource)
-        {
-            NodeResource = nodeResource;
-            PositionOffset = nodeResource.Position;
-            nodeResource.Changed += OnResourceChanged;
+            EdgeResource = edgeResource;
+            edgeResource.Changed += OnResourceChanged;
             Populate();
         }
 
         public void Populate()
         {
-            Title = NodeResource.Name;
-            IdValueLabel.Text = NodeResource.Id.ToString();
-            ColorPicker.Color = NodeResource.Color;
+            Title = EdgeResource.Name;
+            EdgeValueLabel.Text = $"({EdgeResource.FromNode}, {EdgeResource.ToNode})";
+            ColorPicker.Color = EdgeResource.Color;
         }
 
         private void OnResourceChanged()
@@ -55,7 +47,7 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         private void OnColorChanged(Color color)
         {
-            NodeResource.Color = color;
+            EdgeResource.Color = color;
         }
     }
 }

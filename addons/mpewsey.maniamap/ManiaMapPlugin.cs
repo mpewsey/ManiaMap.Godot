@@ -1,6 +1,7 @@
 #if TOOLS
 using Godot;
 using MPewsey.ManiaMapGodot.Graphs;
+using MPewsey.ManiaMapGodot.Graphs.Editor;
 using System;
 
 namespace MPewsey.ManiaMapGodot.Editor
@@ -20,6 +21,7 @@ namespace MPewsey.ManiaMapGodot.Editor
         public override void _EnterTree()
         {
             Current = this;
+            EditorInputs.AddInputActions();
             CreateProjectSettings();
             AddToolMenu();
             AddGraphEditorDock();
@@ -28,6 +30,7 @@ namespace MPewsey.ManiaMapGodot.Editor
         public override void _ExitTree()
         {
             Current = null;
+            EditorInputs.RemoveInputActions();
             RemoveToolMenuItem(MenuName);
             RemoveGraphEditorDock();
         }

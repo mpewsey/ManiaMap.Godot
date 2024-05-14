@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ckyjrhwvcs6fi"]
 
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/LayoutGraphEditor.cs" id="1_2rqd2"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/graphs/LayoutGraphEditor.cs" id="1_2rqd2"]
 [ext_resource type="PackedScene" uid="uid://5euxn0pgqyv4" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/layout_graph_node_element.tscn" id="2_ycjoq"]
 [ext_resource type="PackedScene" uid="uid://ypdf7hu0sc5i" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/layout_graph_edge_element.tscn" id="3_gn3wy"]
 [ext_resource type="Theme" uid="uid://dvrncovf7ri1c" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/layout_graph_editor_theme.tres" id="4_e5taf"]

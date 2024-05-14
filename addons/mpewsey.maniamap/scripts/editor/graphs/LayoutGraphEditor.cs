@@ -4,14 +4,11 @@ using MPewsey.ManiaMapGodot.Editor;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MPewsey.ManiaMapGodot.Graphs
+namespace MPewsey.ManiaMapGodot.Graphs.Editor
 {
     [Tool]
     public partial class LayoutGraphEditor : Control
     {
-        private static StringName DeleteAction { get; } = "ui_graph_delete";
-        private static StringName SelectAllAction { get; } = "ui_text_select_all";
-
         [Export] public GraphEdit GraphEdit { get; set; }
         [Export] public Node EdgeLineContainer { get; set; }
         [Export] public PackedScene NodeElementScene { get; set; }
@@ -27,12 +24,14 @@ namespace MPewsey.ManiaMapGodot.Graphs
         public Dictionary<int, LayoutGraphNodeElement> NodeElements { get; } = new Dictionary<int, LayoutGraphNodeElement>();
         public HashSet<LayoutGraphEdgeElement> EdgeElements { get; } = new HashSet<LayoutGraphEdgeElement>();
         private List<Line2D> EdgeLines { get; } = new List<Line2D>();
+        private HashSet<Resource> SelectedResources { get; } = new HashSet<Resource>();
         private float LineWidth { get; set; }
 
         public override void _Ready()
         {
             base._Ready();
             GraphEdit.NodeSelected += OnNodeSelected;
+            GraphEdit.NodeDeselected += OnNodeDeselected;
             GraphEdit.GuiInput += OnGuiInput;
             GraphEdit.ConnectionRequest += OnConnectionRequest;
             SaveButton.Pressed += OnSubmitSaveButton;
@@ -54,11 +53,25 @@ namespace MPewsey.ManiaMapGodot.Graphs
             PopulateEdgeLines();
         }
 
+        private void DisplayNodes(bool visible)
+        {
+            foreach (var node in NodeElements.Values)
+            {
+                node.Visible = visible;
+
+                if (!visible)
+                    node.Selected = false;
+            }
+        }
+
         private void DisplayEdges(bool visible)
         {
             foreach (var edge in EdgeElements)
             {
                 edge.Visible = visible;
+
+                if (!visible)
+                    edge.Selected = false;
             }
         }
 
@@ -140,33 +153,54 @@ namespace MPewsey.ManiaMapGodot.Graphs
                     GetViewport().SetInputAsHandled();
                 }
             }
-            else if (input.IsActionPressed(DeleteAction))
+            else if (input.IsActionPressed(EditorInputs.DeleteAction))
             {
                 DeleteSelectedElements();
                 GetViewport().SetInputAsHandled();
             }
-            else if (input.IsActionPressed(SelectAllAction))
+            else if (input.IsActionPressed(EditorInputs.SelectAllAction))
             {
                 SelectAllElements();
                 GetViewport().SetInputAsHandled();
             }
+            else if (input.IsActionPressed(EditorInputs.SelectAllNodesAction))
+            {
+                SelectAllNodeElements();
+                GetViewport().SetInputAsHandled();
+            }
+            else if (input.IsActionPressed(EditorInputs.SelectAllEdgesAction))
+            {
+                SelectAllEdgeElements();
+                GetViewport().SetInputAsHandled();
+            }
         }
 
-        private void SelectAllElements()
+        private void SelectAllNodeElements()
         {
             foreach (var node in NodeElements.Values)
             {
                 node.Selected = true;
             }
+        }
 
+        private void SelectAllEdgeElements()
+        {
             foreach (var edge in EdgeElements)
             {
-                edge.Selected = true;
+                edge.Selected = EdgeDisplayButton.ButtonPressed;
             }
+        }
+
+        private void SelectAllElements()
+        {
+            SelectAllEdgeElements();
+            SelectAllNodeElements();
         }
 
         private void DeleteSelectedElements()
         {
+            SelectedResources.Clear();
+
             foreach (var edge in EdgeElements.Where(x => x.Selected).ToList())
             {
                 RemoveEdge(edge);
@@ -214,11 +248,17 @@ namespace MPewsey.ManiaMapGodot.Graphs
             element.QueueFree();
         }
 
+        private static void ToggleButton(Button button, bool toggled)
+        {
+            button.SetPressedNoSignal(toggled);
+            button.Flat = !toggled;
+        }
+
         private void OnToggleEdgeDisplayButton(bool toggled)
         {
-            EdgeDisplayButton.SetPressedNoSignal(toggled);
-            EdgeDisplayButton.Flat = !toggled;
+            ToggleButton(EdgeDisplayButton, toggled);
             DisplayEdges(toggled);
+            DisplayResourceEditor();
         }
 
         private void OnSubmitSaveButton()
@@ -282,16 +322,56 @@ namespace MPewsey.ManiaMapGodot.Graphs
             GraphResource.RegisterOnSubresourceChangedSignals();
         }
 
+        private void OnNodeDeselected(Node node)
+        {
+            switch (node)
+            {
+                case LayoutGraphNodeElement nodeElement:
+                    SelectedResources.Remove(nodeElement.NodeResource);
+                    break;
+                case LayoutGraphEdgeElement edgeElement:
+                    SelectedResources.Remove(edgeElement.EdgeResource);
+                    break;
+            }
+
+            DisplayResourceEditor();
+        }
+
         private void OnNodeSelected(Node node)
         {
             switch (node)
             {
                 case LayoutGraphNodeElement nodeElement:
-                    EditorInterface.Singleton.EditResource(nodeElement.NodeResource);
+                    SelectedResources.Add(nodeElement.NodeResource);
                     break;
                 case LayoutGraphEdgeElement edgeElement:
-                    EditorInterface.Singleton.EditResource(edgeElement.EdgeResource);
+                    SelectedResources.Add(edgeElement.EdgeResource);
                     break;
+            }
+
+            DisplayResourceEditor();
+        }
+
+        private void DisplayResourceEditor()
+        {
+            if (SelectedResources.Count > 1)
+            {
+                var multiEditor = new LayoutGraphMultiEditor(SelectedResources);
+                EditorInterface.Singleton.EditResource(multiEditor);
+                return;
+            }
+
+            if (SelectedResources.Count == 1)
+            {
+                switch (SelectedResources.First())
+                {
+                    case LayoutGraphNode nodeResource:
+                        EditorInterface.Singleton.EditResource(nodeResource);
+                        break;
+                    case LayoutGraphEdge edgeResource:
+                        EditorInterface.Singleton.EditResource(edgeResource);
+                        break;
+                }
             }
         }
 
@@ -366,6 +446,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
                 line.QueueFree();
             }
 
+            SelectedResources.Clear();
             NodeElements.Clear();
             EdgeElements.Clear();
             EdgeLines.Clear();

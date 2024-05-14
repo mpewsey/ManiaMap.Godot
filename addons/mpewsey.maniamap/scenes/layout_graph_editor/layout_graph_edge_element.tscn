@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ypdf7hu0sc5i"]
 
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/LayoutGraphEdgeElement.cs" id="1_714fn"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/graphs/LayoutGraphEdgeElement.cs" id="1_714fn"]
 
 [node name="LayoutGraphEdgeElement" type="GraphNode" node_paths=PackedStringArray("EdgeValueLabel", "ColorPicker")]
 offset_right = 150.0

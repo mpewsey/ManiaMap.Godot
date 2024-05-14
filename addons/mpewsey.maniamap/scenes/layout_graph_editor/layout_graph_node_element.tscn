@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://5euxn0pgqyv4"]
 
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/LayoutGraphNodeElement.cs" id="1_jqtx3"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/graphs/LayoutGraphNodeElement.cs" id="1_jqtx3"]
 
 [node name="LayoutGraphNodeElement" type="GraphNode" node_paths=PackedStringArray("IdValueLabel", "ColorPicker")]
 offset_right = 150.0
