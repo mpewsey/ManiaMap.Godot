@@ -14,9 +14,13 @@ namespace MPewsey.ManiaMapGodot
         public List<int> GetCollectableIds()
         {
             var result = new List<int>();
+            var set = new HashSet<int>();
 
             foreach (var entry in Entries)
             {
+                if (!set.Add(entry.Collectable.Id))
+                    throw new Exception($"Duplicate collectable ID: {entry.Collectable.Id}.");
+
                 for (int i = 0; i < entry.Quantity; i++)
                 {
                     result.Add(entry.Collectable.Id);

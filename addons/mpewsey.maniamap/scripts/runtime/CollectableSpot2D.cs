@@ -7,7 +7,7 @@ namespace MPewsey.ManiaMapGodot
     [Icon(ManiaMapResources.Icons.CollectableSpot2Dicon)]
     public partial class CollectableSpot2D : CellChild2D
     {
-        [Export] public int Id { get; set; } = Rand.GetRandomId();
+        [Export] public int Id { get; set; } = -1;
         [Export] public CollectableGroup CollectableGroup { get; set; }
         [Export(PropertyHint.Range, "0,2,0.1,or_greater")] public float Weight { get; set; } = 1;
 

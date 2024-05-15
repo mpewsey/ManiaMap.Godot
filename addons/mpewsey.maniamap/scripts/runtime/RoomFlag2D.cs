@@ -7,7 +7,7 @@ namespace MPewsey.ManiaMapGodot
     [Icon(ManiaMapResources.Icons.RoomFlag2DIcon)]
     public partial class RoomFlag2D : CellChild2D
     {
-        [Export] public int Id { get; set; } = Rand.GetRandomId();
+        [Export] public int Id { get; set; } = -1;
 
         public override void AutoAssign(RoomNode2D room)
         {

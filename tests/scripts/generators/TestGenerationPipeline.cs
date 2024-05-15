@@ -8,7 +8,7 @@ namespace MPewsey.ManiaMapGodot.Generators.Tests
     [TestSuite]
     public class TestGenerationPipeline
     {
-        private const string BigLayoutScene = "";
+        private const string BigLayoutScene = "uid://bdo1fd7ghmg2w";
 
         private static ISceneRunner LoadScene(string name)
         {

@@ -1,0 +1,46 @@
+[gd_scene load_steps=11 format=3 uid="uid://bdo1fd7ghmg2w"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationPipeline.cs" id="1_v03jm"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationIntInput.cs" id="2_2dkm6"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/RandomSeedInput.cs" id="3_7u8vh"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphsInput.cs" id="4_g66cd"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGroupsInput.cs" id="5_rlubd"]
+[ext_resource type="Resource" uid="uid://c2vpyp38ge6oo" path="res://samples/graphs/cross_graph.tres" id="5_v2net"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphSelectorStep.cs" id="6_c3xhr"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphRandomizerStep.cs" id="7_sea8g"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGeneratorStep.cs" id="8_2jb8k"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGeneratorStep.cs" id="9_sldot"]
+
+[node name="SingleSquareCrossPipeline" type="Node"]
+script = ExtResource("1_v03jm")
+
+[node name="Inputs" type="Node" parent="."]
+
+[node name="LayoutIdInput" type="Node" parent="Inputs"]
+script = ExtResource("2_2dkm6")
+InputName = "LayoutId"
+Value = 530369953
+
+[node name="RandomSeedInput" type="Node" parent="Inputs"]
+script = ExtResource("3_7u8vh")
+
+[node name="LayoutGraphsInput" type="Node" parent="Inputs"]
+script = ExtResource("4_g66cd")
+LayoutGraphs = [ExtResource("5_v2net")]
+
+[node name="CollectableGroupsInput" type="Node" parent="Inputs"]
+script = ExtResource("5_rlubd")
+
+[node name="Steps" type="Node" parent="."]
+
+[node name="LayoutGraphSelectorStep" type="Node" parent="Steps"]
+script = ExtResource("6_c3xhr")
+
+[node name="LayoutGraphRandomizerStep" type="Node" parent="Steps"]
+script = ExtResource("7_sea8g")
+
+[node name="LayoutGeneratorStep" type="Node" parent="Steps"]
+script = ExtResource("8_2jb8k")
+
+[node name="CollectableGeneratorStep" type="Node" parent="Steps"]
+script = ExtResource("9_sldot")

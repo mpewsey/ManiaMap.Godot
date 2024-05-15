@@ -196,15 +196,20 @@ namespace MPewsey.ManiaMapGodot.Graphs.Editor
                 || name == PropertyName.EditDoorCode;
         }
 
-        private bool PropertyIsVisible(LayoutGraphElementFlags flags)
+        private bool EditPropertyIsVisible(LayoutGraphElementFlags flags)
         {
             return (TargetFlags & flags) != 0
                 && TargetFlags != LayoutGraphElementFlags.All;
         }
 
+        private bool PropertyIsVisible(LayoutGraphElementFlags flags)
+        {
+            return (TargetFlags & flags) != 0;
+        }
+
         private PropertyUsageFlags GetEditPropertyUsageFlags(LayoutGraphElementFlags flags)
         {
-            if (PropertyIsVisible(flags))
+            if (EditPropertyIsVisible(flags))
                 return PropertyUsageFlags.Default;
 
             return PropertyUsageFlags.Default & ~PropertyUsageFlags.Editor;
