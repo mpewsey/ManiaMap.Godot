@@ -1,6 +1,8 @@
 using GdUnit4;
 using Godot;
 using MPewsey.ManiaMap;
+using MPewsey.ManiaMap.Drawing;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace MPewsey.ManiaMapGodot.Generators.Tests
@@ -8,7 +10,27 @@ namespace MPewsey.ManiaMapGodot.Generators.Tests
     [TestSuite]
     public class TestGenerationPipeline
     {
-        private const string BigLayoutScene = "uid://bdo1fd7ghmg2w";
+        private const string SingleSquareCrossGeneratorScene = "uid://bdo1fd7ghmg2w";
+        private const string ArtifactDirectory = "user://tests/generators";
+
+        [Before]
+        public void Before()
+        {
+            var path = ProjectSettings.GlobalizePath(ArtifactDirectory);
+
+            if (Directory.Exists(path))
+                Directory.Delete(path, true);
+
+            Directory.CreateDirectory(path);
+        }
+
+        private void SaveImages(string filename, Layout layout)
+        {
+            var directory = ProjectSettings.GlobalizePath(ArtifactDirectory);
+            var path = Path.Combine(directory, filename);
+            var map = new LayoutMap();
+            map.SaveImages(path, layout);
+        }
 
         private static ISceneRunner LoadScene(string name)
         {
@@ -20,31 +42,33 @@ namespace MPewsey.ManiaMapGodot.Generators.Tests
         [TestCase]
         public void TestRun()
         {
-            var runner = LoadScene(BigLayoutScene);
+            var runner = LoadScene(SingleSquareCrossGeneratorScene);
             var pipeline = runner.Scene() as GenerationPipeline;
             Assertions.AssertThat(pipeline != null).IsTrue();
             var results = pipeline.Run();
             Assertions.AssertThat(results.Success).IsTrue();
             var layout = results.GetOutput<Layout>("Layout");
             Assertions.AssertThat(layout != null).IsTrue();
+            SaveImages("test_run.png", layout);
         }
 
         [TestCase]
         public async Task TestRunAsync()
         {
-            var runner = LoadScene(BigLayoutScene);
+            var runner = LoadScene(SingleSquareCrossGeneratorScene);
             var pipeline = runner.Scene() as GenerationPipeline;
             Assertions.AssertThat(pipeline != null).IsTrue();
             var results = await pipeline.RunAsync();
             Assertions.AssertThat(results.Success).IsTrue();
             var layout = results.GetOutput<Layout>("Layout");
             Assertions.AssertThat(layout != null).IsTrue();
+            SaveImages("test_run_async.png", layout);
         }
 
         [TestCase]
         public async Task TestRunAttemptsAsync()
         {
-            var runner = LoadScene(BigLayoutScene);
+            var runner = LoadScene(SingleSquareCrossGeneratorScene);
             var pipeline = runner.Scene() as GenerationPipeline;
             Assertions.AssertThat(pipeline != null).IsTrue();
             var randomSeedInput = pipeline.FindChild(nameof(RandomSeedInput));
@@ -54,6 +78,7 @@ namespace MPewsey.ManiaMapGodot.Generators.Tests
             Assertions.AssertThat(results.Success).IsTrue();
             var layout = results.GetOutput<Layout>("Layout");
             Assertions.AssertThat(layout != null).IsTrue();
+            SaveImages("test_run_attempts_async.png", layout);
         }
     }
 }
