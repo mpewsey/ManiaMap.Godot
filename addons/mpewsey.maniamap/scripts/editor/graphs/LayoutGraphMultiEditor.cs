@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace MPewsey.ManiaMapGodot.Graphs.Editor
 {
+    [Tool]
     public partial class LayoutGraphMultiEditor : Resource
     {
         private bool _editName;
