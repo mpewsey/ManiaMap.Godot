@@ -7,13 +7,15 @@ namespace MPewsey.ManiaMapGodot.Samples
     [GlobalClass]
     public partial class RoomLayoutSample : Node
     {
+        [Export] public Camera2D Camera { get; set; }
         [Export] public Node2D Container { get; set; }
         [Export] public GenerationPipeline Pipeline { get; set; }
         [Export] public Button GenerateButton { get; set; }
         [Export] public RichTextLabel MessageLabel { get; set; }
         [Export] public TemplateGroupDatabase TemplateGroupDatabase { get; set; }
-        [Export] public float ZoomSpeed { get; set; } = 1;
+        [Export] public Vector2 CellSize { get; set; } = new Vector2(96, 96);
         [Export] public float ScrollSpeed { get; set; } = 1;
+        [Export] public float ZoomSpeed { get; set; } = 1;
 
         public override void _Ready()
         {
@@ -30,28 +32,14 @@ namespace MPewsey.ManiaMapGodot.Samples
             if (input is InputEventMouseMotion mouseMotion)
             {
                 if (mouseMotion.ButtonMask == MouseButtonMask.Left)
-                    Container.Position += delta * ScrollSpeed * mouseMotion.Velocity;
+                    Camera.Position -= delta * ScrollSpeed * mouseMotion.Velocity;
             }
             else if (input is InputEventMouseButton mouseInput)
             {
                 if (mouseInput.ButtonIndex == MouseButton.WheelUp)
-                    Container.Scale += delta * ZoomSpeed * Vector2.One;
+                    Camera.Zoom += delta * ZoomSpeed * Vector2.One;
                 else if (mouseInput.ButtonIndex == MouseButton.WheelDown)
-                    Container.Scale -= delta * ZoomSpeed * Vector2.One;
-            }
-        }
-
-        public override void _Process(double delta)
-        {
-            base._Process(delta);
-
-            if (Input.IsMouseButtonPressed(MouseButton.WheelUp))
-            {
-
-            }
-            else if (Input.IsMouseButtonPressed(MouseButton.WheelUp))
-            {
-
+                    Camera.Zoom -= delta * ZoomSpeed * Vector2.One;
             }
         }
 
@@ -80,18 +68,37 @@ namespace MPewsey.ManiaMapGodot.Samples
 
             if (!results.Success)
             {
-                MessageLabel.Text = "[color=#ff0000]Generation FAILED.[/color]";
+                MessageLabel.Text = $"[color=#ff0000]Generation FAILED (Seed = {seed})[/color]";
                 return;
             }
 
             MessageLabel.Text = string.Empty;
             var layout = results.GetOutput<Layout>("Layout");
+            DrawLayout(layout);
+        }
+
+        private void DrawLayout(Layout layout)
+        {
             var settings = new ManiaMapSettings() { AssignLayoutPosition = true };
             ManiaMapManager.Initialize(layout, new LayoutState(layout), settings);
             ClearContainer();
             TemplateGroupDatabase.CreateRoom2DInstances(Container);
-            Container.Position = 0.5f * GetViewport().GetVisibleRect().Size;
-            Container.Scale = new Vector2(0.5f, 0.5f);
+            SetCameraView(layout);
+        }
+
+        private void SetCameraView(Layout layout)
+        {
+            var bounds = layout.GetBounds();
+            var screenSize = GetViewport().GetVisibleRect().Size;
+
+            var x = (bounds.X + 0.5f * bounds.Width) * CellSize.X;
+            var y = (bounds.Y + 0.5f * bounds.Height) * CellSize.Y;
+
+            var zoomX = screenSize.X / (CellSize.X * bounds.Width + 2 * CellSize.X);
+            var zoomY = screenSize.Y / (CellSize.Y * bounds.Height + 2 * CellSize.Y);
+
+            Camera.Position = new Vector2(x, y);
+            Camera.Zoom = Mathf.Min(zoomX, zoomY) * Vector2.One;
         }
     }
 }
