@@ -27,7 +27,7 @@ namespace MPewsey.ManiaMapGodot.Editor
                     count++;
             }
 
-            GD.Print($"Completed batch update for {count} rooms.");
+            GD.PrintRich($"[color=#00ff00]Completed batch update for {count} rooms.[/color]");
         }
 
         private static bool AnyScenesAreOpen()

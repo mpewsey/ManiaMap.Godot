@@ -227,7 +227,7 @@ namespace MPewsey.ManiaMapGodot
                 child.AutoAssign(this);
             }
 
-            GD.Print($"Performed auto assign on {nodes.Count} cell children.");
+            GD.PrintRich($"[color=#00ff00]Performed auto assign on {nodes.Count} cell children.[/color]");
         }
 
         public void SetCellActivities(Vector2 startPosition, Vector2 endPosition, CellActivity activity)
