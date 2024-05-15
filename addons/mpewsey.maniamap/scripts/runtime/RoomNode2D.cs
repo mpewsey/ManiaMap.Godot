@@ -1,7 +1,6 @@
 using Godot;
 using MPewsey.Common.Collections;
 using MPewsey.Common.Mathematics;
-using MPewsey.Game;
 using MPewsey.ManiaMap;
 using System;
 using System.Collections.Generic;

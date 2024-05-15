@@ -19,20 +19,6 @@ RoomChance = 0.0
 Tags = PackedStringArray()
 DoorCode = 0
 
-[sub_resource type="Resource" id="Resource_jjah5"]
-script = ExtResource("1_cwcn5")
-FromNode = 3
-ToNode = 5
-Name = "Edge (3, 5)"
-Direction = 0
-TemplateGroup = ExtResource("2_5tfr5")
-Color = Color(0.0980392, 0.0980392, 0.439216, 1)
-Z = 0
-RequireRoom = false
-RoomChance = 0.0
-Tags = PackedStringArray()
-DoorCode = 0
-
 [sub_resource type="Resource" id="Resource_lkm7i"]
 script = ExtResource("1_cwcn5")
 FromNode = 2
@@ -52,6 +38,20 @@ script = ExtResource("1_cwcn5")
 FromNode = 3
 ToNode = 4
 Name = "Edge (3, 4)"
+Direction = 0
+TemplateGroup = ExtResource("2_5tfr5")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 0
+RequireRoom = false
+RoomChance = 0.0
+Tags = PackedStringArray()
+DoorCode = 0
+
+[sub_resource type="Resource" id="Resource_jjah5"]
+script = ExtResource("1_cwcn5")
+FromNode = 3
+ToNode = 5
+Name = "Edge (3, 5)"
 Direction = 0
 TemplateGroup = ExtResource("2_5tfr5")
 Color = Color(0.0980392, 0.0980392, 0.439216, 1)

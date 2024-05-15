@@ -1,10 +1,9 @@
 using Godot;
 using MPewsey.Common.Serialization;
 using MPewsey.ManiaMap;
-using MPewsey.ManiaMapGodot;
 using System;
 
-namespace MPewsey.Game
+namespace MPewsey.ManiaMapGodot
 {
     [Tool]
     [GlobalClass]

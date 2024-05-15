@@ -14,6 +14,11 @@ config/name="ManiaMap.Godot"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [dotnet]
 
 project/assembly_name="ManiaMap.Godot"

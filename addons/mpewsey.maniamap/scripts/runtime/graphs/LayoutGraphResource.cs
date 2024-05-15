@@ -218,7 +218,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
             return result;
         }
 
-        public LayoutGraph CreateGraph()
+        public LayoutGraph GetGraph()
         {
             var graph = new LayoutGraph(Id, Name);
             CreateGraphNodes(graph);

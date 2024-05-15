@@ -11,7 +11,7 @@ namespace MPewsey.ManiaMapGodot
         [Export] public string Name { get; set; } = "<None>";
         [Export] public TemplateGroupEntry[] Entries { get; set; } = Array.Empty<TemplateGroupEntry>();
 
-        public TemplateGroupsEntry[] CreateEntries()
+        public TemplateGroupsEntry[] GetEntries()
         {
             var result = new TemplateGroupsEntry[Entries.Length];
 
