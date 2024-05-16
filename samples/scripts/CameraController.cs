@@ -7,7 +7,7 @@ namespace MPewsey.ManiaMapGodot.Samples
     public partial class CameraController : Camera2D
     {
         [Export] public float ScrollSpeed { get; set; } = 1;
-        [Export] public float ZoomSpeed { get; set; } = 1;
+        [Export] public float ZoomSpeed { get; set; } = 2;
 
         public override void _UnhandledInput(InputEvent input)
         {

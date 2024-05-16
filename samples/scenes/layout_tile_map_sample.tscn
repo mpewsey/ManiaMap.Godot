@@ -28,4 +28,3 @@ color = Color(0, 0, 0, 1)
 
 [node name="CameraController" type="Camera2D" parent="."]
 script = ExtResource("4_s7yhs")
-ZoomSpeed = 2.0
