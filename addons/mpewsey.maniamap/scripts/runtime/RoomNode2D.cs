@@ -58,7 +58,7 @@ namespace MPewsey.ManiaMapGodot
 #if TOOLS
             if (Engine.IsEditorHint())
             {
-                CellGrid2D.CreateInstance(this);
+                Editor.CellGrid2D.CreateInstance(this);
                 return;
             }
 #endif

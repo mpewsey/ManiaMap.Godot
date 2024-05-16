@@ -1,7 +1,7 @@
 #if TOOLS
 using Godot;
 
-namespace MPewsey.ManiaMapGodot
+namespace MPewsey.ManiaMapGodot.Editor
 {
     public partial class CellGrid2D : Node2D
     {
