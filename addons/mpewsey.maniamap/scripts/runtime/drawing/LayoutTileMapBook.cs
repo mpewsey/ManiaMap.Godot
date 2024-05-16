@@ -52,5 +52,24 @@ namespace MPewsey.ManiaMapGodot.Drawing
                 Pages.Add(CreateTileMap());
             }
         }
+
+        public float SetOnionMapColors(float z, Gradient gradient, float drawDepth = 1)
+        {
+            if (PageLayerCoordinates.Count > 0)
+            {
+                var scale = 0.5f / drawDepth;
+                var minZ = PageLayerCoordinates[0];
+                var maxZ = PageLayerCoordinates[PageLayerCoordinates.Count - 1];
+                z = Mathf.Clamp(z, minZ, maxZ);
+
+                for (int i = 0; i < PageLayerCoordinates.Count; i++)
+                {
+                    var t = (PageLayerCoordinates[i] - z) * scale + 0.5f;
+                    Pages[i].Modulate = gradient.Sample(Mathf.Clamp(t, 0, 1));
+                }
+            }
+
+            return z;
+        }
     }
 }
