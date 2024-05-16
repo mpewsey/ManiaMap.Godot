@@ -32,6 +32,8 @@ namespace MPewsey.ManiaMapGodot
             base._Ready();
             BodyEntered += OnBodyEntered;
             AreaEntered += OnAreaEntered;
+            BodyExited += OnBodyExited;
+            AreaExited += OnAreaExited;
         }
 
         private void OnBodyEntered(Node body)
@@ -44,10 +46,25 @@ namespace MPewsey.ManiaMapGodot
             EmitOnCellEntered(area);
         }
 
+        private void OnBodyExited(Node body)
+        {
+            EmitOnCellExited(body);
+        }
+
+        private void OnAreaExited(Area2D area)
+        {
+            EmitOnCellExited(area);
+        }
+
         private void EmitOnCellEntered(Node collision)
         {
             Room.RoomState.SetCellVisibility(Row, Column, true);
             Room.EmitOnCellAreaEntered(this, collision);
+        }
+
+        private void EmitOnCellExited(Node collision)
+        {
+            Room.EmitOnCellAreaExited(this, collision);
         }
     }
 }

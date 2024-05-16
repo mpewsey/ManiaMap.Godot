@@ -16,6 +16,9 @@ namespace MPewsey.ManiaMapGodot
         [Signal] public delegate void OnCellAreaEnteredEventHandler(CellArea2D cell, Node collision);
         public Error EmitOnCellAreaEntered(CellArea2D cell, Node collision) => EmitSignal(SignalName.OnCellAreaEntered, cell, collision);
 
+        [Signal] public delegate void OnCellAreaExitedEventHandler(CellArea2D cell, Node collision);
+        public Error EmitOnCellAreaExited(CellArea2D cell, Node collection) => EmitSignal(SignalName.OnCellAreaExited, cell, collection);
+
 #if TOOLS
         [Export] public bool RunAutoAssign { get => false; set => AutoAssign(value); }
         [Export] public bool UpdateRoomTemplate { get => false; set => UpdateRoomTemplateResource(value); }
@@ -53,11 +56,16 @@ namespace MPewsey.ManiaMapGodot
         {
             base._Ready();
 
-            if (!Engine.IsEditorHint())
+#if TOOLS
+            if (Engine.IsEditorHint())
             {
-                if (!IsInitialized)
-                    throw new Exception($"Room is not initialized: {this}");
+                CellGrid2D.CreateInstance(this);
+                return;
             }
+#endif
+
+            if (!IsInitialized)
+                throw new Exception($"Room is not initialized: {this}");
         }
 
 #if TOOLS
@@ -77,7 +85,6 @@ namespace MPewsey.ManiaMapGodot
 
             if (Engine.IsEditorHint())
             {
-                QueueRedraw();
                 SizeActiveCells();
 
                 if (DisplayCells)
@@ -100,65 +107,6 @@ namespace MPewsey.ManiaMapGodot
                 SetCellActivities(MouseButtonDownPosition, GetViewport().GetMousePosition(), CellEditMode);
 
             MouseButtonPressed = false;
-        }
-
-        public override void _Draw()
-        {
-            base._Draw();
-
-            if (Engine.IsEditorHint())
-            {
-                if (DisplayCells)
-                    DrawCells();
-            }
-        }
-
-        private void DrawCells()
-        {
-            var activeFillColor = new Color(0, 0, 1, 0.1f);
-            var inactiveFillColor = new Color(1, 0, 0, 0.1f);
-            var activeLineColor = new Color(0.5f, 0.5f, 0.5f);
-            var inactiveLineColor = new Color(0.5f, 0.5f, 0.5f);
-            DrawCellRects(inactiveFillColor, inactiveLineColor, false);
-            DrawCellXs(inactiveLineColor, false);
-            DrawCellRects(activeFillColor, activeLineColor, true);
-        }
-
-        private void DrawCellRects(Color fillColor, Color lineColor, bool active)
-        {
-            for (int i = 0; i < ActiveCells.Count; i++)
-            {
-                var row = ActiveCells[i];
-
-                for (int j = 0; j < row.Count; j++)
-                {
-                    if (row[j] == active)
-                    {
-                        var rect = new Rect2(CellCenterGlobalPosition(i, j) - 0.5f * CellSize, CellSize);
-                        DrawRect(rect, fillColor);
-                        DrawRect(rect, lineColor, false);
-                    }
-                }
-            }
-        }
-
-        private void DrawCellXs(Color lineColor, bool active)
-        {
-            for (int i = 0; i < ActiveCells.Count; i++)
-            {
-                var row = ActiveCells[i];
-
-                for (int j = 0; j < row.Count; j++)
-                {
-                    if (row[j] == active)
-                    {
-                        var topLeft = CellCenterGlobalPosition(i, j) - 0.5f * CellSize;
-                        var bottomRight = topLeft + CellSize;
-                        DrawLine(topLeft, bottomRight, lineColor);
-                        DrawLine(new Vector2(topLeft.X, bottomRight.Y), new Vector2(bottomRight.X, topLeft.Y), lineColor);
-                    }
-                }
-            }
         }
 #endif
 
@@ -215,7 +163,7 @@ namespace MPewsey.ManiaMapGodot
             if (!run)
                 return;
 
-            RoomTemplate ??= new RoomTemplateResource();
+            RoomTemplate ??= new RoomTemplateResource() { TemplateName = Name };
             RoomTemplate.Id = Rand.AutoAssignId(RoomTemplate.Id);
             SizeActiveCells();
             var nodes = FindChildren("*", nameof(CellChild2D));
