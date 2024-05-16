@@ -66,7 +66,7 @@ namespace MPewsey.ManiaMapGodot.Samples
             SliderContainer.Visible = true;
             Slider.MinValue = zs[0];
             Slider.MaxValue = zs[zs.Count - 1];
-            Slider.Value = Mathf.FloorToInt((Slider.MinValue + Slider.MaxValue) * 0.5f);
+            Slider.SetValueNoSignal(Mathf.FloorToInt((Slider.MinValue + Slider.MaxValue) * 0.5f));
             OnSliderValueChanged(Slider.Value);
         }
 

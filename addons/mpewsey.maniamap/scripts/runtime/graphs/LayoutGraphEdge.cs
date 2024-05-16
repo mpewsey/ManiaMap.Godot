@@ -1,6 +1,8 @@
 using Godot;
 using MPewsey.ManiaMap;
+using MPewsey.ManiaMap.Graphs;
 using System;
+using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapGodot.Graphs
 {
@@ -72,6 +74,20 @@ namespace MPewsey.ManiaMapGodot.Graphs
         public bool ContainsNode(int nodeId)
         {
             return FromNode == nodeId || ToNode == nodeId;
+        }
+
+        public void AddMMLayoutEdge(LayoutGraph graph)
+        {
+            var edge = graph.AddEdge(FromNode, ToNode);
+            edge.Name = Name;
+            edge.Direction = Direction;
+            edge.TemplateGroup = TemplateGroup?.Name;
+            edge.Color = ColorUtility.ConvertColorToColor4(Color);
+            edge.Z = Z;
+            edge.RequireRoom = RequireRoom;
+            edge.RoomChance = RoomChance;
+            edge.Tags = new List<string>(Tags);
+            edge.DoorCode = (DoorCode)DoorCode;
         }
     }
 }

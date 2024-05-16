@@ -16,8 +16,8 @@ namespace MPewsey.ManiaMapGodot.Generators
 
         public override void AddInputs(Dictionary<string, object> inputs)
         {
-            inputs.Add("LayoutGraphs", LazyCreateGraphs ? GetGraphDelegates() : GetGraphs());
-            inputs.Add("TemplateGroups", GetTemplateGroups());
+            inputs.Add("LayoutGraphs", LazyCreateGraphs ? GetMMLayoutGraphDelegates() : GetMMLayoutGraphs());
+            inputs.Add("TemplateGroups", GetMMTemplateGroups());
         }
 
         public override string[] InputNames()
@@ -25,7 +25,7 @@ namespace MPewsey.ManiaMapGodot.Generators
             return new string[] { "LayoutGraphs", "TemplateGroups" };
         }
 
-        public HashSet<TemplateGroup> GetTemplateGroupSet()
+        private HashSet<TemplateGroup> GetTemplateGroups()
         {
             var result = new HashSet<TemplateGroup>();
 
@@ -37,41 +37,41 @@ namespace MPewsey.ManiaMapGodot.Generators
             return result;
         }
 
-        public TemplateGroups GetTemplateGroups()
+        private TemplateGroups GetMMTemplateGroups()
         {
             var names = new HashSet<string>();
             var result = new TemplateGroups();
 
-            foreach (var group in GetTemplateGroupSet())
+            foreach (var group in GetTemplateGroups())
             {
                 if (!names.Add(group.Name))
                     throw new Exception($"Duplicate group name: {group.Name}.");
 
-                result.Add(group.Name, group.GetEntries());
+                result.Add(group.Name, group.GetMMTemplateGroupEntries());
             }
 
             return result;
         }
 
-        public Func<LayoutGraph>[] GetGraphDelegates()
+        private Func<LayoutGraph>[] GetMMLayoutGraphDelegates()
         {
             var result = new Func<LayoutGraph>[LayoutGraphs.Length];
 
             for (int i = 0; i < result.Length; i++)
             {
-                result[i] = LayoutGraphs[i].GetGraph;
+                result[i] = LayoutGraphs[i].GetMMLayoutGraph;
             }
 
             return result;
         }
 
-        public LayoutGraph[] GetGraphs()
+        private LayoutGraph[] GetMMLayoutGraphs()
         {
             var result = new LayoutGraph[LayoutGraphs.Length];
 
             for (int i = 0; i < result.Length; i++)
             {
-                result[i] = LayoutGraphs[i].GetGraph();
+                result[i] = LayoutGraphs[i].GetMMLayoutGraph();
             }
 
             return result;

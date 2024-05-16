@@ -1,5 +1,7 @@
 using Godot;
+using MPewsey.ManiaMap.Graphs;
 using System;
+using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapGodot.Graphs
 {
@@ -58,6 +60,19 @@ namespace MPewsey.ManiaMapGodot.Graphs
             Id = id;
             Name = $"Node {id}";
             Position = position;
+        }
+
+        public void AddMMLayoutNode(LayoutGraph graph)
+        {
+            var node = graph.AddNode(Id);
+            node.Name = Name;
+            node.Color = ColorUtility.ConvertColorToColor4(Color);
+            node.TemplateGroup = TemplateGroup.Name;
+            node.Z = Z;
+            node.Tags = new List<string>(Tags);
+
+            if (!string.IsNullOrWhiteSpace(VariationGroup))
+                graph.AddNodeVariation(VariationGroup, node.Id);
         }
     }
 }

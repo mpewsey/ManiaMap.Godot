@@ -13,7 +13,7 @@ namespace MPewsey.ManiaMapGodot.Generators
 
         public override void AddInputs(Dictionary<string, object> inputs)
         {
-            inputs.Add("CollectableGroups", CreateGroups());
+            inputs.Add("CollectableGroups", GetMMCollectableGroups());
         }
 
         public override string[] InputNames()
@@ -21,7 +21,7 @@ namespace MPewsey.ManiaMapGodot.Generators
             return new string[] { "CollectableGroups" };
         }
 
-        public CollectableGroups CreateGroups()
+        private CollectableGroups GetMMCollectableGroups()
         {
             var groups = new CollectableGroups();
 

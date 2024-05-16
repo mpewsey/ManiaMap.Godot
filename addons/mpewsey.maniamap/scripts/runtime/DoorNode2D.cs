@@ -46,6 +46,11 @@ namespace MPewsey.ManiaMapGodot
                 RemoveFromActiveRoomDoors();
         }
 
+        public Door GetMMDoor()
+        {
+            return new Door(DoorType, (DoorCode)DoorCode);
+        }
+
         public override void AutoAssign(RoomNode2D room)
         {
             base.AutoAssign(room);

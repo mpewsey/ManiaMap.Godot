@@ -7,6 +7,6 @@ namespace MPewsey.ManiaMapGodot
     public partial class CollectableGroupEntry : Resource
     {
         [Export] public CollectableResource Collectable { get; set; }
-        [Export] public int Quantity { get; set; }
+        [Export(PropertyHint.Range, "0,100,1,or_greater")] public int Quantity { get; set; }
     }
 }

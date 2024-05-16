@@ -1,6 +1,5 @@
 using Godot;
 using MPewsey.Common.Collections;
-using MPewsey.Common.Mathematics;
 using MPewsey.ManiaMap;
 using System;
 using System.Collections.Generic;
@@ -192,18 +191,20 @@ namespace MPewsey.ManiaMapGodot
 
                 for (int i = startRow; i <= endRow; i++)
                 {
+                    var row = ActiveCells[i];
+
                     for (int j = startColumn; j <= endColumn; j++)
                     {
                         switch (activity)
                         {
                             case CellActivity.Activate:
-                                ActiveCells[i][j] = true;
+                                row[j] = true;
                                 break;
                             case CellActivity.Deactivate:
-                                ActiveCells[i][j] = false;
+                                row[j] = false;
                                 break;
                             case CellActivity.Toggle:
-                                ActiveCells[i][j] = !ActiveCells[i][j];
+                                row[j] = !row[j];
                                 break;
                             default:
                                 throw new NotImplementedException($"Unhandled cell activity: {activity}.");
@@ -307,25 +308,30 @@ namespace MPewsey.ManiaMapGodot
             var column = Mathf.FloorToInt(position.X / CellSize.X);
             var row = Mathf.FloorToInt(position.Y / CellSize.Y);
 
-            if ((uint)row < (uint)Rows && (uint)column < (uint)Columns)
+            if (CellIndexExists(row, column))
                 return new Vector2I(row, column);
 
             return new Vector2I(-1, -1);
         }
 
-        public RoomTemplate CreateRoomTemplate(int id, string name)
+        public bool CellIndexExists(int row, int column)
         {
-            var cells = CreateCellTemplates();
-            CreateDoors(cells);
-            CreateFeatures(cells);
-            var spots = CreateCollectableSpots();
+            return (uint)row < (uint)Rows && (uint)column < (uint)Columns;
+        }
+
+        public RoomTemplate GetMMRoomTemplate(int id, string name)
+        {
+            var cells = GetMMCells();
+            AddMMDoors(cells);
+            AddMMFeatures(cells);
+            var spots = GetMMCollectableSpots();
             var template = new RoomTemplate(id, name, cells, spots);
             template.Validate();
             ValidateRoomFlags();
             return template;
         }
 
-        private HashMap<int, CollectableSpot> CreateCollectableSpots()
+        private HashMap<int, CollectableSpot> GetMMCollectableSpots()
         {
             var nodes = FindChildren("*", nameof(CollectableSpot2D));
             var result = new HashMap<int, CollectableSpot>();
@@ -333,14 +339,13 @@ namespace MPewsey.ManiaMapGodot
             foreach (var node in nodes)
             {
                 var spot = (CollectableSpot2D)node;
-                var index = new Vector2DInt(spot.Row, spot.Column);
-                result.Add(spot.Id, new CollectableSpot(index, spot.CollectableGroup.GroupName, spot.Weight));
+                result.Add(spot.Id, spot.GetMMCollectableSpot());
             }
 
             return result;
         }
 
-        private void CreateDoors(Array2D<Cell> cells)
+        private void AddMMDoors(Array2D<Cell> cells)
         {
             var nodes = FindChildren("*", nameof(DoorNode2D));
 
@@ -348,11 +353,11 @@ namespace MPewsey.ManiaMapGodot
             {
                 var door = (DoorNode2D)node;
                 var cell = cells[door.Row, door.Column];
-                cell.SetDoor(door.DoorDirection, new Door(door.DoorType, (DoorCode)door.DoorCode));
+                cell.SetDoor(door.DoorDirection, door.GetMMDoor());
             }
         }
 
-        private Array2D<Cell> CreateCellTemplates()
+        private Array2D<Cell> GetMMCells()
         {
             SizeActiveCells();
             var cells = new Array2D<Cell>(Rows, Columns);
@@ -371,7 +376,7 @@ namespace MPewsey.ManiaMapGodot
             return cells;
         }
 
-        private void CreateFeatures(Array2D<Cell> cells)
+        private void AddMMFeatures(Array2D<Cell> cells)
         {
             var nodes = FindChildren("*", nameof(Feature2D));
 
@@ -383,7 +388,7 @@ namespace MPewsey.ManiaMapGodot
             }
         }
 
-        private void ValidateRoomFlags()
+        public void ValidateRoomFlags()
         {
             var nodes = FindChildren("*", nameof(RoomFlag2D));
             var flags = new HashSet<int>(nodes.Count);

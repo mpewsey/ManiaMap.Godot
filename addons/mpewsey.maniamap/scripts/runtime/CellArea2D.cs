@@ -58,13 +58,13 @@ namespace MPewsey.ManiaMapGodot
 
         private void EmitOnCellEntered(Node collision)
         {
-            Room.RoomState.SetCellVisibility(Row, Column, true);
-            Room.EmitOnCellAreaEntered(this, collision);
+            Room?.RoomState?.SetCellVisibility(Row, Column, true);
+            Room?.EmitOnCellAreaEntered(this, collision);
         }
 
         private void EmitOnCellExited(Node collision)
         {
-            Room.EmitOnCellAreaExited(this, collision);
+            Room?.EmitOnCellAreaExited(this, collision);
         }
     }
 }

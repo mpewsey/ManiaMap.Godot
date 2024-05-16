@@ -11,14 +11,13 @@ namespace MPewsey.ManiaMapGodot
         [Export] public string Name { get; set; } = "<None>";
         [Export] public TemplateGroupEntry[] Entries { get; set; } = Array.Empty<TemplateGroupEntry>();
 
-        public TemplateGroupsEntry[] GetEntries()
+        public TemplateGroupsEntry[] GetMMTemplateGroupEntries()
         {
             var result = new TemplateGroupsEntry[Entries.Length];
 
             for (int i = 0; i < Entries.Length; i++)
             {
-                var entry = Entries[i];
-                result[i] = new TemplateGroupsEntry(entry.RoomTemplate.Template, entry.MinQuantity, entry.MaxQuantity);
+                result[i] = Entries[i].GetMMTemplateGroupsEntry();
             }
 
             return result;

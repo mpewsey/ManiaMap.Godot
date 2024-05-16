@@ -89,6 +89,6 @@ namespace MPewsey.ManiaMapGodot
                 }
             }
         }
-#endif
     }
 }
+#endif

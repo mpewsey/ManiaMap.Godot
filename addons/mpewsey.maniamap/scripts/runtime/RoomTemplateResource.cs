@@ -56,7 +56,7 @@ namespace MPewsey.ManiaMapGodot
             var node = (Node)room;
             var scenePath = node.SceneFilePath;
             var sceneUidPath = ResourceUid.IdToText(ResourceLoader.GetResourceUid(scenePath));
-            var template = room.CreateRoomTemplate(Id, TemplateName);
+            var template = room.GetMMRoomTemplate(Id, TemplateName);
             SerializedText = JsonSerialization.GetJsonString(template, new JsonWriterSettings());
             ScenePath = scenePath;
             SceneUidPath = sceneUidPath;

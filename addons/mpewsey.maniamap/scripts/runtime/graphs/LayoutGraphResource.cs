@@ -1,5 +1,4 @@
 using Godot;
-using MPewsey.ManiaMap;
 using MPewsey.ManiaMap.Graphs;
 using System;
 using System.Collections.Generic;
@@ -218,45 +217,28 @@ namespace MPewsey.ManiaMapGodot.Graphs
             return result;
         }
 
-        public LayoutGraph GetGraph()
+        public LayoutGraph GetMMLayoutGraph()
         {
             var graph = new LayoutGraph(Id, Name);
-            CreateGraphNodes(graph);
-            CreateGraphEdges(graph);
+            AddMMLayoutNodes(graph);
+            AddMMLayoutEdges(graph);
             graph.Validate();
             return graph;
         }
 
-        private void CreateGraphNodes(LayoutGraph graph)
+        private void AddMMLayoutNodes(LayoutGraph graph)
         {
-            foreach (var resource in Nodes.Values)
+            foreach (var node in Nodes.Values)
             {
-                var node = graph.AddNode(resource.Id);
-                node.Name = resource.Name;
-                node.Color = ColorUtility.ConvertColorToColor4(resource.Color);
-                node.TemplateGroup = resource.TemplateGroup.Name;
-                node.Z = resource.Z;
-                node.Tags = new List<string>(resource.Tags);
-
-                if (!string.IsNullOrWhiteSpace(resource.VariationGroup))
-                    graph.AddNodeVariation(resource.VariationGroup, node.Id);
+                node.AddMMLayoutNode(graph);
             }
         }
 
-        private void CreateGraphEdges(LayoutGraph graph)
+        private void AddMMLayoutEdges(LayoutGraph graph)
         {
-            foreach (var resource in Edges.Values)
+            foreach (var edge in Edges.Values)
             {
-                var edge = graph.AddEdge(resource.FromNode, resource.ToNode);
-                edge.Name = resource.Name;
-                edge.Direction = resource.Direction;
-                edge.TemplateGroup = resource.TemplateGroup?.Name;
-                edge.Color = ColorUtility.ConvertColorToColor4(resource.Color);
-                edge.Z = resource.Z;
-                edge.RequireRoom = resource.RequireRoom;
-                edge.RoomChance = resource.RoomChance;
-                edge.Tags = new List<string>(resource.Tags);
-                edge.DoorCode = (DoorCode)resource.DoorCode;
+                edge.AddMMLayoutEdge(graph);
             }
         }
     }

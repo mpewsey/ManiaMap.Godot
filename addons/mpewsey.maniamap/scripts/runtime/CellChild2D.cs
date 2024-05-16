@@ -7,8 +7,8 @@ namespace MPewsey.ManiaMapGodot
     public abstract partial class CellChild2D : Node2D
     {
         [Export] public bool AutoAssignCell { get; set; } = true;
-        [Export] public int Row { get; set; }
-        [Export] public int Column { get; set; }
+        [Export(PropertyHint.Range, "0,10,1,or_greater")] public int Row { get; set; }
+        [Export(PropertyHint.Range, "0,10,1,or_greater")] public int Column { get; set; }
         [Export] public RoomNode2D Room { get; set; }
 
         public virtual void AutoAssign(RoomNode2D room)

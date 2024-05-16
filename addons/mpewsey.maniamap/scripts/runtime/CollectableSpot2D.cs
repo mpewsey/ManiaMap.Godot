@@ -1,4 +1,6 @@
 using Godot;
+using MPewsey.Common.Mathematics;
+using MPewsey.ManiaMap;
 
 namespace MPewsey.ManiaMapGodot
 {
@@ -17,11 +19,17 @@ namespace MPewsey.ManiaMapGodot
             Id = Rand.AutoAssignId(Id);
         }
 
-        public int CollectableId()
+        public CollectableSpot GetMMCollectableSpot()
+        {
+            var index = new Vector2DInt(Row, Column);
+            return new CollectableSpot(index, CollectableGroup.GroupName, Weight);
+        }
+
+        public int? CollectableId()
         {
             if (Room.RoomLayout.Collectables.TryGetValue(Id, out var collectableId))
                 return collectableId;
-            return int.MinValue;
+            return null;
         }
 
         public bool CollectableExists()
