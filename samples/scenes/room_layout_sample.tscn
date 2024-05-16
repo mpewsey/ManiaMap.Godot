@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://r4g6j31sivcq"]
+[gd_scene load_steps=15 format=3 uid="uid://r4g6j31sivcq"]
 
 [ext_resource type="Script" path="res://samples/scripts/RoomLayoutSample.cs" id="1_h7rix"]
 [ext_resource type="Resource" uid="uid://biswrlal64ytr" path="res://samples/template_groups/single_square_template_group.tres" id="2_33848"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphRandomizerStep.cs" id="10_a52k0"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGeneratorStep.cs" id="11_ykao8"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGeneratorStep.cs" id="12_y7aup"]
+[ext_resource type="Script" path="res://samples/scripts/CameraController.cs" id="13_vrntc"]
 
 [sub_resource type="Resource" id="Resource_fd1tx"]
 script = ExtResource("3_thjmg")
@@ -19,7 +20,7 @@ TemplateGroups = [ExtResource("2_33848")]
 
 [node name="RoomLayoutSample" type="Node" node_paths=PackedStringArray("Camera", "Container", "Pipeline", "GenerateButton", "MessageLabel")]
 script = ExtResource("1_h7rix")
-Camera = NodePath("Camera2D")
+Camera = NodePath("CameraController")
 Container = NodePath("Container")
 Pipeline = NodePath("GenerationPipeline")
 GenerateButton = NodePath("UI/HBoxContainer/GenerateButton")
@@ -70,6 +71,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0.145098, 0.0745098, 0.101961, 1)
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -115,4 +117,5 @@ autowrap_mode = 0
 layout_mode = 2
 text = "Generate"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="CameraController" type="Camera2D" parent="."]
+script = ExtResource("13_vrntc")

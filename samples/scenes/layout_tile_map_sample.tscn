@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvw8glksk76gx"]
+
+[ext_resource type="Script" path="res://samples/scripts/LayoutTileMapSample.cs" id="1_dndsn"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/drawing/LayoutTileMap.cs" id="2_n2qxi"]
+[ext_resource type="Resource" uid="uid://bwrla0hqiarrv" path="res://addons/mpewsey.maniamap/map_tiles/default_map_tile_set.tres" id="3_phkx2"]
+[ext_resource type="Script" path="res://samples/scripts/CameraController.cs" id="4_s7yhs"]
+
+[node name="LayoutTileMapSample" type="Node" node_paths=PackedStringArray("Camera", "Map")]
+script = ExtResource("1_dndsn")
+Camera = NodePath("CameraController")
+Map = NodePath("LayoutTileMap")
+
+[node name="LayoutTileMap" type="Node2D" parent="."]
+script = ExtResource("2_n2qxi")
+MapTileSet = ExtResource("3_phkx2")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
+[node name="CameraController" type="Camera2D" parent="."]
+script = ExtResource("4_s7yhs")
+ZoomSpeed = 2.0
