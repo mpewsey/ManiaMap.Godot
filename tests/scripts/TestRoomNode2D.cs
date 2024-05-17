@@ -35,6 +35,14 @@ namespace MPewsey.ManiaMapGodot.Tests
             return ISceneRunner.Load(scene.ResourcePath, true, true);
         }
 
+        private static async Task AwaitPhysicsFrames(Node node, int count = 2)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                await node.ToSignal(node.GetTree(), SceneTree.SignalName.PhysicsFrame);
+            }
+        }
+
         [TestCase]
         public void TestAutoAssign()
         {
@@ -134,40 +142,60 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public async Task TestOnAreaEnteredCellArea()
         {
+            uint cellCollisionMask = 1;
             var indexes = new HashSet<Vector2>();
-            var database = ResourceLoader.Load<TemplateGroupDatabase>(TemplateGroupDatabase);
 
+            // Create a layout and initialize the ManiaMap manager.
             var runner = LoadScene(TestCellAreasScene);
             var root = runner.Scene();
-            var settings = new ManiaMapSettings() { CellCollisionMask = 1 };
-            var pipeline = root.GetChild(0) as GenerationPipeline;
+            var settings = new ManiaMapSettings() { CellCollisionMask = cellCollisionMask };
+            var pipeline = root.FindChild(nameof(GenerationPipeline)) as GenerationPipeline;
             Assertions.AssertThat(pipeline != null).IsTrue();
             var results = pipeline.Run(logger: GD.Print);
             Assertions.AssertThat(results.Success).IsTrue();
             var layout = results.GetOutput<Layout>("Layout");
-
             var state = new LayoutState(layout);
             var roomId = layout.Rooms.Keys.First();
             var roomState = state.RoomStates[roomId];
             ManiaMapManager.Initialize(layout, state, settings);
 
+            // Create room and hook up signals to detect the cells the test area is touching.
+            var database = ResourceLoader.Load<TemplateGroupDatabase>(TemplateGroupDatabase);
             var room = database.CreateRoom2DInstance(roomId, root);
+            var cellSize = room.CellSize;
             room.OnCellAreaEntered += (area, collision) => indexes.Add(new Vector2(area.Row, area.Column));
             room.OnCellAreaExited += (area, collision) => indexes.Remove(new Vector2(area.Row, area.Column));
 
+            // Move the area around and test the detected areas.
             var area = root.FindChild(nameof(Area2D)) as Area2D;
             Assertions.AssertThat(area != null).IsTrue();
-            Assertions.AssertThat(area.CollisionLayer).IsEqual(1);
+            Assertions.AssertThat(area.CollisionLayer).IsEqual(cellCollisionMask);
             area.MoveToFront();
-            await root.ToSignal(root.GetTree(), SceneTree.SignalName.PhysicsFrame);
+
+            // Area should start out with no collisions
+            await AwaitPhysicsFrames(root);
             Assertions.AssertThat(indexes.Count).IsEqual(0);
             Assertions.AssertThat(roomState.CellIsVisible(0, 0)).IsFalse();
+
+            // Move area inside (0, 0) cell.
             area.GlobalPosition = new Vector2(10, 10);
-            await root.ToSignal(root.GetTree(), SceneTree.SignalName.PhysicsFrame);
+            await AwaitPhysicsFrames(root);
             Assertions.AssertThat(indexes.Count).IsEqual(1);
+            Assertions.AssertThat(indexes.Contains(new Vector2(0, 0))).IsTrue();
             Assertions.AssertThat(roomState.CellIsVisible(0, 0)).IsTrue();
+
+            // Move area to border of (0, 0) and (0, 1) cell.
+            area.GlobalPosition = new Vector2(cellSize.X, 0);
+            await AwaitPhysicsFrames(root);
+            Assertions.AssertThat(indexes.Count).IsEqual(2);
+            Assertions.AssertThat(indexes.Contains(new Vector2(0, 0))).IsTrue();
+            Assertions.AssertThat(indexes.Contains(new Vector2(0, 1))).IsTrue();
+            Assertions.AssertThat(roomState.CellIsVisible(0, 0)).IsTrue();
+            Assertions.AssertThat(roomState.CellIsVisible(0, 1)).IsTrue();
+
+            // Move area outside of all cells
             area.GlobalPosition = new Vector2(-100, -100);
-            await root.ToSignal(root.GetTree(), SceneTree.SignalName.PhysicsFrame);
+            await AwaitPhysicsFrames(root);
             Assertions.AssertThat(indexes.Count).IsEqual(0);
         }
     }

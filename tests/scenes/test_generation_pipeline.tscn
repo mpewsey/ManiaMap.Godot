@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGeneratorStep.cs" id="8_2jb8k"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGeneratorStep.cs" id="9_sldot"]
 
-[node name="SingleSquareCrossPipeline" type="Node"]
+[node name="GenerationPipeline" type="Node"]
 script = ExtResource("1_v03jm")
 
 [node name="Inputs" type="Node" parent="."]
