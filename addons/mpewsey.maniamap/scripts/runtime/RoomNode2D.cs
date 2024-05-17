@@ -157,15 +157,15 @@ namespace MPewsey.ManiaMapGodot
             IsInitialized = true;
         }
 
-        public void AutoAssign(bool run = true)
+        public bool AutoAssign(bool run = true)
         {
             if (!run)
-                return;
+                return false;
 
             RoomTemplate ??= new RoomTemplateResource() { TemplateName = Name };
             RoomTemplate.Id = Rand.AutoAssignId(RoomTemplate.Id);
             SizeActiveCells();
-            var nodes = FindChildren("*", nameof(CellChild2D));
+            var nodes = FindChildren("*", nameof(CellChild2D), true, false);
 
             foreach (var node in nodes)
             {
@@ -174,6 +174,7 @@ namespace MPewsey.ManiaMapGodot
             }
 
             GD.PrintRich($"[color=#00ff00]Performed auto assign on {nodes.Count} cell children.[/color]");
+            return true;
         }
 
         public void SetCellActivities(Vector2 startPosition, Vector2 endPosition, CellActivity activity)
@@ -333,7 +334,7 @@ namespace MPewsey.ManiaMapGodot
 
         private HashMap<int, CollectableSpot> GetMMCollectableSpots()
         {
-            var nodes = FindChildren("*", nameof(CollectableSpot2D));
+            var nodes = FindChildren("*", nameof(CollectableSpot2D), true, false);
             var result = new HashMap<int, CollectableSpot>();
 
             foreach (var node in nodes)
@@ -347,7 +348,7 @@ namespace MPewsey.ManiaMapGodot
 
         private void AddMMDoors(Array2D<Cell> cells)
         {
-            var nodes = FindChildren("*", nameof(DoorNode2D));
+            var nodes = FindChildren("*", nameof(DoorNode2D), true, false);
 
             foreach (var node in nodes)
             {
@@ -378,7 +379,7 @@ namespace MPewsey.ManiaMapGodot
 
         private void AddMMFeatures(Array2D<Cell> cells)
         {
-            var nodes = FindChildren("*", nameof(Feature2D));
+            var nodes = FindChildren("*", nameof(Feature2D), true, false);
 
             foreach (var node in nodes)
             {
@@ -390,7 +391,7 @@ namespace MPewsey.ManiaMapGodot
 
         public void ValidateRoomFlags()
         {
-            var nodes = FindChildren("*", nameof(RoomFlag2D));
+            var nodes = FindChildren("*", nameof(RoomFlag2D), true, false);
             var flags = new HashSet<int>(nodes.Count);
 
             foreach (var node in nodes)
@@ -402,15 +403,15 @@ namespace MPewsey.ManiaMapGodot
             }
         }
 
-        public void UpdateRoomTemplateResource(bool run = true)
+        public bool UpdateRoomTemplateResource(bool run = true)
         {
             if (!run)
-                return;
+                return false;
 
             if (!SceneIsSavedToFile())
             {
                 GD.PrintErr("Scene must be saved to file first.");
-                return;
+                return false;
             }
 
             AutoAssign();
@@ -425,6 +426,7 @@ namespace MPewsey.ManiaMapGodot
             }
 
             GD.Print("Room template updated.");
+            return true;
         }
 
         private bool ResourceIsSavedToFile(Resource resource)

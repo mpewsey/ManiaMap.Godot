@@ -105,7 +105,7 @@ namespace MPewsey.ManiaMapGodot.Generators
 
         public List<GenerationStep> FindStepNodes()
         {
-            var nodes = FindChildren("*", nameof(GenerationStep));
+            var nodes = FindChildren("*", nameof(GenerationStep), true, false);
             var result = new List<GenerationStep>(nodes.Count);
 
             foreach (var node in nodes)
@@ -118,7 +118,7 @@ namespace MPewsey.ManiaMapGodot.Generators
 
         public List<GenerationInput> FindInputNodes()
         {
-            var nodes = FindChildren("*", nameof(GenerationInput));
+            var nodes = FindChildren("*", nameof(GenerationInput), true, false);
             var result = new List<GenerationInput>(nodes.Count);
 
             foreach (var node in nodes)

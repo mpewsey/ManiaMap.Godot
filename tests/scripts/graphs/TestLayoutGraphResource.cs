@@ -1,5 +1,6 @@
 using GdUnit4;
 using Godot;
+using System;
 
 namespace MPewsey.ManiaMapGodot.Graphs.Tests
 {
@@ -24,7 +25,7 @@ namespace MPewsey.ManiaMapGodot.Graphs.Tests
         {
             var graph = new LayoutGraphResource();
             var node = graph.AddNode(1, Vector2.Zero);
-            Assertions.AssertThrown(() => graph.AddNode(node.Id, Vector2.Zero));
+            Assertions.AssertThrown(() => graph.AddNode(node.Id, Vector2.Zero)).IsInstanceOf<Exception>();
         }
 
         [TestCase]
@@ -62,8 +63,8 @@ namespace MPewsey.ManiaMapGodot.Graphs.Tests
         {
             var graph = new LayoutGraphResource();
             graph.AddNode(1, Vector2.Zero);
-            Assertions.AssertThrown(() => graph.AddEdge(1, 2));
-            Assertions.AssertThrown(() => graph.AddEdge(2, 1));
+            Assertions.AssertThrown(() => graph.AddEdge(1, 2)).IsInstanceOf<Exception>();
+            Assertions.AssertThrown(() => graph.AddEdge(2, 1)).IsInstanceOf<Exception>();
         }
 
         [TestCase]
@@ -81,7 +82,7 @@ namespace MPewsey.ManiaMapGodot.Graphs.Tests
         public void TestGetEdgeThrowsExceptionForNonExistentEdge()
         {
             var graph = new LayoutGraphResource();
-            Assertions.AssertThrown(() => graph.GetEdge(1, 2));
+            Assertions.AssertThrown(() => graph.GetEdge(1, 2)).IsInstanceOf<Exception>();
         }
 
         [TestCase]
