@@ -1,4 +1,5 @@
 using Godot;
+using MPewsey.ManiaMap;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,20 @@ namespace MPewsey.ManiaMapGodot
     public partial class TemplateGroupDatabase : Resource
     {
         [Export] public TemplateGroup[] TemplateGroups { get; set; } = Array.Empty<TemplateGroup>();
+
+        public RoomTemplateResource FindRoomTemplate(int id)
+        {
+            foreach (var group in TemplateGroups)
+            {
+                foreach (var entry in group.Entries)
+                {
+                    if (id == entry.RoomTemplate.Id)
+                        return entry.RoomTemplate;
+                }
+            }
+
+            return null;
+        }
 
         public Dictionary<int, RoomTemplateResource> GetRoomTemplatesById()
         {
@@ -44,6 +59,14 @@ namespace MPewsey.ManiaMapGodot
                     RoomNode2D.CreateInstance(room.Id, template.LoadScene(), parent);
                 }
             }
+        }
+
+        public RoomNode2D CreateRoom2DInstance(Uid id, Node parent)
+        {
+            var manager = ManiaMapManager.Current;
+            var room = manager.Layout.Rooms[id];
+            var template = FindRoomTemplate(room.Template.Id);
+            return RoomNode2D.CreateInstance(id, template.LoadScene(), parent);
         }
     }
 }

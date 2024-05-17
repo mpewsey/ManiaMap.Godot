@@ -1,12 +1,20 @@
 using GdUnit4;
 using Godot;
+using MPewsey.ManiaMap;
+using MPewsey.ManiaMapGodot.Generators;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MPewsey.ManiaMapGodot.Tests
 {
     [TestSuite]
     public class TestRoomNode2D
     {
+        private const string TestCellAreasScene = "uid://i1ywx2t50wxg";
+        private const string TemplateGroupDatabase = "uid://cpbx1jxf4xwvd";
         private const string ArtifactDirectory = "user://tests/room2d/";
 
         [Before]
@@ -18,6 +26,13 @@ namespace MPewsey.ManiaMapGodot.Tests
                 Directory.Delete(path, true);
 
             Directory.CreateDirectory(path);
+        }
+
+        private static ISceneRunner LoadScene(string name)
+        {
+            var scene = ResourceLoader.Load<PackedScene>(name);
+            Assertions.AssertThat(scene != null).IsTrue();
+            return ISceneRunner.Load(scene.ResourcePath, true, true);
         }
 
         [TestCase]
@@ -75,6 +90,85 @@ namespace MPewsey.ManiaMapGodot.Tests
             Assertions.AssertThat(savedFeature.Row).IsEqual(2);
             Assertions.AssertThat(savedFeature.Column).IsEqual(1);
             savedRoom.QueueFree();
+        }
+
+        [TestCase]
+        public void TestValidateRoomFlagsThrowsException()
+        {
+            var room = new RoomNode2D();
+            var flag1 = new RoomFlag2D() { Id = 1 };
+            var flag2 = new RoomFlag2D() { Id = 1 };
+            room.AddChild(flag1);
+            room.AddChild(flag2);
+            Assertions.AssertThrown(() => room.ValidateRoomFlags()).IsInstanceOf<Exception>();
+            room.QueueFree();
+        }
+
+        [TestCase]
+        public void TestValidateRoomFlags()
+        {
+            var room = new RoomNode2D();
+            var flag1 = new RoomFlag2D() { Id = 1 };
+            var flag2 = new RoomFlag2D() { Id = 2 };
+            room.AddChild(flag1);
+            room.AddChild(flag2);
+            Assertions.AssertThat(room.FindChildren("*", nameof(RoomFlag2D), true, false).Count).IsGreater(0);
+            room.ValidateRoomFlags();
+            room.QueueFree();
+        }
+
+        [TestCase]
+        public void TestCellIndexExists()
+        {
+            var room = new RoomNode2D() { Rows = 2, Columns = 3 };
+            Assertions.AssertThat(room.CellIndexExists(0, 0)).IsTrue();
+            Assertions.AssertThat(room.CellIndexExists(1, 0)).IsTrue();
+            Assertions.AssertThat(room.CellIndexExists(0, 2)).IsTrue();
+            Assertions.AssertThat(room.CellIndexExists(-1, 0)).IsFalse();
+            Assertions.AssertThat(room.CellIndexExists(0, -1)).IsFalse();
+            Assertions.AssertThat(room.CellIndexExists(2, 0)).IsFalse();
+            Assertions.AssertThat(room.CellIndexExists(0, 3)).IsFalse();
+            room.QueueFree();
+        }
+
+        [TestCase]
+        public async Task TestOnAreaEnteredCellArea()
+        {
+            var indexes = new HashSet<Vector2>();
+            var database = ResourceLoader.Load<TemplateGroupDatabase>(TemplateGroupDatabase);
+
+            var runner = LoadScene(TestCellAreasScene);
+            var root = runner.Scene();
+            var settings = new ManiaMapSettings() { CellCollisionMask = 1 };
+            var pipeline = root.GetChild(0) as GenerationPipeline;
+            Assertions.AssertThat(pipeline != null).IsTrue();
+            var results = pipeline.Run(logger: GD.Print);
+            Assertions.AssertThat(results.Success).IsTrue();
+            var layout = results.GetOutput<Layout>("Layout");
+
+            var state = new LayoutState(layout);
+            var roomId = layout.Rooms.Keys.First();
+            var roomState = state.RoomStates[roomId];
+            ManiaMapManager.Initialize(layout, state, settings);
+
+            var room = database.CreateRoom2DInstance(roomId, root);
+            room.OnCellAreaEntered += (area, collision) => indexes.Add(new Vector2(area.Row, area.Column));
+            room.OnCellAreaExited += (area, collision) => indexes.Remove(new Vector2(area.Row, area.Column));
+
+            var area = root.FindChild(nameof(Area2D)) as Area2D;
+            Assertions.AssertThat(area != null).IsTrue();
+            Assertions.AssertThat(area.CollisionLayer).IsEqual(1);
+            area.MoveToFront();
+            await root.ToSignal(root.GetTree(), SceneTree.SignalName.PhysicsFrame);
+            Assertions.AssertThat(indexes.Count).IsEqual(0);
+            Assertions.AssertThat(roomState.CellIsVisible(0, 0)).IsFalse();
+            area.GlobalPosition = new Vector2(10, 10);
+            await root.ToSignal(root.GetTree(), SceneTree.SignalName.PhysicsFrame);
+            Assertions.AssertThat(indexes.Count).IsEqual(1);
+            Assertions.AssertThat(roomState.CellIsVisible(0, 0)).IsTrue();
+            area.GlobalPosition = new Vector2(-100, -100);
+            await root.ToSignal(root.GetTree(), SceneTree.SignalName.PhysicsFrame);
+            Assertions.AssertThat(indexes.Count).IsEqual(0);
         }
     }
 }

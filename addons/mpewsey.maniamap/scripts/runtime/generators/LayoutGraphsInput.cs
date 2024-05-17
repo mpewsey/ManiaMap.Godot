@@ -1,5 +1,6 @@
 using Godot;
 using MPewsey.ManiaMap;
+using MPewsey.ManiaMap.Generators;
 using MPewsey.ManiaMap.Graphs;
 using MPewsey.ManiaMapGodot.Graphs;
 using System;
@@ -53,9 +54,9 @@ namespace MPewsey.ManiaMapGodot.Generators
             return result;
         }
 
-        private Func<LayoutGraph>[] GetMMLayoutGraphDelegates()
+        private LayoutGraphSelector.LayoutGraphDelegate[] GetMMLayoutGraphDelegates()
         {
-            var result = new Func<LayoutGraph>[LayoutGraphs.Length];
+            var result = new LayoutGraphSelector.LayoutGraphDelegate[LayoutGraphs.Length];
 
             for (int i = 0; i < result.Length; i++)
             {
