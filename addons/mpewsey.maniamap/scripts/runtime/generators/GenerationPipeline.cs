@@ -235,5 +235,21 @@ namespace MPewsey.ManiaMapGodot.Generators
                 }
             }
         }
+
+        public void SetRandomSeed(int seed)
+        {
+            var children = FindChildren("*", nameof(RandomSeedInput), true, false);
+
+            if (children.Count == 0)
+                throw new Exception("Random seed input not found.");
+            if (children.Count > 1)
+                throw new Exception($"Generation pipeline has multiple random seed inputs: {children.Count}.");
+
+            foreach (var child in children)
+            {
+                var input = (RandomSeedInput)child;
+                input.RandomSeed = seed;
+            }
+        }
     }
 }

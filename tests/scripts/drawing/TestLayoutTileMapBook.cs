@@ -1,7 +1,7 @@
 using GdUnit4;
-using Godot;
 using MPewsey.ManiaMap;
 using MPewsey.ManiaMap.Samples;
+using MPewsey.ManiaMapGodot.Tests;
 
 namespace MPewsey.ManiaMapGodot.Drawing.Tests
 {
@@ -10,17 +10,10 @@ namespace MPewsey.ManiaMapGodot.Drawing.Tests
     {
         private const string LayoutTileMapBookScene = "uid://npua7l2tbnn0";
 
-        private static ISceneRunner LoadScene(string name)
-        {
-            var scene = ResourceLoader.Load<PackedScene>(name);
-            Assertions.AssertThat(scene != null).IsTrue();
-            return ISceneRunner.Load(scene.ResourcePath, true, true);
-        }
-
         [TestCase]
         public void TestDrawMap()
         {
-            var runner = LoadScene(LayoutTileMapBookScene);
+            var runner = SceneRunner.RunScene(LayoutTileMapBookScene);
             var map = runner.Scene() as LayoutTileMapBook;
             Assertions.AssertThat(map != null).IsTrue();
 

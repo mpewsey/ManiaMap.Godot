@@ -30,17 +30,10 @@ namespace MPewsey.ManiaMapGodot.Tests
             new Vector2(0.5f, 0.25f),
         };
 
-        private static ISceneRunner LoadScene(string name)
-        {
-            var scene = ResourceLoader.Load<PackedScene>(name);
-            Assertions.AssertThat(scene != null).IsTrue();
-            return ISceneRunner.Load(scene.ResourcePath, true, true);
-        }
-
         [TestCase]
         public void TestOutOfBoundsParameterizePosition()
         {
-            var runner = LoadScene(EmptyScene);
+            var runner = SceneRunner.RunScene(EmptyScene);
             var threshold = new DoorThreshold2D() { Width = 100, Height = 50, Position = new Vector2(200, 300) };
             runner.Scene().AddChild(threshold);
             var approx = new Vector2(0.01f, 0.01f);
@@ -65,7 +58,7 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestParameterizePosition()
         {
-            var runner = LoadScene(EmptyScene);
+            var runner = SceneRunner.RunScene(EmptyScene);
             var threshold = new DoorThreshold2D() { Width = 100, Height = 50, Position = new Vector2(200, 300) };
             runner.Scene().AddChild(threshold);
             var approx = new Vector2(0.01f, 0.01f);
@@ -86,7 +79,7 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestOutOfBoundsInterpolatePosition()
         {
-            var runner = LoadScene(EmptyScene);
+            var runner = SceneRunner.RunScene(EmptyScene);
             var threshold = new DoorThreshold2D() { Width = 100, Height = 50, Position = new Vector2(200, 300) };
             runner.Scene().AddChild(threshold);
             var approx = new Vector2(0.01f, 0.01f);
@@ -111,7 +104,7 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestInterpolatePosition()
         {
-            var runner = LoadScene(EmptyScene);
+            var runner = SceneRunner.RunScene(EmptyScene);
             var threshold = new DoorThreshold2D() { Width = 100, Height = 50, Position = new Vector2(200, 300) };
             runner.Scene().AddChild(threshold);
             var approx = new Vector2(0.01f, 0.01f);

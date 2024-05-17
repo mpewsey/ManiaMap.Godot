@@ -28,21 +28,6 @@ namespace MPewsey.ManiaMapGodot.Tests
             Directory.CreateDirectory(path);
         }
 
-        private static ISceneRunner LoadScene(string name)
-        {
-            var scene = ResourceLoader.Load<PackedScene>(name);
-            Assertions.AssertThat(scene != null).IsTrue();
-            return ISceneRunner.Load(scene.ResourcePath, true, true);
-        }
-
-        private static async Task AwaitPhysicsFrames(Node node, int count = 2)
-        {
-            for (int i = 0; i < count; i++)
-            {
-                await node.ToSignal(node.GetTree(), SceneTree.SignalName.PhysicsFrame);
-            }
-        }
-
         [TestCase]
         public void TestAutoAssign()
         {
@@ -120,7 +105,7 @@ namespace MPewsey.ManiaMapGodot.Tests
             var flag2 = new RoomFlag2D() { Id = 2 };
             room.AddChild(flag1);
             room.AddChild(flag2);
-            Assertions.AssertThat(room.FindChildren("*", nameof(RoomFlag2D), true, false).Count).IsGreater(0);
+            Assertions.AssertThat(room.FindChildren("*", nameof(RoomFlag2D), true, false).Count).IsEqual(2);
             room.ValidateRoomFlags();
             room.QueueFree();
         }
@@ -146,7 +131,7 @@ namespace MPewsey.ManiaMapGodot.Tests
             var indexes = new HashSet<Vector2>();
 
             // Create a layout and initialize the ManiaMap manager.
-            var runner = LoadScene(TestCellAreasScene);
+            var runner = SceneRunner.RunScene(TestCellAreasScene);
             var root = runner.Scene();
             var settings = new ManiaMapSettings() { CellCollisionMask = cellCollisionMask };
             var pipeline = root.FindChild(nameof(GenerationPipeline)) as GenerationPipeline;
@@ -173,20 +158,20 @@ namespace MPewsey.ManiaMapGodot.Tests
             area.MoveToFront();
 
             // Area should start out with no collisions
-            await AwaitPhysicsFrames(root);
+            await runner.AwaitPhysicsFrames();
             Assertions.AssertThat(indexes.Count).IsEqual(0);
             Assertions.AssertThat(roomState.CellIsVisible(0, 0)).IsFalse();
 
             // Move area inside (0, 0) cell.
             area.GlobalPosition = new Vector2(10, 10);
-            await AwaitPhysicsFrames(root);
+            await runner.AwaitPhysicsFrames();
             Assertions.AssertThat(indexes.Count).IsEqual(1);
             Assertions.AssertThat(indexes.Contains(new Vector2(0, 0))).IsTrue();
             Assertions.AssertThat(roomState.CellIsVisible(0, 0)).IsTrue();
 
             // Move area to border of (0, 0) and (0, 1) cell.
             area.GlobalPosition = new Vector2(cellSize.X, 0);
-            await AwaitPhysicsFrames(root);
+            await runner.AwaitPhysicsFrames();
             Assertions.AssertThat(indexes.Count).IsEqual(2);
             Assertions.AssertThat(indexes.Contains(new Vector2(0, 0))).IsTrue();
             Assertions.AssertThat(indexes.Contains(new Vector2(0, 1))).IsTrue();
@@ -195,7 +180,7 @@ namespace MPewsey.ManiaMapGodot.Tests
 
             // Move area outside of all cells
             area.GlobalPosition = new Vector2(-100, -100);
-            await AwaitPhysicsFrames(root);
+            await runner.AwaitPhysicsFrames();
             Assertions.AssertThat(indexes.Count).IsEqual(0);
         }
     }
