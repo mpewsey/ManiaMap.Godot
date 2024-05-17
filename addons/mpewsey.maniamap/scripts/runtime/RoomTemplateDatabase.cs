@@ -7,7 +7,7 @@ using System.Linq;
 namespace MPewsey.ManiaMapGodot
 {
     [GlobalClass]
-    public partial class TemplateGroupDatabase : Resource
+    public partial class RoomTemplateDatabase : Resource
     {
         [Export] public TemplateGroup[] TemplateGroups { get; set; } = Array.Empty<TemplateGroup>();
         private Dictionary<int, RoomTemplateResource> RoomTemplates { get; } = new Dictionary<int, RoomTemplateResource>();

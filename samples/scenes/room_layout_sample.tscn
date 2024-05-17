@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://r4g6j31sivcq"]
+[gd_scene load_steps=13 format=3 uid="uid://r4g6j31sivcq"]
 
 [ext_resource type="Script" path="res://samples/scripts/RoomLayoutSample.cs" id="1_h7rix"]
-[ext_resource type="Resource" uid="uid://biswrlal64ytr" path="res://samples/template_groups/single_square_template_group.tres" id="2_33848"]
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/TemplateGroupDatabase.cs" id="3_thjmg"]
+[ext_resource type="Resource" uid="uid://cpbx1jxf4xwvd" path="res://samples/template_groups/room_template_database.tres" id="2_7b3bw"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationPipeline.cs" id="4_24rdl"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationIntInput.cs" id="5_8g857"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphsInput.cs" id="6_2aawm"]
@@ -14,10 +13,6 @@
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGeneratorStep.cs" id="12_y7aup"]
 [ext_resource type="Script" path="res://samples/scripts/CameraController.cs" id="13_vrntc"]
 
-[sub_resource type="Resource" id="Resource_fd1tx"]
-script = ExtResource("3_thjmg")
-TemplateGroups = [ExtResource("2_33848")]
-
 [node name="RoomLayoutSample" type="Node" node_paths=PackedStringArray("Camera", "Container", "Pipeline", "GenerateButton", "MessageLabel")]
 script = ExtResource("1_h7rix")
 Camera = NodePath("CameraController")
@@ -25,7 +20,7 @@ Container = NodePath("Container")
 Pipeline = NodePath("GenerationPipeline")
 GenerateButton = NodePath("UI/HBoxContainer/GenerateButton")
 MessageLabel = NodePath("UI/HBoxContainer/VBoxContainer/MessageLabel")
-TemplateGroupDatabase = SubResource("Resource_fd1tx")
+RoomTemplateDatabase = ExtResource("2_7b3bw")
 
 [node name="GenerationPipeline" type="Node" parent="."]
 script = ExtResource("4_24rdl")

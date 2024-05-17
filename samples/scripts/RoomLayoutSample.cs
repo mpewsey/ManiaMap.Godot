@@ -12,7 +12,7 @@ namespace MPewsey.ManiaMapGodot.Samples
         [Export] public GenerationPipeline Pipeline { get; set; }
         [Export] public Button GenerateButton { get; set; }
         [Export] public RichTextLabel MessageLabel { get; set; }
-        [Export] public TemplateGroupDatabase TemplateGroupDatabase { get; set; }
+        [Export] public RoomTemplateDatabase RoomTemplateDatabase { get; set; }
         [Export] public Vector2 CellSize { get; set; } = new Vector2(96, 96);
 
         public override void _Ready()
@@ -61,7 +61,7 @@ namespace MPewsey.ManiaMapGodot.Samples
         {
             ManiaMapManager.Initialize(layout, new LayoutState(layout), new ManiaMapSettings());
             ClearContainer();
-            TemplateGroupDatabase.CreateRoom2DInstances(Container);
+            RoomTemplateDatabase.CreateRoom2DInstances(Container);
         }
     }
 }

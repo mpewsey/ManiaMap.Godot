@@ -14,7 +14,7 @@ namespace MPewsey.ManiaMapGodot.Tests
     public class TestRoomNode2D
     {
         private const string TestCellAreasScene = "uid://i1ywx2t50wxg";
-        private const string TemplateGroupDatabase = "uid://cpbx1jxf4xwvd";
+        private const string RoomTemplateDatabase = "uid://cpbx1jxf4xwvd";
         private const string ArtifactDirectory = "user://tests/room2d/";
 
         [Before]
@@ -160,7 +160,7 @@ namespace MPewsey.ManiaMapGodot.Tests
             ManiaMapManager.Initialize(layout, state, settings);
 
             // Create room and hook up signals to detect the cells the test area is touching.
-            var database = ResourceLoader.Load<TemplateGroupDatabase>(TemplateGroupDatabase);
+            var database = ResourceLoader.Load<RoomTemplateDatabase>(RoomTemplateDatabase);
             var room = database.CreateRoom2DInstance(roomId, root);
             var cellSize = room.CellSize;
             room.OnCellAreaEntered += (area, collision) => indexes.Add(new Vector2(area.Row, area.Column));
