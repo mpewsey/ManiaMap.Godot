@@ -10,24 +10,32 @@ namespace MPewsey.ManiaMapGodot
     public partial class TemplateGroupDatabase : Resource
     {
         [Export] public TemplateGroup[] TemplateGroups { get; set; } = Array.Empty<TemplateGroup>();
+        private Dictionary<int, RoomTemplateResource> RoomTemplates { get; } = new Dictionary<int, RoomTemplateResource>();
+        public bool IsDirty { get; private set; } = true;
 
-        public RoomTemplateResource FindRoomTemplate(int id)
+        public IReadOnlyDictionary<int, RoomTemplateResource> GetRoomTemplates()
         {
-            foreach (var group in TemplateGroups)
-            {
-                foreach (var entry in group.Entries)
-                {
-                    if (id == entry.RoomTemplate.Id)
-                        return entry.RoomTemplate;
-                }
-            }
-
-            return null;
+            PopulateIfDirty();
+            return RoomTemplates;
         }
 
-        public Dictionary<int, RoomTemplateResource> GetRoomTemplatesById()
+        public void SetDirty()
         {
-            var dict = new Dictionary<int, RoomTemplateResource>();
+            IsDirty = true;
+        }
+
+        private void PopulateIfDirty()
+        {
+            if (IsDirty)
+            {
+                PopulateRoomTemplates();
+                IsDirty = false;
+            }
+        }
+
+        private void PopulateRoomTemplates()
+        {
+            RoomTemplates.Clear();
 
             foreach (var group in TemplateGroups)
             {
@@ -35,28 +43,31 @@ namespace MPewsey.ManiaMapGodot
                 {
                     var id = entry.RoomTemplate.Id;
 
-                    if (!dict.TryGetValue(id, out var template))
-                        dict.Add(id, entry.RoomTemplate);
+                    if (!RoomTemplates.TryGetValue(id, out var template))
+                        RoomTemplates.Add(id, entry.RoomTemplate);
                     else if (template != entry.RoomTemplate)
                         throw new Exception($"Duplicate room template ID: {id}.");
                 }
             }
+        }
 
-            return dict;
+        public RoomTemplateResource GetRoomTemplate(int id)
+        {
+            PopulateIfDirty();
+            return RoomTemplates[id];
         }
 
         public void CreateRoom2DInstances(Node parent, int? z = null)
         {
             var manager = ManiaMapManager.Current;
             z ??= manager.Layout.Rooms.Values.Select(x => x.Position.Z).First();
-            var templates = GetRoomTemplatesById();
 
             foreach (var room in manager.Layout.Rooms.Values)
             {
                 if (room.Position.Z == z)
                 {
-                    var template = templates[room.Template.Id];
-                    RoomNode2D.CreateInstance(room.Id, template.LoadScene(), parent);
+                    var template = GetRoomTemplate(room.Template.Id);
+                    RoomNode2D.CreateInstance(room.Id, template.LoadScene(), parent, true);
                 }
             }
         }
@@ -65,7 +76,7 @@ namespace MPewsey.ManiaMapGodot
         {
             var manager = ManiaMapManager.Current;
             var room = manager.Layout.Rooms[id];
-            var template = FindRoomTemplate(room.Template.Id);
+            var template = GetRoomTemplate(room.Template.Id);
             return RoomNode2D.CreateInstance(id, template.LoadScene(), parent);
         }
     }

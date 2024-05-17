@@ -59,8 +59,7 @@ namespace MPewsey.ManiaMapGodot.Samples
 
         private void DrawLayout(Layout layout)
         {
-            var settings = new ManiaMapSettings() { AssignLayoutPosition = true };
-            ManiaMapManager.Initialize(layout, new LayoutState(layout), settings);
+            ManiaMapManager.Initialize(layout, new LayoutState(layout), new ManiaMapSettings());
             ClearContainer();
             TemplateGroupDatabase.CreateRoom2DInstances(Container);
         }

@@ -109,13 +109,7 @@ namespace MPewsey.ManiaMapGodot
         }
 #endif
 
-        public static RoomNode2D CreateInstance(Uid id, string scenePath, Node parent)
-        {
-            var scene = ResourceLoader.Load<PackedScene>(scenePath);
-            return CreateInstance(id, scene, parent);
-        }
-
-        public static RoomNode2D CreateInstance(Uid id, PackedScene scene, Node parent)
+        public static RoomNode2D CreateInstance(Uid id, PackedScene scene, Node parent, bool assignLayoutPosition = false)
         {
             var manager = ManiaMapManager.Current;
             var layout = manager.Layout;
@@ -124,7 +118,6 @@ namespace MPewsey.ManiaMapGodot
             var roomState = layoutState.RoomStates[id];
             var doorConnections = manager.GetDoorConnections(id);
             var collisionMask = manager.Settings.CellCollisionMask;
-            var assignLayoutPosition = manager.Settings.AssignLayoutPosition;
             return CreateInstance(scene, parent, layout, layoutState, roomLayout, roomState, doorConnections, collisionMask, assignLayoutPosition);
         }
 

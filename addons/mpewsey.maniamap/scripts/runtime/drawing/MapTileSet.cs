@@ -49,7 +49,19 @@ namespace MPewsey.ManiaMapGodot.Drawing
 
         private Dictionary<string, Vector2I> TileCoordinates { get; } = new Dictionary<string, Vector2I>();
         private Dictionary<Color, int> BackgroundAlternativeTileIds { get; } = new Dictionary<Color, int>();
-        private bool IsDirty { get; set; } = true;
+        public bool IsDirty { get; private set; } = true;
+
+        public IReadOnlyDictionary<string, Vector2I> GetTileCoordinates()
+        {
+            PopulateIfDirty();
+            return TileCoordinates;
+        }
+
+        public IReadOnlyDictionary<Color, int> GetBackgroundAlternativeTileIds()
+        {
+            PopulateIfDirty();
+            return BackgroundAlternativeTileIds;
+        }
 
         private void SetField<T>(ref T field, T value)
         {

@@ -17,7 +17,7 @@ namespace MPewsey.ManiaMapGodot.Graphs
 
         [Export] public Godot.Collections.Dictionary<int, LayoutGraphNode> Nodes { get; set; } = new Godot.Collections.Dictionary<int, LayoutGraphNode>();
         [Export] public Godot.Collections.Dictionary<Vector2I, LayoutGraphEdge> Edges { get; set; } = new Godot.Collections.Dictionary<Vector2I, LayoutGraphEdge>();
-        private bool IsDirty { get; set; }
+        public bool IsDirty { get; private set; }
 
         private void SetField<T>(ref T field, T value)
         {
