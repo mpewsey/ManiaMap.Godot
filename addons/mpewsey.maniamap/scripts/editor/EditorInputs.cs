@@ -1,3 +1,4 @@
+#if TOOLS
 using Godot;
 
 namespace MPewsey.ManiaMapGodot.Editor
@@ -41,3 +42,4 @@ namespace MPewsey.ManiaMapGodot.Editor
         }
     }
 }
+#endif

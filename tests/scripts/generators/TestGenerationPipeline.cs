@@ -76,9 +76,12 @@ namespace MPewsey.ManiaMapGodot.Generators.Tests
             var runner = SceneRunner.RunScene(SingleSquareCrossGeneratorScene);
             var pipeline = runner.Scene() as GenerationPipeline;
             Assertions.AssertThat(pipeline != null).IsTrue();
+
+            // Remove the random seed input since run attempts async uses its own.
             var randomSeedInput = pipeline.FindChild(nameof(RandomSeedInput));
             Assertions.AssertThat(randomSeedInput != null).IsTrue();
             randomSeedInput.Free();
+
             var results = await pipeline.RunAttemptsAsync(12345, logger: GD.Print);
             Assertions.AssertThat(results.Success).IsTrue();
             var layout = results.GetOutput<Layout>("Layout");

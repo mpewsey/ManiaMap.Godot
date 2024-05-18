@@ -1,3 +1,4 @@
+#if TOOLS
 namespace MPewsey.ManiaMapGodot.Graphs.Editor
 {
     public enum LayoutGraphElementFlags
@@ -7,3 +8,4 @@ namespace MPewsey.ManiaMapGodot.Graphs.Editor
         All = Node | Edge,
     }
 }
+#endif
