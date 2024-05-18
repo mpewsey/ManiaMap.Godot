@@ -286,6 +286,7 @@ namespace MPewsey.ManiaMapGodot.Graphs.Editor
         private void OnGraphResourceChanged()
         {
             SaveButton.Disabled = false;
+            FileNameLabel.Text = GraphResource.ResourcePath.GetFile();
         }
 
         public Vector2 GetPositionOffset(Vector2 position)
