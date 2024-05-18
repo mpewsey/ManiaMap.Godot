@@ -53,15 +53,10 @@ namespace MPewsey.ManiaMapGodot.Samples
 
             MessageLabel.Text = string.Empty;
             var layout = results.GetOutput<Layout>("Layout");
-            DrawLayout(layout);
-            Camera.CenterCameraView(layout, CellSize);
-        }
-
-        private void DrawLayout(Layout layout)
-        {
             ManiaMapManager.Initialize(layout, new LayoutState(layout), new ManiaMapSettings());
             ClearContainer();
             RoomTemplateDatabase.CreateRoom2DInstances(Container);
+            Camera.CenterCameraView(layout, CellSize);
         }
     }
 }

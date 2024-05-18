@@ -2,6 +2,7 @@ using Godot;
 using MPewsey.Common.Serialization;
 using MPewsey.ManiaMap;
 using System;
+using System.Threading.Tasks;
 
 namespace MPewsey.ManiaMapGodot
 {
@@ -62,14 +63,24 @@ namespace MPewsey.ManiaMapGodot
             SceneUidPath = sceneUidPath;
         }
 
-        public PackedScene LoadScene()
+        public string GetScenePath()
         {
             if (ResourceLoader.Exists(SceneUidPath))
-                return ResourceLoader.Load<PackedScene>(SceneUidPath);
+                return SceneUidPath;
             if (ResourceLoader.Exists(ScenePath))
-                return ResourceLoader.Load<PackedScene>(ScenePath);
+                return ScenePath;
 
             throw new Exception($"Scene paths do not exist: (SceneUidPath = {SceneUidPath}, ScenePath = {ScenePath})");
+        }
+
+        public PackedScene LoadScene()
+        {
+            return ResourceLoader.Load<PackedScene>(GetScenePath());
+        }
+
+        public Task<PackedScene> LoadSceneAsync(bool useSubThreads = false)
+        {
+            return AsyncResourceLoader.LoadAsync<PackedScene>(GetScenePath(), string.Empty, useSubThreads);
         }
     }
 }
