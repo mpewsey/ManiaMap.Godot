@@ -1,5 +1,6 @@
 using Godot;
 using MPewsey.ManiaMap;
+using MPewsey.ManiaMap.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +48,7 @@ namespace MPewsey.ManiaMapGodot
                     if (!RoomTemplates.TryGetValue(id, out var template))
                         RoomTemplates.Add(id, entry.RoomTemplate);
                     else if (template != entry.RoomTemplate)
-                        throw new Exception($"Duplicate room template ID: {id}.");
+                        throw new DuplicateIdException($"Duplicate room template ID: {id}.");
                 }
             }
         }

@@ -25,7 +25,7 @@ namespace MPewsey.ManiaMapGodot.Graphs.Tests
         {
             var graph = new LayoutGraphResource();
             var node = graph.AddNode(1, Vector2.Zero);
-            Assertions.AssertThrown(() => graph.AddNode(node.Id, Vector2.Zero)).IsInstanceOf<Exception>();
+            Assertions.AssertThrown(() => graph.AddNode(node.Id, Vector2.Zero)).IsInstanceOf<ArgumentException>();
         }
 
         [TestCase]
@@ -63,8 +63,8 @@ namespace MPewsey.ManiaMapGodot.Graphs.Tests
         {
             var graph = new LayoutGraphResource();
             graph.AddNode(1, Vector2.Zero);
-            Assertions.AssertThrown(() => graph.AddEdge(1, 2)).IsInstanceOf<Exception>();
-            Assertions.AssertThrown(() => graph.AddEdge(2, 1)).IsInstanceOf<Exception>();
+            Assertions.AssertThrown(() => graph.AddEdge(1, 2)).IsInstanceOf<ArgumentException>();
+            Assertions.AssertThrown(() => graph.AddEdge(2, 1)).IsInstanceOf<ArgumentException>();
         }
 
         [TestCase]
@@ -82,7 +82,7 @@ namespace MPewsey.ManiaMapGodot.Graphs.Tests
         public void TestGetEdgeThrowsExceptionForNonExistentEdge()
         {
             var graph = new LayoutGraphResource();
-            Assertions.AssertThrown(() => graph.GetEdge(1, 2)).IsInstanceOf<Exception>();
+            Assertions.AssertThrown(() => graph.GetEdge(1, 2)).IsInstanceOf<ArgumentException>();
         }
 
         [TestCase]

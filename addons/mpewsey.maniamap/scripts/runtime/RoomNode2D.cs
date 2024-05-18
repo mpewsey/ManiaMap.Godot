@@ -1,6 +1,8 @@
 using Godot;
 using MPewsey.Common.Collections;
 using MPewsey.ManiaMap;
+using MPewsey.ManiaMap.Exceptions;
+using MPewsey.ManiaMapGodot.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,7 +66,7 @@ namespace MPewsey.ManiaMapGodot
 #endif
 
             if (!IsInitialized)
-                throw new Exception($"Room is not initialized: {this}");
+                throw new RoomNotInitializedException($"Room is not initialized: {this}");
         }
 
 #if TOOLS
@@ -131,11 +133,11 @@ namespace MPewsey.ManiaMapGodot
             return room;
         }
 
-        public void Initialize(Layout layout, LayoutState layoutState, Room roomLayout, RoomState roomState,
+        public bool Initialize(Layout layout, LayoutState layoutState, Room roomLayout, RoomState roomState,
             IReadOnlyList<DoorConnection> doorConnections, uint cellCollisionMask, bool assignLayoutPosition)
         {
             if (IsInitialized)
-                throw new Exception($"Room is already initialized: {this}.");
+                return false;
 
             Layout = layout;
             LayoutState = layoutState;
@@ -148,6 +150,7 @@ namespace MPewsey.ManiaMapGodot
 
             CreateCellAreas(cellCollisionMask);
             IsInitialized = true;
+            return true;
         }
 
         public bool AutoAssign(bool run = true)
@@ -392,7 +395,7 @@ namespace MPewsey.ManiaMapGodot
                 var flag = (RoomFlag2D)node;
 
                 if (!flags.Add(flag.Id))
-                    throw new Exception($"Duplicate room flag: {flag}.");
+                    throw new DuplicateIdException($"Duplicate room flag ID: (ID = {flag.Id}, Path = {GetPathTo(flag)}.");
             }
         }
 

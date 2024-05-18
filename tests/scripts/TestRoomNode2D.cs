@@ -1,8 +1,8 @@
 using GdUnit4;
 using Godot;
 using MPewsey.ManiaMap;
+using MPewsey.ManiaMap.Exceptions;
 using MPewsey.ManiaMapGodot.Generators;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -93,7 +93,7 @@ namespace MPewsey.ManiaMapGodot.Tests
             var flag2 = new RoomFlag2D() { Id = 1 };
             room.AddChild(flag1);
             room.AddChild(flag2);
-            Assertions.AssertThrown(() => room.ValidateRoomFlags()).IsInstanceOf<Exception>();
+            Assertions.AssertThrown(() => room.ValidateRoomFlags()).IsInstanceOf<DuplicateIdException>();
             room.QueueFree();
         }
 

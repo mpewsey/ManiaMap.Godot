@@ -1,6 +1,7 @@
 using Godot;
 using MPewsey.Common.Pipelines;
 using MPewsey.Common.Random;
+using MPewsey.ManiaMapGodot.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -212,7 +213,7 @@ namespace MPewsey.ManiaMapGodot.Generators
                 foreach (var name in node.InputNames())
                 {
                     if (!names.Add(name))
-                        throw new Exception($"Duplicate input name: (Name = {name}, NodePath = {GetPathTo(node)})");
+                        throw new DuplicateInputException($"Duplicate input name: (Name = {name}, NodePath = {GetPathTo(node)})");
                 }
             }
         }
@@ -226,7 +227,7 @@ namespace MPewsey.ManiaMapGodot.Generators
                 foreach (var name in node.RequiredInputNames())
                 {
                     if (!names.Contains(name))
-                        throw new Exception($"Missing input name: (Name = {name}, NodePath = {GetPathTo(node)})");
+                        throw new MissingInputException($"Missing input name: (Name = {name}, NodePath = {GetPathTo(node)})");
                 }
 
                 foreach (var name in node.OutputNames())
@@ -241,9 +242,9 @@ namespace MPewsey.ManiaMapGodot.Generators
             var children = FindChildren("*", nameof(RandomSeedInput), true, false);
 
             if (children.Count == 0)
-                throw new Exception("Random seed input not found.");
+                throw new MissingInputException("Random seed input not found.");
             if (children.Count > 1)
-                throw new Exception($"Generation pipeline has multiple random seed inputs: {children.Count}.");
+                throw new DuplicateInputException($"Generation pipeline has multiple random seed inputs: {children.Count}.");
 
             foreach (var child in children)
             {

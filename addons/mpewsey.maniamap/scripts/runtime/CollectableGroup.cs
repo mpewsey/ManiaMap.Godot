@@ -1,4 +1,5 @@
 using Godot;
+using MPewsey.ManiaMap.Exceptions;
 using System;
 using System.Collections.Generic;
 
@@ -19,7 +20,7 @@ namespace MPewsey.ManiaMapGodot
             foreach (var entry in Entries)
             {
                 if (!set.Add(entry.Collectable.Id))
-                    throw new Exception($"Duplicate collectable ID: {entry.Collectable.Id}.");
+                    throw new DuplicateIdException($"Duplicate collectable ID: {entry.Collectable.Id}.");
 
                 for (int i = 0; i < entry.Quantity; i++)
                 {

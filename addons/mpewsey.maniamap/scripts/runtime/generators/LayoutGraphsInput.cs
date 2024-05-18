@@ -2,6 +2,7 @@ using Godot;
 using MPewsey.ManiaMap;
 using MPewsey.ManiaMap.Generators;
 using MPewsey.ManiaMap.Graphs;
+using MPewsey.ManiaMapGodot.Exceptions;
 using MPewsey.ManiaMapGodot.Graphs;
 using System;
 using System.Collections.Generic;
@@ -46,7 +47,7 @@ namespace MPewsey.ManiaMapGodot.Generators
             foreach (var group in GetTemplateGroups())
             {
                 if (!names.Add(group.Name))
-                    throw new Exception($"Duplicate group name: {group.Name}.");
+                    throw new DuplicateNameException($"Duplicate group name: {group.Name}.");
 
                 result.Add(group.Name, group.GetMMTemplateGroupEntries());
             }

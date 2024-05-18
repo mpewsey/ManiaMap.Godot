@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using MPewsey.ManiaMapGodot.Exceptions;
 using System.Threading.Tasks;
 
 namespace MPewsey.ManiaMapGodot
@@ -15,14 +15,14 @@ namespace MPewsey.ManiaMapGodot
             var error = ResourceLoader.LoadThreadedRequest(path, typeHint, useSubThreads, cacheMode);
 
             if (error != Error.Ok)
-                throw new Exception($"Error occured while requesting resource: {error}");
+                throw new ThreadedResourceRequestException($"Error occured while requesting resource: (Error = {error}, Path = {path})");
 
             var status = ResourceLoader.LoadThreadedGetStatus(path);
 
             while (status != ResourceLoader.ThreadLoadStatus.Loaded)
             {
                 if (status != ResourceLoader.ThreadLoadStatus.InProgress)
-                    throw new Exception($"Thread load status error: {status}.");
+                    throw new ThreadedResourceRequestException($"Thread load status error: (Error = {status}, Path = {path})");
 
                 await Task.Delay(ThreadStatusCheckDelay);
                 status = ResourceLoader.LoadThreadedGetStatus(path);

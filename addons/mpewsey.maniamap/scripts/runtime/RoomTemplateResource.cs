@@ -1,7 +1,7 @@
 using Godot;
 using MPewsey.Common.Serialization;
 using MPewsey.ManiaMap;
-using System;
+using MPewsey.ManiaMapGodot.Exceptions;
 using System.Threading.Tasks;
 
 namespace MPewsey.ManiaMapGodot
@@ -21,11 +21,10 @@ namespace MPewsey.ManiaMapGodot
         private RoomTemplate _template;
         public RoomTemplate Template
         {
-
             get
             {
                 if (string.IsNullOrWhiteSpace(SerializedText))
-                    throw new Exception($"Serialized text has not been assigned: {this}");
+                    throw new RoomTemplateNotInitializedException($"Serialized text has not been assigned: {ResourcePath}");
 
                 _template ??= JsonSerialization.LoadJsonString<RoomTemplate>(SerializedText);
                 return _template;
@@ -54,10 +53,15 @@ namespace MPewsey.ManiaMapGodot
         public void Initialize(IRoomNode room)
         {
             Template = null;
+            SerializedText = string.Empty;
+            ScenePath = string.Empty;
+            SceneUidPath = string.Empty;
+
             var node = (Node)room;
             var scenePath = node.SceneFilePath;
             var sceneUidPath = ResourceUid.IdToText(ResourceLoader.GetResourceUid(scenePath));
             var template = room.GetMMRoomTemplate(Id, TemplateName);
+
             SerializedText = JsonSerialization.GetJsonString(template, new JsonWriterSettings());
             ScenePath = scenePath;
             SceneUidPath = sceneUidPath;
@@ -65,12 +69,16 @@ namespace MPewsey.ManiaMapGodot
 
         public string GetScenePath()
         {
+            if (string.IsNullOrWhiteSpace(SceneUidPath) || string.IsNullOrWhiteSpace(ScenePath))
+                throw new RoomTemplateNotInitializedException($"Scene path has not been assigned: {ResourcePath}");
+
             if (ResourceLoader.Exists(SceneUidPath))
                 return SceneUidPath;
+
             if (ResourceLoader.Exists(ScenePath))
                 return ScenePath;
 
-            throw new Exception($"Scene paths do not exist: (SceneUidPath = {SceneUidPath}, ScenePath = {ScenePath})");
+            throw new PathDoesNotExistException($"Scene paths do not exist: (SceneUidPath = {SceneUidPath}, ScenePath = {ScenePath})");
         }
 
         public PackedScene LoadScene()
