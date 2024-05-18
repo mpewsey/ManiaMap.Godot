@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://d3ywwaoyv35qf"]
-
-[node name="EdgeLine" type="Line2D"]
-points = PackedVector2Array(0, 0, 100, 0)
-width = 3.0

@@ -23,9 +23,8 @@ namespace MPewsey.ManiaMapGodot.Graphs.Editor
         private LayoutGraphResource GraphResource { get; set; }
         public Dictionary<int, LayoutGraphNodeElement> NodeElements { get; } = new Dictionary<int, LayoutGraphNodeElement>();
         public HashSet<LayoutGraphEdgeElement> EdgeElements { get; } = new HashSet<LayoutGraphEdgeElement>();
-        private List<Line2D> EdgeLines { get; } = new List<Line2D>();
+        private List<LayoutGraphEdgeLine> EdgeLines { get; } = new List<LayoutGraphEdgeLine>();
         private HashSet<Resource> SelectedResources { get; } = new HashSet<Resource>();
-        private float LineWidth { get; set; }
 
         public override void _Ready()
         {
@@ -103,25 +102,7 @@ namespace MPewsey.ManiaMapGodot.Graphs.Editor
             foreach (var element in EdgeElements)
             {
                 var line = EdgeLines[index++];
-                var edge = element.EdgeResource;
-                var fromPosition = Vector2.Zero;
-                var toPosition = Vector2.Zero;
-                var fromFound = NodeElements.TryGetValue(edge.FromNode, out var fromNode);
-                var toFound = NodeElements.TryGetValue(edge.ToNode, out var toNode);
-
-                if (fromFound && toFound)
-                {
-                    fromPosition = fromNode.Position + 0.5f * zoom * fromNode.Size;
-                    toPosition = toNode.Position + 0.5f * zoom * toNode.Size;
-                }
-
-                if (line.Points.Length != 2)
-                    line.Points = new Vector2[2];
-
-                line.Width = Mathf.Max(LineWidth * zoom, 1);
-                line.DefaultColor = edge.Color;
-                line.SetPointPosition(0, fromPosition);
-                line.SetPointPosition(1, toPosition);
+                line.Populate(element, NodeElements, zoom);
             }
         }
 
@@ -136,8 +117,7 @@ namespace MPewsey.ManiaMapGodot.Graphs.Editor
 
             while (EdgeLines.Count < EdgeElements.Count)
             {
-                var line = EdgeLineScene.Instantiate<Line2D>();
-                LineWidth = line.Width;
+                var line = EdgeLineScene.Instantiate<LayoutGraphEdgeLine>();
                 EdgeLineContainer.AddChild(line);
                 EdgeLines.Add(line);
             }

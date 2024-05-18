@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://ypdf7hu0sc5i" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/layout_graph_edge_element.tscn" id="3_gn3wy"]
 [ext_resource type="Theme" uid="uid://dvrncovf7ri1c" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/layout_graph_editor_theme.tres" id="4_e5taf"]
 [ext_resource type="Texture2D" uid="uid://p2afcp3bxlbx" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/close_button_icon.svg" id="5_hail8"]
-[ext_resource type="PackedScene" uid="uid://d3ywwaoyv35qf" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/edge_line.tscn" id="5_lbopo"]
 [ext_resource type="Texture2D" uid="uid://b4x833hcsmdrl" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/save_button_icon.svg" id="5_n0wko"]
+[ext_resource type="PackedScene" uid="uid://b4nif3uqgvtko" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/layout_graph_edge_line.tscn" id="5_ys8i6"]
 [ext_resource type="Texture2D" uid="uid://cujhpyp0ssikr" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/edge_display_button_icon.svg" id="6_nxncv"]
 
 [node name="LayoutGraphEditor" type="Control" node_paths=PackedStringArray("GraphEdit", "EdgeLineContainer", "FileNameLabel", "CloseButton", "SaveButton", "EdgeDisplayButton")]
@@ -22,7 +22,7 @@ GraphEdit = NodePath("GraphEdit")
 EdgeLineContainer = NodePath("GraphEdit/EdgeLinesContainer")
 NodeElementScene = ExtResource("2_ycjoq")
 EdgeElementScene = ExtResource("3_gn3wy")
-EdgeLineScene = ExtResource("5_lbopo")
+EdgeLineScene = ExtResource("5_ys8i6")
 FileNameLabel = NodePath("Buttons/HBoxContainer/FileNameLabel")
 CloseButton = NodePath("Buttons/HBoxContainer/CloseButton")
 SaveButton = NodePath("Buttons/HBoxContainer/SaveButton")
