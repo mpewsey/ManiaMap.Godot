@@ -1,5 +1,6 @@
 # ManiaMap.Godot
 
+[![Tests](https://github.com/mpewsey/ManiaMap.Godot/actions/workflows/tests.yml/badge.svg?event=push)](https://github.com/mpewsey/ManiaMap.Godot/actions/workflows/tests.yml)
 [![Docs](https://github.com/mpewsey/ManiaMap.Godot/actions/workflows/docs.yml/badge.svg?event=push)](https://github.com/mpewsey/ManiaMap.Godot/actions/workflows/docs.yml)
 ![Godot .NET 4.0](https://img.shields.io/badge/Godot%20.NET-4.0-blue)
 ![Version](https://img.shields.io/github/v/tag/mpewsey/ManiaMap.Godot?label=Version)
