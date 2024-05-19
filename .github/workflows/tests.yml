@@ -39,7 +39,6 @@ jobs:
         with:
           godot-version: '4.2.2'
           godot-net: true
-          version: '4.2.5' # GdUnit4 version
           paths: 'res://tests/scripts' # Tests path
           report-name: 'test-results.xml'
 
