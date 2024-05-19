@@ -49,5 +49,5 @@ jobs:
           godot-status: ${{ matrix.godot-status }}
           godot-net: true
           paths: 'res://tests/scripts' # Tests path
-          report-name: Report_GdUnit4_Godot${{ matrix.godot-version }}-${{ matrix.godot-status }}.xml
+          report-name: report_GdUnit4_Godot${{ matrix.godot-version }}-${{ matrix.godot-status }}.xml
 
