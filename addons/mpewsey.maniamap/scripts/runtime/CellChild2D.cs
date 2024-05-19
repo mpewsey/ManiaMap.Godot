@@ -16,7 +16,7 @@ namespace MPewsey.ManiaMapGodot
             Room = room;
 
             if (AutoAssignCell)
-                (Row, Column) = room.FindClosestCellIndex(GlobalPosition);
+                (Row, Column) = room.FindClosestActiveCellIndex(GlobalPosition);
         }
     }
 }

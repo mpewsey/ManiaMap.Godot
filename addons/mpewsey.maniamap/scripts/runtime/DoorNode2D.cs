@@ -1,7 +1,6 @@
 using Godot;
 using MPewsey.Common.Mathematics;
 using MPewsey.ManiaMap;
-using System;
 using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapGodot
@@ -26,7 +25,7 @@ namespace MPewsey.ManiaMapGodot
         {
             base._Ready();
 
-            if (!Engine.IsEditorHint())
+            if (!Engine.IsEditorHint() && Room.IsInitialized)
                 DoorConnection = FindDoorConnection();
         }
 
@@ -56,7 +55,7 @@ namespace MPewsey.ManiaMapGodot
             base.AutoAssign(room);
 
             if (AutoAssignDirection)
-                DoorDirection = FindClosestDirection(room.CellCenterGlobalPosition(Row, Column));
+                DoorDirection = room.FindClosestDoorDirection(Row, Column, GlobalPosition);
         }
 
         public bool DoorExists()
@@ -88,25 +87,33 @@ namespace MPewsey.ManiaMapGodot
 
         private void AddToActiveRoomDoors()
         {
-            var roomId = Room.RoomLayout.Id;
-
-            if (!ActiveRoomDoors.TryGetValue(roomId, out var doors))
+            if (Room.IsInitialized)
             {
-                doors = new LinkedList<DoorNode2D>();
-                ActiveRoomDoors.Add(roomId, doors);
-            }
+                var roomId = Room.RoomLayout.Id;
 
-            doors.AddLast(this);
+                if (!ActiveRoomDoors.TryGetValue(roomId, out var doors))
+                {
+                    doors = new LinkedList<DoorNode2D>();
+                    ActiveRoomDoors.Add(roomId, doors);
+                }
+
+                doors.AddLast(this);
+            }
         }
 
         private void RemoveFromActiveRoomDoors()
         {
-            var roomId = Room.RoomLayout.Id;
-
-            if (ActiveRoomDoors.TryGetValue(roomId, out var doors))
+            if (Room.IsInitialized)
             {
-                if (doors.Remove(this) && doors.Count == 0)
-                    ActiveRoomDoors.Remove(roomId);
+                var roomId = Room.RoomLayout.Id;
+
+                if (ActiveRoomDoors.TryGetValue(roomId, out var doors))
+                {
+                    doors.Remove(this);
+
+                    if (doors.Count == 0)
+                        ActiveRoomDoors.Remove(roomId);
+                }
             }
         }
 
@@ -122,42 +129,6 @@ namespace MPewsey.ManiaMapGodot
             }
 
             return null;
-        }
-
-        public DoorDirection FindClosestDirection(Vector2 position)
-        {
-            Span<DoorDirection> directions = stackalloc DoorDirection[]
-            {
-                DoorDirection.North,
-                DoorDirection.East,
-                DoorDirection.South,
-                DoorDirection.West,
-            };
-
-            Span<Vector2> vectors = stackalloc Vector2[]
-            {
-                new Vector2(0, -1),
-                new Vector2(1, 0),
-                new Vector2(0, 1),
-                new Vector2(-1, 0),
-            };
-
-            var index = 0;
-            var maxDistance = float.NegativeInfinity;
-            var delta = GlobalPosition - position;
-
-            for (int i = 0; i < vectors.Length; i++)
-            {
-                var distance = delta.Dot(vectors[i]);
-
-                if (distance > maxDistance)
-                {
-                    maxDistance = distance;
-                    index = i;
-                }
-            }
-
-            return directions[index];
         }
     }
 }

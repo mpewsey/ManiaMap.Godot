@@ -32,23 +32,14 @@ namespace MPewsey.ManiaMapGodot
             private set => _template = value;
         }
 
-#if TOOLS
         public override void _ValidateProperty(Godot.Collections.Dictionary property)
         {
             base._ValidateProperty(property);
             var name = property["name"].AsStringName();
 
-            if (IsReadOnlyProperty(name))
+            if (name == PropertyName.ScenePath || name == SceneUidPath || name == PropertyName.SerializedText)
                 property["usage"] = (int)(property["usage"].As<PropertyUsageFlags>() | PropertyUsageFlags.ReadOnly);
         }
-
-        private static bool IsReadOnlyProperty(StringName name)
-        {
-            return name == PropertyName.ScenePath
-                || name == PropertyName.SceneUidPath
-                || name == PropertyName.SerializedText;
-        }
-#endif
 
         public void Initialize(IRoomNode room)
         {

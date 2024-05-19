@@ -25,7 +25,7 @@ namespace MPewsey.ManiaMapGodot.Drawing
         public void DrawMap(Layout layout, LayoutState layoutState = null, int? z = null)
         {
             Initialize(layout, layoutState);
-            LayerCoordinate = z ?? RoomsByLayer.Keys.OrderBy(x => x).First();
+            LayerCoordinate = z ?? RoomsByLayer.Keys.Order().First();
             SetTiles(TileMap, LayerCoordinate);
         }
     }

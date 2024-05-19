@@ -20,6 +20,9 @@ namespace MPewsey.ManiaMapGodot
         [Signal] public delegate void OnCellAreaExitedEventHandler(CellArea2D cell, Node collision);
         public Error EmitOnCellAreaExited(CellArea2D cell, Node collection) => EmitSignal(SignalName.OnCellAreaExited, cell, collection);
 
+        [Signal] public delegate void OnCellGridChangedEventHandler();
+        public Error EmitOnCellGridChanged() => EmitSignal(SignalName.OnCellGridChanged);
+
 #if TOOLS
         [Export] public bool RunAutoAssign { get => false; set => AutoAssign(value); }
         [Export] public bool UpdateRoomTemplate { get => false; set => UpdateRoomTemplateResource(value); }
@@ -37,7 +40,9 @@ namespace MPewsey.ManiaMapGodot
         private int _columns = 1;
         [Export(PropertyHint.Range, "1,10,1,or_greater")] public int Columns { get => _columns; set => SetSizeField(ref _columns, value); }
 
-        [Export(PropertyHint.Range, "0,100,1,or_greater")] public Vector2 CellSize { get; set; } = new Vector2(96, 96);
+        private Vector2 _cellSize = new Vector2(96, 96);
+        [Export(PropertyHint.Range, "0,100,1,or_greater")] public Vector2 CellSize { get => _cellSize; set => SetCellSizeField(ref _cellSize, value); }
+
         [Export] public Godot.Collections.Array<Godot.Collections.Array<bool>> ActiveCells { get; set; } = new Godot.Collections.Array<Godot.Collections.Array<bool>>();
 
         public Layout Layout { get; private set; }
@@ -51,6 +56,13 @@ namespace MPewsey.ManiaMapGodot
         {
             field = value;
             SizeActiveCells();
+            EmitOnCellGridChanged();
+        }
+
+        private void SetCellSizeField<T>(ref T field, T value)
+        {
+            field = value;
+            EmitOnCellGridChanged();
         }
 
         public override void _Ready()
@@ -60,6 +72,7 @@ namespace MPewsey.ManiaMapGodot
 #if TOOLS
             if (Engine.IsEditorHint())
             {
+                SizeActiveCells();
                 Editor.CellGrid2D.CreateInstance(this);
                 return;
             }
@@ -69,7 +82,6 @@ namespace MPewsey.ManiaMapGodot
                 throw new RoomNotInitializedException($"Room is not initialized: {this}");
         }
 
-#if TOOLS
         public override void _ValidateProperty(Godot.Collections.Dictionary property)
         {
             base._ValidateProperty(property);
@@ -80,14 +92,13 @@ namespace MPewsey.ManiaMapGodot
                 property["usage"] = (int)(usage & ~PropertyUsageFlags.Editor);
         }
 
+#if TOOLS
         public override void _Process(double delta)
         {
             base._Process(delta);
 
             if (Engine.IsEditorHint())
             {
-                SizeActiveCells();
-
                 if (DisplayCells)
                     ProcessEditCellInputs();
             }
@@ -105,7 +116,11 @@ namespace MPewsey.ManiaMapGodot
             }
 
             if (MouseButtonPressed)
-                SetCellActivities(MouseButtonDownPosition, GetViewport().GetMousePosition(), CellEditMode);
+            {
+                var mousePosition = GetViewport().GetMousePosition();
+                SetCellActivities(MouseButtonDownPosition, mousePosition, CellEditMode);
+                EmitOnCellGridChanged();
+            }
 
             MouseButtonPressed = false;
         }
@@ -237,8 +252,13 @@ namespace MPewsey.ManiaMapGodot
             }
         }
 
-        public Vector2I FindClosestCellIndex(Vector2 position)
+        public Vector2I FindClosestActiveCellIndex(Vector2 position)
         {
+            var fastIndex = GlobalPositionToCellIndex(position);
+
+            if (CellIndexExists(fastIndex.X, fastIndex.Y) && ActiveCells[fastIndex.X][fastIndex.Y])
+                return fastIndex;
+
             var index = Vector2I.Zero;
             var minDistance = float.PositiveInfinity;
 
@@ -263,6 +283,42 @@ namespace MPewsey.ManiaMapGodot
             }
 
             return index;
+        }
+
+        public DoorDirection FindClosestDoorDirection(int row, int column, Vector2 position)
+        {
+            Span<DoorDirection> directions = stackalloc DoorDirection[]
+            {
+                DoorDirection.North,
+                DoorDirection.East,
+                DoorDirection.South,
+                DoorDirection.West,
+            };
+
+            Span<Vector2> vectors = stackalloc Vector2[]
+            {
+                new Vector2(0, -1),
+                new Vector2(1, 0),
+                new Vector2(0, 1),
+                new Vector2(-1, 0),
+            };
+
+            var index = 0;
+            var maxDistance = float.NegativeInfinity;
+            var delta = position - CellCenterGlobalPosition(row, column);
+
+            for (int i = 0; i < vectors.Length; i++)
+            {
+                var distance = delta.Dot(vectors[i]);
+
+                if (distance > maxDistance)
+                {
+                    maxDistance = distance;
+                    index = i;
+                }
+            }
+
+            return directions[index];
         }
 
         private void CreateCellAreas(uint cellCollisionMask)

@@ -178,10 +178,31 @@ namespace MPewsey.ManiaMapGodot.Tests
             Assertions.AssertThat(roomState.CellIsVisible(0, 0)).IsTrue();
             Assertions.AssertThat(roomState.CellIsVisible(0, 1)).IsTrue();
 
+            // Move area to corners of center cells
+            for (int i = 1; i < room.Rows; i++)
+            {
+                for (int j = 1; j < room.Columns; j++)
+                {
+                    area.GlobalPosition = cellSize * new Vector2(j, i);
+                    await runner.AwaitPhysicsFrames();
+                    Assertions.AssertThat(indexes.Count).IsEqual(4);
+                    Assertions.AssertThat(indexes.Contains(new Vector2(i, j))).IsTrue();
+                    Assertions.AssertThat(indexes.Contains(new Vector2(i - 1, j))).IsTrue();
+                    Assertions.AssertThat(indexes.Contains(new Vector2(i, j - 1))).IsTrue();
+                    Assertions.AssertThat(indexes.Contains(new Vector2(i - 1, j - 1))).IsTrue();
+                }
+            }
+
             // Move area outside of all cells
             area.GlobalPosition = new Vector2(-100, -100);
             await runner.AwaitPhysicsFrames();
             Assertions.AssertThat(indexes.Count).IsEqual(0);
+        }
+
+        [TestCase]
+        public void TestFindClosestCell()
+        {
+
         }
     }
 }
