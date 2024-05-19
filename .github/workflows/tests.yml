@@ -27,18 +27,27 @@ on:
     - '.github/workflows/**'
 
 jobs:
-  build:
+  unit-tests:
     runs-on: ubuntu-20.04
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        godot-version: ['4.2', '4.2.1', '4.2.2']
+        godot-status: ['stable']
+        
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
+      
     steps:
       - uses: actions/checkout@v2
 
       - name: GdUnit4 - Test Runner Action
         uses: mpewsey/gdUnit4-action@v1.1.1
         with:
-          godot-version: '4.2.2'
+          godot-version: ${{ matrix.godot-version }}
+          godot-status: ${{ matrix.godot-status }}
           godot-net: true
           paths: 'res://tests/scripts' # Tests path
-          report-name: 'test-results.xml'
+          report-name: Report_GdUnit4_Godot${{ matrix.godot-version }}-${{ matrix.godot-status }}.xml
 
