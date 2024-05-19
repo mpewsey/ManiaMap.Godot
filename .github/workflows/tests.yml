@@ -37,7 +37,7 @@ jobs:
       - name: GdUnit4 - Test Runner Action
         uses: mpewsey/gdUnit4-action@v1.1.1
         with:
-          godot-version: ['4.2.2']
+          godot-version: '4.2.2'
           godot-net: true
           version: '4.2.5' # GdUnit4 version
           paths: 'res://tests/scripts' # Tests path
