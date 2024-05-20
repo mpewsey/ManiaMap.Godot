@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['toroomid_0',['ToRoomId',['../class_m_pewsey_1_1_mania_map_godot_1_1_door_node2_d.html#a4259a636d3d6543f6e0c35a50374853b',1,'MPewsey::ManiaMapGodot::DoorNode2D']]]
+  ['removeflag_0',['RemoveFlag',['../class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html#a31883fb34fab8fcf92877052179d9eb4',1,'MPewsey::ManiaMapGodot::RoomFlag2D']]],
+  ['removefromactiveroomdoors_1',['RemoveFromActiveRoomDoors',['../class_m_pewsey_1_1_mania_map_godot_1_1_door_node2_d.html#a5536d25b20fa8b204a20168a51a17505',1,'MPewsey::ManiaMapGodot::DoorNode2D']]]
 ];

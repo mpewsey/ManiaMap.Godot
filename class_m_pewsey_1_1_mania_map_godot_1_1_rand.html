@@ -103,14 +103,20 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_godot_1_1
   <div class="headertitle"><div class="title">Rand Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Contains the random number generator used for ID and random seed assignments.  
+ <a href="class_m_pewsey_1_1_mania_map_godot_1_1_rand.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ae2b124004be1cf0cd125457703e82d14"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_rand.html#ae2b124004be1cf0cd125457703e82d14">AutoAssignId</a> (int id)</td></tr>
+<tr class="memdesc:ae2b124004be1cf0cd125457703e82d14"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the specified ID is less than or equal to zero, returns a new random positive integer ID. Otherwise, returns the ID.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_rand.html#ae2b124004be1cf0cd125457703e82d14">More...</a><br /></td></tr>
 <tr class="separator:ae2b124004be1cf0cd125457703e82d14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab09b5f51e4c76a385a886d9bb148a9d0"><td class="memItemLeft" align="right" valign="top">static RandomSeed&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_rand.html#ab09b5f51e4c76a385a886d9bb148a9d0">CreateRandomSeed</a> (int seed)</td></tr>
+<tr class="memdesc:ab09b5f51e4c76a385a886d9bb148a9d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a new RandomSeed object for the given seed. If the specified seed is less than or equal to zero, a random positive integer seed is used instead.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_rand.html#ab09b5f51e4c76a385a886d9bb148a9d0">More...</a><br /></td></tr>
 <tr class="separator:ab09b5f51e4c76a385a886d9bb148a9d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a834205ef77d08be138f0d7efaca85cb4"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_rand.html#a834205ef77d08be138f0d7efaca85cb4">GetRandomId</a> ()</td></tr>
+<tr class="memdesc:a834205ef77d08be138f0d7efaca85cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a random positive integer ID.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_rand.html#a834205ef77d08be138f0d7efaca85cb4">More...</a><br /></td></tr>
 <tr class="separator:a834205ef77d08be138f0d7efaca85cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
@@ -119,8 +125,9 @@ Properties</h2></td></tr>
 <tr class="separator:a63a2fe0e40bcf1952395b594a9bb85f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_rand_8cs_source.html#l00006">6</a> of file <a class="el" href="_rand_8cs_source.html">Rand.cs</a>.</p>
+<div class="textblock"><p >Contains the random number generator used for ID and random seed assignments. </p>
+
+<p class="definition">Definition at line <a class="el" href="_rand_8cs_source.html#l00009">9</a> of file <a class="el" href="_rand_8cs_source.html">Rand.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae2b124004be1cf0cd125457703e82d14" name="ae2b124004be1cf0cd125457703e82d14"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae2b124004be1cf0cd125457703e82d14">&#9670;&nbsp;</a></span>AutoAssignId()</h2>
@@ -146,7 +153,15 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_rand_8cs_source.html#l00010">10</a> of file <a class="el" href="_rand_8cs_source.html">Rand.cs</a>.</p>
+<p>If the specified ID is less than or equal to zero, returns a new random positive integer ID. Otherwise, returns the ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The input ID.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_rand_8cs_source.html#l00018">18</a> of file <a class="el" href="_rand_8cs_source.html">Rand.cs</a>.</p>
 
 </div>
 </div>
@@ -174,7 +189,15 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_rand_8cs_source.html#l00020">20</a> of file <a class="el" href="_rand_8cs_source.html">Rand.cs</a>.</p>
+<p>Returns a new RandomSeed object for the given seed. If the specified seed is less than or equal to zero, a random positive integer seed is used instead. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seed</td><td>The random seed.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_rand_8cs_source.html#l00036">36</a> of file <a class="el" href="_rand_8cs_source.html">Rand.cs</a>.</p>
 
 </div>
 </div>
@@ -201,7 +224,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_rand_8cs_source.html#l00015">15</a> of file <a class="el" href="_rand_8cs_source.html">Rand.cs</a>.</p>
+<p>Returns a random positive integer ID. </p>
+
+<p class="definition">Definition at line <a class="el" href="_rand_8cs_source.html#l00026">26</a> of file <a class="el" href="_rand_8cs_source.html">Rand.cs</a>.</p>
 
 </div>
 </div>
@@ -226,7 +251,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_rand_8cs_source.html#l00008">8</a> of file <a class="el" href="_rand_8cs_source.html">Rand.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_rand_8cs_source.html#l00011">11</a> of file <a class="el" href="_rand_8cs_source.html">Rand.cs</a>.</p>
 
 </div>
 </div>
