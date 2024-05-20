@@ -2,14 +2,24 @@ using Godot;
 
 namespace MPewsey.ManiaMapGodot
 {
+    /// <summary>
+    /// A rectangular region for parameterizing and interpolating positions when
+    /// passing through doors in different scenes.
+    /// </summary>
     [Tool]
     [GlobalClass]
     public partial class DoorThreshold2D : Node2D
     {
         private float _width = 20;
+        /// <summary>
+        /// The width of the rectangular region.
+        /// </summary>
         [Export(PropertyHint.Range, "0,100,1,or_greater")] public float Width { get => _width; set => SetField(ref _width, value); }
 
         private float _height = 20;
+        /// <summary>
+        /// The height of the rectangular region.
+        /// </summary>
         [Export(PropertyHint.Range, "0,100,1,or_greater")] public float Height { get => _height; set => SetField(ref _height, value); }
 
         private void SetField<T>(ref T field, T value)
@@ -50,6 +60,10 @@ namespace MPewsey.ManiaMapGodot
         }
 #endif
 
+        /// <summary>
+        /// Converts a global position to a parameterized position on the interval [0, 1].
+        /// </summary>
+        /// <param name="position">The global position.</param>
         public Vector2 ParameterizePosition(Vector2 position)
         {
             var size = new Vector2(Width, Height);
@@ -60,6 +74,10 @@ namespace MPewsey.ManiaMapGodot
             return new Vector2(x, y);
         }
 
+        /// <summary>
+        /// Converts a parameterized position to a global position. The returned position is clamped to the region.
+        /// </summary>
+        /// <param name="parameters">The parameterized position.</param>
         public Vector2 InterpolatePosition(Vector2 parameters)
         {
             var size = new Vector2(Width, Height);
