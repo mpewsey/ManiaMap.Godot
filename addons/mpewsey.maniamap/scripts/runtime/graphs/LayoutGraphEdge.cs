@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace MPewsey.ManiaMapGodot.Graphs
 {
     /// <summary>
-    /// An edge of a `LayoutGraphResource`.
+    /// An edge of a LayoutGraphResource.
     /// </summary>
     [Tool]
     public partial class LayoutGraphEdge : Resource

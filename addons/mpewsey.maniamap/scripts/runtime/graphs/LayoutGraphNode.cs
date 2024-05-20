@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace MPewsey.ManiaMapGodot.Graphs
 {
     /// <summary>
-    /// A `LayoutGraphResource` node.
+    /// A LayoutGraphResource node.
     /// </summary>
     [Tool]
     public partial class LayoutGraphNode : Resource

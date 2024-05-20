@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MPewsey.ManiaMapGodot
 {
     /// <summary>
-    /// 
+    /// Provides a reference to a room scene and information for the room required by the procedural generator.
     /// </summary>
     [Tool]
     [GlobalClass]
