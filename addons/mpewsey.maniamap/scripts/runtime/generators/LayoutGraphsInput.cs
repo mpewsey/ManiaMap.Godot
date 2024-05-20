@@ -43,13 +43,14 @@ namespace MPewsey.ManiaMapGodot.Generators
         {
             var names = new HashSet<string>();
             var result = new TemplateGroups();
+            var templateCache = new Dictionary<RoomTemplateResource, RoomTemplate>();
 
             foreach (var group in GetTemplateGroups())
             {
                 if (!names.Add(group.Name))
                     throw new DuplicateNameException($"Duplicate group name: {group.Name}.");
 
-                result.Add(group.Name, group.GetMMTemplateGroupEntries());
+                result.Add(group.Name, group.GetMMTemplateGroupEntries(templateCache));
             }
 
             return result;
