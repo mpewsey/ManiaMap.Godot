@@ -4,8 +4,9 @@ namespace MPewsey.ManiaMapGodot
 {
     /// <summary>
     /// Provides area and body entering and exiting detection for a cell.
-    /// Register to the RoomNode2D.OnCellAreaEntered and RoomNode2D.OnCellAreaExited signals to monitor these events.
-    /// When the area detects an entering object, the `RoomLayoutState` cell visibility is automatically updated.
+    /// 
+    /// Register to a RoomNode2D's `OnCellAreaEntered` and `OnCellAreaExited` signals to monitor these events.
+    /// When the area detects an entering object, the `RoomState` cell visibility is automatically updated.
     /// </summary>
     public partial class CellArea2D : Area2D
     {

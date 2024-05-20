@@ -15,7 +15,7 @@ namespace MPewsey.ManiaMapGodot
         [Export] public RoomNode2D Room { get; set; }
 
         /// <summary>
-        /// If true, the cell row and column indices will be assigned when RoomNode2D.AutoAssign is run.
+        /// If true, the cell row and column indices will be automatically assigned when auto assign is run.
         /// Disable this flag if you wish to control these values manually.
         /// </summary>
         [Export] public bool AutoAssignCell { get; set; } = true;

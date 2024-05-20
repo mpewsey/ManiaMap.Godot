@@ -9,7 +9,7 @@ namespace MPewsey.ManiaMapGodot
         None,
         /// Activates a cell.
         Activate,
-        /// Disables a cell.
+        /// Deactivates a cell.
         Deactivate,
         /// Toggles a cell's activity. Active becomes deactivated and vice versa.
         Toggle,
