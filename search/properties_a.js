@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['settings_0',['Settings',['../class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_manager.html#aa15477849e8c0edb88c02ef6045a35b5',1,'MPewsey::ManiaMapGodot::ManiaMapManager']]]
+  ['name_0',['Name',['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_edge.html#a7ee9065718e6628dc7791b756fa6c0f9',1,'MPewsey.ManiaMapGodot.Graphs.LayoutGraphEdge.Name()'],['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_node.html#a7ee9065718e6628dc7791b756fa6c0f9',1,'MPewsey.ManiaMapGodot.Graphs.LayoutGraphNode.Name()'],['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource.html#a7ee9065718e6628dc7791b756fa6c0f9',1,'MPewsey.ManiaMapGodot.Graphs.LayoutGraphResource.Name()'],['../class_m_pewsey_1_1_mania_map_godot_1_1_template_group.html#a7ee9065718e6628dc7791b756fa6c0f9',1,'MPewsey.ManiaMapGodot.TemplateGroup.Name()']]],
+  ['nodes_1',['Nodes',['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource.html#aaf904462adfb0ee5e493a59e44a018d3',1,'MPewsey::ManiaMapGodot::Graphs::LayoutGraphResource']]]
 ];

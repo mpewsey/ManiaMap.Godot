@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['groupname_0',['GroupName',['../class_m_pewsey_1_1_mania_map_godot_1_1_collectable_group.html#a418cbc64a2315132ac24af8c91c2c67f',1,'MPewsey::ManiaMapGodot::CollectableGroup']]]
+  ['fromnode_0',['FromNode',['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_edge.html#a20e7204f304eaf9a3031911cefec73a7',1,'MPewsey::ManiaMapGodot::Graphs::LayoutGraphEdge']]]
 ];

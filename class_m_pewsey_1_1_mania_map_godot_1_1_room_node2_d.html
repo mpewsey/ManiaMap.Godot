@@ -106,6 +106,9 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_godot_1_1
   <div class="headertitle"><div class="title">RoomNode2D Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A node serving as the top level of a room.  
+ <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for RoomNode2D:</div>
 <div class="dyncontent">
@@ -123,12 +126,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a88b80180f5b712ae22791dc9902bbf63"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a88b80180f5b712ae22791dc9902bbf63">_ValidateProperty</a> (Godot.Collections.Dictionary property)</td></tr>
 <tr class="separator:a88b80180f5b712ae22791dc9902bbf63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58d063498fe4f49a8d6fdb3e3e246149"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a58d063498fe4f49a8d6fdb3e3e246149">AutoAssign</a> (bool run=true)</td></tr>
+<tr class="memdesc:a58d063498fe4f49a8d6fdb3e3e246149"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the room template if it doesn't already exist and runs auto assign on all descendent <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html" title="The base class for elements tied to a RoomNode2D&#39;s cell index.">CellChild2D</a>. Returns true if the method is successful.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a58d063498fe4f49a8d6fdb3e3e246149">More...</a><br /></td></tr>
 <tr class="separator:a58d063498fe4f49a8d6fdb3e3e246149"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88ba3f3018fb38e33e73dec614371250"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a88ba3f3018fb38e33e73dec614371250">CellCenterGlobalPosition</a> (int row, int column)</td></tr>
+<tr class="memdesc:a88ba3f3018fb38e33e73dec614371250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the cell center global position for the specified cell index.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a88ba3f3018fb38e33e73dec614371250">More...</a><br /></td></tr>
 <tr class="separator:a88ba3f3018fb38e33e73dec614371250"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba853dd821ad00f353f7b1783c886425"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aba853dd821ad00f353f7b1783c886425">CellCenterLocalPosition</a> (int row, int column)</td></tr>
+<tr class="memdesc:aba853dd821ad00f353f7b1783c886425"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the cell center local position for the specified cell index.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aba853dd821ad00f353f7b1783c886425">More...</a><br /></td></tr>
 <tr class="separator:aba853dd821ad00f353f7b1783c886425"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f0ddf9e22e2ddba6e64a2b6f8cf713c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a0f0ddf9e22e2ddba6e64a2b6f8cf713c">CellIndexExists</a> (int row, int column)</td></tr>
+<tr class="memdesc:a0f0ddf9e22e2ddba6e64a2b6f8cf713c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the specified cell index is within the bounds of the room.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a0f0ddf9e22e2ddba6e64a2b6f8cf713c">More...</a><br /></td></tr>
 <tr class="separator:a0f0ddf9e22e2ddba6e64a2b6f8cf713c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc291813b92f58a2b620024ab0ce765d"><td class="memItemLeft" align="right" valign="top"><a id="afc291813b92f58a2b620024ab0ce765d" name="afc291813b92f58a2b620024ab0ce765d"></a>
 Error&#160;</td><td class="memItemRight" valign="bottom"><b>EmitOnCellAreaEntered</b> (<a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_area2_d.html">CellArea2D</a> cell, Node collision)</td></tr>
@@ -140,93 +147,128 @@ Error&#160;</td><td class="memItemRight" valign="bottom"><b>EmitOnCellAreaExited
 Error&#160;</td><td class="memItemRight" valign="bottom"><b>EmitOnCellGridChanged</b> ()</td></tr>
 <tr class="separator:a425c509d4742ef6e062d48b5d3eb7f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfda1e5404d514a88b6b438437728e8d"><td class="memItemLeft" align="right" valign="top">Vector2I&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#adfda1e5404d514a88b6b438437728e8d">FindClosestActiveCellIndex</a> (Vector2 position)</td></tr>
+<tr class="memdesc:adfda1e5404d514a88b6b438437728e8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the closest active cell index to the specified global position.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#adfda1e5404d514a88b6b438437728e8d">More...</a><br /></td></tr>
 <tr class="separator:adfda1e5404d514a88b6b438437728e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedc583b508fb49e025ff93a5cc1cabc2"><td class="memItemLeft" align="right" valign="top">DoorDirection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aedc583b508fb49e025ff93a5cc1cabc2">FindClosestDoorDirection</a> (int row, int column, Vector2 position)</td></tr>
+<tr class="memdesc:aedc583b508fb49e025ff93a5cc1cabc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the closest door direction based on the cell index and specified global position. The nearest direction is determined based on the change between the specified position and cell center.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aedc583b508fb49e025ff93a5cc1cabc2">More...</a><br /></td></tr>
 <tr class="separator:aedc583b508fb49e025ff93a5cc1cabc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7f4252d613b8a948a437071687371e2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#af7f4252d613b8a948a437071687371e2">GetCellActivity</a> (int row, int column)</td></tr>
+<tr class="memdesc:af7f4252d613b8a948a437071687371e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the cell activity for the specified cell index.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#af7f4252d613b8a948a437071687371e2">More...</a><br /></td></tr>
 <tr class="separator:af7f4252d613b8a948a437071687371e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad70703a12aa8a6b615acbfd68b16aeaf"><td class="memItemLeft" align="right" valign="top">RoomTemplate&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ad70703a12aa8a6b615acbfd68b16aeaf">GetMMRoomTemplate</a> (int id, string name)</td></tr>
-<tr class="memdesc:ad70703a12aa8a6b615acbfd68b16aeaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ManiaMap room template used for procedural generation.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ad70703a12aa8a6b615acbfd68b16aeaf">More...</a><br /></td></tr>
+<tr class="memitem:ad70703a12aa8a6b615acbfd68b16aeaf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aa3c75357b4bff1a2191da82e55918223">RoomTemplate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ad70703a12aa8a6b615acbfd68b16aeaf">GetMMRoomTemplate</a> (int id, string name)</td></tr>
+<tr class="memdesc:ad70703a12aa8a6b615acbfd68b16aeaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ManiaMap room template used for procedural generation.   <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ad70703a12aa8a6b615acbfd68b16aeaf">More...</a><br /></td></tr>
 <tr class="separator:ad70703a12aa8a6b615acbfd68b16aeaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e83726db2178b76282ac46b0074cedd"><td class="memItemLeft" align="right" valign="top">Vector2I&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a4e83726db2178b76282ac46b0074cedd">GlobalPositionToCellIndex</a> (Vector2 position)</td></tr>
+<tr class="memdesc:a4e83726db2178b76282ac46b0074cedd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the row (x) and column (y) index corresponding to the specified global position. If the position is outside the room bounds, returns Vector2I(-1, -1).  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a4e83726db2178b76282ac46b0074cedd">More...</a><br /></td></tr>
 <tr class="separator:a4e83726db2178b76282ac46b0074cedd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93f75efe5b0b67f7fe12029a2948992c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a93f75efe5b0b67f7fe12029a2948992c">Initialize</a> (Layout layout, LayoutState layoutState, Room roomLayout, RoomState roomState, IReadOnlyList&lt; DoorConnection &gt; doorConnections, uint cellCollisionMask, bool assignLayoutPosition)</td></tr>
+<tr class="memitem:a93f75efe5b0b67f7fe12029a2948992c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a93f75efe5b0b67f7fe12029a2948992c">Initialize</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a6860a4215b072014f8972b7611c569fd">Layout</a> layout, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a25a58a509186fa802307b2b7e754ee7a">LayoutState</a> layoutState, Room roomLayout, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ac538398fb8f4115156492ace504e62ac">RoomState</a> roomState, IReadOnlyList&lt; DoorConnection &gt; doorConnections, uint cellCollisionMask, bool assignLayoutPosition)</td></tr>
+<tr class="memdesc:a93f75efe5b0b67f7fe12029a2948992c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the room. The room should be initialized before adding it to the scene tree since cell children often require this information on ready.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a93f75efe5b0b67f7fe12029a2948992c">More...</a><br /></td></tr>
 <tr class="separator:a93f75efe5b0b67f7fe12029a2948992c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a5617444c3cd8f8839ce90972e0b74a"><td class="memItemLeft" align="right" valign="top">Vector2I&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a2a5617444c3cd8f8839ce90972e0b74a">LocalPositionToCellIndex</a> (Vector2 position)</td></tr>
+<tr class="memdesc:a2a5617444c3cd8f8839ce90972e0b74a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the row (x) and column (y) index corresponding to the specified local position. If the position is outside the room bounds, returns Vector2I(-1, -1).  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a2a5617444c3cd8f8839ce90972e0b74a">More...</a><br /></td></tr>
 <tr class="separator:a2a5617444c3cd8f8839ce90972e0b74a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26086c9aae5dda5166533a0b238f5ad3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a26086c9aae5dda5166533a0b238f5ad3">MoveToLayoutPosition</a> ()</td></tr>
+<tr class="memdesc:a26086c9aae5dda5166533a0b238f5ad3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the room to its position in the <code>Layout</code>.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a26086c9aae5dda5166533a0b238f5ad3">More...</a><br /></td></tr>
 <tr class="separator:a26086c9aae5dda5166533a0b238f5ad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90e8444e92ca3bb9c14293fb8ba95d85"><td class="memItemLeft" align="right" valign="top"><a id="a90e8444e92ca3bb9c14293fb8ba95d85" name="a90e8444e92ca3bb9c14293fb8ba95d85"></a>
-delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>OnCellAreaEnteredEventHandler</b> (<a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_area2_d.html">CellArea2D</a> cell, Node collision)</td></tr>
+<tr class="memitem:a90e8444e92ca3bb9c14293fb8ba95d85"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a90e8444e92ca3bb9c14293fb8ba95d85">OnCellAreaEnteredEventHandler</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_area2_d.html">CellArea2D</a> cell, Node collision)</td></tr>
+<tr class="memdesc:a90e8444e92ca3bb9c14293fb8ba95d85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when a cell area is entered by a tracked area or body.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a90e8444e92ca3bb9c14293fb8ba95d85">More...</a><br /></td></tr>
 <tr class="separator:a90e8444e92ca3bb9c14293fb8ba95d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4cd1ada99b95de395acf4bb2667d0ba"><td class="memItemLeft" align="right" valign="top"><a id="ae4cd1ada99b95de395acf4bb2667d0ba" name="ae4cd1ada99b95de395acf4bb2667d0ba"></a>
-delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>OnCellAreaExitedEventHandler</b> (<a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_area2_d.html">CellArea2D</a> cell, Node collision)</td></tr>
+<tr class="memitem:ae4cd1ada99b95de395acf4bb2667d0ba"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ae4cd1ada99b95de395acf4bb2667d0ba">OnCellAreaExitedEventHandler</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_area2_d.html">CellArea2D</a> cell, Node collision)</td></tr>
+<tr class="memdesc:ae4cd1ada99b95de395acf4bb2667d0ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when a cell area is exited by a tracked area or body.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ae4cd1ada99b95de395acf4bb2667d0ba">More...</a><br /></td></tr>
 <tr class="separator:ae4cd1ada99b95de395acf4bb2667d0ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b127552d274585bb59d655cb7e738be"><td class="memItemLeft" align="right" valign="top"><a id="a7b127552d274585bb59d655cb7e738be" name="a7b127552d274585bb59d655cb7e738be"></a>
 delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>OnCellGridChangedEventHandler</b> ()</td></tr>
+<tr class="memdesc:a7b127552d274585bb59d655cb7e738be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the cell grid size or cell sizes are set. <br /></td></tr>
 <tr class="separator:a7b127552d274585bb59d655cb7e738be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bdbbfd42bcda09c80f4b831edf7c3f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a6bdbbfd42bcda09c80f4b831edf7c3f7">SetCellActivities</a> (Vector2I startIndex, Vector2I endIndex, <a class="el" href="namespace_m_pewsey_1_1_mania_map_godot.html#a6a753fde07d2f95f8fce42819db99f02">CellActivity</a> activity)</td></tr>
-<tr class="separator:a6bdbbfd42bcda09c80f4b831edf7c3f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae12750d104a4035d10749b174b2de356"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ae12750d104a4035d10749b174b2de356">SetCellActivities</a> (Vector2I startIndex, Vector2I endIndex, <a class="el" href="namespace_m_pewsey_1_1_mania_map_godot.html#a6a753fde07d2f95f8fce42819db99f02">CellActivity</a> activity)</td></tr>
+<tr class="memdesc:ae12750d104a4035d10749b174b2de356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the cell activities for all cells in the specified index range. The order of the start and end indexes does not matter. If either the start or end indexes fall outside the cell grid, no action is taken and the method returns false.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ae12750d104a4035d10749b174b2de356">More...</a><br /></td></tr>
+<tr class="separator:ae12750d104a4035d10749b174b2de356"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2f09e2f7eadbe2478fcc4782a903659"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ad2f09e2f7eadbe2478fcc4782a903659">SetCellActivity</a> (int row, int column, bool activated)</td></tr>
+<tr class="memdesc:ad2f09e2f7eadbe2478fcc4782a903659"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the activity for the specified cell index.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ad2f09e2f7eadbe2478fcc4782a903659">More...</a><br /></td></tr>
 <tr class="separator:ad2f09e2f7eadbe2478fcc4782a903659"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac70832caf786da2ccf75e88f21f48b1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ac70832caf786da2ccf75e88f21f48b1e">SetCellActivity</a> (int row, int column, <a class="el" href="namespace_m_pewsey_1_1_mania_map_godot.html#a6a753fde07d2f95f8fce42819db99f02">CellActivity</a> activity)</td></tr>
+<tr class="memdesc:ac70832caf786da2ccf75e88f21f48b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the activity for the specified cell index.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ac70832caf786da2ccf75e88f21f48b1e">More...</a><br /></td></tr>
 <tr class="separator:ac70832caf786da2ccf75e88f21f48b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e4552a72b8ce469331c594d2433b63e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a1e4552a72b8ce469331c594d2433b63e">SizeActiveCells</a> ()</td></tr>
+<tr class="memdesc:a1e4552a72b8ce469331c594d2433b63e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sizes the active cells array to match the current rows and columns properties. Any newly added cells are active by default.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a1e4552a72b8ce469331c594d2433b63e">More...</a><br /></td></tr>
 <tr class="separator:a1e4552a72b8ce469331c594d2433b63e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecda9643bbd349e9a4a72f1de5f5cdea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aecda9643bbd349e9a4a72f1de5f5cdea">UpdateRoomTemplateResource</a> (bool run=true)</td></tr>
+<tr class="memdesc:aecda9643bbd349e9a4a72f1de5f5cdea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs auto assign and updates the referenced <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html">RoomTemplateResource</a>. Saves the room template resource to a separate file if it is not saved already.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aecda9643bbd349e9a4a72f1de5f5cdea">More...</a><br /></td></tr>
 <tr class="separator:aecda9643bbd349e9a4a72f1de5f5cdea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac16955832530f16a57dca110822b409"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aac16955832530f16a57dca110822b409">ValidateRoomFlags</a> ()</td></tr>
+<tr class="memdesc:aac16955832530f16a57dca110822b409"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates that the room flags have unique ID's. Throws an exception if they do not.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aac16955832530f16a57dca110822b409">More...</a><br /></td></tr>
 <tr class="separator:aac16955832530f16a57dca110822b409"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a2b8db4e9c325ce6e6554b3fe1dc2ff5d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html">RoomNode2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a2b8db4e9c325ce6e6554b3fe1dc2ff5d">CreateInstance</a> (PackedScene scene, Node parent, Layout layout, LayoutState layoutState, Room roomLayout, RoomState roomState, IReadOnlyList&lt; DoorConnection &gt; doorConnections, uint cellCollisionMask, bool assignLayoutPosition)</td></tr>
+<tr class="memitem:a2b8db4e9c325ce6e6554b3fe1dc2ff5d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html">RoomNode2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a2b8db4e9c325ce6e6554b3fe1dc2ff5d">CreateInstance</a> (PackedScene scene, Node parent, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a6860a4215b072014f8972b7611c569fd">Layout</a> layout, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a25a58a509186fa802307b2b7e754ee7a">LayoutState</a> layoutState, Room roomLayout, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ac538398fb8f4115156492ace504e62ac">RoomState</a> roomState, IReadOnlyList&lt; DoorConnection &gt; doorConnections, uint cellCollisionMask, bool assignLayoutPosition)</td></tr>
+<tr class="memdesc:a2b8db4e9c325ce6e6554b3fe1dc2ff5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and initializes an instance of a room.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a2b8db4e9c325ce6e6554b3fe1dc2ff5d">More...</a><br /></td></tr>
 <tr class="separator:a2b8db4e9c325ce6e6554b3fe1dc2ff5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2dfad86466fcbdd72db7501f309876a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html">RoomNode2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ae2dfad86466fcbdd72db7501f309876a">CreateInstance</a> (Uid id, PackedScene scene, Node parent, bool assignLayoutPosition=false)</td></tr>
+<tr class="memdesc:ae2dfad86466fcbdd72db7501f309876a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and initializes an instance of a room. The layout and layout state are assigned to the room based on the current <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_manager.html" title="Holds the current Layout and LayoutState.">ManiaMapManager</a>.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ae2dfad86466fcbdd72db7501f309876a">More...</a><br /></td></tr>
 <tr class="separator:ae2dfad86466fcbdd72db7501f309876a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a218d6bdfe43a453e61b4ec9e5c0a187f"><td class="memItemLeft" align="right" valign="top">Godot.Collections.Array&lt; Godot.Collections.Array&lt; bool &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a218d6bdfe43a453e61b4ec9e5c0a187f">ActiveCells</a> = new Godot.Collections.Array&lt;Godot.Collections.Array&lt;bool&gt;&gt;()<code> [getset]</code></td></tr>
+<tr class="memdesc:a218d6bdfe43a453e61b4ec9e5c0a187f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A nested array of room cell activities.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a218d6bdfe43a453e61b4ec9e5c0a187f">More...</a><br /></td></tr>
 <tr class="separator:a218d6bdfe43a453e61b4ec9e5c0a187f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd0cfe2245f654056ccc9d1694beb5f4"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#afd0cfe2245f654056ccc9d1694beb5f4">CellSize</a><code> [getset]</code></td></tr>
+<tr class="memdesc:afd0cfe2245f654056ccc9d1694beb5f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The width and height of the room cells.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#afd0cfe2245f654056ccc9d1694beb5f4">More...</a><br /></td></tr>
 <tr class="separator:afd0cfe2245f654056ccc9d1694beb5f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acefc28d6fe4006e7d14b35aa89c14337"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#acefc28d6fe4006e7d14b35aa89c14337">Columns</a><code> [getset]</code></td></tr>
+<tr class="memdesc:acefc28d6fe4006e7d14b35aa89c14337"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of cell columns in the room.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#acefc28d6fe4006e7d14b35aa89c14337">More...</a><br /></td></tr>
 <tr class="separator:acefc28d6fe4006e7d14b35aa89c14337"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2b2d06cda47b7123df77a76a3a473a7"><td class="memItemLeft" align="right" valign="top">IReadOnlyList&lt; DoorConnection &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#af2b2d06cda47b7123df77a76a3a473a7">DoorConnections</a><code> [getprivate set]</code></td></tr>
+<tr class="memdesc:af2b2d06cda47b7123df77a76a3a473a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of door connections for the room.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#af2b2d06cda47b7123df77a76a3a473a7">More...</a><br /></td></tr>
 <tr class="separator:af2b2d06cda47b7123df77a76a3a473a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf7e27e5129fb4febbb44dbd372a8a5a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#acf7e27e5129fb4febbb44dbd372a8a5a">IsInitialized</a><code> [getprivate set]</code></td></tr>
+<tr class="memdesc:acf7e27e5129fb4febbb44dbd372a8a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if the room has been initialized.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#acf7e27e5129fb4febbb44dbd372a8a5a">More...</a><br /></td></tr>
 <tr class="separator:acf7e27e5129fb4febbb44dbd372a8a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6860a4215b072014f8972b7611c569fd"><td class="memItemLeft" align="right" valign="top">Layout&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a6860a4215b072014f8972b7611c569fd">Layout</a><code> [getprivate set]</code></td></tr>
+<tr class="memdesc:a6860a4215b072014f8972b7611c569fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current layout.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a6860a4215b072014f8972b7611c569fd">More...</a><br /></td></tr>
 <tr class="separator:a6860a4215b072014f8972b7611c569fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25a58a509186fa802307b2b7e754ee7a"><td class="memItemLeft" align="right" valign="top">LayoutState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a25a58a509186fa802307b2b7e754ee7a">LayoutState</a><code> [getprivate set]</code></td></tr>
+<tr class="memdesc:a25a58a509186fa802307b2b7e754ee7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current layout state.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a25a58a509186fa802307b2b7e754ee7a">More...</a><br /></td></tr>
 <tr class="separator:a25a58a509186fa802307b2b7e754ee7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f9187010aef3c912d536700102347b0"><td class="memItemLeft" align="right" valign="top">Room&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a2f9187010aef3c912d536700102347b0">RoomLayout</a><code> [getprivate set]</code></td></tr>
+<tr class="memdesc:a2f9187010aef3c912d536700102347b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">This room's layout.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a2f9187010aef3c912d536700102347b0">More...</a><br /></td></tr>
 <tr class="separator:a2f9187010aef3c912d536700102347b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac538398fb8f4115156492ace504e62ac"><td class="memItemLeft" align="right" valign="top">RoomState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ac538398fb8f4115156492ace504e62ac">RoomState</a><code> [getprivate set]</code></td></tr>
+<tr class="memdesc:ac538398fb8f4115156492ace504e62ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">This room's layout state.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ac538398fb8f4115156492ace504e62ac">More...</a><br /></td></tr>
 <tr class="separator:ac538398fb8f4115156492ace504e62ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3c75357b4bff1a2191da82e55918223"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html">RoomTemplateResource</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aa3c75357b4bff1a2191da82e55918223">RoomTemplate</a><code> [getset]</code></td></tr>
+<tr class="memdesc:aa3c75357b4bff1a2191da82e55918223"><td class="mdescLeft">&#160;</td><td class="mdescRight">The room template used by the procedural generator.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aa3c75357b4bff1a2191da82e55918223">More...</a><br /></td></tr>
 <tr class="separator:aa3c75357b4bff1a2191da82e55918223"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacd84fe3991a31360df9315e81a5759a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aacd84fe3991a31360df9315e81a5759a">Rows</a><code> [getset]</code></td></tr>
+<tr class="memdesc:aacd84fe3991a31360df9315e81a5759a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number or cell rows in the room.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aacd84fe3991a31360df9315e81a5759a">More...</a><br /></td></tr>
 <tr class="separator:aacd84fe3991a31360df9315e81a5759a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a8843524aa7d8e49917f2ae44fd1c4b51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a8843524aa7d8e49917f2ae44fd1c4b51">AddMMDoors</a> (Array2D&lt; Cell &gt; cells)</td></tr>
+<tr class="memdesc:a8843524aa7d8e49917f2ae44fd1c4b51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds ManiaMap doors for the room to the specified cells array.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a8843524aa7d8e49917f2ae44fd1c4b51">More...</a><br /></td></tr>
 <tr class="separator:a8843524aa7d8e49917f2ae44fd1c4b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fa864bc6b2fc9b2ec9711c64b31774a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a7fa864bc6b2fc9b2ec9711c64b31774a">AddMMFeatures</a> (Array2D&lt; Cell &gt; cells)</td></tr>
+<tr class="memdesc:a7fa864bc6b2fc9b2ec9711c64b31774a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds ManiaMap features for the room to the specified cells array.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a7fa864bc6b2fc9b2ec9711c64b31774a">More...</a><br /></td></tr>
 <tr class="separator:a7fa864bc6b2fc9b2ec9711c64b31774a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2c38606e02290a4fae8a44f38a8699d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ae2c38606e02290a4fae8a44f38a8699d">CellIndexRangeExists</a> (Vector2I startIndex, Vector2I endIndex)</td></tr>
+<tr class="memdesc:ae2c38606e02290a4fae8a44f38a8699d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the specified cell indexes both exist.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ae2c38606e02290a4fae8a44f38a8699d">More...</a><br /></td></tr>
 <tr class="separator:ae2c38606e02290a4fae8a44f38a8699d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46ddbd4fc8d16bfd547a267ca3985b03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a46ddbd4fc8d16bfd547a267ca3985b03">CreateCellAreas</a> (uint cellCollisionMask)</td></tr>
+<tr class="memdesc:a46ddbd4fc8d16bfd547a267ca3985b03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_area2_d.html" title="Provides area and body entering and exiting detection for a cell.">CellArea2D</a> for all active cells.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a46ddbd4fc8d16bfd547a267ca3985b03">More...</a><br /></td></tr>
 <tr class="separator:a46ddbd4fc8d16bfd547a267ca3985b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4546cdb34226ed44333bafebf5bfe1bf"><td class="memItemLeft" align="right" valign="top">Array2D&lt; Cell &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a4546cdb34226ed44333bafebf5bfe1bf">GetMMCells</a> ()</td></tr>
+<tr class="memdesc:a4546cdb34226ed44333bafebf5bfe1bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an new array of ManiaMap cells for the room.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a4546cdb34226ed44333bafebf5bfe1bf">More...</a><br /></td></tr>
 <tr class="separator:a4546cdb34226ed44333bafebf5bfe1bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e066bf03ee589532af7d59fa00ec579"><td class="memItemLeft" align="right" valign="top">HashMap&lt; int, CollectableSpot &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a5e066bf03ee589532af7d59fa00ec579">GetMMCollectableSpots</a> ()</td></tr>
+<tr class="memdesc:a5e066bf03ee589532af7d59fa00ec579"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a dictionary of ManiaMap collectable spots used by the procedural generator.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a5e066bf03ee589532af7d59fa00ec579">More...</a><br /></td></tr>
 <tr class="separator:a5e066bf03ee589532af7d59fa00ec579"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affba62d1e74a04ddf2315cb0c0fd6081"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#affba62d1e74a04ddf2315cb0c0fd6081">ResourceIsSavedToFile</a> (Resource resource)</td></tr>
+<tr class="memdesc:affba62d1e74a04ddf2315cb0c0fd6081"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the specified resource is saved in a separate file.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#affba62d1e74a04ddf2315cb0c0fd6081">More...</a><br /></td></tr>
 <tr class="separator:affba62d1e74a04ddf2315cb0c0fd6081"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af558bcffad15c1c37b1d45b0578e6157"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#af558bcffad15c1c37b1d45b0578e6157">SceneIsSavedToFile</a> ()</td></tr>
+<tr class="memdesc:af558bcffad15c1c37b1d45b0578e6157"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the room scene is saved to a file.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#af558bcffad15c1c37b1d45b0578e6157">More...</a><br /></td></tr>
 <tr class="separator:af558bcffad15c1c37b1d45b0578e6157"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fe9d09d9e3027dd4e379d03b69469af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a6fe9d09d9e3027dd4e379d03b69469af">SetCellSizeField&lt; T &gt;</a> (ref T field, T value)</td></tr>
 <tr class="separator:a6fe9d09d9e3027dd4e379d03b69469af"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -243,8 +285,9 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a3e8959363f536b448785cdfdb1dd461a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00015">15</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<div class="textblock"><p >A node serving as the top level of a room. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00018">18</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a58d67e4d7bf68d0a09ed9630ba231b30" name="a58d67e4d7bf68d0a09ed9630ba231b30"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a58d67e4d7bf68d0a09ed9630ba231b30">&#9670;&nbsp;</a></span>_Ready()</h2>
@@ -261,7 +304,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00068">68</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00138">138</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -281,7 +324,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00085">85</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00155">155</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -309,7 +352,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00427">427</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Adds ManiaMap doors for the room to the specified cells array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cells</td><td>The cells array.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00628">628</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -337,7 +388,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00458">458</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Adds ManiaMap features for the room to the specified cells array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cells</td><td>The cells array.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00666">666</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -357,7 +416,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00172">172</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Sets the room template if it doesn't already exist and runs auto assign on all descendent <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html" title="The base class for elements tied to a RoomNode2D&#39;s cell index.">CellChild2D</a>. Returns true if the method is successful. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">run</td><td>The method is only executed if true.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00281">281</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -387,7 +454,16 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00370">370</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Returns the cell center global position for the specified cell index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The cell row.</td></tr>
+    <tr><td class="paramname">column</td><td>The cell column.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00543">543</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -417,7 +493,16 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00375">375</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Returns the cell center local position for the specified cell index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The cell row.</td></tr>
+    <tr><td class="paramname">column</td><td>The cell column.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00553">553</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -447,7 +532,16 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00396">396</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Returns true if the specified cell index is within the bounds of the room. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The cell row.</td></tr>
+    <tr><td class="paramname">column</td><td>The cell column.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00589">589</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -485,7 +579,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00231">231</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Returns true if the specified cell indexes both exist. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startIndex</td><td>The start index.</td></tr>
+    <tr><td class="paramname">endIndex</td><td>The end index.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00366">366</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -513,7 +616,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00350">350</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Creates <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_area2_d.html" title="Provides area and body entering and exiting detection for a cell.">CellArea2D</a> for all active cells. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cellCollisionMask</td><td>The cell collision mask.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00515">515</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -541,13 +652,13 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Layout&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a6860a4215b072014f8972b7611c569fd">Layout</a>&#160;</td>
           <td class="paramname"><em>layout</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">LayoutState&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a25a58a509186fa802307b2b7e754ee7a">LayoutState</a>&#160;</td>
           <td class="paramname"><em>layoutState</em>, </td>
         </tr>
         <tr>
@@ -559,7 +670,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">RoomState&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ac538398fb8f4115156492ace504e62ac">RoomState</a>&#160;</td>
           <td class="paramname"><em>roomState</em>, </td>
         </tr>
         <tr>
@@ -593,7 +704,23 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00142">142</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Creates and initializes an instance of a room. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scene</td><td>The room scene.</td></tr>
+    <tr><td class="paramname">parent</td><td>The node to which the room will be added as a child.</td></tr>
+    <tr><td class="paramname">layout</td><td>The full layout.</td></tr>
+    <tr><td class="paramname">layoutState</td><td>The full layout state.</td></tr>
+    <tr><td class="paramname">roomLayout</td><td>The room's layout.</td></tr>
+    <tr><td class="paramname">roomState</td><td>The room's state.</td></tr>
+    <tr><td class="paramname">doorConnections</td><td>The room's door connections.</td></tr>
+    <tr><td class="paramname">cellCollisionMask</td><td>The cell collision mask.</td></tr>
+    <tr><td class="paramname">assignLayoutPosition</td><td>If true, the position of the room will be set to that of the room layout. Otherwise, it will be initialized at its original position.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00232">232</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -643,7 +770,18 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00130">130</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Creates and initializes an instance of a room. The layout and layout state are assigned to the room based on the current <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_manager.html" title="Holds the current Layout and LayoutState.">ManiaMapManager</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The room ID.</td></tr>
+    <tr><td class="paramname">scene</td><td>The room scene.</td></tr>
+    <tr><td class="paramname">parent</td><td>The node to which the room will be added as a child.</td></tr>
+    <tr><td class="paramname">assignLayoutPosition</td><td>If true, the position of the room will be set to that of the room layout. Otherwise, it will be initialized at its original position.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00208">208</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -663,7 +801,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00281">281</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Returns the closest active cell index to the specified global position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>The global position.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00435">435</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -699,7 +845,17 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00314">314</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Returns the closest door direction based on the cell index and specified global position. The nearest direction is determined based on the change between the specified position and cell center. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The cell row.</td></tr>
+    <tr><td class="paramname">column</td><td>The cell column.</td></tr>
+    <tr><td class="paramname">position</td><td>The global position.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00475">475</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -729,7 +885,22 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00192">192</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Returns the cell activity for the specified cell index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The cell row index.</td></tr>
+    <tr><td class="paramname">column</td><td>The cell column index.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IndexOutOfRangeException</td><td>Thrown if the specified index is out of range.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00307">307</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -756,7 +927,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00439">439</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Returns an new array of ManiaMap cells for the room. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00643">643</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -783,7 +956,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00413">413</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Returns a dictionary of ManiaMap collectable spots used by the procedural generator. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00610">610</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -794,7 +969,7 @@ Private Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">RoomTemplate GetMMRoomTemplate </td>
+          <td class="memname"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aa3c75357b4bff1a2191da82e55918223">RoomTemplate</a> GetMMRoomTemplate </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>id</em>, </td>
@@ -813,18 +988,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns the ManiaMap room template used for procedural generation. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">id</td><td>The unique template ID.</td></tr>
-    <tr><td class="paramname">name</td><td>The template name.</td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Returns the ManiaMap room template used for procedural generation.  </p>
 
 <p>Implements <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html#ad70703a12aa8a6b615acbfd68b16aeaf">IRoomNode</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00401">401</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00595">595</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -844,7 +1012,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00380">380</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Returns the row (x) and column (y) index corresponding to the specified global position. If the position is outside the room bounds, returns Vector2I(-1, -1). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>The global position.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00563">563</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -857,13 +1033,13 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">bool Initialize </td>
           <td>(</td>
-          <td class="paramtype">Layout&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a6860a4215b072014f8972b7611c569fd">Layout</a>&#160;</td>
           <td class="paramname"><em>layout</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">LayoutState&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a25a58a509186fa802307b2b7e754ee7a">LayoutState</a>&#160;</td>
           <td class="paramname"><em>layoutState</em>, </td>
         </tr>
         <tr>
@@ -875,7 +1051,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">RoomState&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ac538398fb8f4115156492ace504e62ac">RoomState</a>&#160;</td>
           <td class="paramname"><em>roomState</em>, </td>
         </tr>
         <tr>
@@ -904,7 +1080,22 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00152">152</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Initializes the room. The room should be initialized before adding it to the scene tree since cell children often require this information on ready. </p>
+<p >If the room has already been initialized, no action is taken, and this method returns false. Othwerwise, it returns true. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layout</td><td>The full layout.</td></tr>
+    <tr><td class="paramname">layoutState</td><td>The full layout state.</td></tr>
+    <tr><td class="paramname">roomLayout</td><td>The room's layout.</td></tr>
+    <tr><td class="paramname">roomState</td><td>The room's state.</td></tr>
+    <tr><td class="paramname">doorConnections</td><td>The room's door connections.</td></tr>
+    <tr><td class="paramname">cellCollisionMask</td><td>The cell collision mask.</td></tr>
+    <tr><td class="paramname">assignLayoutPosition</td><td>If true, the position of the room will be set to that of the room layout. Otherwise, it will be initialized at its original position.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00256">256</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -924,7 +1115,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00385">385</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Returns the row (x) and column (y) index corresponding to the specified local position. If the position is outside the room bounds, returns Vector2I(-1, -1). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>The local position.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00573">573</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -943,7 +1142,83 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00364">364</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Moves the room to its position in the <code>Layout</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00532">532</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+
+</div>
+</div>
+<a id="a90e8444e92ca3bb9c14293fb8ba95d85" name="a90e8444e92ca3bb9c14293fb8ba95d85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90e8444e92ca3bb9c14293fb8ba95d85">&#9670;&nbsp;</a></span>OnCellAreaEnteredEventHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">delegate void OnCellAreaEnteredEventHandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_area2_d.html">CellArea2D</a>&#160;</td>
+          <td class="paramname"><em>cell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Node&#160;</td>
+          <td class="paramname"><em>collision</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Signal emitted when a cell area is entered by a tracked area or body. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cell</td><td>The entered cell.</td></tr>
+    <tr><td class="paramname">collision</td><td>The entering object.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae4cd1ada99b95de395acf4bb2667d0ba" name="ae4cd1ada99b95de395acf4bb2667d0ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4cd1ada99b95de395acf4bb2667d0ba">&#9670;&nbsp;</a></span>OnCellAreaExitedEventHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">delegate void OnCellAreaExitedEventHandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_area2_d.html">CellArea2D</a>&#160;</td>
+          <td class="paramname"><em>cell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Node&#160;</td>
+          <td class="paramname"><em>collision</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Signal emitted when a cell area is exited by a tracked area or body. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cell</td><td>The exited cell.</td></tr>
+    <tr><td class="paramname">collision</td><td>The exiting object.</td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -971,7 +1246,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00510">510</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Returns true if the specified resource is saved in a separate file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">resource</td><td>The resource.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00733">733</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -998,18 +1281,20 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00516">516</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Returns true if the room scene is saved to a file. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00742">742</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
-<a id="a6bdbbfd42bcda09c80f4b831edf7c3f7" name="a6bdbbfd42bcda09c80f4b831edf7c3f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6bdbbfd42bcda09c80f4b831edf7c3f7">&#9670;&nbsp;</a></span>SetCellActivities()</h2>
+<a id="ae12750d104a4035d10749b174b2de356" name="ae12750d104a4035d10749b174b2de356"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae12750d104a4035d10749b174b2de356">&#9670;&nbsp;</a></span>SetCellActivities()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void SetCellActivities </td>
+          <td class="memname">bool SetCellActivities </td>
           <td>(</td>
           <td class="paramtype">Vector2I&#160;</td>
           <td class="paramname"><em>startIndex</em>, </td>
@@ -1034,7 +1319,17 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00236">236</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Sets the cell activities for all cells in the specified index range. The order of the start and end indexes does not matter. If either the start or end indexes fall outside the cell grid, no action is taken and the method returns false. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startIndex</td><td>The start index.</td></tr>
+    <tr><td class="paramname">endIndex</td><td>The end index.</td></tr>
+    <tr><td class="paramname">activity</td><td>The cell activity option.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00380">380</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1070,7 +1365,23 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00200">200</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Sets the activity for the specified cell index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The cell row index.</td></tr>
+    <tr><td class="paramname">column</td><td>The cell column index.</td></tr>
+    <tr><td class="paramname">activated</td><td>True to set the cell as active. False to set the cell as deactivated.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IndexOutOfRangeException</td><td>Thrown if the specified index is out of range.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00322">322</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1106,7 +1417,24 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00208">208</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Sets the activity for the specified cell index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The cell row index.</td></tr>
+    <tr><td class="paramname">column</td><td>The cell column index.</td></tr>
+    <tr><td class="paramname">activity</td><td>The cell activity option.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IndexOutOfRangeException</td><td>Thrown if the specified index is out of range.</td></tr>
+    <tr><td class="paramname">NotImplementedException</td><td>Thrown for an unhandled cell activity.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00338">338</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1144,7 +1472,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00062">62</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00132">132</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1182,7 +1510,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00055">55</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00125">125</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1201,7 +1529,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00255">255</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Sizes the active cells array to match the current rows and columns properties. Any newly added cells are active by default. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00405">405</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1221,7 +1551,16 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00484">484</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Runs auto assign and updates the referenced <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html">RoomTemplateResource</a>. Saves the room template resource to a separate file if it is not saved already. </p>
+<p >This method returns does not run and returns false if the room scene is not saved to file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">run</td><td>This method is only executed if true.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00703">703</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1240,7 +1579,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00470">470</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>Validates that the room flags have unique ID's. Throws an exception if they do not. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">DuplicateIdException</td><td>Thrown if two room flags share the same ID.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00682">682</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1265,7 +1612,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00043">43</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00084">84</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1289,7 +1636,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00040">40</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00078">78</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1313,7 +1660,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00037">37</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00072">72</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1338,7 +1685,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00046">46</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>A nested array of room cell activities. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00093">93</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1362,7 +1711,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00044">44</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>The width and height of the room cells. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00088">88</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1386,7 +1737,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00041">41</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>The number of cell columns in the room. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00082">82</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1410,7 +1763,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00052">52</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>A list of door connections for the room. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00118">118</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1434,7 +1789,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00053">53</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>True if the room has been initialized. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00123">123</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1458,7 +1815,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00048">48</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>The current layout. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00098">98</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1482,7 +1841,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00049">49</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>The current layout state. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00103">103</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1506,7 +1867,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00050">50</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>This room's layout. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00108">108</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1530,7 +1893,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00051">51</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>This room's layout state. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00113">113</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1554,7 +1919,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00035">35</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>The room template used by the procedural generator. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00070">70</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1578,7 +1945,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00038">38</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p>The number or cell rows in the room. </p>
+
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00076">76</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>

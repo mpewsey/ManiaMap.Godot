@@ -19,26 +19,26 @@ var annotated_dup =
           [ "ThreadedResourceRequestException", "class_m_pewsey_1_1_mania_map_godot_1_1_exceptions_1_1_threaded_resource_request_exception.html", null ]
         ] ],
         [ "Generators", "namespace_m_pewsey_1_1_mania_map_godot_1_1_generators.html", [
-          [ "CollectableGeneratorStep", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_collectable_generator_step.html", null ],
-          [ "CollectableGroupsInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_collectable_groups_input.html", null ],
-          [ "GenerationBooleanInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_boolean_input.html", null ],
-          [ "GenerationDoubleInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_double_input.html", null ],
-          [ "GenerationFloatInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_float_input.html", null ],
-          [ "GenerationInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input.html", null ],
-          [ "GenerationIntInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_int_input.html", null ],
+          [ "CollectableGeneratorStep", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_collectable_generator_step.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_collectable_generator_step" ],
+          [ "CollectableGroupsInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_collectable_groups_input.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_collectable_groups_input" ],
+          [ "GenerationBooleanInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_boolean_input.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_boolean_input" ],
+          [ "GenerationDoubleInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_double_input.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_double_input" ],
+          [ "GenerationFloatInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_float_input.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_float_input" ],
+          [ "GenerationInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input" ],
+          [ "GenerationIntInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_int_input.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_int_input" ],
           [ "GenerationPipeline", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html", null ],
-          [ "GenerationStep", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_step.html", null ],
-          [ "GenerationStringInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_string_input.html", null ],
-          [ "LayoutGeneratorStep", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_generator_step.html", null ],
-          [ "LayoutGraphRandomizerStep", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graph_randomizer_step.html", null ],
-          [ "LayoutGraphSelectorStep", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graph_selector_step.html", null ],
-          [ "LayoutGraphsInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html", null ],
-          [ "RandomSeedInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_random_seed_input.html", null ]
+          [ "GenerationStep", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_step.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_step" ],
+          [ "GenerationStringInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_string_input.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_string_input" ],
+          [ "LayoutGeneratorStep", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_generator_step.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_generator_step" ],
+          [ "LayoutGraphRandomizerStep", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graph_randomizer_step.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graph_randomizer_step" ],
+          [ "LayoutGraphSelectorStep", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graph_selector_step.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graph_selector_step" ],
+          [ "LayoutGraphsInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input" ],
+          [ "RandomSeedInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_random_seed_input.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_random_seed_input" ]
         ] ],
         [ "Graphs", "namespace_m_pewsey_1_1_mania_map_godot_1_1_graphs.html", [
-          [ "LayoutGraphEdge", "class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_edge.html", null ],
-          [ "LayoutGraphNode", "class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_node.html", null ],
-          [ "LayoutGraphResource", "class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource.html", null ]
+          [ "LayoutGraphEdge", "class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_edge.html", "class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_edge" ],
+          [ "LayoutGraphNode", "class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_node.html", "class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_node" ],
+          [ "LayoutGraphResource", "class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource.html", "class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource" ]
         ] ],
         [ "AsyncResourceLoader", "class_m_pewsey_1_1_mania_map_godot_1_1_async_resource_loader.html", "class_m_pewsey_1_1_mania_map_godot_1_1_async_resource_loader" ],
         [ "CellArea2D", "class_m_pewsey_1_1_mania_map_godot_1_1_cell_area2_d.html", "class_m_pewsey_1_1_mania_map_godot_1_1_cell_area2_d" ],
@@ -62,10 +62,10 @@ var annotated_dup =
         [ "Rand", "class_m_pewsey_1_1_mania_map_godot_1_1_rand.html", "class_m_pewsey_1_1_mania_map_godot_1_1_rand" ],
         [ "RoomFlag2D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html", "class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d" ],
         [ "RoomNode2D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d" ],
-        [ "RoomTemplateDatabase", "class_m_pewsey_1_1_mania_map_godot_1_1_room_template_database.html", null ],
-        [ "RoomTemplateResource", "class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html", null ],
-        [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_godot_1_1_template_group.html", null ],
-        [ "TemplateGroupEntry", "class_m_pewsey_1_1_mania_map_godot_1_1_template_group_entry.html", null ]
+        [ "RoomTemplateDatabase", "class_m_pewsey_1_1_mania_map_godot_1_1_room_template_database.html", "class_m_pewsey_1_1_mania_map_godot_1_1_room_template_database" ],
+        [ "RoomTemplateResource", "class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html", "class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource" ],
+        [ "TemplateGroup", "class_m_pewsey_1_1_mania_map_godot_1_1_template_group.html", "class_m_pewsey_1_1_mania_map_godot_1_1_template_group" ],
+        [ "TemplateGroupEntry", "class_m_pewsey_1_1_mania_map_godot_1_1_template_group_entry.html", "class_m_pewsey_1_1_mania_map_godot_1_1_template_group_entry" ]
       ] ]
     ] ]
 ];

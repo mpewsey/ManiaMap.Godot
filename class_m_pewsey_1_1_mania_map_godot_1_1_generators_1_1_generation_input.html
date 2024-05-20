@@ -102,6 +102,9 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_godot_1_1
   <div class="headertitle"><div class="title">GenerationInput Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>The base class for <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html">GenerationPipeline</a> input nodes. An input node adds an input used by the pipeline.  
+ <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for GenerationInput:</div>
 <div class="dyncontent">
@@ -121,17 +124,84 @@ Inheritance diagram for GenerationInput:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae49f53bbea74cb051e3fe96027bde64c"><td class="memItemLeft" align="right" valign="top"><a id="ae49f53bbea74cb051e3fe96027bde64c" name="ae49f53bbea74cb051e3fe96027bde64c"></a>
-abstract void&#160;</td><td class="memItemRight" valign="bottom"><b>AddInputs</b> (Dictionary&lt; string, object &gt; inputs)</td></tr>
+<tr class="memitem:ae49f53bbea74cb051e3fe96027bde64c"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input.html#ae49f53bbea74cb051e3fe96027bde64c">AddInputs</a> (Dictionary&lt; string, object &gt; inputs)</td></tr>
+<tr class="memdesc:ae49f53bbea74cb051e3fe96027bde64c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the input values to the supplied inputs dictionary.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input.html#ae49f53bbea74cb051e3fe96027bde64c">More...</a><br /></td></tr>
 <tr class="separator:ae49f53bbea74cb051e3fe96027bde64c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3ba5439ef112522ed132271c2196690"><td class="memItemLeft" align="right" valign="top"><a id="af3ba5439ef112522ed132271c2196690" name="af3ba5439ef112522ed132271c2196690"></a>
-abstract string[]&#160;</td><td class="memItemRight" valign="bottom"><b>InputNames</b> ()</td></tr>
+<tr class="memitem:af3ba5439ef112522ed132271c2196690"><td class="memItemLeft" align="right" valign="top">abstract string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input.html#af3ba5439ef112522ed132271c2196690">InputNames</a> ()</td></tr>
+<tr class="memdesc:af3ba5439ef112522ed132271c2196690"><td class="mdescLeft">&#160;</td><td class="mdescRight">An array of input names supplied by the node.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input.html#af3ba5439ef112522ed132271c2196690">More...</a><br /></td></tr>
 <tr class="separator:af3ba5439ef112522ed132271c2196690"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_generation_input_8cs_source.html#l00009">9</a> of file <a class="el" href="_generation_input_8cs_source.html">GenerationInput.cs</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p >The base class for <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html">GenerationPipeline</a> input nodes. An input node adds an input used by the pipeline. </p>
+
+<p class="definition">Definition at line <a class="el" href="_generation_input_8cs_source.html#l00013">13</a> of file <a class="el" href="_generation_input_8cs_source.html">GenerationInput.cs</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae49f53bbea74cb051e3fe96027bde64c" name="ae49f53bbea74cb051e3fe96027bde64c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae49f53bbea74cb051e3fe96027bde64c">&#9670;&nbsp;</a></span>AddInputs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void AddInputs </td>
+          <td>(</td>
+          <td class="paramtype">Dictionary&lt; string, object &gt;&#160;</td>
+          <td class="paramname"><em>inputs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds the input values to the supplied inputs dictionary. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inputs</td><td>The inputs dictionary.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_collectable_groups_input.html#a45ffe61db574a98884cce924ea392a87">CollectableGroupsInput</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_boolean_input.html#a45ffe61db574a98884cce924ea392a87">GenerationBooleanInput</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_double_input.html#a45ffe61db574a98884cce924ea392a87">GenerationDoubleInput</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_float_input.html#a45ffe61db574a98884cce924ea392a87">GenerationFloatInput</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_int_input.html#a45ffe61db574a98884cce924ea392a87">GenerationIntInput</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_string_input.html#a45ffe61db574a98884cce924ea392a87">GenerationStringInput</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a45ffe61db574a98884cce924ea392a87">LayoutGraphsInput</a>, and <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_random_seed_input.html#a45ffe61db574a98884cce924ea392a87">RandomSeedInput</a>.</p>
+
+</div>
+</div>
+<a id="af3ba5439ef112522ed132271c2196690" name="af3ba5439ef112522ed132271c2196690"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3ba5439ef112522ed132271c2196690">&#9670;&nbsp;</a></span>InputNames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract string[] InputNames </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>An array of input names supplied by the node. </p>
+
+<p>Implemented in <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_collectable_groups_input.html#a839ac6fb8f31087e9c232a284f624057">CollectableGroupsInput</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_boolean_input.html#a839ac6fb8f31087e9c232a284f624057">GenerationBooleanInput</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_double_input.html#a839ac6fb8f31087e9c232a284f624057">GenerationDoubleInput</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_float_input.html#a839ac6fb8f31087e9c232a284f624057">GenerationFloatInput</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_int_input.html#a839ac6fb8f31087e9c232a284f624057">GenerationIntInput</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_string_input.html#a839ac6fb8f31087e9c232a284f624057">GenerationStringInput</a>, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a839ac6fb8f31087e9c232a284f624057">LayoutGraphsInput</a>, and <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_random_seed_input.html#a839ac6fb8f31087e9c232a284f624057">RandomSeedInput</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>/github/workspace/addons/mpewsey.maniamap/scripts/runtime/generators/<a class="el" href="_generation_input_8cs_source.html">GenerationInput.cs</a></li>
 </ul>
 </div><!-- contents -->
