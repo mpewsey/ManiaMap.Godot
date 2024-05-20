@@ -2,12 +2,35 @@ using Godot;
 
 namespace MPewsey.ManiaMapGodot
 {
+    /// <summary>
+    /// Provides area and body entering and exiting detection for a cell.
+    /// Register to the RoomNode2D.OnCellAreaEntered and RoomNode2D.OnCellAreaExited signals to monitor these events.
+    /// When the area detects an entering object, the `RoomLayoutState` cell visibility is automatically updated.
+    /// </summary>
     public partial class CellArea2D : Area2D
     {
+        /// <summary>
+        /// The cell row in the room.
+        /// </summary>
         public int Row { get; private set; }
+
+        /// <summary>
+        /// The cell column in the room.
+        /// </summary>
         public int Column { get; private set; }
+
+        /// <summary>
+        /// The containing room.
+        /// </summary>
         public RoomNode2D Room { get; private set; }
 
+        /// <summary>
+        /// Creates a new instance with child collision shape and adds it as a child of the specified room.
+        /// </summary>
+        /// <param name="row">The cell row.</param>
+        /// <param name="column">The cell column.</param>
+        /// <param name="room">The containing room.</param>
+        /// <param name="collisionMask">The monitored collision mask. Typically, this should match the collision layer of the player character.</param>
         public static CellArea2D CreateInstance(int row, int column, RoomNode2D room, uint collisionMask)
         {
             var cell = new CellArea2D()
