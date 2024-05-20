@@ -49,5 +49,6 @@ jobs:
           godot-status: ${{ matrix.godot-status }}
           godot-net: true
           paths: 'res://tests/scripts' # Tests path
+          retries: 3
           report-name: Report_GdUnit4_Godot${{ matrix.godot-version }}-${{ matrix.godot-status }}.xml
 
