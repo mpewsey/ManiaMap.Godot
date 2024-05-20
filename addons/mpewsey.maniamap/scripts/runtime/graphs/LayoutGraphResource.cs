@@ -5,18 +5,38 @@ using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapGodot.Graphs
 {
+    /// <summary>
+    /// A graph of nodes and edges representing rooms. Used to guide the procedural generator.
+    /// </summary>
     [Tool]
     [GlobalClass]
     public partial class LayoutGraphResource : Resource
     {
         private int _id = Rand.GetRandomId();
+        /// <summary>
+        /// The unique graph ID.
+        /// </summary>
         [Export] public int Id { get => _id; set => SetField(ref _id, value); }
 
         private string _name = "<None>";
+        /// <summary>
+        /// The graph name.
+        /// </summary>
         [Export] public string Name { get => _name; set => SetField(ref _name, value); }
 
+        /// <summary>
+        /// A dictionary of nodes by ID.
+        /// </summary>
         [Export] public Godot.Collections.Dictionary<int, LayoutGraphNode> Nodes { get; set; } = new Godot.Collections.Dictionary<int, LayoutGraphNode>();
+
+        /// <summary>
+        /// A dictionary of edges by node ID's.
+        /// </summary>
         [Export] public Godot.Collections.Dictionary<Vector2I, LayoutGraphEdge> Edges { get; set; } = new Godot.Collections.Dictionary<Vector2I, LayoutGraphEdge>();
+
+        /// <summary>
+        /// If true, the graph has unsaved changes.
+        /// </summary>
         public bool IsDirty { get; private set; }
 
         private void SetField<T>(ref T field, T value)
@@ -35,6 +55,9 @@ namespace MPewsey.ManiaMapGodot.Graphs
                 property["usage"] = (int)(usage & ~PropertyUsageFlags.Editor);
         }
 
+        /// <summary>
+        /// Adds the `OnSubresourceChanged` signal to all nodes and edges.
+        /// </summary>
         public void RegisterOnSubresourceChangedSignals()
         {
             foreach (var node in Nodes.Values)
@@ -48,6 +71,9 @@ namespace MPewsey.ManiaMapGodot.Graphs
             }
         }
 
+        /// <summary>
+        /// Removes the `OnSubresourceChanged` signal from all nodes and edges.
+        /// </summary>
         public void UnregisterOnSubresourceChangedSignals()
         {
             foreach (var node in Nodes.Values)
@@ -66,12 +92,18 @@ namespace MPewsey.ManiaMapGodot.Graphs
             SetDirty();
         }
 
+        /// <summary>
+        /// Marks the graph as dirty.
+        /// </summary>
         public void SetDirty()
         {
             IsDirty = true;
             EmitChanged();
         }
 
+        /// <summary>
+        /// Saves the graph if it is dirty and the resource file still exists.
+        /// </summary>
         public bool SaveIfDirty()
         {
             if (IsDirty && FileAccess.FileExists(ResourcePath))
@@ -84,12 +116,23 @@ namespace MPewsey.ManiaMapGodot.Graphs
             return false;
         }
 
+        /// <summary>
+        /// Returns true if the graph contains the edge.
+        /// </summary>
+        /// <param name="node1">The first node ID.</param>
+        /// <param name="node2">The second node ID.</param>
         public bool ContainsEdge(int node1, int node2)
         {
             return Edges.ContainsKey(new Vector2I(node1, node2))
                 || Edges.ContainsKey(new Vector2I(node2, node1));
         }
 
+        /// <summary>
+        /// Returns the edge connected by the nodes.
+        /// </summary>
+        /// <param name="node1">The first node ID.</param>
+        /// <param name="node2">The second node ID.</param>
+        /// <exception cref="ArgumentException">Raised if the edge does not exist.</exception>
         public LayoutGraphEdge GetEdge(int node1, int node2)
         {
             if (Edges.TryGetValue(new Vector2I(node1, node2), out var edge1))
@@ -99,11 +142,18 @@ namespace MPewsey.ManiaMapGodot.Graphs
             throw new ArgumentException($"Edge does not exist: ({node1}, {node2}).");
         }
 
+        /// <summary>
+        /// Adds a new node with the next available ID to the graph.
+        /// </summary>
+        /// <param name="position">The node position.</param>
         public LayoutGraphNode AddNode(Vector2 position)
         {
             return AddNode(GetNewNodeId(), position);
         }
 
+        /// <summary>
+        /// Returns the next available node ID.
+        /// </summary>
         private int GetNewNodeId()
         {
             var id = 1;
@@ -116,6 +166,12 @@ namespace MPewsey.ManiaMapGodot.Graphs
             return id;
         }
 
+        /// <summary>
+        /// Adds a new node to the graph.
+        /// </summary>
+        /// <param name="nodeId">The node ID.</param>
+        /// <param name="position">The node position.</param>
+        /// <exception cref="ArgumentException">Raised if the node ID already exists.</exception>
         public LayoutGraphNode AddNode(int nodeId, Vector2 position)
         {
             if (Nodes.ContainsKey(nodeId))
@@ -128,6 +184,11 @@ namespace MPewsey.ManiaMapGodot.Graphs
             return node;
         }
 
+        /// <summary>
+        /// Removes the node and any attached edges from the graph.
+        /// Returns true if successful.
+        /// </summary>
+        /// <param name="nodeId">The node ID.</param>
         public bool RemoveNode(int nodeId)
         {
             RemoveNodeEdges(nodeId);
@@ -141,6 +202,11 @@ namespace MPewsey.ManiaMapGodot.Graphs
             return false;
         }
 
+        /// <summary>
+        /// Returns all edges attached to the node from the graph.
+        /// Returns true if a change is made.
+        /// </summary>
+        /// <param name="nodeId">The node ID.</param>
         public bool RemoveNodeEdges(int nodeId)
         {
             var result = false;
@@ -156,6 +222,10 @@ namespace MPewsey.ManiaMapGodot.Graphs
             return result;
         }
 
+        /// <summary>
+        /// Returns a list of all edge indexes associated with the node.
+        /// </summary>
+        /// <param name="nodeId">The node ID.</param>
         public List<Vector2I> NodeEdgeIndexes(int nodeId)
         {
             var result = new List<Vector2I>();
@@ -169,6 +239,12 @@ namespace MPewsey.ManiaMapGodot.Graphs
             return result;
         }
 
+        /// <summary>
+        /// Adds an edge to the graph.
+        /// </summary>
+        /// <param name="fromNode">The from node ID.</param>
+        /// <param name="toNode">The to node ID.</param>
+        /// <exception cref="ArgumentException">Raised if either the from node ID or to node ID does not exist.</exception>
         public LayoutGraphEdge AddEdge(int fromNode, int toNode)
         {
             if (!Nodes.ContainsKey(fromNode))
@@ -188,6 +264,12 @@ namespace MPewsey.ManiaMapGodot.Graphs
             return null;
         }
 
+        /// <summary>
+        /// Removes the edge from the graph.
+        /// Returns true if successful.
+        /// </summary>
+        /// <param name="node1">The first node.</param>
+        /// <param name="node2">The second node.</param>
         public bool RemoveEdge(int node1, int node2)
         {
             if (Edges.Remove(new Vector2I(node1, node2)) || Edges.Remove(new Vector2I(node2, node1)))
@@ -199,6 +281,9 @@ namespace MPewsey.ManiaMapGodot.Graphs
             return false;
         }
 
+        /// <summary>
+        /// Returns a set of unique template groups contained in the graph.
+        /// </summary>
         public HashSet<TemplateGroup> GetTemplateGroups()
         {
             var result = new HashSet<TemplateGroup>();
@@ -217,6 +302,9 @@ namespace MPewsey.ManiaMapGodot.Graphs
             return result;
         }
 
+        /// <summary>
+        /// Returns the ManiaMap layout graph used by the procedural generator.
+        /// </summary>
         public LayoutGraph GetMMLayoutGraph()
         {
             var graph = new LayoutGraph(Id, Name);
@@ -226,6 +314,10 @@ namespace MPewsey.ManiaMapGodot.Graphs
             return graph;
         }
 
+        /// <summary>
+        /// Adds the ManiaMap layout nodes to the specified graph.
+        /// </summary>
+        /// <param name="graph">The ManiaMap graph.</param>
         private void AddMMLayoutNodes(LayoutGraph graph)
         {
             foreach (var node in Nodes.Values)
@@ -234,6 +326,10 @@ namespace MPewsey.ManiaMapGodot.Graphs
             }
         }
 
+        /// <summary>
+        /// Adds the ManiaMap layout edges to the specified graph.
+        /// </summary>
+        /// <param name="graph">The ManiaMap graph.</param>
         private void AddMMLayoutEdges(LayoutGraph graph)
         {
             foreach (var edge in Edges.Values)

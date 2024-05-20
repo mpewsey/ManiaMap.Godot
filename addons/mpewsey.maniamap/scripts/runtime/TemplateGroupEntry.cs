@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace MPewsey.ManiaMapGodot
 {
     /// <summary>
-    /// An TemplateGroup entry with a room template and its constraints.
+    /// A TemplateGroup entry with a room template and its constraints.
     /// </summary>
     [Tool]
     [GlobalClass]
