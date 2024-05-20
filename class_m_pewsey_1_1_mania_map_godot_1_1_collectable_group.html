@@ -103,6 +103,9 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_godot_1_1
   <div class="headertitle"><div class="title">CollectableGroup Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A collection of collectables and quantities for distribution across associated <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_collectable_spot2_d.html" title="A possible collectable location within a RoomNode2D.">CollectableSpot2D</a>.  
+ <a href="class_m_pewsey_1_1_mania_map_godot_1_1_collectable_group.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for CollectableGroup:</div>
 <div class="dyncontent">
@@ -113,18 +116,22 @@ Inheritance diagram for CollectableGroup:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7825e2dc5b8ed0eb36828ea9914c7582"><td class="memItemLeft" align="right" valign="top">List&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_collectable_group.html#a7825e2dc5b8ed0eb36828ea9914c7582">GetCollectableIds</a> ()</td></tr>
+<tr class="memdesc:a7825e2dc5b8ed0eb36828ea9914c7582"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a list of collectable ID's in the quantities specified in the group's Entries.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_collectable_group.html#a7825e2dc5b8ed0eb36828ea9914c7582">More...</a><br /></td></tr>
 <tr class="separator:a7825e2dc5b8ed0eb36828ea9914c7582"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a720df16eae564216c79e08743f799e99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_collectable_group_entry.html">CollectableGroupEntry</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_collectable_group.html#a720df16eae564216c79e08743f799e99">Entries</a> = Array.Empty&lt;<a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_collectable_group_entry.html">CollectableGroupEntry</a>&gt;()<code> [getset]</code></td></tr>
+<tr class="memdesc:a720df16eae564216c79e08743f799e99"><td class="mdescLeft">&#160;</td><td class="mdescRight">An array of entries.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_collectable_group.html#a720df16eae564216c79e08743f799e99">More...</a><br /></td></tr>
 <tr class="separator:a720df16eae564216c79e08743f799e99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a418cbc64a2315132ac24af8c91c2c67f"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_collectable_group.html#a418cbc64a2315132ac24af8c91c2c67f">GroupName</a> = &quot;&lt;None&gt;&quot;<code> [getset]</code></td></tr>
+<tr class="memdesc:a418cbc64a2315132ac24af8c91c2c67f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The unique group name.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_collectable_group.html#a418cbc64a2315132ac24af8c91c2c67f">More...</a><br /></td></tr>
 <tr class="separator:a418cbc64a2315132ac24af8c91c2c67f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_collectable_group_8cs_source.html#l00010">10</a> of file <a class="el" href="_collectable_group_8cs_source.html">CollectableGroup.cs</a>.</p>
+<div class="textblock"><p >A collection of collectables and quantities for distribution across associated <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_collectable_spot2_d.html" title="A possible collectable location within a RoomNode2D.">CollectableSpot2D</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_collectable_group_8cs_source.html#l00013">13</a> of file <a class="el" href="_collectable_group_8cs_source.html">CollectableGroup.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7825e2dc5b8ed0eb36828ea9914c7582" name="a7825e2dc5b8ed0eb36828ea9914c7582"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7825e2dc5b8ed0eb36828ea9914c7582">&#9670;&nbsp;</a></span>GetCollectableIds()</h2>
@@ -141,7 +148,15 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collectable_group_8cs_source.html#l00015">15</a> of file <a class="el" href="_collectable_group_8cs_source.html">CollectableGroup.cs</a>.</p>
+<p>Returns a list of collectable ID's in the quantities specified in the group's Entries. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">DuplicateIdException</td><td>Raised if a collectable has a duplicate ID.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_collectable_group_8cs_source.html#l00029">29</a> of file <a class="el" href="_collectable_group_8cs_source.html">CollectableGroup.cs</a>.</p>
 
 </div>
 </div>
@@ -166,7 +181,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collectable_group_8cs_source.html#l00013">13</a> of file <a class="el" href="_collectable_group_8cs_source.html">CollectableGroup.cs</a>.</p>
+<p>An array of entries. </p>
+
+<p class="definition">Definition at line <a class="el" href="_collectable_group_8cs_source.html#l00023">23</a> of file <a class="el" href="_collectable_group_8cs_source.html">CollectableGroup.cs</a>.</p>
 
 </div>
 </div>
@@ -190,7 +207,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_collectable_group_8cs_source.html#l00012">12</a> of file <a class="el" href="_collectable_group_8cs_source.html">CollectableGroup.cs</a>.</p>
+<p>The unique group name. </p>
+
+<p class="definition">Definition at line <a class="el" href="_collectable_group_8cs_source.html#l00018">18</a> of file <a class="el" href="_collectable_group_8cs_source.html">CollectableGroup.cs</a>.</p>
 
 </div>
 </div>

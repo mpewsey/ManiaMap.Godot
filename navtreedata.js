@@ -52,7 +52,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_async_resource_loader_8cs_source.html"
+"_async_resource_loader_8cs_source.html",
+"class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
