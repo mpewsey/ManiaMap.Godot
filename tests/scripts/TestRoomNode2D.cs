@@ -3,6 +3,7 @@ using Godot;
 using MPewsey.ManiaMap;
 using MPewsey.ManiaMap.Exceptions;
 using MPewsey.ManiaMapGodot.Generators;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -200,9 +201,212 @@ namespace MPewsey.ManiaMapGodot.Tests
         }
 
         [TestCase]
-        public void TestFindClosestCell()
+        public void TestGetCellActivityThrowsOutOfRangeException()
         {
+            var room = new RoomNode2D() { Rows = 3, Columns = 3 };
+            Assertions.AssertThrown(() => room.GetCellActivity(-1, -1)).IsInstanceOf<IndexOutOfRangeException>();
+            Assertions.AssertThrown(() => room.GetCellActivity(-1, -1)).IsInstanceOf<IndexOutOfRangeException>();
+            room.QueueFree();
+        }
 
+        [TestCase]
+        public void TestSetCellActivityByBoolean()
+        {
+            var room = new RoomNode2D() { Rows = 3, Columns = 3 };
+            Assertions.AssertThat(room.GetCellActivity(0, 0)).IsTrue();
+            room.SetCellActivity(0, 0, false);
+            Assertions.AssertThat(room.GetCellActivity(0, 0)).IsFalse();
+            room.QueueFree();
+        }
+
+        [TestCase]
+        public void TestSetCellActivity()
+        {
+            var room = new RoomNode2D() { Rows = 3, Columns = 3 };
+            Assertions.AssertThat(room.GetCellActivity(0, 0)).IsTrue();
+            room.SetCellActivity(0, 0, CellActivity.Deactivate);
+            Assertions.AssertThat(room.GetCellActivity(0, 0)).IsFalse();
+            room.SetCellActivity(0, 0, CellActivity.Activate);
+            Assertions.AssertThat(room.GetCellActivity(0, 0)).IsTrue();
+            room.SetCellActivity(0, 0, CellActivity.Toggle);
+            Assertions.AssertThat(room.GetCellActivity(0, 0)).IsFalse();
+            room.SetCellActivity(0, 0, CellActivity.Toggle);
+            Assertions.AssertThat(room.GetCellActivity(0, 0)).IsTrue();
+            room.SetCellActivity(0, 0, CellActivity.None);
+            Assertions.AssertThat(room.GetCellActivity(0, 0)).IsTrue();
+            room.QueueFree();
+        }
+
+        [TestCase]
+        public void TestSetCellActivityThrowsOutOfRangeException()
+        {
+            var room = new RoomNode2D() { Rows = 3, Columns = 3 };
+            Assertions.AssertThrown(() => room.SetCellActivity(-1, -1, true)).IsInstanceOf<IndexOutOfRangeException>();
+            Assertions.AssertThrown(() => room.SetCellActivity(-1, -1, CellActivity.Deactivate)).IsInstanceOf<IndexOutOfRangeException>();
+            room.QueueFree();
+        }
+
+        [TestCase]
+        public void TestSetCellActivities()
+        {
+            var room = new RoomNode2D() { Rows = 3, Columns = 3 };
+            room.SetCellActivities(new Vector2I(1, 1), new Vector2I(2, 2), CellActivity.Deactivate);
+            Assertions.AssertThat(room.GetCellActivity(1, 1)).IsFalse();
+            Assertions.AssertThat(room.GetCellActivity(2, 1)).IsFalse();
+            Assertions.AssertThat(room.GetCellActivity(1, 2)).IsFalse();
+            Assertions.AssertThat(room.GetCellActivity(2, 2)).IsFalse();
+            room.SetCellActivities(new Vector2I(2, 2), new Vector2I(1, 1), CellActivity.Activate);
+            Assertions.AssertThat(room.GetCellActivity(1, 1)).IsTrue();
+            Assertions.AssertThat(room.GetCellActivity(2, 1)).IsTrue();
+            Assertions.AssertThat(room.GetCellActivity(1, 2)).IsTrue();
+            Assertions.AssertThat(room.GetCellActivity(2, 2)).IsTrue();
+            room.QueueFree();
+        }
+
+        [TestCase]
+        public void TestSetCellActivitiesOutOfRangeDoesNothing()
+        {
+            var room = new RoomNode2D() { Rows = 3, Columns = 3 };
+            room.SetCellActivities(new Vector2I(-1, -1), new Vector2I(2, 2), CellActivity.Deactivate);
+            Assertions.AssertThat(room.GetCellActivity(1, 1)).IsTrue();
+            Assertions.AssertThat(room.GetCellActivity(2, 1)).IsTrue();
+            Assertions.AssertThat(room.GetCellActivity(1, 2)).IsTrue();
+            Assertions.AssertThat(room.GetCellActivity(2, 2)).IsTrue();
+            room.SetCellActivities(new Vector2I(2, 2), new Vector2I(-1, -1), CellActivity.Deactivate);
+            Assertions.AssertThat(room.GetCellActivity(1, 1)).IsTrue();
+            Assertions.AssertThat(room.GetCellActivity(2, 1)).IsTrue();
+            Assertions.AssertThat(room.GetCellActivity(1, 2)).IsTrue();
+            Assertions.AssertThat(room.GetCellActivity(2, 2)).IsTrue();
+            room.QueueFree();
+        }
+
+        [TestCase]
+        public void TestFindClosestActiveCellIndex()
+        {
+            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100) };
+            room.SetCellActivities(new Vector2I(1, 1), new Vector2I(2, 2), CellActivity.Deactivate);
+            Assertions.AssertThat(room.FindClosestActiveCellIndex(Vector2.Zero)).IsEqual(Vector2I.Zero);
+            Assertions.AssertThat(room.FindClosestActiveCellIndex(new Vector2(125, 50))).IsEqual(new Vector2I(0, 1));
+            Assertions.AssertThat(room.FindClosestActiveCellIndex(new Vector2(125, 150))).IsEqual(new Vector2I(1, 0));
+            Assertions.AssertThat(room.FindClosestActiveCellIndex(new Vector2(150, 125))).IsEqual(new Vector2I(0, 1));
+            room.QueueFree();
+        }
+
+        [TestCase]
+        public void TestFindClosestDoorDirection()
+        {
+            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100) };
+            Assertions.AssertThat(room.FindClosestDoorDirection(0, 0, new Vector2(50, 0))).IsEqual(DoorDirection.North);
+            Assertions.AssertThat(room.FindClosestDoorDirection(0, 0, new Vector2(0, 50))).IsEqual(DoorDirection.West);
+            Assertions.AssertThat(room.FindClosestDoorDirection(0, 0, new Vector2(50, 100))).IsEqual(DoorDirection.South);
+            Assertions.AssertThat(room.FindClosestDoorDirection(0, 0, new Vector2(100, 50))).IsEqual(DoorDirection.East);
+            room.QueueFree();
+        }
+
+        [TestCase]
+        public void TestGlobalPositionToCellIndex()
+        {
+            var offset = new Vector2(543, 9084);
+            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100), Position = offset };
+
+            for (int i = 0; i < room.Rows; i++)
+            {
+                for (int j = 0; j < room.Columns; j++)
+                {
+                    var position = room.CellSize * new Vector2(j, i) + offset + 0.5f * room.CellSize;
+                    Assertions.AssertThat(room.GlobalPositionToCellIndex(position)).IsEqual(new Vector2I(i, j));
+                }
+            }
+
+            Assertions.AssertThat(room.GlobalPositionToCellIndex(Vector2.Zero)).IsEqual(new Vector2I(-1, -1));
+            room.QueueFree();
+        }
+
+        [TestCase]
+        public void TestLocalPositionToCellIndex()
+        {
+            var offset = new Vector2(543, 9084);
+            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100), Position = offset };
+
+            for (int i = 0; i < room.Rows; i++)
+            {
+                for (int j = 0; j < room.Columns; j++)
+                {
+                    var position = room.CellSize * new Vector2(j, i) + 0.5f * room.CellSize;
+                    Assertions.AssertThat(room.LocalPositionToCellIndex(position)).IsEqual(new Vector2I(i, j));
+                }
+            }
+
+            Assertions.AssertThat(room.GlobalPositionToCellIndex(new Vector2(-100, -100))).IsEqual(new Vector2I(-1, -1));
+            room.QueueFree();
+        }
+
+        [TestCase]
+        public void TestCellCenterLocalPosition()
+        {
+            var offset = new Vector2(543, 9084);
+            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100), Position = offset };
+            Assertions.AssertThat(room.CellCenterLocalPosition(0, 0)).IsEqual(new Vector2(50, 50));
+            Assertions.AssertThat(room.CellCenterLocalPosition(1, 0)).IsEqual(new Vector2(50, 150));
+            Assertions.AssertThat(room.CellCenterLocalPosition(2, 0)).IsEqual(new Vector2(50, 250));
+            Assertions.AssertThat(room.CellCenterLocalPosition(0, 1)).IsEqual(new Vector2(150, 50));
+            Assertions.AssertThat(room.CellCenterLocalPosition(0, 2)).IsEqual(new Vector2(250, 50));
+            Assertions.AssertThat(room.CellCenterLocalPosition(1, 1)).IsEqual(new Vector2(150, 150));
+            Assertions.AssertThat(room.CellCenterLocalPosition(2, 2)).IsEqual(new Vector2(250, 250));
+            room.QueueFree();
+        }
+
+        [TestCase]
+        public void TestCellCenterGlobalPosition()
+        {
+            var offset = new Vector2(543, 9084);
+            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100), Position = offset };
+            Assertions.AssertThat(room.CellCenterGlobalPosition(0, 0)).IsEqual(new Vector2(50, 50) + offset);
+            Assertions.AssertThat(room.CellCenterGlobalPosition(1, 0)).IsEqual(new Vector2(50, 150) + offset);
+            Assertions.AssertThat(room.CellCenterGlobalPosition(2, 0)).IsEqual(new Vector2(50, 250) + offset);
+            Assertions.AssertThat(room.CellCenterGlobalPosition(0, 1)).IsEqual(new Vector2(150, 50) + offset);
+            Assertions.AssertThat(room.CellCenterGlobalPosition(0, 2)).IsEqual(new Vector2(250, 50) + offset);
+            Assertions.AssertThat(room.CellCenterGlobalPosition(1, 1)).IsEqual(new Vector2(150, 150) + offset);
+            Assertions.AssertThat(room.CellCenterGlobalPosition(2, 2)).IsEqual(new Vector2(250, 250) + offset);
+            room.QueueFree();
+        }
+
+        [TestCase]
+        public void TestGlobalPositionToCellIndexFromCellCenterGlobalPosition()
+        {
+            var offset = new Vector2(543, 9084);
+            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100), Position = offset };
+
+            for (int i = 0; i < room.Rows; i++)
+            {
+                for (int j = 0; j < room.Columns; j++)
+                {
+                    var center = room.CellCenterGlobalPosition(i, j);
+                    var index = room.GlobalPositionToCellIndex(center);
+                    Assertions.AssertThat(index).IsEqual(new Vector2I(i, j));
+                }
+            }
+
+            room.QueueFree();
+        }
+
+        [TestCase]
+        public void TestLocalPositionToCellIndexFromCellCenterLocalPosition()
+        {
+            var offset = new Vector2(543, 9084);
+            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100), Position = offset };
+
+            for (int i = 0; i < room.Rows; i++)
+            {
+                for (int j = 0; j < room.Columns; j++)
+                {
+                    var center = room.CellCenterLocalPosition(i, j);
+                    var index = room.LocalPositionToCellIndex(center);
+                    Assertions.AssertThat(index).IsEqual(new Vector2I(i, j));
+                }
+            }
+
+            room.QueueFree();
         }
     }
 }

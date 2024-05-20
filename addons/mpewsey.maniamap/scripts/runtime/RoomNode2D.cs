@@ -117,8 +117,9 @@ namespace MPewsey.ManiaMapGodot
 
             if (MouseButtonPressed)
             {
-                var mousePosition = GetViewport().GetMousePosition();
-                SetCellActivities(MouseButtonDownPosition, mousePosition, CellEditMode);
+                var startIndex = GlobalPositionToCellIndex(MouseButtonDownPosition);
+                var endIndex = GlobalPositionToCellIndex(GetViewport().GetMousePosition());
+                SetCellActivities(startIndex, endIndex, CellEditMode);
                 EmitOnCellGridChanged();
             }
 
@@ -188,13 +189,53 @@ namespace MPewsey.ManiaMapGodot
             return true;
         }
 
-        public void SetCellActivities(Vector2 startPosition, Vector2 endPosition, CellActivity activity)
+        public bool GetCellActivity(int row, int column)
         {
-            var startIndex = GlobalPositionToCellIndex(startPosition);
-            var endIndex = GlobalPositionToCellIndex(endPosition);
-            var outsideIndex = new Vector2I(-1, -1);
+            if (!CellIndexExists(row, column))
+                throw new IndexOutOfRangeException($"Cell index does not exist: ({row}, {column}).");
 
-            if (activity != CellActivity.None && startIndex != outsideIndex && endIndex != outsideIndex)
+            return ActiveCells[row][column];
+        }
+
+        public void SetCellActivity(int row, int column, bool activated)
+        {
+            if (!CellIndexExists(row, column))
+                throw new IndexOutOfRangeException($"Cell index does not exist: ({row}, {column}).");
+
+            ActiveCells[row][column] = activated;
+        }
+
+        public void SetCellActivity(int row, int column, CellActivity activity)
+        {
+            if (!CellIndexExists(row, column))
+                throw new IndexOutOfRangeException($"Cell index does not exist: ({row}, {column}).");
+
+            switch (activity)
+            {
+                case CellActivity.None:
+                    break;
+                case CellActivity.Activate:
+                    ActiveCells[row][column] = true;
+                    break;
+                case CellActivity.Deactivate:
+                    ActiveCells[row][column] = false;
+                    break;
+                case CellActivity.Toggle:
+                    ActiveCells[row][column] = !ActiveCells[row][column];
+                    break;
+                default:
+                    throw new NotImplementedException($"Unhandled cell activity: {activity}.");
+            }
+        }
+
+        private bool CellIndexRangeExists(Vector2I startIndex, Vector2I endIndex)
+        {
+            return CellIndexExists(startIndex.X, startIndex.Y) && CellIndexExists(endIndex.X, endIndex.Y);
+        }
+
+        public void SetCellActivities(Vector2I startIndex, Vector2I endIndex, CellActivity activity)
+        {
+            if (activity != CellActivity.None && CellIndexRangeExists(startIndex, endIndex))
             {
                 var startRow = Mathf.Min(startIndex.X, endIndex.X);
                 var endRow = Mathf.Max(startIndex.X, endIndex.X);
@@ -203,24 +244,9 @@ namespace MPewsey.ManiaMapGodot
 
                 for (int i = startRow; i <= endRow; i++)
                 {
-                    var row = ActiveCells[i];
-
                     for (int j = startColumn; j <= endColumn; j++)
                     {
-                        switch (activity)
-                        {
-                            case CellActivity.Activate:
-                                row[j] = true;
-                                break;
-                            case CellActivity.Deactivate:
-                                row[j] = false;
-                                break;
-                            case CellActivity.Toggle:
-                                row[j] = !row[j];
-                                break;
-                            default:
-                                throw new NotImplementedException($"Unhandled cell activity: {activity}.");
-                        }
+                        SetCellActivity(i, j, activity);
                     }
                 }
             }
