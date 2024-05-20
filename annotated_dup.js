@@ -50,7 +50,7 @@ var annotated_dup =
         [ "ColorUtility", "class_m_pewsey_1_1_mania_map_godot_1_1_color_utility.html", "class_m_pewsey_1_1_mania_map_godot_1_1_color_utility" ],
         [ "DoorNode2D", "class_m_pewsey_1_1_mania_map_godot_1_1_door_node2_d.html", "class_m_pewsey_1_1_mania_map_godot_1_1_door_node2_d" ],
         [ "DoorThreshold2D", "class_m_pewsey_1_1_mania_map_godot_1_1_door_threshold2_d.html", "class_m_pewsey_1_1_mania_map_godot_1_1_door_threshold2_d" ],
-        [ "Feature2D", "class_m_pewsey_1_1_mania_map_godot_1_1_feature2_d.html", null ],
+        [ "Feature2D", "class_m_pewsey_1_1_mania_map_godot_1_1_feature2_d.html", "class_m_pewsey_1_1_mania_map_godot_1_1_feature2_d" ],
         [ "IRoomNode", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node" ],
         [ "ManiaMapManager", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_manager.html", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_manager" ],
         [ "ManiaMapResources", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources.html", [
