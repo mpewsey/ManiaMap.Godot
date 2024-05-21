@@ -10,15 +10,25 @@ using System.Threading.Tasks;
 
 namespace MPewsey.ManiaMapGodot.Generators
 {
+    /// <summary>
+    /// A pipeline that runs a series of steps sequentially.
+    /// </summary>
     [Tool]
     [GlobalClass]
     [Icon(ManiaMapResources.Icons.GenerationPipelineIcon)]
     public partial class GenerationPipeline : Node
     {
 #if TOOLS
+        /// <summary>
+        /// [Editor] When set to true, adds a set of default input and step nodes as children of the node.
+        /// </summary>
         [Export] public bool AddDefaultNodes { get => false; set => CreateDefaultNodes(value); }
 #endif
 
+        /// <summary>
+        /// An array of input strings that the user will supply manually to any of the run pipeline methods.
+        /// These names are used for pipeline input validation.
+        /// </summary>
         [Export] public string[] ManualInputNames { get; set; } = Array.Empty<string>();
 
 #if TOOLS
@@ -45,6 +55,10 @@ namespace MPewsey.ManiaMapGodot.Generators
         }
 #endif
 
+        /// <summary>
+        /// Adds the default inputs and steps nodes as children of the pipeline.
+        /// </summary>
+        /// <param name="run">Executes the method only if this value is true.</param>
         public void CreateDefaultNodes(bool run = true)
         {
             if (!run)
@@ -55,6 +69,10 @@ namespace MPewsey.ManiaMapGodot.Generators
             AddDefaultStepNodes(owner);
         }
 
+        /// <summary>
+        /// Adds the default input nodes to the pipeline.
+        /// </summary>
+        /// <param name="owner">The owner of the nodes.</param>
         private void AddDefaultInputNodes(Node owner)
         {
             var inputs = new Node() { Name = "Inputs" };
@@ -83,6 +101,10 @@ namespace MPewsey.ManiaMapGodot.Generators
             collectableGroupsInput.Owner = owner;
         }
 
+        /// <summary>
+        /// Adds the default step nodes to the pipeline.
+        /// </summary>
+        /// <param name="owner">The owner of the nodes.</param>
         private void AddDefaultStepNodes(Node owner)
         {
             var steps = new Node() { Name = "Steps" };
@@ -104,6 +126,10 @@ namespace MPewsey.ManiaMapGodot.Generators
             collectableGeneratorStep.Owner = owner;
         }
 
+        /// <summary>
+        /// Returns a list of generation steps in the pipeline.
+        /// This method returns all generation steps that are children of the pipeline.
+        /// </summary>
         public List<GenerationStep> FindStepNodes()
         {
             var nodes = FindChildren("*", nameof(GenerationStep), true, false);
@@ -117,6 +143,10 @@ namespace MPewsey.ManiaMapGodot.Generators
             return result;
         }
 
+        /// <summary>
+        /// Returns a list of generation inputs in the pipeline.
+        /// This method returns all generation inputs that are children of the pipeline.
+        /// </summary>
         public List<GenerationInput> FindInputNodes()
         {
             var nodes = FindChildren("*", nameof(GenerationInput), true, false);
@@ -130,16 +160,36 @@ namespace MPewsey.ManiaMapGodot.Generators
             return result;
         }
 
+        /// <summary>
+        /// Runs the pipeline synchronously and returns the results.
+        /// </summary>
+        /// <param name="manualInputs">A dictionary of manual inputs. If null, no manual inputs will be used.</param>
+        /// <param name="logger">The delegate invoked when pipeline log messages and issues. If null, no logs will be issues.</param>
+        /// <param name="cancellationToken">The pipeline cancellation token.</param>
         public PipelineResults Run(Dictionary<string, object> manualInputs = null, Action<string> logger = null, CancellationToken cancellationToken = default)
         {
             return BuildPipeline().Run(BuildInputs(manualInputs), logger, cancellationToken);
         }
 
+        /// <summary>
+        /// Runs the pipeline synchronously and returns the results.
+        /// </summary>
+        /// <param name="manualInputs">A dictionary of manual inputs. If null, no manual inputs will be used.</param>
+        /// <param name="logger">The delegate invoked when pipeline log messages and issues. If null, no logs will be issues.</param>
+        /// <param name="cancellationToken">The pipeline cancellation token.</param>
         public Task<PipelineResults> RunAsync(Dictionary<string, object> manualInputs = null, Action<string> logger = null, CancellationToken cancellationToken = default)
         {
             return BuildPipeline().RunAsync(BuildInputs(manualInputs), logger, cancellationToken);
         }
 
+        /// <summary>
+        /// Runs the pipeline asynchronously until successful or until the maximum number of attempts have been exceeded.
+        /// </summary>
+        /// <param name="seed">The initial random seed.</param>
+        /// <param name="attempts">The maximum number of pipeline run attempts.</param>
+        /// <param name="timeout">The timeout used for each pipeline run.</param>
+        /// <param name="manualInputs">A dictionary of manual inputs. If null, no manual inputs will be used.</param>
+        /// <param name="logger">The delegate invoked when pipeline log messages and issues. If null, no logs will be issues.</param>
         public async Task<PipelineResults> RunAttemptsAsync(int seed, int attempts = 10, int timeout = 5000, Dictionary<string, object> manualInputs = null, Action<string> logger = null)
         {
             manualInputs ??= new Dictionary<string, object>();
@@ -163,6 +213,9 @@ namespace MPewsey.ManiaMapGodot.Generators
             return new PipelineResults(manualInputs);
         }
 
+        /// <summary>
+        /// Returns the pipeline used for generation.
+        /// </summary>
         public Pipeline BuildPipeline()
         {
             var nodes = FindStepNodes();
@@ -176,6 +229,10 @@ namespace MPewsey.ManiaMapGodot.Generators
             return new Pipeline(steps);
         }
 
+        /// <summary>
+        /// Returns a new dictionary of inputs.
+        /// </summary>
+        /// <param name="manualInputs">A dictionary of manual inputs. If null, no manual inputs will be used.</param>
         public Dictionary<string, object> BuildInputs(Dictionary<string, object> manualInputs = null)
         {
             manualInputs ??= new Dictionary<string, object>();
@@ -191,11 +248,18 @@ namespace MPewsey.ManiaMapGodot.Generators
             return inputs;
         }
 
+        /// <summary>
+        /// Validates the pipeline using the manual input names and throws exceptions if invalid.
+        /// </summary>
         public void Validate()
         {
             Validate(ManualInputNames);
         }
 
+        /// <summary>
+        /// Validates the pipeline and throws exceptions if invalid.
+        /// </summary>
+        /// <param name="manualInputNames">A collection of manual input names.</param>
         public void Validate(IEnumerable<string> manualInputNames)
         {
             manualInputNames ??= Enumerable.Empty<string>();
@@ -204,6 +268,11 @@ namespace MPewsey.ManiaMapGodot.Generators
             ValidateSteps(names);
         }
 
+        /// <summary>
+        /// Valides the pipeline input names.
+        /// </summary>
+        /// <param name="names">A set of current input names.</param>
+        /// <exception cref="DuplicateInputException">Thrown if a duplicate input name is encountered.</exception>
         private void ValidateInputs(HashSet<string> names)
         {
             var nodes = FindInputNodes();
@@ -218,6 +287,11 @@ namespace MPewsey.ManiaMapGodot.Generators
             }
         }
 
+        /// <summary>
+        /// Validates the pipeline step inputs and outputs names.
+        /// </summary>
+        /// <param name="names">A set of current input names.</param>
+        /// <exception cref="MissingInputException">Thrown if an input name is missing for a given step.</exception>
         private void ValidateSteps(HashSet<string> names)
         {
             var nodes = FindStepNodes();
@@ -237,6 +311,12 @@ namespace MPewsey.ManiaMapGodot.Generators
             }
         }
 
+        /// <summary>
+        /// Finds the random seed input for the pipeline and sets its value.
+        /// </summary>
+        /// <param name="seed">The random seed value.</param>
+        /// <exception cref="MissingInputException">Thrown if a random seed input does not exist as a descendent of the pipeline.</exception>
+        /// <exception cref="DuplicateInputException">Thrown if multiple random seed inputs are descendents of the pipeline.</exception>
         public void SetRandomSeed(int seed)
         {
             var children = FindChildren("*", nameof(RandomSeedInput), true, false);
