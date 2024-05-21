@@ -26,7 +26,7 @@ var annotated_dup =
           [ "GenerationFloatInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_float_input.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_float_input" ],
           [ "GenerationInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input" ],
           [ "GenerationIntInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_int_input.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_int_input" ],
-          [ "GenerationPipeline", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html", null ],
+          [ "GenerationPipeline", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline" ],
           [ "GenerationStep", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_step.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_step" ],
           [ "GenerationStringInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_string_input.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_string_input" ],
           [ "LayoutGeneratorStep", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_generator_step.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_generator_step" ],

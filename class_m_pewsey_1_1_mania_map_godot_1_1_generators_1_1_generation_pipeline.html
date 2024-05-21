@@ -104,6 +104,9 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_godot_1_1
   <div class="headertitle"><div class="title">GenerationPipeline Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A pipeline that runs a series of steps sequentially.  
+ <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for GenerationPipeline:</div>
 <div class="dyncontent">
@@ -114,47 +117,64 @@ Inheritance diagram for GenerationPipeline:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa38269ed8f033133544aef8604c90bc7"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; string, object &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#aa38269ed8f033133544aef8604c90bc7">BuildInputs</a> (Dictionary&lt; string, object &gt; manualInputs=null)</td></tr>
+<tr class="memdesc:aa38269ed8f033133544aef8604c90bc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a new dictionary of inputs.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#aa38269ed8f033133544aef8604c90bc7">More...</a><br /></td></tr>
 <tr class="separator:aa38269ed8f033133544aef8604c90bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a404bd614d40ee70ef09a9884d4e43d26"><td class="memItemLeft" align="right" valign="top">Pipeline&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a404bd614d40ee70ef09a9884d4e43d26">BuildPipeline</a> ()</td></tr>
+<tr class="memdesc:a404bd614d40ee70ef09a9884d4e43d26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the pipeline used for generation.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a404bd614d40ee70ef09a9884d4e43d26">More...</a><br /></td></tr>
 <tr class="separator:a404bd614d40ee70ef09a9884d4e43d26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a556b040131b6dc88869dc54045ec98d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a556b040131b6dc88869dc54045ec98d8">CreateDefaultNodes</a> (bool run=true)</td></tr>
+<tr class="memdesc:a556b040131b6dc88869dc54045ec98d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the default inputs and steps nodes as children of the pipeline.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a556b040131b6dc88869dc54045ec98d8">More...</a><br /></td></tr>
 <tr class="separator:a556b040131b6dc88869dc54045ec98d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c9f56b210332619ee8a3529a7140654"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input.html">GenerationInput</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a1c9f56b210332619ee8a3529a7140654">FindInputNodes</a> ()</td></tr>
+<tr class="memdesc:a1c9f56b210332619ee8a3529a7140654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a list of generation inputs in the pipeline. This method returns all generation inputs that are children of the pipeline.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a1c9f56b210332619ee8a3529a7140654">More...</a><br /></td></tr>
 <tr class="separator:a1c9f56b210332619ee8a3529a7140654"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d1bdf122fc34896722ccdafba0cfe9f"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_step.html">GenerationStep</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a4d1bdf122fc34896722ccdafba0cfe9f">FindStepNodes</a> ()</td></tr>
+<tr class="memdesc:a4d1bdf122fc34896722ccdafba0cfe9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a list of generation steps in the pipeline. This method returns all generation steps that are children of the pipeline.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a4d1bdf122fc34896722ccdafba0cfe9f">More...</a><br /></td></tr>
 <tr class="separator:a4d1bdf122fc34896722ccdafba0cfe9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56da3231b2fe09b1f2eb0ce7a750f782"><td class="memItemLeft" align="right" valign="top">PipelineResults&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a56da3231b2fe09b1f2eb0ce7a750f782">Run</a> (Dictionary&lt; string, object &gt; manualInputs=null, Action&lt; string &gt; logger=null, CancellationToken cancellationToken=default)</td></tr>
+<tr class="memdesc:a56da3231b2fe09b1f2eb0ce7a750f782"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the pipeline synchronously and returns the results.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a56da3231b2fe09b1f2eb0ce7a750f782">More...</a><br /></td></tr>
 <tr class="separator:a56da3231b2fe09b1f2eb0ce7a750f782"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbf77ab53b9800d33b0d0737cf267f3c"><td class="memItemLeft" align="right" valign="top">Task&lt; PipelineResults &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#adbf77ab53b9800d33b0d0737cf267f3c">RunAsync</a> (Dictionary&lt; string, object &gt; manualInputs=null, Action&lt; string &gt; logger=null, CancellationToken cancellationToken=default)</td></tr>
+<tr class="memdesc:adbf77ab53b9800d33b0d0737cf267f3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the pipeline synchronously and returns the results.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#adbf77ab53b9800d33b0d0737cf267f3c">More...</a><br /></td></tr>
 <tr class="separator:adbf77ab53b9800d33b0d0737cf267f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5dabf8bfa4f51f98915ae9b46202786"><td class="memItemLeft" align="right" valign="top">async Task&lt; PipelineResults &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#ae5dabf8bfa4f51f98915ae9b46202786">RunAttemptsAsync</a> (int seed, int attempts=10, int timeout=5000, Dictionary&lt; string, object &gt; manualInputs=null, Action&lt; string &gt; logger=null)</td></tr>
+<tr class="memdesc:ae5dabf8bfa4f51f98915ae9b46202786"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the pipeline asynchronously until successful or until the maximum number of attempts have been exceeded.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#ae5dabf8bfa4f51f98915ae9b46202786">More...</a><br /></td></tr>
 <tr class="separator:ae5dabf8bfa4f51f98915ae9b46202786"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade0b33ad14fdc825c3bf70c6d7d39999"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#ade0b33ad14fdc825c3bf70c6d7d39999">SetRandomSeed</a> (int seed)</td></tr>
+<tr class="memdesc:ade0b33ad14fdc825c3bf70c6d7d39999"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the random seed input for the pipeline and sets its value.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#ade0b33ad14fdc825c3bf70c6d7d39999">More...</a><br /></td></tr>
 <tr class="separator:ade0b33ad14fdc825c3bf70c6d7d39999"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a17e4539f5b0c67dbd36bae0c2c0c8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a6a17e4539f5b0c67dbd36bae0c2c0c8a">Validate</a> ()</td></tr>
+<tr class="memdesc:a6a17e4539f5b0c67dbd36bae0c2c0c8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates the pipeline using the manual input names and throws exceptions if invalid.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a6a17e4539f5b0c67dbd36bae0c2c0c8a">More...</a><br /></td></tr>
 <tr class="separator:a6a17e4539f5b0c67dbd36bae0c2c0c8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacca1d493ba3d24bb9fc8ffb31075a5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#aacca1d493ba3d24bb9fc8ffb31075a5e">Validate</a> (IEnumerable&lt; string &gt; manualInputNames)</td></tr>
+<tr class="memdesc:aacca1d493ba3d24bb9fc8ffb31075a5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates the pipeline and throws exceptions if invalid.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#aacca1d493ba3d24bb9fc8ffb31075a5e">More...</a><br /></td></tr>
 <tr class="separator:aacca1d493ba3d24bb9fc8ffb31075a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a221b04fe49954ca33fe7fcb3ab3189eb"><td class="memItemLeft" align="right" valign="top">string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a221b04fe49954ca33fe7fcb3ab3189eb">ManualInputNames</a> = Array.Empty&lt;string&gt;()<code> [getset]</code></td></tr>
+<tr class="memdesc:a221b04fe49954ca33fe7fcb3ab3189eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">An array of input strings that the user will supply manually to any of the run pipeline methods. These names are used for pipeline input validation.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a221b04fe49954ca33fe7fcb3ab3189eb">More...</a><br /></td></tr>
 <tr class="separator:a221b04fe49954ca33fe7fcb3ab3189eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:ad77aaaa56c098330f83eb5ee2d676ff1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#ad77aaaa56c098330f83eb5ee2d676ff1">AddDefaultInputNodes</a> (Node owner)</td></tr>
+<tr class="memdesc:ad77aaaa56c098330f83eb5ee2d676ff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the default input nodes to the pipeline.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#ad77aaaa56c098330f83eb5ee2d676ff1">More...</a><br /></td></tr>
 <tr class="separator:ad77aaaa56c098330f83eb5ee2d676ff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af53db8d4fdb3b4fddf1821e1a7644835"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#af53db8d4fdb3b4fddf1821e1a7644835">AddDefaultStepNodes</a> (Node owner)</td></tr>
+<tr class="memdesc:af53db8d4fdb3b4fddf1821e1a7644835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the default step nodes to the pipeline.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#af53db8d4fdb3b4fddf1821e1a7644835">More...</a><br /></td></tr>
 <tr class="separator:af53db8d4fdb3b4fddf1821e1a7644835"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2827ab8c3d5720fb2f0ff4af9f99a46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#ac2827ab8c3d5720fb2f0ff4af9f99a46">ValidateInputs</a> (HashSet&lt; string &gt; names)</td></tr>
+<tr class="memdesc:ac2827ab8c3d5720fb2f0ff4af9f99a46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valides the pipeline input names.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#ac2827ab8c3d5720fb2f0ff4af9f99a46">More...</a><br /></td></tr>
 <tr class="separator:ac2827ab8c3d5720fb2f0ff4af9f99a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0735fa6bba66d897e756090c61be5c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#ad0735fa6bba66d897e756090c61be5c3">ValidateSteps</a> (HashSet&lt; string &gt; names)</td></tr>
+<tr class="memdesc:ad0735fa6bba66d897e756090c61be5c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates the pipeline step inputs and outputs names.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#ad0735fa6bba66d897e756090c61be5c3">More...</a><br /></td></tr>
 <tr class="separator:ad0735fa6bba66d897e756090c61be5c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00016">16</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<div class="textblock"><p >A pipeline that runs a series of steps sequentially. </p>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00019">19</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad77aaaa56c098330f83eb5ee2d676ff1" name="ad77aaaa56c098330f83eb5ee2d676ff1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad77aaaa56c098330f83eb5ee2d676ff1">&#9670;&nbsp;</a></span>AddDefaultInputNodes()</h2>
@@ -180,7 +200,15 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00058">58</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Adds the default input nodes to the pipeline. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">owner</td><td>The owner of the nodes.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00076">76</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -208,7 +236,15 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00086">86</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Adds the default step nodes to the pipeline. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">owner</td><td>The owner of the nodes.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00108">108</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -228,7 +264,15 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00179">179</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Returns a new dictionary of inputs. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">manualInputs</td><td>A dictionary of manual inputs. If null, no manual inputs will be used.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00236">236</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -247,7 +291,9 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00166">166</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Returns the pipeline used for generation. </p>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00219">219</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -267,7 +313,15 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00048">48</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Adds the default inputs and steps nodes as children of the pipeline. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">run</td><td>Executes the method only if this value is true.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00062">62</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -286,7 +340,9 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00120">120</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Returns a list of generation inputs in the pipeline. This method returns all generation inputs that are children of the pipeline. </p>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00150">150</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -305,7 +361,9 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00107">107</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Returns a list of generation steps in the pipeline. This method returns all generation steps that are children of the pipeline. </p>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00133">133</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -341,7 +399,17 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00133">133</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Runs the pipeline synchronously and returns the results. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">manualInputs</td><td>A dictionary of manual inputs. If null, no manual inputs will be used.</td></tr>
+    <tr><td class="paramname">logger</td><td>The delegate invoked when pipeline log messages and issues. If null, no logs will be issues.</td></tr>
+    <tr><td class="paramname">cancellationToken</td><td>The pipeline cancellation token.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00169">169</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -377,7 +445,17 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00138">138</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Runs the pipeline synchronously and returns the results. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">manualInputs</td><td>A dictionary of manual inputs. If null, no manual inputs will be used.</td></tr>
+    <tr><td class="paramname">logger</td><td>The delegate invoked when pipeline log messages and issues. If null, no logs will be issues.</td></tr>
+    <tr><td class="paramname">cancellationToken</td><td>The pipeline cancellation token.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00180">180</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -425,7 +503,19 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00143">143</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Runs the pipeline asynchronously until successful or until the maximum number of attempts have been exceeded. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seed</td><td>The initial random seed.</td></tr>
+    <tr><td class="paramname">attempts</td><td>The maximum number of pipeline run attempts.</td></tr>
+    <tr><td class="paramname">timeout</td><td>The timeout used for each pipeline run.</td></tr>
+    <tr><td class="paramname">manualInputs</td><td>A dictionary of manual inputs. If null, no manual inputs will be used.</td></tr>
+    <tr><td class="paramname">logger</td><td>The delegate invoked when pipeline log messages and issues. If null, no logs will be issues.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00193">193</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -445,7 +535,22 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00240">240</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Finds the random seed input for the pipeline and sets its value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seed</td><td>The random seed value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">MissingInputException</td><td>Thrown if a random seed input does not exist as a descendent of the pipeline.</td></tr>
+    <tr><td class="paramname">DuplicateInputException</td><td>Thrown if multiple random seed inputs are descendents of the pipeline.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00320">320</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -464,7 +569,9 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00194">194</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Validates the pipeline using the manual input names and throws exceptions if invalid. </p>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00254">254</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -484,7 +591,15 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00199">199</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Validates the pipeline and throws exceptions if invalid. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">manualInputNames</td><td>A collection of manual input names.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00263">263</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -512,7 +627,21 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00207">207</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Valides the pipeline input names. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">names</td><td>A set of current input names.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">DuplicateInputException</td><td>Thrown if a duplicate input name is encountered.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00276">276</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -540,7 +669,21 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00221">221</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>Validates the pipeline step inputs and outputs names. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">names</td><td>A set of current input names.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">MissingInputException</td><td>Thrown if an input name is missing for a given step.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00295">295</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
@@ -565,7 +708,9 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00022">22</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
+<p>An array of input strings that the user will supply manually to any of the run pipeline methods. These names are used for pipeline input validation. </p>
+
+<p class="definition">Definition at line <a class="el" href="_generation_pipeline_8cs_source.html#l00032">32</a> of file <a class="el" href="_generation_pipeline_8cs_source.html">GenerationPipeline.cs</a>.</p>
 
 </div>
 </div>
