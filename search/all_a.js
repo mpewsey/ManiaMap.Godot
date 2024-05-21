@@ -11,9 +11,11 @@ var searchData=
   ['maniamapsettings_8',['ManiaMapSettings',['../class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_settings.html',1,'MPewsey::ManiaMapGodot']]],
   ['manualinputnames_9',['ManualInputNames',['../class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a221b04fe49954ca33fe7fcb3ab3189eb',1,'MPewsey::ManiaMapGodot::Generators::GenerationPipeline']]],
   ['maptileset_10',['MapTileSet',['../class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_map_tile_set.html',1,'MPewsey::ManiaMapGodot::Drawing']]],
-  ['maxquantity_11',['MaxQuantity',['../class_m_pewsey_1_1_mania_map_godot_1_1_template_group_entry.html#a2b4bcc97477c605deac8256e6515950b',1,'MPewsey::ManiaMapGodot::TemplateGroupEntry']]],
-  ['minquantity_12',['MinQuantity',['../class_m_pewsey_1_1_mania_map_godot_1_1_template_group_entry.html#a78cd1b4fc9da52e61160a17df7b9aef3',1,'MPewsey::ManiaMapGodot::TemplateGroupEntry']]],
-  ['missinginputexception_13',['MissingInputException',['../class_m_pewsey_1_1_mania_map_godot_1_1_exceptions_1_1_missing_input_exception.html',1,'MPewsey::ManiaMapGodot::Exceptions']]],
-  ['movetolayoutposition_14',['MoveToLayoutPosition',['../class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a26086c9aae5dda5166533a0b238f5ad3',1,'MPewsey::ManiaMapGodot::RoomNode2D']]],
-  ['mpewsey_15',['MPewsey',['../namespace_m_pewsey.html',1,'']]]
+  ['maxbranchlength_11',['MaxBranchLength',['../class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_generator_step.html#a1c6686f21fb7fe9786103fa17c026fea',1,'MPewsey::ManiaMapGodot::Generators::LayoutGeneratorStep']]],
+  ['maxquantity_12',['MaxQuantity',['../class_m_pewsey_1_1_mania_map_godot_1_1_template_group_entry.html#a2b4bcc97477c605deac8256e6515950b',1,'MPewsey::ManiaMapGodot::TemplateGroupEntry']]],
+  ['maxrebases_13',['MaxRebases',['../class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_generator_step.html#a320ff834377a70cddb26e83e1f48dfd1',1,'MPewsey::ManiaMapGodot::Generators::LayoutGeneratorStep']]],
+  ['minquantity_14',['MinQuantity',['../class_m_pewsey_1_1_mania_map_godot_1_1_template_group_entry.html#a78cd1b4fc9da52e61160a17df7b9aef3',1,'MPewsey::ManiaMapGodot::TemplateGroupEntry']]],
+  ['missinginputexception_15',['MissingInputException',['../class_m_pewsey_1_1_mania_map_godot_1_1_exceptions_1_1_missing_input_exception.html',1,'MPewsey::ManiaMapGodot::Exceptions']]],
+  ['movetolayoutposition_16',['MoveToLayoutPosition',['../class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a26086c9aae5dda5166533a0b238f5ad3',1,'MPewsey::ManiaMapGodot::RoomNode2D']]],
+  ['mpewsey_17',['MPewsey',['../namespace_m_pewsey.html',1,'']]]
 ];

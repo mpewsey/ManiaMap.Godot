@@ -55,7 +55,8 @@ var NAVTREEINDEX =
 [
 "_async_resource_loader_8cs_source.html",
 "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_float_input.html",
-"class_m_pewsey_1_1_mania_map_godot_1_1_rand.html#ae2b124004be1cf0cd125457703e82d14"
+"class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_manager.html#a8f84c13e784b134583133b6108e9924b",
+"namespace_m_pewsey_1_1_mania_map_godot_1_1_generators.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

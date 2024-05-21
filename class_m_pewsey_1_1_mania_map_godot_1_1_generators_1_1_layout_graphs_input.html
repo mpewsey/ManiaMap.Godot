@@ -104,6 +104,9 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_godot_1_1
   <div class="headertitle"><div class="title">LayoutGraphsInput Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input.html" title="The base class for GenerationPipeline input nodes. An input node adds an input used by the pipeline.">GenerationInput</a> that adds layout graphs and their references template groups to the pipeline.  
+ <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for LayoutGraphsInput:</div>
 <div class="dyncontent">
@@ -117,33 +120,40 @@ Inheritance diagram for LayoutGraphsInput:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a45ffe61db574a98884cce924ea392a87"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a45ffe61db574a98884cce924ea392a87">AddInputs</a> (Dictionary&lt; string, object &gt; inputs)</td></tr>
-<tr class="memdesc:a45ffe61db574a98884cce924ea392a87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the input values to the supplied inputs dictionary.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a45ffe61db574a98884cce924ea392a87">More...</a><br /></td></tr>
+<tr class="memdesc:a45ffe61db574a98884cce924ea392a87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the input values to the supplied inputs dictionary.   <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a45ffe61db574a98884cce924ea392a87">More...</a><br /></td></tr>
 <tr class="separator:a45ffe61db574a98884cce924ea392a87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a839ac6fb8f31087e9c232a284f624057"><td class="memItemLeft" align="right" valign="top">override string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a839ac6fb8f31087e9c232a284f624057">InputNames</a> ()</td></tr>
-<tr class="memdesc:a839ac6fb8f31087e9c232a284f624057"><td class="mdescLeft">&#160;</td><td class="mdescRight">An array of input names supplied by the node.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a839ac6fb8f31087e9c232a284f624057">More...</a><br /></td></tr>
+<tr class="memdesc:a839ac6fb8f31087e9c232a284f624057"><td class="mdescLeft">&#160;</td><td class="mdescRight">An array of input names supplied by the node.   <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a839ac6fb8f31087e9c232a284f624057">More...</a><br /></td></tr>
 <tr class="separator:a839ac6fb8f31087e9c232a284f624057"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a72b8143dc821263a4c20e2ed765fb62c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource.html">LayoutGraphResource</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a72b8143dc821263a4c20e2ed765fb62c">LayoutGraphs</a> = Array.Empty&lt;<a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource.html">LayoutGraphResource</a>&gt;()<code> [getset]</code></td></tr>
+<tr class="memdesc:a72b8143dc821263a4c20e2ed765fb62c"><td class="mdescLeft">&#160;</td><td class="mdescRight">An array of layout graphs.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a72b8143dc821263a4c20e2ed765fb62c">More...</a><br /></td></tr>
 <tr class="separator:a72b8143dc821263a4c20e2ed765fb62c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a399484831fb06e60879f386d7aca69e2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a399484831fb06e60879f386d7aca69e2">LazyCreateGraphs</a><code> [getset]</code></td></tr>
+<tr class="memdesc:a399484831fb06e60879f386d7aca69e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">If false, the layout graphs added to the inputs will be an array of fully constructed graphs. Otherwise, they will be an array of graph creation delegates to be invoked only after selection.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a399484831fb06e60879f386d7aca69e2">More...</a><br /></td></tr>
 <tr class="separator:a399484831fb06e60879f386d7aca69e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:aefd9ad132f06f1709e12ef45c1a4e344"><td class="memItemLeft" align="right" valign="top">LayoutGraphSelector.LayoutGraphDelegate[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#aefd9ad132f06f1709e12ef45c1a4e344">GetMMLayoutGraphDelegates</a> ()</td></tr>
+<tr class="memdesc:aefd9ad132f06f1709e12ef45c1a4e344"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an array of ManiaMap graph creation delegates.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#aefd9ad132f06f1709e12ef45c1a4e344">More...</a><br /></td></tr>
 <tr class="separator:aefd9ad132f06f1709e12ef45c1a4e344"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2180cccd2b367d964b0be9cf4e9616ba"><td class="memItemLeft" align="right" valign="top">LayoutGraph[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a2180cccd2b367d964b0be9cf4e9616ba">GetMMLayoutGraphs</a> ()</td></tr>
+<tr class="memdesc:a2180cccd2b367d964b0be9cf4e9616ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an array of ManiaMap graphs used by the procedural generator.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a2180cccd2b367d964b0be9cf4e9616ba">More...</a><br /></td></tr>
 <tr class="separator:a2180cccd2b367d964b0be9cf4e9616ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73ecf73f53bf1b8193729fa0636daa77"><td class="memItemLeft" align="right" valign="top">TemplateGroups&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a73ecf73f53bf1b8193729fa0636daa77">GetMMTemplateGroups</a> ()</td></tr>
+<tr class="memdesc:a73ecf73f53bf1b8193729fa0636daa77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ManiaMap template groups used by the procedural generator.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#a73ecf73f53bf1b8193729fa0636daa77">More...</a><br /></td></tr>
 <tr class="separator:a73ecf73f53bf1b8193729fa0636daa77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada0cd8d7462492eea59394ee36772e4e"><td class="memItemLeft" align="right" valign="top">HashSet&lt; <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_template_group.html">TemplateGroup</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#ada0cd8d7462492eea59394ee36772e4e">GetTemplateGroups</a> ()</td></tr>
+<tr class="memdesc:ada0cd8d7462492eea59394ee36772e4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a set of all unique templates groups referenced by the graphs.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#ada0cd8d7462492eea59394ee36772e4e">More...</a><br /></td></tr>
 <tr class="separator:ada0cd8d7462492eea59394ee36772e4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00014">14</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
+<div class="textblock"><p >A <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input.html" title="The base class for GenerationPipeline input nodes. An input node adds an input used by the pipeline.">GenerationInput</a> that adds layout graphs and their references template groups to the pipeline. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00017">17</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a45ffe61db574a98884cce924ea392a87" name="a45ffe61db574a98884cce924ea392a87"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a45ffe61db574a98884cce924ea392a87">&#9670;&nbsp;</a></span>AddInputs()</h2>
@@ -169,17 +179,11 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Adds the input values to the supplied inputs dictionary. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">inputs</td><td>The inputs dictionary.</td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Adds the input values to the supplied inputs dictionary.  </p>
 
 <p>Implements <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input.html#ae49f53bbea74cb051e3fe96027bde64c">GenerationInput</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00019">19</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00031">31</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
 
 </div>
 </div>
@@ -206,7 +210,9 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00059">59</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
+<p>Returns an array of ManiaMap graph creation delegates. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00082">82</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
 
 </div>
 </div>
@@ -233,7 +239,9 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00071">71</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
+<p>Returns an array of ManiaMap graphs used by the procedural generator. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00097">97</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
 
 </div>
 </div>
@@ -260,7 +268,15 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00042">42</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
+<p>Returns the ManiaMap template groups used by the procedural generator. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">DuplicateNameException</td><td>Thrown if a template group has a duplicate name.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00062">62</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
 
 </div>
 </div>
@@ -287,7 +303,9 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00030">30</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
+<p>Returns a set of all unique templates groups referenced by the graphs. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00046">46</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
 
 </div>
 </div>
@@ -314,11 +332,11 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>An array of input names supplied by the node. </p>
+<p>An array of input names supplied by the node.  </p>
 
 <p>Implements <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input.html#af3ba5439ef112522ed132271c2196690">GenerationInput</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00025">25</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00038">38</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
 
 </div>
 </div>
@@ -343,7 +361,9 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00017">17</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
+<p>An array of layout graphs. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00028">28</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
 
 </div>
 </div>
@@ -367,7 +387,9 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00016">16</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
+<p>If false, the layout graphs added to the inputs will be an array of fully constructed graphs. Otherwise, they will be an array of graph creation delegates to be invoked only after selection. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_graphs_input_8cs_source.html#l00023">23</a> of file <a class="el" href="_layout_graphs_input_8cs_source.html">LayoutGraphsInput.cs</a>.</p>
 
 </div>
 </div>
