@@ -106,14 +106,17 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_godot_1_1
   <div class="headertitle"><div class="title">LayoutTileMapBase Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>The base class for drawing a <code>Layout</code> to tile maps.  
+ <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for LayoutTileMapBase:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.png" usemap="#LayoutTileMapBase_map" alt=""/>
   <map id="LayoutTileMapBase_map" name="LayoutTileMapBase_map">
-<area href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map.html" alt="LayoutTileMap" shape="rect" coords="0,112,123,136"/>
-<area href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_book.html" alt="LayoutTileMapBook" shape="rect" coords="133,112,256,136"/>
+<area href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map.html" title="A class for drawing a single layer of a Layout onto a tile map." alt="LayoutTileMap" shape="rect" coords="0,112,123,136"/>
+<area href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_book.html" title="A class for drawing all layers of a Layout onto tile maps." alt="LayoutTileMapBook" shape="rect" coords="133,112,256,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -125,70 +128,97 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a80dc60400fef78b287e067808da7d456"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a80dc60400fef78b287e067808da7d456">BackgroundLayer</a> = 0</td></tr>
+<tr class="memdesc:a80dc60400fef78b287e067808da7d456"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tile map layer used for the room fill background.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a80dc60400fef78b287e067808da7d456">More...</a><br /></td></tr>
 <tr class="separator:a80dc60400fef78b287e067808da7d456"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7efe30bec0d901e34b9cc8ed52dadf3"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#ab7efe30bec0d901e34b9cc8ed52dadf3">BottomLayer</a> = 6</td></tr>
+<tr class="memdesc:ab7efe30bec0d901e34b9cc8ed52dadf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tile map layer used for bottom walls and doors.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#ab7efe30bec0d901e34b9cc8ed52dadf3">More...</a><br /></td></tr>
 <tr class="separator:ab7efe30bec0d901e34b9cc8ed52dadf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7abc156c6986ccba0e4c58139dc03e74"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a7abc156c6986ccba0e4c58139dc03e74">EastLayer</a> = 2</td></tr>
+<tr class="memdesc:a7abc156c6986ccba0e4c58139dc03e74"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tile map layer used for east walls and doors.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a7abc156c6986ccba0e4c58139dc03e74">More...</a><br /></td></tr>
 <tr class="separator:a7abc156c6986ccba0e4c58139dc03e74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebf5f9031342d07f708606ffbfdcfbe9"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#aebf5f9031342d07f708606ffbfdcfbe9">FeatureLayer</a> = 7</td></tr>
+<tr class="memdesc:aebf5f9031342d07f708606ffbfdcfbe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tile map layer used for features.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#aebf5f9031342d07f708606ffbfdcfbe9">More...</a><br /></td></tr>
 <tr class="separator:aebf5f9031342d07f708606ffbfdcfbe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa4a7b57562c58a44e8fe3d2046bef10"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#aaa4a7b57562c58a44e8fe3d2046bef10">LayerCount</a> = 8</td></tr>
+<tr class="memdesc:aaa4a7b57562c58a44e8fe3d2046bef10"><td class="mdescLeft">&#160;</td><td class="mdescRight">The total number of tile map layers.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#aaa4a7b57562c58a44e8fe3d2046bef10">More...</a><br /></td></tr>
 <tr class="separator:aaa4a7b57562c58a44e8fe3d2046bef10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09fb6b50e3b2c1cf75a8e106f56ccaf2"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a09fb6b50e3b2c1cf75a8e106f56ccaf2">NorthLayer</a> = 1</td></tr>
+<tr class="memdesc:a09fb6b50e3b2c1cf75a8e106f56ccaf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tile map layer used for north walls and doors.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a09fb6b50e3b2c1cf75a8e106f56ccaf2">More...</a><br /></td></tr>
 <tr class="separator:a09fb6b50e3b2c1cf75a8e106f56ccaf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a859af8fa7ad3a363e7ade2412c6068fd"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a859af8fa7ad3a363e7ade2412c6068fd">SouthLayer</a> = 3</td></tr>
+<tr class="memdesc:a859af8fa7ad3a363e7ade2412c6068fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tile map layer used for south walls and doors.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a859af8fa7ad3a363e7ade2412c6068fd">More...</a><br /></td></tr>
 <tr class="separator:a859af8fa7ad3a363e7ade2412c6068fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8225127f2bba534b41e30584dc7e55f8"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a8225127f2bba534b41e30584dc7e55f8">TopLayer</a> = 5</td></tr>
+<tr class="memdesc:a8225127f2bba534b41e30584dc7e55f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tile map layer used for top walls and doors.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a8225127f2bba534b41e30584dc7e55f8">More...</a><br /></td></tr>
 <tr class="separator:a8225127f2bba534b41e30584dc7e55f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f908b6ce0b4eb9ade72bba0a9296973"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a8f908b6ce0b4eb9ade72bba0a9296973">WestLayer</a> = 4</td></tr>
+<tr class="memdesc:a8f908b6ce0b4eb9ade72bba0a9296973"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tile map layer used for west walls and doors.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a8f908b6ce0b4eb9ade72bba0a9296973">More...</a><br /></td></tr>
 <tr class="separator:a8f908b6ce0b4eb9ade72bba0a9296973"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a7d6aca7983e3d4add858538b35c64b66"><td class="memItemLeft" align="right" valign="top">TileMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a7d6aca7983e3d4add858538b35c64b66">CreateTileMap</a> ()</td></tr>
+<tr class="memdesc:a7d6aca7983e3d4add858538b35c64b66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new tile map in the tile map container and returns it.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a7d6aca7983e3d4add858538b35c64b66">More...</a><br /></td></tr>
 <tr class="separator:a7d6aca7983e3d4add858538b35c64b66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d928844b448f654553bd95a1a528eda"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a7d928844b448f654553bd95a1a528eda">DoorExists</a> (Room room, Vector2DInt position, DoorDirection direction)</td></tr>
+<tr class="memdesc:a7d928844b448f654553bd95a1a528eda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the door exists for the specified cell index and direction.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a7d928844b448f654553bd95a1a528eda">More...</a><br /></td></tr>
 <tr class="separator:a7d928844b448f654553bd95a1a528eda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefa749c72b172c518181d649e80a09a1"><td class="memItemLeft" align="right" valign="top">Vector2I&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#aefa749c72b172c518181d649e80a09a1">GetFeatureCoordinate</a> (Cell cell)</td></tr>
+<tr class="memdesc:aefa749c72b172c518181d649e80a09a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the first feature with an existing tile coordinate and returns it. If such a feature does not exist, returns Vector2I(-1, -1).  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#aefa749c72b172c518181d649e80a09a1">More...</a><br /></td></tr>
 <tr class="separator:aefa749c72b172c518181d649e80a09a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd8bce7cd417c44f73f77686324bfac7"><td class="memItemLeft" align="right" valign="top">Vector2I&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#abd8bce7cd417c44f73f77686324bfac7">GetTileCoordinate</a> (Room room, Cell cell, Cell neighbor, Vector2DInt position, DoorDirection direction)</td></tr>
+<tr class="memdesc:abd8bce7cd417c44f73f77686324bfac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the atlas coordinate for the wall or door tile corresponding to the specified door direction.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#abd8bce7cd417c44f73f77686324bfac7">More...</a><br /></td></tr>
 <tr class="separator:abd8bce7cd417c44f73f77686324bfac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41dd08cb49875daa5a00b6e0b3c426c9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a41dd08cb49875daa5a00b6e0b3c426c9">Initialize</a> (Layout layout, LayoutState layoutState)</td></tr>
+<tr class="memitem:a41dd08cb49875daa5a00b6e0b3c426c9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a41dd08cb49875daa5a00b6e0b3c426c9">Initialize</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a6860a4215b072014f8972b7611c569fd">Layout</a> layout, <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a25a58a509186fa802307b2b7e754ee7a">LayoutState</a> layoutState)</td></tr>
+<tr class="memdesc:a41dd08cb49875daa5a00b6e0b3c426c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs basic set up for the tile map before drawing.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a41dd08cb49875daa5a00b6e0b3c426c9">More...</a><br /></td></tr>
 <tr class="separator:a41dd08cb49875daa5a00b6e0b3c426c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85b4eb9d2aecdd14088fc1bf79f7c41a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a85b4eb9d2aecdd14088fc1bf79f7c41a">SetBackgroundTile</a> (TileMap tileMap, Vector2I cellPosition, Color color)</td></tr>
+<tr class="memdesc:a85b4eb9d2aecdd14088fc1bf79f7c41a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the background tile to the specified tile map coordinate.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a85b4eb9d2aecdd14088fc1bf79f7c41a">More...</a><br /></td></tr>
 <tr class="separator:a85b4eb9d2aecdd14088fc1bf79f7c41a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10733ae37e7249e36a48d61c1cf5deb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a10733ae37e7249e36a48d61c1cf5deb5">SetTiles</a> (TileMap tileMap, int z)</td></tr>
+<tr class="memdesc:a10733ae37e7249e36a48d61c1cf5deb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the tiles for the specified layer (z) coordinate to the provided tile map.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a10733ae37e7249e36a48d61c1cf5deb5">More...</a><br /></td></tr>
 <tr class="separator:a10733ae37e7249e36a48d61c1cf5deb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
 Static Protected Member Functions</h2></td></tr>
 <tr class="memitem:a6df99cf3bafc63f1054edc06336d12e9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a6df99cf3bafc63f1054edc06336d12e9">CreateTileMapLayers</a> (TileMap tileMap)</td></tr>
+<tr class="memdesc:a6df99cf3bafc63f1054edc06336d12e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the required tile map layers in the tile map and configures their settings.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a6df99cf3bafc63f1054edc06336d12e9">More...</a><br /></td></tr>
 <tr class="separator:a6df99cf3bafc63f1054edc06336d12e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1731d471deba9a05ebc78ef02878a227"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a1731d471deba9a05ebc78ef02878a227">SetTile</a> (TileMap tileMap, int layer, Vector2I cellPosition, Vector2I atlasPosition)</td></tr>
+<tr class="memdesc:a1731d471deba9a05ebc78ef02878a227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the tile to the specified tile map doordinate. Does nothing if an element of the atlas coordinate is negative.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a1731d471deba9a05ebc78ef02878a227">More...</a><br /></td></tr>
 <tr class="separator:a1731d471deba9a05ebc78ef02878a227"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a20dc553519aefcf0721e5d008a10bc32"><td class="memItemLeft" align="right" valign="top">Node&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a20dc553519aefcf0721e5d008a10bc32">Container</a><code> [getset]</code></td></tr>
+<tr class="memdesc:a20dc553519aefcf0721e5d008a10bc32"><td class="mdescLeft">&#160;</td><td class="mdescRight">The container to which tile maps will be added as children. If null, this node will be used.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a20dc553519aefcf0721e5d008a10bc32">More...</a><br /></td></tr>
 <tr class="separator:a20dc553519aefcf0721e5d008a10bc32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c2bc873c0d4b3d46fb8e0cf51caff42"><td class="memItemLeft" align="right" valign="top">DoorDrawMode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a6c2bc873c0d4b3d46fb8e0cf51caff42">DoorDrawMode</a> = DoorDrawMode.AllDoors<code> [getset]</code></td></tr>
+<tr class="memdesc:a6c2bc873c0d4b3d46fb8e0cf51caff42"><td class="mdescLeft">&#160;</td><td class="mdescRight">The mode used for drawing doors.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a6c2bc873c0d4b3d46fb8e0cf51caff42">More...</a><br /></td></tr>
 <tr class="separator:a6c2bc873c0d4b3d46fb8e0cf51caff42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6860a4215b072014f8972b7611c569fd"><td class="memItemLeft" align="right" valign="top">Layout&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a6860a4215b072014f8972b7611c569fd">Layout</a><code> [getprotected set]</code></td></tr>
+<tr class="memdesc:a6860a4215b072014f8972b7611c569fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The currently drawn layout.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a6860a4215b072014f8972b7611c569fd">More...</a><br /></td></tr>
 <tr class="separator:a6860a4215b072014f8972b7611c569fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25a58a509186fa802307b2b7e754ee7a"><td class="memItemLeft" align="right" valign="top">LayoutState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a25a58a509186fa802307b2b7e754ee7a">LayoutState</a><code> [getprotected set]</code></td></tr>
+<tr class="memdesc:a25a58a509186fa802307b2b7e754ee7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The currently drawn layout state.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a25a58a509186fa802307b2b7e754ee7a">More...</a><br /></td></tr>
 <tr class="separator:a25a58a509186fa802307b2b7e754ee7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5b5bd0854708f7bb93819f930310352"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_map_tile_set.html">MapTileSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#ae5b5bd0854708f7bb93819f930310352">MapTileSet</a><code> [getset]</code></td></tr>
+<tr class="memdesc:ae5b5bd0854708f7bb93819f930310352"><td class="mdescLeft">&#160;</td><td class="mdescRight">The map tile set.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#ae5b5bd0854708f7bb93819f930310352">More...</a><br /></td></tr>
 <tr class="separator:ae5b5bd0854708f7bb93819f930310352"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5221b4d5eeb7620db5968a92566b9fe"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#ac5221b4d5eeb7620db5968a92566b9fe">RoomColor</a> = Color.Color8(75, 75, 75)<code> [getset]</code></td></tr>
+<tr class="memdesc:ac5221b4d5eeb7620db5968a92566b9fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">The color used if the room is set as visible.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#ac5221b4d5eeb7620db5968a92566b9fe">More...</a><br /></td></tr>
 <tr class="separator:ac5221b4d5eeb7620db5968a92566b9fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6901c27c0ad5374d543807e0b588791"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; Uid, List&lt; DoorPosition &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#af6901c27c0ad5374d543807e0b588791">RoomDoors</a> = new Dictionary&lt;Uid, List&lt;DoorPosition&gt;&gt;()<code> [getset]</code></td></tr>
+<tr class="memdesc:af6901c27c0ad5374d543807e0b588791"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary of door positions by room ID.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#af6901c27c0ad5374d543807e0b588791">More...</a><br /></td></tr>
 <tr class="separator:af6901c27c0ad5374d543807e0b588791"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a123c24ef37eba421e037c8204f861896"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, List&lt; Room &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a123c24ef37eba421e037c8204f861896">RoomsByLayer</a> = new Dictionary&lt;int, List&lt;Room&gt;&gt;()<code> [getset]</code></td></tr>
+<tr class="memdesc:a123c24ef37eba421e037c8204f861896"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dictionary of rooms by layer coordinate.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a123c24ef37eba421e037c8204f861896">More...</a><br /></td></tr>
 <tr class="separator:a123c24ef37eba421e037c8204f861896"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00009">9</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<div class="textblock"><p >The base class for drawing a <code>Layout</code> to tile maps. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00012">12</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a58d67e4d7bf68d0a09ed9630ba231b30" name="a58d67e4d7bf68d0a09ed9630ba231b30"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a58d67e4d7bf68d0a09ed9630ba231b30">&#9670;&nbsp;</a></span>_Ready()</h2>
@@ -205,7 +235,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00031">31</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00099">99</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -232,7 +262,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00157">157</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>Creates a new tile map in the tile map container and returns it. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00270">270</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -260,7 +292,15 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00165">165</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>Creates the required tile map layers in the tile map and configures their settings. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tileMap</td><td>The tile map.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00282">282</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -304,7 +344,17 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00143">143</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>Returns true if the door exists for the specified cell index and direction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">room</td><td>The room.</td></tr>
+    <tr><td class="paramname">position</td><td>The cell index in the room.</td></tr>
+    <tr><td class="paramname">direction</td><td>The door direction.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00253">253</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -332,7 +382,15 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00119">119</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>Finds the first feature with an existing tile coordinate and returns it. If such a feature does not exist, returns Vector2I(-1, -1). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cell</td><td>The cell for which features will be queried.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00215">215</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -388,7 +446,19 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00132">132</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>Returns the atlas coordinate for the wall or door tile corresponding to the specified door direction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">room</td><td>The room.</td></tr>
+    <tr><td class="paramname">cell</td><td>The cell.</td></tr>
+    <tr><td class="paramname">neighbor</td><td>The neighboring cell in the door direction.</td></tr>
+    <tr><td class="paramname">position</td><td>The cell index in the room.</td></tr>
+    <tr><td class="paramname">direction</td><td>The door direction.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00236">236</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -404,13 +474,13 @@ Properties</h2></td></tr>
         <tr>
           <td class="memname">virtual void Initialize </td>
           <td>(</td>
-          <td class="paramtype">Layout&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a6860a4215b072014f8972b7611c569fd">Layout</a>&#160;</td>
           <td class="paramname"><em>layout</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">LayoutState&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a25a58a509186fa802307b2b7e754ee7a">LayoutState</a>&#160;</td>
           <td class="paramname"><em>layoutState</em>&#160;</td>
         </tr>
         <tr>
@@ -426,7 +496,18 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00037">37</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>Performs basic set up for the tile map before drawing. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layout</td><td>The layout.</td></tr>
+    <tr><td class="paramname">layoutState</td><td>The layout state.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map.html#a3946f473689090a9736b9b26b7ffa7a4">LayoutTileMap</a>, and <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_book.html#a3946f473689090a9736b9b26b7ffa7a4">LayoutTileMapBook</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00110">110</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -470,7 +551,17 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00107">107</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>Sets the background tile to the specified tile map coordinate. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tileMap</td><td>The tile map.</td></tr>
+    <tr><td class="paramname">cellPosition</td><td>The cell coordinate in the tile map.</td></tr>
+    <tr><td class="paramname">color</td><td>The background color.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00191">191</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -520,7 +611,18 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00113">113</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>Sets the tile to the specified tile map doordinate. Does nothing if an element of the atlas coordinate is negative. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tileMap</td><td>The tile map.</td></tr>
+    <tr><td class="paramname">layer</td><td>The tile map layer to which the tile will be set.</td></tr>
+    <tr><td class="paramname">cellPosition</td><td>The cell coordinate in the tile map.</td></tr>
+    <tr><td class="paramname">atlasPosition</td><td>The tile atlas coordinate.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00204">204</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -558,7 +660,16 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00045">45</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>Sets the tiles for the specified layer (z) coordinate to the provided tile map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tileMap</td><td>The tile map.</td></tr>
+    <tr><td class="paramname">z</td><td>The layer coordinate.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00123">123</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -583,7 +694,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00012">12</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>The tile map layer used for the room fill background. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00022">22</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -607,7 +720,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00018">18</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>The tile map layer used for bottom walls and doors. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00052">52</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -631,7 +746,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00014">14</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>The tile map layer used for east walls and doors. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00032">32</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -655,7 +772,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00019">19</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>The tile map layer used for features. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00057">57</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -679,7 +798,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00011">11</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>The total number of tile map layers. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00017">17</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -703,7 +824,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00013">13</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>The tile map layer used for north walls and doors. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00027">27</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -727,7 +850,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00015">15</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>The tile map layer used for south walls and doors. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00037">37</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -751,7 +876,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00017">17</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>The tile map layer used for top walls and doors. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00047">47</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -775,7 +902,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00016">16</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>The tile map layer used for west walls and doors. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00042">42</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -800,7 +929,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00021">21</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>The container to which tile maps will be added as children. If null, this node will be used. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00062">62</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -824,7 +955,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00024">24</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>The mode used for drawing doors. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00077">77</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -848,7 +981,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00026">26</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>The currently drawn layout. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00082">82</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -872,7 +1007,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00027">27</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>The currently drawn layout state. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00087">87</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -896,7 +1033,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00022">22</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>The map tile set. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00067">67</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -920,7 +1059,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00023">23</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>The color used if the room is set as visible. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00072">72</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -944,7 +1085,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00029">29</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>A dictionary of door positions by room ID. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00097">97</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>
@@ -968,7 +1111,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00028">28</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
+<p>A dictionary of rooms by layer coordinate. </p>
+
+<p class="definition">Definition at line <a class="el" href="_layout_tile_map_base_8cs_source.html#l00092">92</a> of file <a class="el" href="_layout_tile_map_base_8cs_source.html">LayoutTileMapBase.cs</a>.</p>
 
 </div>
 </div>

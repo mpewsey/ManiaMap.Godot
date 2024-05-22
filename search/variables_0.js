@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['doorcodeflags_0',['DoorCodeFlags',['../class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources_1_1_enums.html#a48eb57a9f01f71f8c59ca4e4a8373a32',1,'MPewsey::ManiaMapGodot::ManiaMapResources::Enums']]]
+  ['backgroundlayer_0',['BackgroundLayer',['../class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a80dc60400fef78b287e067808da7d456',1,'MPewsey::ManiaMapGodot::Drawing::LayoutTileMapBase']]],
+  ['bottomlayer_1',['BottomLayer',['../class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#ab7efe30bec0d901e34b9cc8ed52dadf3',1,'MPewsey::ManiaMapGodot::Drawing::LayoutTileMapBase']]]
 ];

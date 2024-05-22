@@ -78,6 +78,7 @@ var menudata={children:[
 {text:"Variables",url:"functions_vars.html"},
 {text:"Properties",url:"functions_prop.html",children:[
 {text:"a",url:"functions_prop.html#index_a"},
+{text:"b",url:"functions_prop.html#index_b"},
 {text:"c",url:"functions_prop.html#index_c"},
 {text:"d",url:"functions_prop.html#index_d"},
 {text:"e",url:"functions_prop.html#index_e"},
