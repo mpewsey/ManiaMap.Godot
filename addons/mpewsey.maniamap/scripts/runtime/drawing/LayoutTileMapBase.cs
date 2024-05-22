@@ -5,27 +5,95 @@ using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapGodot.Drawing
 {
+    /// <summary>
+    /// The base class for drawing a `Layout` to tile maps.
+    /// </summary>
     [GlobalClass]
     public abstract partial class LayoutTileMapBase : Node2D
     {
+        /// <summary>
+        /// The total number of tile map layers.
+        /// </summary>
         public const int LayerCount = 8;
+
+        /// <summary>
+        /// The tile map layer used for the room fill background.
+        /// </summary>
         public const int BackgroundLayer = 0;
+
+        /// <summary>
+        /// The tile map layer used for north walls and doors.
+        /// </summary>
         public const int NorthLayer = 1;
+
+        /// <summary>
+        /// The tile map layer used for east walls and doors.
+        /// </summary>
         public const int EastLayer = 2;
+
+        /// <summary>
+        /// The tile map layer used for south walls and doors.
+        /// </summary>
         public const int SouthLayer = 3;
+
+        /// <summary>
+        /// The tile map layer used for west walls and doors.
+        /// </summary>
         public const int WestLayer = 4;
+
+        /// <summary>
+        /// The tile map layer used for top walls and doors.
+        /// </summary>
         public const int TopLayer = 5;
+
+        /// <summary>
+        /// The tile map layer used for bottom walls and doors.
+        /// </summary>
         public const int BottomLayer = 6;
+
+        /// <summary>
+        /// The tile map layer used for features.
+        /// </summary>
         public const int FeatureLayer = 7;
 
+        /// <summary>
+        /// The container to which tile maps will be added as children. If null, this node will be used.
+        /// </summary>
         [Export] public Node Container { get; set; }
+
+        /// <summary>
+        /// The map tile set.
+        /// </summary>
         [Export] public MapTileSet MapTileSet { get; set; }
+
+        /// <summary>
+        /// The color used if the room is set as visible.
+        /// </summary>
         [Export] public Color RoomColor { get; set; } = Color.Color8(75, 75, 75);
+
+        /// <summary>
+        /// The mode used for drawing doors.
+        /// </summary>
         [Export] public DoorDrawMode DoorDrawMode { get; set; } = DoorDrawMode.AllDoors;
 
+        /// <summary>
+        /// The currently drawn layout.
+        /// </summary>
         public Layout Layout { get; protected set; }
+
+        /// <summary>
+        /// The currently drawn layout state.
+        /// </summary>
         public LayoutState LayoutState { get; protected set; }
+
+        /// <summary>
+        /// A dictionary of rooms by layer coordinate.
+        /// </summary>
         protected Dictionary<int, List<Room>> RoomsByLayer { get; set; } = new Dictionary<int, List<Room>>();
+
+        /// <summary>
+        /// A dictionary of door positions by room ID.
+        /// </summary>
         protected Dictionary<Uid, List<DoorPosition>> RoomDoors { get; set; } = new Dictionary<Uid, List<DoorPosition>>();
 
         public override void _Ready()
@@ -34,6 +102,11 @@ namespace MPewsey.ManiaMapGodot.Drawing
             Container ??= this;
         }
 
+        /// <summary>
+        /// Performs basic set up for the tile map before drawing.
+        /// </summary>
+        /// <param name="layout">The layout.</param>
+        /// <param name="layoutState">The layout state.</param>
         protected virtual void Initialize(Layout layout, LayoutState layoutState)
         {
             Layout = layout;
@@ -42,6 +115,11 @@ namespace MPewsey.ManiaMapGodot.Drawing
             RoomsByLayer = layout.GetRoomsByLayer();
         }
 
+        /// <summary>
+        /// Sets the tiles for the specified layer (z) coordinate to the provided tile map.
+        /// </summary>
+        /// <param name="tileMap">The tile map.</param>
+        /// <param name="z">The layer coordinate.</param>
         protected void SetTiles(TileMap tileMap, int z)
         {
             tileMap.Clear();
@@ -104,31 +182,57 @@ namespace MPewsey.ManiaMapGodot.Drawing
             }
         }
 
+        /// <summary>
+        /// Sets the background tile to the specified tile map coordinate.
+        /// </summary>
+        /// <param name="tileMap">The tile map.</param>
+        /// <param name="cellPosition">The cell coordinate in the tile map.</param>
+        /// <param name="color">The background color.</param>
         protected void SetBackgroundTile(TileMap tileMap, Vector2I cellPosition, Color color)
         {
             var alternativeId = MapTileSet.GetBackgroundAlternativeId(color);
             tileMap.SetCell(BackgroundLayer, cellPosition, 0, MapTileSet.Background, alternativeId);
         }
 
+        /// <summary>
+        /// Sets the tile to the specified tile map doordinate. Does nothing if an element of the atlas coordinate is negative.
+        /// </summary>
+        /// <param name="tileMap">The tile map.</param>
+        /// <param name="layer">The tile map layer to which the tile will be set.</param>
+        /// <param name="cellPosition">The cell coordinate in the tile map.</param>
+        /// <param name="atlasPosition">The tile atlas coordinate.</param>
         protected static void SetTile(TileMap tileMap, int layer, Vector2I cellPosition, Vector2I atlasPosition)
         {
-            if (atlasPosition != new Vector2I(-1, -1))
+            if (atlasPosition.X >= 0 && atlasPosition.Y >= 0)
                 tileMap.SetCell(layer, cellPosition, 0, atlasPosition, 0);
         }
 
+        /// <summary>
+        /// Finds the first feature with an existing tile coordinate and returns it.
+        /// If such a feature does not exist, returns Vector2I(-1, -1).
+        /// </summary>
+        /// <param name="cell">The cell for which features will be queried.</param>
         protected Vector2I GetFeatureCoordinate(Cell cell)
         {
             foreach (var feature in cell.Features)
             {
                 var atlasPosition = MapTileSet.GetTileCoordinate(feature);
 
-                if (atlasPosition != new Vector2I(-1, -1))
+                if (atlasPosition.X >= 0 && atlasPosition.Y >= 0)
                     return atlasPosition;
             }
 
             return new Vector2I(-1, -1);
         }
 
+        /// <summary>
+        /// Returns the atlas coordinate for the wall or door tile corresponding to the specified door direction.
+        /// </summary>
+        /// <param name="room">The room.</param>
+        /// <param name="cell">The cell.</param>
+        /// <param name="neighbor">The neighboring cell in the door direction.</param>
+        /// <param name="position">The cell index in the room.</param>
+        /// <param name="direction">The door direction.</param>
         protected Vector2I GetTileCoordinate(Room room, Cell cell, Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
             if (Door.ShowDoor(DoorDrawMode, direction) && cell.GetDoor(direction) != null && DoorExists(room, position, direction))
@@ -140,6 +244,12 @@ namespace MPewsey.ManiaMapGodot.Drawing
             return new Vector2I(-1, -1);
         }
 
+        /// <summary>
+        /// Returns true if the door exists for the specified cell index and direction.
+        /// </summary>
+        /// <param name="room">The room.</param>
+        /// <param name="position">The cell index in the room.</param>
+        /// <param name="direction">The door direction.</param>
         protected bool DoorExists(Room room, Vector2DInt position, DoorDirection direction)
         {
             if (RoomDoors.TryGetValue(room.Id, out var doors))
@@ -154,6 +264,9 @@ namespace MPewsey.ManiaMapGodot.Drawing
             return false;
         }
 
+        /// <summary>
+        /// Creates a new tile map in the tile map container and returns it.
+        /// </summary>
         protected TileMap CreateTileMap()
         {
             var tileMap = new TileMap() { TileSet = MapTileSet.TileSet };
@@ -162,6 +275,10 @@ namespace MPewsey.ManiaMapGodot.Drawing
             return tileMap;
         }
 
+        /// <summary>
+        /// Creates the required tile map layers in the tile map and configures their settings.
+        /// </summary>
+        /// <param name="tileMap">The tile map.</param>
         protected static void CreateTileMapLayers(TileMap tileMap)
         {
             var count = tileMap.GetLayersCount();

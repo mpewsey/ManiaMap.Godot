@@ -5,15 +5,33 @@ using System.Linq;
 
 namespace MPewsey.ManiaMapGodot.Drawing
 {
+    /// <summary>
+    /// A class for drawing all layers of a `Layout` onto tile maps.
+    /// </summary>
     [GlobalClass]
     public partial class LayoutTileMapBook : LayoutTileMapBase
     {
+        /// <summary>
+        /// A list of tile maps corresponding to the pages of the book.
+        /// </summary>
         private List<TileMap> Pages { get; } = new List<TileMap>();
+
+        /// <summary>
+        /// A list of layer (z) coordinates corresponding to the pages at the same index.
+        /// </summary>
         private List<int> PageLayerCoordinates { get; set; } = new List<int>();
 
+        /// <summary>
+        /// Returns the read-only list of pages.
+        /// </summary>
         public IReadOnlyList<TileMap> GetPages() => Pages;
+
+        /// <summary>
+        /// Returns the read-only list of page layer coordinates.
+        /// </summary>
         public IReadOnlyList<int> GetPageLayerCoordinates() => PageLayerCoordinates;
 
+        /// <inheritdoc/>
         protected override void Initialize(Layout layout, LayoutState layoutState)
         {
             base.Initialize(layout, layoutState);
@@ -22,12 +40,18 @@ namespace MPewsey.ManiaMapGodot.Drawing
             SizePages();
         }
 
+        /// <summary>
+        /// Draws all layout layers onto tile maps using the ManiaMapManager layout.
+        /// </summary>
         public void DrawPages()
         {
             var manager = ManiaMapManager.Current;
             DrawPages(manager.Layout, manager.LayoutState);
         }
 
+        /// <summary>
+        /// Draws all layout layers onto tile maps.
+        /// </summary>
         public void DrawPages(Layout layout, LayoutState layoutState = null)
         {
             Initialize(layout, layoutState);
@@ -38,6 +62,9 @@ namespace MPewsey.ManiaMapGodot.Drawing
             }
         }
 
+        /// <summary>
+        /// Adds or frees tile maps from the pages list until it matches the number required by the layout.
+        /// </summary>
         private void SizePages()
         {
             while (Pages.Count > PageLayerCoordinates.Count)
@@ -53,6 +80,14 @@ namespace MPewsey.ManiaMapGodot.Drawing
             }
         }
 
+        /// <summary>
+        /// Sets the modulate color of the tile map pages based on a color gradient and view layer (z) coordinate.
+        /// Based on the gradient provided, this allows the viewing of multiple layers in a semitranparent manner,
+        /// similar to using onionskin paper.
+        /// </summary>
+        /// <param name="z">The viewer's layer position.</param>
+        /// <param name="gradient">The color gradient.</param>
+        /// <param name="drawDepth">The maximum draw depth forward and behind a given layer coordinate.</param>
         public float SetOnionMapColors(float z, Gradient gradient, float drawDepth = 1)
         {
             if (PageLayerCoordinates.Count > 0)
