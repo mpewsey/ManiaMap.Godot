@@ -125,9 +125,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a58d67e4d7bf68d0a09ed9630ba231b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88b80180f5b712ae22791dc9902bbf63"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a88b80180f5b712ae22791dc9902bbf63">_ValidateProperty</a> (Godot.Collections.Dictionary property)</td></tr>
 <tr class="separator:a88b80180f5b712ae22791dc9902bbf63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58d063498fe4f49a8d6fdb3e3e246149"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a58d063498fe4f49a8d6fdb3e3e246149">AutoAssign</a> (bool run=true)</td></tr>
-<tr class="memdesc:a58d063498fe4f49a8d6fdb3e3e246149"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the room template if it doesn't already exist and runs auto assign on all descendent <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html" title="The base class for elements tied to a RoomNode2D&#39;s cell index.">CellChild2D</a>. Returns true if the method is successful.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a58d063498fe4f49a8d6fdb3e3e246149">More...</a><br /></td></tr>
-<tr class="separator:a58d063498fe4f49a8d6fdb3e3e246149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e8e4d0e62d35f2ba30a9cee47abffba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a3e8e4d0e62d35f2ba30a9cee47abffba">AutoAssign</a> ()</td></tr>
+<tr class="memdesc:a3e8e4d0e62d35f2ba30a9cee47abffba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the room template if it doesn't already exist and runs auto assign on all descendent <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html" title="The base class for elements tied to a RoomNode2D&#39;s cell index.">CellChild2D</a>.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a3e8e4d0e62d35f2ba30a9cee47abffba">More...</a><br /></td></tr>
+<tr class="separator:a3e8e4d0e62d35f2ba30a9cee47abffba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88ba3f3018fb38e33e73dec614371250"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a88ba3f3018fb38e33e73dec614371250">CellCenterGlobalPosition</a> (int row, int column)</td></tr>
 <tr class="memdesc:a88ba3f3018fb38e33e73dec614371250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the cell center global position for the specified cell index.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a88ba3f3018fb38e33e73dec614371250">More...</a><br /></td></tr>
 <tr class="separator:a88ba3f3018fb38e33e73dec614371250"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -192,9 +192,9 @@ delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>OnCellGridCh
 <tr class="memitem:a1e4552a72b8ce469331c594d2433b63e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a1e4552a72b8ce469331c594d2433b63e">SizeActiveCells</a> ()</td></tr>
 <tr class="memdesc:a1e4552a72b8ce469331c594d2433b63e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sizes the active cells array to match the current rows and columns properties. Any newly added cells are active by default.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a1e4552a72b8ce469331c594d2433b63e">More...</a><br /></td></tr>
 <tr class="separator:a1e4552a72b8ce469331c594d2433b63e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecda9643bbd349e9a4a72f1de5f5cdea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aecda9643bbd349e9a4a72f1de5f5cdea">UpdateRoomTemplateResource</a> (bool run=true)</td></tr>
-<tr class="memdesc:aecda9643bbd349e9a4a72f1de5f5cdea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs auto assign and updates the referenced <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html" title="Provides a reference to a room scene and information for the room required by the procedural generato...">RoomTemplateResource</a>. Saves the room template resource to a separate file if it is not saved already.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aecda9643bbd349e9a4a72f1de5f5cdea">More...</a><br /></td></tr>
-<tr class="separator:aecda9643bbd349e9a4a72f1de5f5cdea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33dbba213805eea9af866dcc465d8003"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a33dbba213805eea9af866dcc465d8003">UpdateRoomTemplate</a> ()</td></tr>
+<tr class="memdesc:a33dbba213805eea9af866dcc465d8003"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs auto assign and updates the referenced <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html" title="Provides a reference to a room scene and information for the room required by the procedural generato...">RoomTemplateResource</a>. Saves the room template resource to a separate file if it is not saved already.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a33dbba213805eea9af866dcc465d8003">More...</a><br /></td></tr>
+<tr class="separator:a33dbba213805eea9af866dcc465d8003"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac16955832530f16a57dca110822b409"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aac16955832530f16a57dca110822b409">ValidateRoomFlags</a> ()</td></tr>
 <tr class="memdesc:aac16955832530f16a57dca110822b409"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates that the room flags have unique ID's. Throws an exception if they do not.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aac16955832530f16a57dca110822b409">More...</a><br /></td></tr>
 <tr class="separator:aac16955832530f16a57dca110822b409"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -304,7 +304,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00139">139</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00118">118</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -324,7 +324,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00156">156</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00135">135</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -360,7 +360,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00637">637</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00611">611</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -396,35 +396,28 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00675">675</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00649">649</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
-<a id="a58d063498fe4f49a8d6fdb3e3e246149" name="a58d063498fe4f49a8d6fdb3e3e246149"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58d063498fe4f49a8d6fdb3e3e246149">&#9670;&nbsp;</a></span>AutoAssign()</h2>
+<a id="a3e8e4d0e62d35f2ba30a9cee47abffba" name="a3e8e4d0e62d35f2ba30a9cee47abffba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e8e4d0e62d35f2ba30a9cee47abffba">&#9670;&nbsp;</a></span>AutoAssign()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool AutoAssign </td>
+          <td class="memname">void AutoAssign </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>run</em> = <code>true</code></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the room template if it doesn't already exist and runs auto assign on all descendent <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html" title="The base class for elements tied to a RoomNode2D&#39;s cell index.">CellChild2D</a>. Returns true if the method is successful. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">run</td><td>The method is only executed if true.</td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Sets the room template if it doesn't already exist and runs auto assign on all descendent <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html" title="The base class for elements tied to a RoomNode2D&#39;s cell index.">CellChild2D</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00290">290</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00268">268</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -463,7 +456,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00552">552</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00526">526</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -502,7 +495,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00562">562</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00536">536</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -541,7 +534,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00598">598</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00572">572</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -588,7 +581,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00375">375</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00349">349</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -624,7 +617,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00524">524</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00498">498</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -720,7 +713,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00241">241</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00221">221</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -781,7 +774,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00217">217</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00197">197</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -809,7 +802,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00444">444</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00418">418</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -855,7 +848,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00484">484</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00458">458</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -900,7 +893,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00316">316</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00290">290</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -929,7 +922,7 @@ Private Attributes</h2></td></tr>
 
 <p>Returns an new array of ManiaMap cells for the room. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00652">652</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00626">626</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -958,7 +951,7 @@ Private Attributes</h2></td></tr>
 
 <p>Returns a dictionary of ManiaMap collectable spots used by the procedural generator. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00619">619</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00593">593</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -992,7 +985,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html#ad70703a12aa8a6b615acbfd68b16aeaf">IRoomNode</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00604">604</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00578">578</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1020,7 +1013,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00572">572</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00546">546</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1095,7 +1088,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00265">265</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00245">245</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1123,7 +1116,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00582">582</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00556">556</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1144,7 +1137,7 @@ Private Attributes</h2></td></tr>
 
 <p>Moves the room to its position in the <code>Layout</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00541">541</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00515">515</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1254,7 +1247,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00742">742</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00713">713</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1283,7 +1276,7 @@ Private Attributes</h2></td></tr>
 
 <p>Returns true if the room scene is saved to a file. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00751">751</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00722">722</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1329,7 +1322,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00389">389</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00363">363</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1381,7 +1374,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00331">331</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00305">305</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1434,7 +1427,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00347">347</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00321">321</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1472,7 +1465,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00133">133</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00112">112</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1510,7 +1503,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00126">126</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00105">105</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1531,21 +1524,20 @@ Private Attributes</h2></td></tr>
 
 <p>Sizes the active cells array to match the current rows and columns properties. Any newly added cells are active by default. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00414">414</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00388">388</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
-<a id="aecda9643bbd349e9a4a72f1de5f5cdea" name="aecda9643bbd349e9a4a72f1de5f5cdea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aecda9643bbd349e9a4a72f1de5f5cdea">&#9670;&nbsp;</a></span>UpdateRoomTemplateResource()</h2>
+<a id="a33dbba213805eea9af866dcc465d8003" name="a33dbba213805eea9af866dcc465d8003"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33dbba213805eea9af866dcc465d8003">&#9670;&nbsp;</a></span>UpdateRoomTemplate()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool UpdateRoomTemplateResource </td>
+          <td class="memname">bool UpdateRoomTemplate </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>run</em> = <code>true</code></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1560,7 +1552,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00712">712</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00686">686</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1587,7 +1579,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00691">691</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00665">665</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1612,7 +1604,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00085">85</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00064">64</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1636,7 +1628,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00079">79</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00058">58</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1660,7 +1652,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00073">73</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00052">52</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1687,7 +1679,7 @@ Private Attributes</h2></td></tr>
 
 <p>A nested array of room cell activities. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00094">94</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00073">73</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1713,7 +1705,7 @@ Private Attributes</h2></td></tr>
 
 <p>The width and height of the room cells. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00089">89</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00068">68</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1739,7 +1731,7 @@ Private Attributes</h2></td></tr>
 
 <p>The number of cell columns in the room. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00083">83</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00062">62</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1765,7 +1757,7 @@ Private Attributes</h2></td></tr>
 
 <p>A list of door connections for the room. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00119">119</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00098">98</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1791,7 +1783,7 @@ Private Attributes</h2></td></tr>
 
 <p>True if the room has been initialized. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00124">124</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00103">103</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1817,7 +1809,7 @@ Private Attributes</h2></td></tr>
 
 <p>The current layout. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00099">99</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00078">78</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1843,7 +1835,7 @@ Private Attributes</h2></td></tr>
 
 <p>The current layout state. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00104">104</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00083">83</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1869,7 +1861,7 @@ Private Attributes</h2></td></tr>
 
 <p>This room's layout. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00109">109</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00088">88</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1895,7 +1887,7 @@ Private Attributes</h2></td></tr>
 
 <p>This room's layout state. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00114">114</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00093">93</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1921,7 +1913,7 @@ Private Attributes</h2></td></tr>
 
 <p>The room template used by the procedural generator. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00071">71</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00050">50</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>
@@ -1947,7 +1939,7 @@ Private Attributes</h2></td></tr>
 
 <p>The number or cell rows in the room. </p>
 
-<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00077">77</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_node2_d_8cs_source.html#l00056">56</a> of file <a class="el" href="_room_node2_d_8cs_source.html">RoomNode2D.cs</a>.</p>
 
 </div>
 </div>

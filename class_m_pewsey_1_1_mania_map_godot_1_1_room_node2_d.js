@@ -2,7 +2,7 @@ var class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d =
 [
     [ "AddMMDoors", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a8843524aa7d8e49917f2ae44fd1c4b51", null ],
     [ "AddMMFeatures", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a7fa864bc6b2fc9b2ec9711c64b31774a", null ],
-    [ "AutoAssign", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a58d063498fe4f49a8d6fdb3e3e246149", null ],
+    [ "AutoAssign", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a3e8e4d0e62d35f2ba30a9cee47abffba", null ],
     [ "CellCenterGlobalPosition", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a88ba3f3018fb38e33e73dec614371250", null ],
     [ "CellCenterLocalPosition", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aba853dd821ad00f353f7b1783c886425", null ],
     [ "CellIndexExists", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a0f0ddf9e22e2ddba6e64a2b6f8cf713c", null ],
@@ -29,7 +29,7 @@ var class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d =
     [ "SetCellActivity", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ad2f09e2f7eadbe2478fcc4782a903659", null ],
     [ "SetCellActivity", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#ac70832caf786da2ccf75e88f21f48b1e", null ],
     [ "SizeActiveCells", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a1e4552a72b8ce469331c594d2433b63e", null ],
-    [ "UpdateRoomTemplateResource", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aecda9643bbd349e9a4a72f1de5f5cdea", null ],
+    [ "UpdateRoomTemplate", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a33dbba213805eea9af866dcc465d8003", null ],
     [ "ValidateRoomFlags", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aac16955832530f16a57dca110822b409", null ],
     [ "ActiveCells", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a218d6bdfe43a453e61b4ec9e5c0a187f", null ],
     [ "CellSize", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#afd0cfe2245f654056ccc9d1694beb5f4", null ],

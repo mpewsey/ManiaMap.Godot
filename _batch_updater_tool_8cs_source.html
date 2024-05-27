@@ -144,7 +144,7 @@ $(document).ready(function(){initNavTree('_batch_updater_tool_8cs_source.html','
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keywordflow">switch</span> (node)</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            {</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <span class="keywordflow">case</span> RoomNode2D room2d:</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                    room2d.UpdateRoomTemplateResource();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                    room2d.UpdateRoomTemplate();</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                    <span class="keywordflow">return</span> SaveScene(scene, room2d);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                <span class="keywordflow">default</span>:</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                    GD.PrintErr($<span class="stringliteral">&quot;Skipping unhandled room type: (Type = {node.GetType()}, ScenePath = {path})&quot;</span>);</div>
