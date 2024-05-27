@@ -1,0 +1,131 @@
+[gd_scene load_steps=11 format=3 uid="uid://ceij50wkmgvyi"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/RoomNode2DToolbar.cs" id="1_a4r4d"]
+[ext_resource type="ButtonGroup" uid="uid://dny3cxl3yfjod" path="res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/edit_mode_button_group.tres" id="2_5r1yr"]
+[ext_resource type="Texture2D" uid="uid://c6mkqk5qwijr5" path="res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/cell_display_icon.svg" id="2_ynmag"]
+[ext_resource type="Texture2D" uid="uid://8gxtfel3hl7l" path="res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/none_edit_mode_icon.svg" id="4_wdqac"]
+[ext_resource type="Texture2D" uid="uid://cvfm6xc2bpkpi" path="res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/activate_edit_mode_icon.svg" id="5_rqdti"]
+[ext_resource type="Texture2D" uid="uid://7mpbjj6d2ld3" path="res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/deactivate_edit_mode_icon.svg" id="6_wsjkv"]
+[ext_resource type="Texture2D" uid="uid://x84qkwa1pgk" path="res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/toggle_edit_mode_icon.svg" id="7_1pf3k"]
+[ext_resource type="Texture2D" uid="uid://bur7pi37sn2pk" path="res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/auto_assign_icon.svg" id="8_b4qmr"]
+[ext_resource type="Texture2D" uid="uid://5fljw2llshaa" path="res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/update_room_template_icon.svg" id="9_1qb7x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22cmn"]
+bg_color = Color(0.235294, 0.286275, 0.356863, 1)
+border_width_bottom = 2
+border_color = Color(0.439216, 0.729412, 0.980392, 1)
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[node name="RoomNode2DToolbar" type="Control" node_paths=PackedStringArray("DisplayCellsButton", "NoneEditModeButton", "ActivateEditModeButton", "DeactivateEditModeButton", "ToggleEditModeButton", "AutoAssignButton", "UpdateRoomTemplateButton")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 25.0
+script = ExtResource("1_a4r4d")
+DisplayCellsButton = NodePath("HBoxContainer/DisplayCellsButton")
+NoneEditModeButton = NodePath("HBoxContainer/NoneEditModeButton")
+ActivateEditModeButton = NodePath("HBoxContainer/ActivateEditModeButton")
+DeactivateEditModeButton = NodePath("HBoxContainer/DeactivateEditModeButton")
+ToggleEditModeButton = NodePath("HBoxContainer/ToggleEditModeButton")
+AutoAssignButton = NodePath("HBoxContainer/AutoAssignButton")
+UpdateRoomTemplateButton = NodePath("HBoxContainer/UpdateRoomTemplateButton")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_22cmn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="DisplayCellsButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+tooltip_text = "Display Cells"
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("2_ynmag")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="NoneEditModeButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+tooltip_text = "Disable Cell Editing"
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("2_5r1yr")
+icon = ExtResource("4_wdqac")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ActivateEditModeButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+tooltip_text = "Activate Cells"
+toggle_mode = true
+button_group = ExtResource("2_5r1yr")
+icon = ExtResource("5_rqdti")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="DeactivateEditModeButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+tooltip_text = "Deactivate Cells"
+toggle_mode = true
+button_group = ExtResource("2_5r1yr")
+icon = ExtResource("6_wsjkv")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="ToggleEditModeButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+tooltip_text = "Toggle Cell Activities"
+toggle_mode = true
+button_group = ExtResource("2_5r1yr")
+icon = ExtResource("7_1pf3k")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="AutoAssignButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+tooltip_text = "Run Auto Assign"
+icon = ExtResource("8_b4qmr")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="UpdateRoomTemplateButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+tooltip_text = "Update Room Template"
+icon = ExtResource("9_1qb7x")
+flat = true
+icon_alignment = 1
+expand_icon = true

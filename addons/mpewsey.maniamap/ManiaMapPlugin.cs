@@ -15,6 +15,7 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         public static ManiaMapPlugin Current { get; private set; }
 
+        public RoomNode2DToolbar RoomNode2DToolbar { get; private set; }
         private LayoutGraphEditor GraphEditor { get; set; }
         private Button GraphEditorDockButton { get; set; }
 
@@ -25,6 +26,7 @@ namespace MPewsey.ManiaMapGodot.Editor
             CreateProjectSettings();
             AddToolMenu();
             AddGraphEditorDock();
+            CreateRoomNode2DToolbar();
         }
 
         public override void _ExitTree()
@@ -33,15 +35,26 @@ namespace MPewsey.ManiaMapGodot.Editor
             EditorInputs.RemoveInputActions();
             RemoveToolMenuItem(MenuName);
             RemoveGraphEditorDock();
+            RemoveRoomNode2DToolbar();
         }
 
         public override bool _Handles(GodotObject obj)
         {
-            return obj is LayoutGraphResource;
+            return obj is LayoutGraphResource || obj is RoomNode2D;
         }
 
         public override void _Edit(GodotObject obj)
         {
+            if (obj is RoomNode2D room2d)
+            {
+                RoomNode2DToolbar.SetTargetRoom(room2d);
+                RoomNode2DToolbar.MoveToFront();
+                RoomNode2DToolbar.Visible = true;
+                return;
+            }
+
+            RoomNode2DToolbar.Visible = false;
+
             if (obj is LayoutGraphResource graph)
             {
                 GraphEditorDockButton.Visible = true;
@@ -88,6 +101,23 @@ namespace MPewsey.ManiaMapGodot.Editor
                 GraphEditorDockButton.Visible = false;
 
             HideBottomPanel();
+        }
+
+        private void CreateRoomNode2DToolbar()
+        {
+            var mainScreen2d = EditorInterface.Singleton.GetEditorMainScreen().GetChild(0);
+            var hFlowContainers = mainScreen2d.FindChildren("*", nameof(HFlowContainer), true, false);
+            var buttonContainer = (HFlowContainer)hFlowContainers[0];
+            var scene = ResourceLoader.Load<PackedScene>(ManiaMapResources.Scenes.RoomNode2DToolbarScene);
+            RoomNode2DToolbar = scene.Instantiate<RoomNode2DToolbar>();
+            buttonContainer.AddChild(RoomNode2DToolbar);
+            RoomNode2DToolbar.Visible = false;
+        }
+
+        private void RemoveRoomNode2DToolbar()
+        {
+            if (IsInstanceValid(RoomNode2DToolbar))
+                RoomNode2DToolbar.QueueFree();
         }
 
         private void AddToolMenu()

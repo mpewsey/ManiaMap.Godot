@@ -43,7 +43,7 @@ namespace MPewsey.ManiaMapGodot.Editor
             switch (node)
             {
                 case RoomNode2D room2d:
-                    room2d.UpdateRoomTemplateResource();
+                    room2d.UpdateRoomTemplate();
                     return SaveScene(scene, room2d);
                 default:
                     GD.PrintErr($"Skipping unhandled room type: (Type = {node.GetType()}, ScenePath = {path})");

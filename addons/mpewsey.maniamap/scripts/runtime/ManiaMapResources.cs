@@ -22,6 +22,7 @@ namespace MPewsey.ManiaMapGodot
         public static class Scenes
         {
             public const string LayoutGraphEditorScene = "uid://ckyjrhwvcs6fi";
+            public const string RoomNode2DToolbarScene = "uid://ceij50wkmgvyi";
         }
 
         /// <summary>

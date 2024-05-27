@@ -40,27 +40,6 @@ namespace MPewsey.ManiaMapGodot
         public Error EmitOnCellGridChanged() => EmitSignal(SignalName.OnCellGridChanged);
 
 #if TOOLS
-        /// <summary>
-        /// [Editor] Runs auto assign when set to true.
-        /// </summary>
-        [Export] public bool RunAutoAssign { get => false; set => AutoAssign(value); }
-
-        /// <summary>
-        /// [Editor] Updates the room template resource when set to true.
-        /// </summary>
-        [Export] public bool UpdateRoomTemplate { get => false; set => UpdateRoomTemplateResource(value); }
-
-        private bool _displayCells = true;
-        /// <summary>
-        /// [Editor] If true, cell areas are displayed in the editor.
-        /// </summary>
-        [Export] public bool DisplayCells { get => _displayCells; set => SetCellGridField(ref _displayCells, value); }
-
-        /// <summary>
-        /// [Editor] The cell activity applied when editing cells in the editor.
-        /// </summary>
-        [Export] public CellActivity CellEditMode { get; set; }
-
         private bool MouseButtonPressed { get; set; }
         private Vector2 MouseButtonDownPosition { get; set; }
 #endif
@@ -170,7 +149,7 @@ namespace MPewsey.ManiaMapGodot
 
             if (Engine.IsEditorHint())
             {
-                if (DisplayCells)
+                if (Editor.ManiaMapPlugin.Current.RoomNode2DToolbar.DisplayCells)
                     ProcessEditCellInputs();
             }
         }
@@ -190,7 +169,8 @@ namespace MPewsey.ManiaMapGodot
             {
                 var startIndex = GlobalPositionToCellIndex(MouseButtonDownPosition);
                 var endIndex = GlobalPositionToCellIndex(GetViewport().GetMousePosition());
-                SetCellActivities(startIndex, endIndex, CellEditMode);
+                var editMode = Editor.ManiaMapPlugin.Current.RoomNode2DToolbar.CellEditMode;
+                SetCellActivities(startIndex, endIndex, editMode);
                 EmitOnCellGridChanged();
             }
 
@@ -284,14 +264,9 @@ namespace MPewsey.ManiaMapGodot
 
         /// <summary>
         /// Sets the room template if it doesn't already exist and runs auto assign on all descendent CellChild2D.
-        /// Returns true if the method is successful.
         /// </summary>
-        /// <param name="run">The method is only executed if true.</param>
-        public bool AutoAssign(bool run = true)
+        public void AutoAssign()
         {
-            if (!run)
-                return false;
-
             RoomTemplate ??= new RoomTemplateResource() { TemplateName = Name };
             RoomTemplate.Id = Rand.AutoAssignId(RoomTemplate.Id);
             SizeActiveCells();
@@ -304,7 +279,6 @@ namespace MPewsey.ManiaMapGodot
             }
 
             GD.PrintRich($"[color=#00ff00]Performed auto assign on {nodes.Count} cell children.[/color]");
-            return true;
         }
 
         /// <summary>
@@ -709,11 +683,8 @@ namespace MPewsey.ManiaMapGodot
         /// This method returns does not run and returns false if the room scene is not saved to file.
         /// </summary>
         /// <param name="run">This method is only executed if true.</param>
-        public bool UpdateRoomTemplateResource(bool run = true)
+        public bool UpdateRoomTemplate()
         {
-            if (!run)
-                return false;
-
             if (!SceneIsSavedToFile())
             {
                 GD.PrintErr("Scene must be saved to file first.");

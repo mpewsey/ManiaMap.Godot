@@ -35,7 +35,7 @@ namespace MPewsey.ManiaMapGodot.Tests
             var room = new RoomNode2D() { Rows = 3, Columns = 2, CellSize = new Vector2(100, 100) };
             var feature = new Feature2D() { Position = new Vector2(150, 250) };
             room.AddChild(feature);
-            Assertions.AssertThat(room.AutoAssign()).IsTrue();
+            room.AutoAssign();
             Assertions.AssertThat(feature.Room == room).IsTrue();
             Assertions.AssertThat(feature.Row).IsEqual(2);
             Assertions.AssertThat(feature.Column).IsEqual(1);
@@ -48,7 +48,7 @@ namespace MPewsey.ManiaMapGodot.Tests
             var room = new RoomNode2D() { Rows = 3, Columns = 2, CellSize = new Vector2(100, 100) };
             var feature = new Feature2D() { Position = new Vector2(150, 250) };
             room.AddChild(feature);
-            Assertions.AssertThat(room.UpdateRoomTemplateResource()).IsFalse();
+            Assertions.AssertThat(room.UpdateRoomTemplate()).IsFalse();
             room.QueueFree();
         }
 
@@ -73,7 +73,7 @@ namespace MPewsey.ManiaMapGodot.Tests
 
             var scene = ResourceLoader.Load<PackedScene>(path);
             var savedRoom = scene.Instantiate<RoomNode2D>();
-            Assertions.AssertThat(savedRoom.UpdateRoomTemplateResource()).IsTrue();
+            Assertions.AssertThat(savedRoom.UpdateRoomTemplate()).IsTrue();
             var template = ResourceLoader.Load<RoomTemplateResource>(templatePath);
             Assertions.AssertThat(savedRoom.RoomTemplate == template).IsTrue();
             Assertions.AssertThat(ResourceLoader.Exists(templatePath)).IsTrue();

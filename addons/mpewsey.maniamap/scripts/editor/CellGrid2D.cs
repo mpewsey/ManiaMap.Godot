@@ -34,7 +34,7 @@ namespace MPewsey.ManiaMapGodot.Editor
 
             if (Engine.IsEditorHint())
             {
-                if (Room.DisplayCells)
+                if (ManiaMapPlugin.Current.RoomNode2DToolbar.DisplayCells)
                     DrawCells();
             }
         }
