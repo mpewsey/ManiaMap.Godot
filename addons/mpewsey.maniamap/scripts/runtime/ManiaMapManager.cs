@@ -53,8 +53,16 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="layout">The layout.</param>
         /// <param name="state">The layout state.</param>
         /// <param name="settings">The settings resource. If null, a new default instance of the settings will be used.</param>
+        /// <exception cref="ArgumentNullException">Thrown if the layout or layout state is null.</exception>
+        /// <exception cref="ArgumentException">Thrown if the layout and layout state ID's do not match.</exception>
         public static ManiaMapManager Initialize(Layout layout, LayoutState state, ManiaMapSettings settings = null)
         {
+            ArgumentNullException.ThrowIfNull(layout, nameof(layout));
+            ArgumentNullException.ThrowIfNull(state, nameof(state));
+
+            if (layout.Id != state.Id)
+                throw new ArgumentException($"Layout and layout state ID's do not match: (Layout ID = {layout.Id}, Layout State ID = {state.Id})");
+
             var manager = new ManiaMapManager()
             {
                 Layout = layout,
