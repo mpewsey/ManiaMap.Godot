@@ -32,7 +32,7 @@ namespace MPewsey.ManiaMapGodot.Editor
             RemoveAction(DeleteAction);
             RemoveAction(SelectAllAction);
             RemoveAction(SelectAllNodesAction);
-            RemoveAction(SelectAllNodesAction);
+            RemoveAction(SelectAllEdgesAction);
         }
 
         private static void RemoveAction(StringName name)
