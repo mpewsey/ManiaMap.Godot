@@ -50,10 +50,11 @@ namespace MPewsey.ManiaMapGodot
         /// </summary>
         [Export] public bool UpdateRoomTemplate { get => false; set => UpdateRoomTemplateResource(value); }
 
+        private bool _displayCells = true;
         /// <summary>
         /// [Editor] If true, cell areas are displayed in the editor.
         /// </summary>
-        [Export] public bool DisplayCells { get; set; } = true;
+        [Export] public bool DisplayCells { get => _displayCells; set => SetCellGridField(ref _displayCells, value); }
 
         /// <summary>
         /// [Editor] The cell activity applied when editing cells in the editor.
@@ -85,7 +86,7 @@ namespace MPewsey.ManiaMapGodot
         /// <summary>
         /// The width and height of the room cells.
         /// </summary>
-        [Export(PropertyHint.Range, "0,100,1,or_greater")] public Vector2 CellSize { get => _cellSize; set => SetCellSizeField(ref _cellSize, value); }
+        [Export(PropertyHint.Range, "0,100,1,or_greater")] public Vector2 CellSize { get => _cellSize; set => SetCellGridField(ref _cellSize, value); }
 
         /// <summary>
         /// A nested array of room cell activities.
@@ -122,14 +123,14 @@ namespace MPewsey.ManiaMapGodot
         /// </summary>
         public bool IsInitialized { get; private set; }
 
-        private void SetSizeField<T>(ref T field, T value)
+        private void SetSizeField(ref int field, int value)
         {
             field = value;
             SizeActiveCells();
             EmitOnCellGridChanged();
         }
 
-        private void SetCellSizeField<T>(ref T field, T value)
+        private void SetCellGridField<T>(ref T field, T value)
         {
             field = value;
             EmitOnCellGridChanged();
@@ -176,7 +177,7 @@ namespace MPewsey.ManiaMapGodot
 
         private void ProcessEditCellInputs()
         {
-            if (Input.IsMouseButtonPressed(MouseButton.Left))
+            if (Input.IsMouseButtonPressed(MouseButton.Left) && MouseIsInsideMainScreen())
             {
                 if (!MouseButtonPressed)
                     MouseButtonDownPosition = GetViewport().GetMousePosition();
@@ -185,7 +186,7 @@ namespace MPewsey.ManiaMapGodot
                 return;
             }
 
-            if (MouseButtonPressed)
+            if (MouseButtonPressed && MouseIsInsideMainScreen())
             {
                 var startIndex = GlobalPositionToCellIndex(MouseButtonDownPosition);
                 var endIndex = GlobalPositionToCellIndex(GetViewport().GetMousePosition());
@@ -194,6 +195,14 @@ namespace MPewsey.ManiaMapGodot
             }
 
             MouseButtonPressed = false;
+        }
+
+        private static bool MouseIsInsideMainScreen()
+        {
+            var mainScreen = EditorInterface.Singleton.GetEditorMainScreen();
+            var mousePosition = mainScreen.GetViewport().GetMousePosition();
+            var mainScreenRect = new Rect2(mainScreen.GlobalPosition, mainScreen.Size);
+            return mainScreenRect.Encloses(new Rect2(mousePosition, Vector2.Zero));
         }
 #endif
 
