@@ -127,7 +127,7 @@ $(document).ready(function(){initNavTree('_room_template_resource_8cs_source.htm
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            base._ValidateProperty(property);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            var name = <span class="keyword">property</span>[<span class="stringliteral">&quot;name&quot;</span>].AsStringName();</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordflow">if</span> (name == PropertyName.ScenePath || name == <a class="code hl_property" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html#a08d58dd863260745591c419842a08391">SceneUidPath</a> || name == PropertyName.SerializedText)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordflow">if</span> (name == PropertyName.ScenePath || name == PropertyName.SceneUidPath || name == PropertyName.SerializedText)</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                <span class="keyword">property</span>[<span class="stringliteral">&quot;usage&quot;</span>] = (int)(property[<span class="stringliteral">&quot;usage&quot;</span>].As&lt;PropertyUsageFlags&gt;() | PropertyUsageFlags.ReadOnly);</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        }</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
