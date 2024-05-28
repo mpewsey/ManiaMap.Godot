@@ -53,7 +53,7 @@ namespace MPewsey.ManiaMapGodot
         /// <summary>
         /// The width and height of the room cells.
         /// </summary>
-        [Export(PropertyHint.Range, "0,100,1,or_greater")] public Vector2 CellSize { get => _cellSize; set => SetCellGridField(ref _cellSize, value); }
+        [Export(PropertyHint.Range, "0,100,1,or_greater")] public Vector2 CellSize { get => _cellSize; set => SetCellSizeField(ref _cellSize, value); }
 
         /// <inheritdoc/>
         [Export] public Godot.Collections.Array<Godot.Collections.Array<bool>> ActiveCells { get; set; } = new Godot.Collections.Array<Godot.Collections.Array<bool>>();
@@ -83,14 +83,14 @@ namespace MPewsey.ManiaMapGodot
 
         private void SetSizeField(ref int field, int value)
         {
-            field = value;
+            field = Mathf.Max(value, 1);
             this.SizeActiveCells();
             EmitOnCellGridChanged();
         }
 
-        private void SetCellGridField<T>(ref T field, T value)
+        private void SetCellSizeField(ref Vector2 field, Vector2 value)
         {
-            field = value;
+            field = new Vector2(Mathf.Max(value.X, 0.001f), Mathf.Max(value.Y, 0.001f));
             EmitOnCellGridChanged();
         }
 
