@@ -2,7 +2,7 @@ var searchData=
 [
   ['getbackgroundalternativeid_0',['GetBackgroundAlternativeId',['../class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_map_tile_set.html#ada5f22808b3afc7d31af9123db49c6bd',1,'MPewsey::ManiaMapGodot::Drawing::MapTileSet']]],
   ['getbackgroundalternativetileids_1',['GetBackgroundAlternativeTileIds',['../class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_map_tile_set.html#a3648ec31546ec1a4e9718672a3c76b3d',1,'MPewsey::ManiaMapGodot::Drawing::MapTileSet']]],
-  ['getcellactivity_2',['GetCellActivity',['../class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#af7f4252d613b8a948a437071687371e2',1,'MPewsey::ManiaMapGodot::RoomNode2D']]],
+  ['getcellactivity_2',['GetCellActivity',['../class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a323a40368e90922abe8130428e7ab99f',1,'MPewsey::ManiaMapGodot::IRoomNodeExtensions']]],
   ['getcollectableids_3',['GetCollectableIds',['../class_m_pewsey_1_1_mania_map_godot_1_1_collectable_group.html#a7825e2dc5b8ed0eb36828ea9914c7582',1,'MPewsey::ManiaMapGodot::CollectableGroup']]],
   ['getdoorconnections_4',['GetDoorConnections',['../class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_manager.html#a7a477e880a1b12b9773a0cd8ac83f344',1,'MPewsey::ManiaMapGodot::ManiaMapManager']]],
   ['getedge_5',['GetEdge',['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource.html#a0db2b1700992c751031aaf86fda7f20d',1,'MPewsey::ManiaMapGodot::Graphs::LayoutGraphResource']]],

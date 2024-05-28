@@ -52,6 +52,7 @@ var annotated_dup =
         [ "DoorThreshold2D", "class_m_pewsey_1_1_mania_map_godot_1_1_door_threshold2_d.html", "class_m_pewsey_1_1_mania_map_godot_1_1_door_threshold2_d" ],
         [ "Feature2D", "class_m_pewsey_1_1_mania_map_godot_1_1_feature2_d.html", "class_m_pewsey_1_1_mania_map_godot_1_1_feature2_d" ],
         [ "IRoomNode", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node" ],
+        [ "IRoomNodeExtensions", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions" ],
         [ "ManiaMapManager", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_manager.html", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_manager" ],
         [ "ManiaMapResources", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources.html", [
           [ "Enums", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources_1_1_enums.html", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources_1_1_enums" ],

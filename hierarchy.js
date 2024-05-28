@@ -22,6 +22,7 @@ var hierarchy =
     [ "IRoomNode", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html", [
       [ "RoomNode2D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html", null ]
     ] ],
+    [ "IRoomNodeExtensions", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html", null ],
     [ "ManiaMapResources", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources.html", null ],
     [ "Node", null, [
       [ "GenerationInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input.html", [

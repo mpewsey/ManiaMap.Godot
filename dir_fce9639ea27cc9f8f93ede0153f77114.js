@@ -17,6 +17,7 @@ var dir_fce9639ea27cc9f8f93ede0153f77114 =
     [ "DoorThreshold2D.cs", "_door_threshold2_d_8cs_source.html", null ],
     [ "Feature2D.cs", "_feature2_d_8cs_source.html", null ],
     [ "IRoomNode.cs", "_i_room_node_8cs_source.html", null ],
+    [ "IRoomNodeExtensions.cs", "_i_room_node_extensions_8cs_source.html", null ],
     [ "ManiaMapManager.cs", "_mania_map_manager_8cs_source.html", null ],
     [ "ManiaMapResources.cs", "_mania_map_resources_8cs_source.html", null ],
     [ "ManiaMapSettings.cs", "_mania_map_settings_8cs_source.html", null ],
