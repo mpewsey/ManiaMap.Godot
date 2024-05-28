@@ -11,9 +11,9 @@ var searchData=
   ['tilemap_8',['TileMap',['../class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map.html#a1edd31a366ae94f4a80670aedc6b5e57',1,'MPewsey::ManiaMapGodot::Drawing::LayoutTileMap']]],
   ['tileset_9',['TileSet',['../class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_map_tile_set.html#aa52d9f6b780cf3f82a853b3c1c1f4c49',1,'MPewsey::ManiaMapGodot::Drawing::MapTileSet']]],
   ['toggle_10',['Toggle',['../namespace_m_pewsey_1_1_mania_map_godot.html#a6a753fde07d2f95f8fce42819db99f02aa8875bbe4272c0bdd786cfaaedf77921',1,'MPewsey::ManiaMapGodot']]],
-  ['toggleflag_11',['ToggleFlag',['../class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html#ac47f665811dba2552f7782a251b4ff49',1,'MPewsey::ManiaMapGodot::RoomFlag2D']]],
+  ['toggleflag_11',['ToggleFlag',['../class_m_pewsey_1_1_mania_map_godot_1_1_i_room_flag_extensions.html#a1c74d3cf7d49cad7e831fb7ee2ed6859',1,'MPewsey::ManiaMapGodot::IRoomFlagExtensions']]],
   ['tonode_12',['ToNode',['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_edge.html#a2ce602603b2e12add7ecb63bd81b68a2',1,'MPewsey::ManiaMapGodot::Graphs::LayoutGraphEdge']]],
   ['topdoor_13',['TopDoor',['../class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_map_tile_set.html#a1f09dc9d61330b1a2720567cb89ca73b',1,'MPewsey::ManiaMapGodot::Drawing::MapTileSet']]],
   ['toplayer_14',['TopLayer',['../class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a8225127f2bba534b41e30584dc7e55f8',1,'MPewsey::ManiaMapGodot::Drawing::LayoutTileMapBase']]],
-  ['toroomid_15',['ToRoomId',['../class_m_pewsey_1_1_mania_map_godot_1_1_door_node2_d.html#a4259a636d3d6543f6e0c35a50374853b',1,'MPewsey::ManiaMapGodot::DoorNode2D']]]
+  ['toroomid_15',['ToRoomId',['../class_m_pewsey_1_1_mania_map_godot_1_1_i_door_node_extensions.html#af5b2025c6b844b1591778891a681d145',1,'MPewsey::ManiaMapGodot::IDoorNodeExtensions']]]
 ];

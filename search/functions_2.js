@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['canacquire_0',['CanAcquire',['../class_m_pewsey_1_1_mania_map_godot_1_1_collectable_spot2_d.html#a627d670568946961902a16053c0a8a87',1,'MPewsey::ManiaMapGodot::CollectableSpot2D']]],
+  ['canacquire_0',['CanAcquire',['../class_m_pewsey_1_1_mania_map_godot_1_1_i_collectable_spot_extensions.html#ac69623f64eb349083ff93885c9b6d091',1,'MPewsey::ManiaMapGodot::ICollectableSpotExtensions']]],
   ['cellcenterglobalposition_1',['CellCenterGlobalPosition',['../class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a88ba3f3018fb38e33e73dec614371250',1,'MPewsey::ManiaMapGodot::RoomNode2D']]],
   ['cellcenterlocalposition_2',['CellCenterLocalPosition',['../class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aba853dd821ad00f353f7b1783c886425',1,'MPewsey::ManiaMapGodot::RoomNode2D']]],
   ['cellindexexists_3',['CellIndexExists',['../class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a1ead270113cd2de890c1d792c99f174f',1,'MPewsey::ManiaMapGodot::IRoomNodeExtensions']]],
   ['cellindexrangeexists_4',['CellIndexRangeExists',['../class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a4b3007aca41099e26cd15b279d444455',1,'MPewsey::ManiaMapGodot::IRoomNodeExtensions']]],
-  ['collectableexists_5',['CollectableExists',['../class_m_pewsey_1_1_mania_map_godot_1_1_collectable_spot2_d.html#a532434918b43b1788c1510b4e61f3c00',1,'MPewsey::ManiaMapGodot::CollectableSpot2D']]],
-  ['collectableid_6',['CollectableId',['../class_m_pewsey_1_1_mania_map_godot_1_1_collectable_spot2_d.html#ac0d455bd0f7b901b4c6e6676a921fcf6',1,'MPewsey::ManiaMapGodot::CollectableSpot2D']]],
+  ['collectableexists_5',['CollectableExists',['../class_m_pewsey_1_1_mania_map_godot_1_1_i_collectable_spot_extensions.html#a43941face5678650f4df938eb3164aed',1,'MPewsey::ManiaMapGodot::ICollectableSpotExtensions']]],
+  ['collectableid_6',['CollectableId',['../class_m_pewsey_1_1_mania_map_godot_1_1_i_collectable_spot_extensions.html#ac1e33d8a0b71b5cd2098652ba78cd67c',1,'MPewsey::ManiaMapGodot::ICollectableSpotExtensions']]],
   ['containsedge_7',['ContainsEdge',['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource.html#a73ccda1c301b4696d40b578879eac254',1,'MPewsey::ManiaMapGodot::Graphs::LayoutGraphResource']]],
   ['containsnode_8',['ContainsNode',['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_edge.html#a5e970e262dd59c5ed355cbc9f34088cd',1,'MPewsey::ManiaMapGodot::Graphs::LayoutGraphEdge']]],
   ['convertcolor4tocolor_9',['ConvertColor4ToColor',['../class_m_pewsey_1_1_mania_map_godot_1_1_color_utility.html#a6e625149069dc8130f7fcd7b1ec46887',1,'MPewsey::ManiaMapGodot::ColorUtility']]],

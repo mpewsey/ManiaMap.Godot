@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['acquire_0',['Acquire',['../class_m_pewsey_1_1_mania_map_godot_1_1_collectable_spot2_d.html#abb3913604158c4a1019ccb25409a53c8',1,'MPewsey::ManiaMapGodot::CollectableSpot2D']]],
+  ['acquire_0',['Acquire',['../class_m_pewsey_1_1_mania_map_godot_1_1_i_collectable_spot_extensions.html#aecc57d0a2a10ba5731f4175fff5aabb8',1,'MPewsey::ManiaMapGodot::ICollectableSpotExtensions']]],
   ['adddefaultinputnodes_1',['AddDefaultInputNodes',['../class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#ad77aaaa56c098330f83eb5ee2d676ff1',1,'MPewsey::ManiaMapGodot::Generators::GenerationPipeline']]],
   ['adddefaultstepnodes_2',['AddDefaultStepNodes',['../class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#af53db8d4fdb3b4fddf1821e1a7644835',1,'MPewsey::ManiaMapGodot::Generators::GenerationPipeline']]],
   ['addedge_3',['AddEdge',['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource.html#adfb069bea67d06857709e2fada396b8d',1,'MPewsey::ManiaMapGodot::Graphs::LayoutGraphResource']]],

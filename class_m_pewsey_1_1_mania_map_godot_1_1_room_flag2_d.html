@@ -112,7 +112,10 @@ Inheritance diagram for RoomFlag2D:</div>
  <div class="center">
   <img src="class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.png" usemap="#RoomFlag2D_map" alt=""/>
   <map id="RoomFlag2D_map" name="RoomFlag2D_map">
-<area href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html" title="The base class for elements tied to a RoomNode2D&#39;s cell index." alt="CellChild2D" shape="rect" coords="0,56,84,80"/>
+<area href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html" title="The base class for elements tied to a RoomNode2D&#39;s cell index." alt="CellChild2D" shape="rect" coords="47,56,131,80"/>
+<area href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_flag.html" title="A room flag that can be set or toggled to alter the LayoutState." alt="IRoomFlag" shape="rect" coords="188,56,272,80"/>
+<area href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child.html" title="The interface for elements tied to an IRoomNode&#39;s cell index." alt="ICellChild" shape="rect" coords="94,0,178,24"/>
+<area href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child.html" title="The interface for elements tied to an IRoomNode&#39;s cell index." alt="ICellChild" shape="rect" coords="188,0,272,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -121,18 +124,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a24dfd06c925fd9101d1003d5872fe0d3"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html#a24dfd06c925fd9101d1003d5872fe0d3">AutoAssign</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html">RoomNode2D</a> room)</td></tr>
 <tr class="memdesc:a24dfd06c925fd9101d1003d5872fe0d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns the room and any auto assigned values to the object.   <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html#a24dfd06c925fd9101d1003d5872fe0d3">More...</a><br /></td></tr>
 <tr class="separator:a24dfd06c925fd9101d1003d5872fe0d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cb1a38221640ec23a10d837ff9324ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html#a2cb1a38221640ec23a10d837ff9324ab">FlagIsSet</a> ()</td></tr>
-<tr class="memdesc:a2cb1a38221640ec23a10d837ff9324ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the flag is currently set in the current <code>LayoutState</code>.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html#a2cb1a38221640ec23a10d837ff9324ab">More...</a><br /></td></tr>
-<tr class="separator:a2cb1a38221640ec23a10d837ff9324ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31883fb34fab8fcf92877052179d9eb4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html#a31883fb34fab8fcf92877052179d9eb4">RemoveFlag</a> ()</td></tr>
-<tr class="memdesc:a31883fb34fab8fcf92877052179d9eb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the flag from the current <code>LayoutState</code>. Returns true if the flag was removed and thus was previously set. Otherwise, returns false.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html#a31883fb34fab8fcf92877052179d9eb4">More...</a><br /></td></tr>
-<tr class="separator:a31883fb34fab8fcf92877052179d9eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af35ab8e1ac295aeeb43bdb1375f5518c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html#af35ab8e1ac295aeeb43bdb1375f5518c">SetFlag</a> ()</td></tr>
-<tr class="memdesc:af35ab8e1ac295aeeb43bdb1375f5518c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the flag in the current <code>LayoutState</code>. Returns true if the flag was added and thus not previously set. Otherwise, returns false.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html#af35ab8e1ac295aeeb43bdb1375f5518c">More...</a><br /></td></tr>
-<tr class="separator:af35ab8e1ac295aeeb43bdb1375f5518c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac47f665811dba2552f7782a251b4ff49"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html#ac47f665811dba2552f7782a251b4ff49">ToggleFlag</a> ()</td></tr>
-<tr class="memdesc:ac47f665811dba2552f7782a251b4ff49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggles the flag in the current <code>LayoutState</code>. Returns true if the flag is now set. Otherwise, returns false.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html#ac47f665811dba2552f7782a251b4ff49">More...</a><br /></td></tr>
-<tr class="separator:ac47f665811dba2552f7782a251b4ff49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html">CellChild2D</a></td></tr>
 <tr class="memitem:a88b80180f5b712ae22791dc9902bbf63 inherit pub_methods_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html#a88b80180f5b712ae22791dc9902bbf63">_ValidateProperty</a> (Godot.Collections.Dictionary property)</td></tr>
 <tr class="separator:a88b80180f5b712ae22791dc9902bbf63 inherit pub_methods_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,21 +131,36 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:afe0b47b3c92f2f69ea3da50cb72553eb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html#afe0b47b3c92f2f69ea3da50cb72553eb">Id</a> = -1<code> [getset]</code></td></tr>
-<tr class="memdesc:afe0b47b3c92f2f69ea3da50cb72553eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The unique flag ID. The ID must be unique within a room.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html#afe0b47b3c92f2f69ea3da50cb72553eb">More...</a><br /></td></tr>
 <tr class="separator:afe0b47b3c92f2f69ea3da50cb72553eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td colspan="2" onclick="javascript:toggleInherit('properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html">CellChild2D</a></td></tr>
 <tr class="memitem:a2984ccb0bc16a0eac64871fa0e541c2a inherit properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html#a2984ccb0bc16a0eac64871fa0e541c2a">AutoAssignCell</a> = true<code> [getset]</code></td></tr>
-<tr class="memdesc:a2984ccb0bc16a0eac64871fa0e541c2a inherit properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the cell row and column indices will be automatically assigned when auto assign is run. Disable this flag if you wish to control these values manually.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html#a2984ccb0bc16a0eac64871fa0e541c2a">More...</a><br /></td></tr>
 <tr class="separator:a2984ccb0bc16a0eac64871fa0e541c2a inherit properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2883edf3ccc77815c7ca63d9c4a97fa inherit properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html#aa2883edf3ccc77815c7ca63d9c4a97fa">Column</a><code> [getset]</code></td></tr>
-<tr class="memdesc:aa2883edf3ccc77815c7ca63d9c4a97fa inherit properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The cell column index.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html#aa2883edf3ccc77815c7ca63d9c4a97fa">More...</a><br /></td></tr>
 <tr class="separator:aa2883edf3ccc77815c7ca63d9c4a97fa inherit properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ffcc9900c7bc1e2129032af6a390b81 inherit properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html">RoomNode2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html#a1ffcc9900c7bc1e2129032af6a390b81">Room</a><code> [getset]</code></td></tr>
 <tr class="memdesc:a1ffcc9900c7bc1e2129032af6a390b81 inherit properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The contained room.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html#a1ffcc9900c7bc1e2129032af6a390b81">More...</a><br /></td></tr>
 <tr class="separator:a1ffcc9900c7bc1e2129032af6a390b81 inherit properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03e34f5fdaebb6b07ba2d2ab9c70ae4a inherit properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html#a03e34f5fdaebb6b07ba2d2ab9c70ae4a">RoomNode</a><code> [get]</code></td></tr>
+<tr class="separator:a03e34f5fdaebb6b07ba2d2ab9c70ae4a inherit properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a389e27ee83b4a5d0eec4e321f4b2fe38 inherit properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html#a389e27ee83b4a5d0eec4e321f4b2fe38">Row</a><code> [getset]</code></td></tr>
-<tr class="memdesc:a389e27ee83b4a5d0eec4e321f4b2fe38 inherit properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The cell row index.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html#a389e27ee83b4a5d0eec4e321f4b2fe38">More...</a><br /></td></tr>
 <tr class="separator:a389e27ee83b4a5d0eec4e321f4b2fe38 inherit properties_class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child.html">ICellChild</a></td></tr>
+<tr class="memitem:a2984ccb0bc16a0eac64871fa0e541c2a inherit properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child.html#a2984ccb0bc16a0eac64871fa0e541c2a">AutoAssignCell</a><code> [get]</code></td></tr>
+<tr class="memdesc:a2984ccb0bc16a0eac64871fa0e541c2a inherit properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the cell row and column indices will be automatically assigned when auto assign is run. Disable this flag if you wish to control these values manually.  <a href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child.html#a2984ccb0bc16a0eac64871fa0e541c2a">More...</a><br /></td></tr>
+<tr class="separator:a2984ccb0bc16a0eac64871fa0e541c2a inherit properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2883edf3ccc77815c7ca63d9c4a97fa inherit properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child.html#aa2883edf3ccc77815c7ca63d9c4a97fa">Column</a><code> [get]</code></td></tr>
+<tr class="memdesc:aa2883edf3ccc77815c7ca63d9c4a97fa inherit properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">The cell column index.  <a href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child.html#aa2883edf3ccc77815c7ca63d9c4a97fa">More...</a><br /></td></tr>
+<tr class="separator:aa2883edf3ccc77815c7ca63d9c4a97fa inherit properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03e34f5fdaebb6b07ba2d2ab9c70ae4a inherit properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child.html#a03e34f5fdaebb6b07ba2d2ab9c70ae4a">RoomNode</a><code> [get]</code></td></tr>
+<tr class="memdesc:a03e34f5fdaebb6b07ba2d2ab9c70ae4a inherit properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">The containing room node.  <a href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child.html#a03e34f5fdaebb6b07ba2d2ab9c70ae4a">More...</a><br /></td></tr>
+<tr class="separator:a03e34f5fdaebb6b07ba2d2ab9c70ae4a inherit properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a389e27ee83b4a5d0eec4e321f4b2fe38 inherit properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child.html#a389e27ee83b4a5d0eec4e321f4b2fe38">Row</a><code> [get]</code></td></tr>
+<tr class="memdesc:a389e27ee83b4a5d0eec4e321f4b2fe38 inherit properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child"><td class="mdescLeft">&#160;</td><td class="mdescRight">The cell row index.  <a href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child.html#a389e27ee83b4a5d0eec4e321f4b2fe38">More...</a><br /></td></tr>
+<tr class="separator:a389e27ee83b4a5d0eec4e321f4b2fe38 inherit properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_flag"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_flag')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_flag.html">IRoomFlag</a></td></tr>
+<tr class="memitem:afe0b47b3c92f2f69ea3da50cb72553eb inherit properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_flag"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_flag.html#afe0b47b3c92f2f69ea3da50cb72553eb">Id</a><code> [get]</code></td></tr>
+<tr class="memdesc:afe0b47b3c92f2f69ea3da50cb72553eb inherit properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_flag"><td class="mdescLeft">&#160;</td><td class="mdescRight">The unique flag ID. The ID must be unique within a room.  <a href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_flag.html#afe0b47b3c92f2f69ea3da50cb72553eb">More...</a><br /></td></tr>
+<tr class="separator:afe0b47b3c92f2f69ea3da50cb72553eb inherit properties_interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_flag"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A room flag that can be set or toggled to alter the <code>LayoutState</code>. </p>
@@ -189,91 +195,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html#a5633f134b4958697aa5b6b1571bda318">CellChild2D</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_room_flag2_d_8cs_source.html#l00019">19</a> of file <a class="el" href="_room_flag2_d_8cs_source.html">RoomFlag2D.cs</a>.</p>
-
-</div>
-</div>
-<a id="a2cb1a38221640ec23a10d837ff9324ab" name="a2cb1a38221640ec23a10d837ff9324ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cb1a38221640ec23a10d837ff9324ab">&#9670;&nbsp;</a></span>FlagIsSet()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool FlagIsSet </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns true if the flag is currently set in the current <code>LayoutState</code>. </p>
-
-<p class="definition">Definition at line <a class="el" href="_room_flag2_d_8cs_source.html#l00028">28</a> of file <a class="el" href="_room_flag2_d_8cs_source.html">RoomFlag2D.cs</a>.</p>
-
-</div>
-</div>
-<a id="a31883fb34fab8fcf92877052179d9eb4" name="a31883fb34fab8fcf92877052179d9eb4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31883fb34fab8fcf92877052179d9eb4">&#9670;&nbsp;</a></span>RemoveFlag()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool RemoveFlag </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Remove the flag from the current <code>LayoutState</code>. Returns true if the flag was removed and thus was previously set. Otherwise, returns false. </p>
-
-<p class="definition">Definition at line <a class="el" href="_room_flag2_d_8cs_source.html#l00046">46</a> of file <a class="el" href="_room_flag2_d_8cs_source.html">RoomFlag2D.cs</a>.</p>
-
-</div>
-</div>
-<a id="af35ab8e1ac295aeeb43bdb1375f5518c" name="af35ab8e1ac295aeeb43bdb1375f5518c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af35ab8e1ac295aeeb43bdb1375f5518c">&#9670;&nbsp;</a></span>SetFlag()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool SetFlag </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the flag in the current <code>LayoutState</code>. Returns true if the flag was added and thus not previously set. Otherwise, returns false. </p>
-
-<p class="definition">Definition at line <a class="el" href="_room_flag2_d_8cs_source.html#l00037">37</a> of file <a class="el" href="_room_flag2_d_8cs_source.html">RoomFlag2D.cs</a>.</p>
-
-</div>
-</div>
-<a id="ac47f665811dba2552f7782a251b4ff49" name="ac47f665811dba2552f7782a251b4ff49"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac47f665811dba2552f7782a251b4ff49">&#9670;&nbsp;</a></span>ToggleFlag()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool ToggleFlag </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Toggles the flag in the current <code>LayoutState</code>. Returns true if the flag is now set. Otherwise, returns false. </p>
-
-<p class="definition">Definition at line <a class="el" href="_room_flag2_d_8cs_source.html#l00055">55</a> of file <a class="el" href="_room_flag2_d_8cs_source.html">RoomFlag2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_flag2_d_8cs_source.html#l00017">17</a> of file <a class="el" href="_room_flag2_d_8cs_source.html">RoomFlag2D.cs</a>.</p>
 
 </div>
 </div>
@@ -298,9 +220,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The unique flag ID. The ID must be unique within a room. </p>
+<p></p>
 
-<p class="definition">Definition at line <a class="el" href="_room_flag2_d_8cs_source.html#l00016">16</a> of file <a class="el" href="_room_flag2_d_8cs_source.html">RoomFlag2D.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_room_flag2_d_8cs_source.html#l00014">14</a> of file <a class="el" href="_room_flag2_d_8cs_source.html">RoomFlag2D.cs</a>.</p>
 
 </div>
 </div>

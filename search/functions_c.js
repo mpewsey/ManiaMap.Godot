@@ -2,7 +2,7 @@ var searchData=
 [
   ['registeronsubresourcechangedsignals_0',['RegisterOnSubresourceChangedSignals',['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource.html#afc90afdde5f1f09ea4602be0b35f49de',1,'MPewsey::ManiaMapGodot::Graphs::LayoutGraphResource']]],
   ['removeedge_1',['RemoveEdge',['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource.html#a095702ba7fe86f16abf7caee0aea5ebd',1,'MPewsey::ManiaMapGodot::Graphs::LayoutGraphResource']]],
-  ['removeflag_2',['RemoveFlag',['../class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html#a31883fb34fab8fcf92877052179d9eb4',1,'MPewsey::ManiaMapGodot::RoomFlag2D']]],
+  ['removeflag_2',['RemoveFlag',['../class_m_pewsey_1_1_mania_map_godot_1_1_i_room_flag_extensions.html#a5eb0f39e4636d55764e575769ac25338',1,'MPewsey::ManiaMapGodot::IRoomFlagExtensions']]],
   ['removefromactiveroomdoors_3',['RemoveFromActiveRoomDoors',['../class_m_pewsey_1_1_mania_map_godot_1_1_door_node2_d.html#a5536d25b20fa8b204a20168a51a17505',1,'MPewsey::ManiaMapGodot::DoorNode2D']]],
   ['removenode_4',['RemoveNode',['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource.html#a4828fbaeda300966f07fda4e37f4c1fb',1,'MPewsey::ManiaMapGodot::Graphs::LayoutGraphResource']]],
   ['removenodeedges_5',['RemoveNodeEdges',['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource.html#a8d653a013f2b56523cb6426d495b245b',1,'MPewsey::ManiaMapGodot::Graphs::LayoutGraphResource']]],

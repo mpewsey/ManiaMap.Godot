@@ -18,7 +18,30 @@ var hierarchy =
     [ "GodotObject", null, [
       [ "ManiaMapManager", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_manager.html", null ]
     ] ],
+    [ "ICellChild", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child.html", [
+      [ "CellChild2D", "class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html", [
+        [ "CollectableSpot2D", "class_m_pewsey_1_1_mania_map_godot_1_1_collectable_spot2_d.html", null ],
+        [ "DoorNode2D", "class_m_pewsey_1_1_mania_map_godot_1_1_door_node2_d.html", null ],
+        [ "Feature2D", "class_m_pewsey_1_1_mania_map_godot_1_1_feature2_d.html", null ],
+        [ "RoomFlag2D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html", null ]
+      ] ],
+      [ "ICollectableSpot", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_collectable_spot.html", [
+        [ "CollectableSpot2D", "class_m_pewsey_1_1_mania_map_godot_1_1_collectable_spot2_d.html", null ]
+      ] ],
+      [ "IDoorNode", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_door_node.html", [
+        [ "DoorNode2D", "class_m_pewsey_1_1_mania_map_godot_1_1_door_node2_d.html", null ]
+      ] ],
+      [ "IFeature", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_feature.html", [
+        [ "Feature2D", "class_m_pewsey_1_1_mania_map_godot_1_1_feature2_d.html", null ]
+      ] ],
+      [ "IRoomFlag", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_flag.html", [
+        [ "RoomFlag2D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html", null ]
+      ] ]
+    ] ],
+    [ "ICollectableSpotExtensions", "class_m_pewsey_1_1_mania_map_godot_1_1_i_collectable_spot_extensions.html", null ],
     [ "ManiaMapResources.Icons", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources_1_1_icons.html", null ],
+    [ "IDoorNodeExtensions", "class_m_pewsey_1_1_mania_map_godot_1_1_i_door_node_extensions.html", null ],
+    [ "IRoomFlagExtensions", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_flag_extensions.html", null ],
     [ "IRoomNode", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html", [
       [ "RoomNode2D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html", null ]
     ] ],
@@ -44,12 +67,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "Node2D", null, [
-      [ "CellChild2D", "class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html", [
-        [ "CollectableSpot2D", "class_m_pewsey_1_1_mania_map_godot_1_1_collectable_spot2_d.html", null ],
-        [ "DoorNode2D", "class_m_pewsey_1_1_mania_map_godot_1_1_door_node2_d.html", null ],
-        [ "Feature2D", "class_m_pewsey_1_1_mania_map_godot_1_1_feature2_d.html", null ],
-        [ "RoomFlag2D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html", null ]
-      ] ],
+      [ "CellChild2D", "class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html", null ],
       [ "DoorThreshold2D", "class_m_pewsey_1_1_mania_map_godot_1_1_door_threshold2_d.html", null ],
       [ "LayoutTileMapBase", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html", [
         [ "LayoutTileMap", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map.html", null ],
