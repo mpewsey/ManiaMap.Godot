@@ -5,7 +5,6 @@ using MPewsey.ManiaMap.Exceptions;
 using MPewsey.ManiaMapGodot.Exceptions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MPewsey.ManiaMapGodot
 {
@@ -39,26 +38,15 @@ namespace MPewsey.ManiaMapGodot
         [Signal] public delegate void OnCellGridChangedEventHandler();
         public Error EmitOnCellGridChanged() => EmitSignal(SignalName.OnCellGridChanged);
 
-#if TOOLS
-        private bool MouseButtonPressed { get; set; }
-        private Vector2 MouseButtonDownPosition { get; set; }
-#endif
-
-        /// <summary>
-        /// The room template used by the procedural generator.
-        /// </summary>
+        /// <inheritdoc/>
         [Export] public RoomTemplateResource RoomTemplate { get; set; }
 
         private int _rows = 1;
-        /// <summary>
-        /// The number or cell rows in the room.
-        /// </summary>
+        /// <inheritdoc/>
         [Export(PropertyHint.Range, "1,10,1,or_greater")] public int Rows { get => _rows; set => SetSizeField(ref _rows, value); }
 
         private int _columns = 1;
-        /// <summary>
-        /// The number of cell columns in the room.
-        /// </summary>
+        /// <inheritdoc/>
         [Export(PropertyHint.Range, "1,10,1,or_greater")] public int Columns { get => _columns; set => SetSizeField(ref _columns, value); }
 
         private Vector2 _cellSize = new Vector2(96, 96);
@@ -67,45 +55,36 @@ namespace MPewsey.ManiaMapGodot
         /// </summary>
         [Export(PropertyHint.Range, "0,100,1,or_greater")] public Vector2 CellSize { get => _cellSize; set => SetCellGridField(ref _cellSize, value); }
 
-        /// <summary>
-        /// A nested array of room cell activities.
-        /// </summary>
+        /// <inheritdoc/>
         [Export] public Godot.Collections.Array<Godot.Collections.Array<bool>> ActiveCells { get; set; } = new Godot.Collections.Array<Godot.Collections.Array<bool>>();
 
-        /// <summary>
-        /// The current layout.
-        /// </summary>
+        /// <inheritdoc/>
         public Layout Layout { get; private set; }
 
-        /// <summary>
-        /// The current layout state.
-        /// </summary>
+        /// <inheritdoc/>
         public LayoutState LayoutState { get; private set; }
 
-        /// <summary>
-        /// This room's layout.
-        /// </summary>
+        /// <inheritdoc/>
         public Room RoomLayout { get; private set; }
 
-        /// <summary>
-        /// This room's layout state.
-        /// </summary>
+        /// <inheritdoc/>
         public RoomState RoomState { get; private set; }
 
-        /// <summary>
-        /// A list of door connections for the room.
-        /// </summary>
-        public IReadOnlyList<DoorConnection> DoorConnections { get; private set; }
+        /// <inheritdoc/>
+        public IReadOnlyList<DoorConnection> DoorConnections { get; private set; } = Array.Empty<DoorConnection>();
 
-        /// <summary>
-        /// True if the room has been initialized.
-        /// </summary>
+        /// <inheritdoc/>
         public bool IsInitialized { get; private set; }
+
+#if TOOLS
+        private bool MouseButtonPressed { get; set; }
+        private Vector2 MouseButtonDownPosition { get; set; }
+#endif
 
         private void SetSizeField(ref int field, int value)
         {
             field = value;
-            SizeActiveCells();
+            this.SizeActiveCells();
             EmitOnCellGridChanged();
         }
 
@@ -122,7 +101,7 @@ namespace MPewsey.ManiaMapGodot
 #if TOOLS
             if (Engine.IsEditorHint())
             {
-                SizeActiveCells();
+                this.SizeActiveCells();
                 Editor.CellGrid2D.CreateInstance(this);
                 return;
             }
@@ -170,7 +149,7 @@ namespace MPewsey.ManiaMapGodot
                 var startIndex = GlobalPositionToCellIndex(MouseButtonDownPosition);
                 var endIndex = GlobalPositionToCellIndex(GetViewport().GetMousePosition());
                 var editMode = Editor.ManiaMapPlugin.Current.RoomNode2DToolbar.CellEditMode;
-                SetCellActivities(startIndex, endIndex, editMode);
+                this.SetCellActivities(startIndex, endIndex, editMode);
                 EmitOnCellGridChanged();
             }
 
@@ -269,7 +248,7 @@ namespace MPewsey.ManiaMapGodot
         {
             RoomTemplate ??= new RoomTemplateResource() { TemplateName = Name };
             RoomTemplate.Id = Rand.AutoAssignId(RoomTemplate.Id);
-            SizeActiveCells();
+            this.SizeActiveCells();
             var nodes = FindChildren("*", nameof(CellChild2D), true, false);
 
             foreach (var node in nodes)
@@ -282,136 +261,6 @@ namespace MPewsey.ManiaMapGodot
         }
 
         /// <summary>
-        /// Returns the cell activity for the specified cell index.
-        /// </summary>
-        /// <param name="row">The cell row index.</param>
-        /// <param name="column">The cell column index.</param>
-        /// <exception cref="IndexOutOfRangeException">Thrown if the specified index is out of range.</exception>
-        public bool GetCellActivity(int row, int column)
-        {
-            if (!CellIndexExists(row, column))
-                throw new IndexOutOfRangeException($"Cell index does not exist: ({row}, {column}).");
-
-            return ActiveCells[row][column];
-        }
-
-        /// <summary>
-        /// Sets the activity for the specified cell index.
-        /// </summary>
-        /// <param name="row">The cell row index.</param>
-        /// <param name="column">The cell column index.</param>
-        /// <param name="activated">True to set the cell as active. False to set the cell as deactivated.</param>
-        /// <exception cref="IndexOutOfRangeException">Thrown if the specified index is out of range.</exception>
-        public void SetCellActivity(int row, int column, bool activated)
-        {
-            if (!CellIndexExists(row, column))
-                throw new IndexOutOfRangeException($"Cell index does not exist: ({row}, {column}).");
-
-            ActiveCells[row][column] = activated;
-        }
-
-        /// <summary>
-        /// Sets the activity for the specified cell index.
-        /// </summary>
-        /// <param name="row">The cell row index.</param>
-        /// <param name="column">The cell column index.</param>
-        /// <param name="activity">The cell activity option.</param>
-        /// <exception cref="IndexOutOfRangeException">Thrown if the specified index is out of range.</exception>
-        /// <exception cref="NotImplementedException">Thrown for an unhandled cell activity.</exception>
-        public void SetCellActivity(int row, int column, CellActivity activity)
-        {
-            if (!CellIndexExists(row, column))
-                throw new IndexOutOfRangeException($"Cell index does not exist: ({row}, {column}).");
-
-            switch (activity)
-            {
-                case CellActivity.None:
-                    break;
-                case CellActivity.Activate:
-                    ActiveCells[row][column] = true;
-                    break;
-                case CellActivity.Deactivate:
-                    ActiveCells[row][column] = false;
-                    break;
-                case CellActivity.Toggle:
-                    ActiveCells[row][column] = !ActiveCells[row][column];
-                    break;
-                default:
-                    throw new NotImplementedException($"Unhandled cell activity: {activity}.");
-            }
-        }
-
-        /// <summary>
-        /// Returns true if the specified cell indexes both exist.
-        /// </summary>
-        /// <param name="startIndex">The start index.</param>
-        /// <param name="endIndex">The end index.</param>
-        private bool CellIndexRangeExists(Vector2I startIndex, Vector2I endIndex)
-        {
-            return CellIndexExists(startIndex.X, startIndex.Y) && CellIndexExists(endIndex.X, endIndex.Y);
-        }
-
-        /// <summary>
-        /// Sets the cell activities for all cells in the specified index range.
-        /// The order of the start and end indexes does not matter.
-        /// If either the start or end indexes fall outside the cell grid, no action is taken
-        /// and the method returns false.
-        /// </summary>
-        /// <param name="startIndex">The start index.</param>
-        /// <param name="endIndex">The end index.</param>
-        /// <param name="activity">The cell activity option.</param>
-        public bool SetCellActivities(Vector2I startIndex, Vector2I endIndex, CellActivity activity)
-        {
-            if (activity == CellActivity.None || !CellIndexRangeExists(startIndex, endIndex))
-                return false;
-
-            var startRow = Mathf.Min(startIndex.X, endIndex.X);
-            var endRow = Mathf.Max(startIndex.X, endIndex.X);
-            var startColumn = Mathf.Min(startIndex.Y, endIndex.Y);
-            var endColumn = Mathf.Max(startIndex.Y, endIndex.Y);
-
-            for (int i = startRow; i <= endRow; i++)
-            {
-                for (int j = startColumn; j <= endColumn; j++)
-                {
-                    SetCellActivity(i, j, activity);
-                }
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Sizes the active cells array to match the current rows and columns properties.
-        /// Any newly added cells are active by default.
-        /// </summary>
-        public void SizeActiveCells()
-        {
-            while (ActiveCells.Count > Rows)
-            {
-                ActiveCells.RemoveAt(ActiveCells.Count - 1);
-            }
-
-            foreach (var row in ActiveCells)
-            {
-                while (row.Count > Columns)
-                {
-                    row.RemoveAt(row.Count - 1);
-                }
-
-                while (row.Count < Columns)
-                {
-                    row.Add(true);
-                }
-            }
-
-            while (ActiveCells.Count < Rows)
-            {
-                ActiveCells.Add(new Godot.Collections.Array<bool>(Enumerable.Repeat(true, Columns)));
-            }
-        }
-
-        /// <summary>
         /// Returns the closest active cell index to the specified global position.
         /// </summary>
         /// <param name="position">The global position.</param>
@@ -419,7 +268,7 @@ namespace MPewsey.ManiaMapGodot
         {
             var fastIndex = GlobalPositionToCellIndex(position);
 
-            if (CellIndexExists(fastIndex.X, fastIndex.Y) && ActiveCells[fastIndex.X][fastIndex.Y])
+            if (this.CellIndexExists(fastIndex.X, fastIndex.Y) && ActiveCells[fastIndex.X][fastIndex.Y])
                 return fastIndex;
 
             var index = Vector2I.Zero;
@@ -558,20 +407,10 @@ namespace MPewsey.ManiaMapGodot
             var column = Mathf.FloorToInt(position.X / CellSize.X);
             var row = Mathf.FloorToInt(position.Y / CellSize.Y);
 
-            if (CellIndexExists(row, column))
+            if (this.CellIndexExists(row, column))
                 return new Vector2I(row, column);
 
             return new Vector2I(-1, -1);
-        }
-
-        /// <summary>
-        /// Returns true if the specified cell index is within the bounds of the room.
-        /// </summary>
-        /// <param name="row">The cell row.</param>
-        /// <param name="column">The cell column.</param>
-        public bool CellIndexExists(int row, int column)
-        {
-            return (uint)row < (uint)Rows && (uint)column < (uint)Columns;
         }
 
         /// <inheritdoc/>
@@ -625,7 +464,7 @@ namespace MPewsey.ManiaMapGodot
         /// </summary>
         private Array2D<Cell> GetMMCells()
         {
-            SizeActiveCells();
+            this.SizeActiveCells();
             var cells = new Array2D<Cell>(Rows, Columns);
 
             for (int i = 0; i < Rows; i++)
