@@ -1,5 +1,4 @@
 using Godot;
-using MPewsey.Common.Mathematics;
 using MPewsey.ManiaMap;
 using System.Collections.Generic;
 
@@ -11,38 +10,27 @@ namespace MPewsey.ManiaMapGodot
     [Tool]
     [GlobalClass]
     [Icon(ManiaMapResources.Icons.DoorNode2DIcon)]
-    public partial class DoorNode2D : CellChild2D
+    public partial class DoorNode2D : CellChild2D, IDoorNode
     {
         /// <summary>
         /// A dictionary of doors in the scene by room ID.
         /// </summary>
         private static Dictionary<Uid, LinkedList<DoorNode2D>> ActiveRoomDoors { get; } = new Dictionary<Uid, LinkedList<DoorNode2D>>();
 
-        /// <summary>
-        /// If true, auto assigns the door direction based on its position when auto assign is run.
-        /// Disable this flag if you wish to control this value manually.
-        /// </summary>
+        /// <inheritdoc/>
         [Export] public bool AutoAssignDirection { get; set; } = true;
 
-        /// <summary>
-        /// The direction where the door leads relative to its containing cell.
-        /// </summary>
+        /// <inheritdoc/>
         [Export] public DoorDirection DoorDirection { get; set; }
 
-        /// <summary>
-        /// The door type. See the ManiaMap DoorType documentation for more information.
-        /// </summary>
+        /// <inheritdoc/>
         [Export] public DoorType DoorType { get; set; }
 
-        /// <summary>
-        /// The door code to which this door may connect. Door codes can connect if they intersect.
-        /// </summary>
+        /// <inheritdoc/>
         [ExportGroup("Door Code")]
         [Export(PropertyHint.Flags, ManiaMapResources.Enums.DoorCodeFlags)] public int DoorCode { get; set; }
 
-        /// <summary>
-        /// The door's door and room connection information.
-        /// </summary>
+        /// <inheritdoc/>
         public DoorConnection DoorConnection { get; private set; }
 
         public override void _Ready()
@@ -50,7 +38,7 @@ namespace MPewsey.ManiaMapGodot
             base._Ready();
 
             if (!Engine.IsEditorHint() && Room.IsInitialized)
-                DoorConnection = FindDoorConnection();
+                DoorConnection = this.FindDoorConnection();
         }
 
         public override void _EnterTree()
@@ -84,44 +72,6 @@ namespace MPewsey.ManiaMapGodot
 
             if (AutoAssignDirection)
                 DoorDirection = room.FindClosestDoorDirection(Row, Column, GlobalPosition);
-        }
-
-        /// <summary>
-        /// Returns true if a connection exists within the `Layout` for the door.
-        /// </summary>
-        public bool DoorExists()
-        {
-            return DoorConnection != null;
-        }
-
-        /// <summary>
-        /// Returns the associated door connection within the `Layout`.
-        /// If the door does not have a connect, returns null.
-        /// </summary>
-        private DoorConnection FindDoorConnection()
-        {
-            var roomId = Room.RoomLayout.Id;
-            var position = new Vector2DInt(Row, Column);
-
-            foreach (var connection in Room.DoorConnections)
-            {
-                if (connection.ContainsDoor(roomId, position, DoorDirection))
-                    return connection;
-            }
-
-            return null;
-        }
-
-        /// <summary>
-        /// Returns the ID of the room to which this door connects.
-        /// If this door does not exist, returns Uid(-1, -1, -1).
-        /// </summary>
-        public Uid ToRoomId()
-        {
-            if (!DoorExists())
-                return new Uid(-1, -1, -1);
-
-            return DoorConnection.GetConnectingRoom(Room.RoomLayout.Id);
         }
 
         /// <summary>

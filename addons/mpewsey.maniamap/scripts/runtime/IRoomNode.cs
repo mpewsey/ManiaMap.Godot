@@ -11,22 +11,22 @@ namespace MPewsey.ManiaMapGodot
         /// <summary>
         /// The room template used by the procedural generator.
         /// </summary>
-        public RoomTemplateResource RoomTemplate { get; set; }
+        public RoomTemplateResource RoomTemplate { get; }
 
         /// <summary>
         /// The number or cell rows in the room.
         /// </summary>
-        public int Rows { get; set; }
+        public int Rows { get; }
 
         /// <summary>
         /// The number of cell columns in the room.
         /// </summary>
-        public int Columns { get; set; }
+        public int Columns { get; }
 
         /// <summary>
         /// A nested array of room cell activities.
         /// </summary>
-        public Godot.Collections.Array<Godot.Collections.Array<bool>> ActiveCells { get; set; }
+        public Godot.Collections.Array<Godot.Collections.Array<bool>> ActiveCells { get; }
 
         /// <summary>
         /// The current layout.

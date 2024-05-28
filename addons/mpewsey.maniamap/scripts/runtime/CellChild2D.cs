@@ -7,27 +7,23 @@ namespace MPewsey.ManiaMapGodot
     /// </summary>
     [Tool]
     [GlobalClass]
-    public abstract partial class CellChild2D : Node2D
+    public abstract partial class CellChild2D : Node2D, ICellChild
     {
         /// <summary>
         /// The contained room.
         /// </summary>
         [Export] public RoomNode2D Room { get; set; }
 
-        /// <summary>
-        /// If true, the cell row and column indices will be automatically assigned when auto assign is run.
-        /// Disable this flag if you wish to control these values manually.
-        /// </summary>
+        /// <inheritdoc/>
+        public IRoomNode RoomNode => Room;
+
+        /// <inheritdoc/>
         [Export] public bool AutoAssignCell { get; set; } = true;
 
-        /// <summary>
-        /// The cell row index.
-        /// </summary>
+        /// <inheritdoc/>
         [Export(PropertyHint.Range, "0,10,1,or_greater")] public int Row { get; set; }
 
-        /// <summary>
-        /// The cell column index.
-        /// </summary>
+        /// <inheritdoc/>
         [Export(PropertyHint.Range, "0,10,1,or_greater")] public int Column { get; set; }
 
         /// <summary>
