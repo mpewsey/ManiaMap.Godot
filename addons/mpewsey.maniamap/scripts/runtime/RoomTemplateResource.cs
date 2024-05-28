@@ -44,7 +44,7 @@ namespace MPewsey.ManiaMapGodot
             base._ValidateProperty(property);
             var name = property["name"].AsStringName();
 
-            if (name == PropertyName.ScenePath || name == SceneUidPath || name == PropertyName.SerializedText)
+            if (name == PropertyName.ScenePath || name == PropertyName.SceneUidPath || name == PropertyName.SerializedText)
                 property["usage"] = (int)(property["usage"].As<PropertyUsageFlags>() | PropertyUsageFlags.ReadOnly);
         }
 
