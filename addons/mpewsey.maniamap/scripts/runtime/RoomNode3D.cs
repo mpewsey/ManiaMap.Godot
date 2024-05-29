@@ -12,6 +12,22 @@ namespace MPewsey.ManiaMapGodot
     public partial class RoomNode3D : Node3D, IRoomNode
     {
         /// <summary>
+        /// Signal emitted when a cell area is entered by a tracked area or body.
+        /// </summary>
+        /// <param name="cell">The entered cell.</param>
+        /// <param name="collision">The entering object.</param>
+        [Signal] public delegate void OnCellAreaEnteredEventHandler(CellArea3D cell, Node collision);
+        public Error EmitOnCellAreaEntered(CellArea3D cell, Node collision) => EmitSignal(SignalName.OnCellAreaEntered, cell, collision);
+
+        /// <summary>
+        /// Signal emitted when a cell area is exited by a tracked area or body.
+        /// </summary>
+        /// <param name="cell">The exited cell.</param>
+        /// <param name="collision">The exiting object.</param>
+        [Signal] public delegate void OnCellAreaExitedEventHandler(CellArea3D cell, Node collision);
+        public Error EmitOnCellAreaExited(CellArea3D cell, Node collection) => EmitSignal(SignalName.OnCellAreaExited, cell, collection);
+
+        /// <summary>
         /// Signal emitted when the cell grid size or cell sizes are set.
         /// </summary>
         [Signal] public delegate void OnCellGridChangedEventHandler();

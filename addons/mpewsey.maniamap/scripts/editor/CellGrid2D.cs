@@ -33,7 +33,7 @@ namespace MPewsey.ManiaMapGodot.Editor
         {
             base._Draw();
 
-            if (Engine.IsEditorHint())
+            if (Engine.IsEditorHint() && ManiaMapPlugin.PluginIsValid())
             {
                 if (ManiaMapPlugin.Current.RoomNode2DToolbar.DisplayCells)
                     DrawCells();

@@ -39,7 +39,16 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         public void SetTargetRoom(RoomNode2D room)
         {
-            Room = room;
+            if (!IsInstanceValid(Room) || room != Room)
+            {
+                Room = room;
+                room.TreeExited += OnRoomExitedTree;
+            }
+        }
+
+        private void OnRoomExitedTree()
+        {
+            Room = null;
         }
 
         private void OnAutoAssignButtonPressed()

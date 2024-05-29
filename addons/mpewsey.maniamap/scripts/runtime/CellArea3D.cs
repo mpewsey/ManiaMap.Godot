@@ -2,13 +2,7 @@ using Godot;
 
 namespace MPewsey.ManiaMapGodot
 {
-    /// <summary>
-    /// Provides area and body entering and exiting detection for a cell.
-    /// 
-    /// Register to a RoomNode2D's `OnCellAreaEntered` and `OnCellAreaExited` signals to monitor these events.
-    /// When the area detects an entering object, the `RoomState` cell visibility is automatically updated.
-    /// </summary>
-    public partial class CellArea2D : Area2D
+    public partial class CellArea3D : Area3D
     {
         /// <summary>
         /// The cell row in the room.
@@ -23,7 +17,7 @@ namespace MPewsey.ManiaMapGodot
         /// <summary>
         /// The containing room.
         /// </summary>
-        public RoomNode2D Room { get; private set; }
+        public RoomNode3D Room { get; private set; }
 
         /// <summary>
         /// Creates a new instance with child collision shape and adds it as a child of the specified room.
@@ -32,9 +26,9 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="column">The cell column.</param>
         /// <param name="room">The containing room.</param>
         /// <param name="collisionMask">The monitored collision mask. Typically, this should match the collision layer of the player character.</param>
-        public static CellArea2D CreateInstance(int row, int column, RoomNode2D room, uint collisionMask)
+        public static CellArea3D CreateInstance(int row, int column, RoomNode3D room, uint collisionMask)
         {
-            var cell = new CellArea2D()
+            var cell = new CellArea3D()
             {
                 Row = row,
                 Column = column,
@@ -44,8 +38,8 @@ namespace MPewsey.ManiaMapGodot
                 Position = room.CellCenterLocalPosition(row, column),
             };
 
-            var shape = new RectangleShape2D() { Size = room.CellSize };
-            var collisionShape = new CollisionShape2D() { Shape = shape };
+            var shape = new BoxShape3D() { Size = room.CellSize };
+            var collisionShape = new CollisionShape3D() { Shape = shape };
             cell.AddChild(collisionShape);
             room.AddChild(cell);
             return cell;
@@ -65,7 +59,7 @@ namespace MPewsey.ManiaMapGodot
             EmitOnCellEntered(body);
         }
 
-        private void OnAreaEntered(Area2D area)
+        private void OnAreaEntered(Area3D area)
         {
             EmitOnCellEntered(area);
         }
@@ -75,7 +69,7 @@ namespace MPewsey.ManiaMapGodot
             EmitOnCellExited(body);
         }
 
-        private void OnAreaExited(Area2D area)
+        private void OnAreaExited(Area3D area)
         {
             EmitOnCellExited(area);
         }

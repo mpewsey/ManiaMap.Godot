@@ -1,6 +1,5 @@
 #if TOOLS
 using Godot;
-using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapGodot.Editor
 {
@@ -12,7 +11,6 @@ namespace MPewsey.ManiaMapGodot.Editor
         [Export] public Material WireframeMaterial { get; set; }
 
         private RoomNode3D Room { get; set; }
-        private List<MeshInstance3D> Cells { get; } = new List<MeshInstance3D>();
         private Mesh BoxMesh { get; set; } = new BoxMesh();
         private Mesh BoxEdgeMesh { get; set; } = CreateBoxEdgeMesh();
 
@@ -90,7 +88,7 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         private void OnCellGridChanged()
         {
-            if (IsInstanceValid(Room))
+            if (IsInstanceValid(Room) && ManiaMapPlugin.PluginIsValid())
                 PopulateCells();
         }
 
@@ -108,7 +106,7 @@ namespace MPewsey.ManiaMapGodot.Editor
 
                 for (int j = 0; j < row.Count; j++)
                 {
-                    var cell = Cells[index++];
+                    var cell = GetChild<MeshInstance3D>(index++);
                     cell.MaterialOverride = row[j] ? ActiveCellMaterial : InactiveCellMaterial;
                     cell.Position = Room.CellCenterLocalPosition(i, j);
                     cell.Scale = cellSize;
@@ -120,21 +118,19 @@ namespace MPewsey.ManiaMapGodot.Editor
         private void SizeCells()
         {
             var size = Room.Rows * Room.Columns;
+            var count = GetChildCount();
 
-            while (Cells.Count > size)
+            for (int i = size; i < count; i++)
             {
-                var index = Cells.Count - 1;
-                Cells[index].QueueFree();
-                Cells.RemoveAt(index);
+                GetChild(i).QueueFree();
             }
 
-            while (Cells.Count < size)
+            for (int i = count; i < size; i++)
             {
-                var cell = new MeshInstance3D() { Mesh = BoxMesh };
                 var edges = new MeshInstance3D() { Mesh = BoxEdgeMesh, MaterialOverride = WireframeMaterial };
+                var cell = new MeshInstance3D() { Mesh = BoxMesh };
                 cell.AddChild(edges);
                 AddChild(cell);
-                Cells.Add(cell);
             }
         }
     }
