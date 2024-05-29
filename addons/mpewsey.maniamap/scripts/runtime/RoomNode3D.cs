@@ -6,30 +6,11 @@ using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapGodot
 {
-    /// <summary>
-    /// A node serving as the top level of a room.
-    /// </summary>
     [Tool]
     [GlobalClass]
-    [Icon(ManiaMapResources.Icons.RoomNode2DIcon)]
-    public partial class RoomNode2D : Node2D, IRoomNode
+    [Icon(ManiaMapResources.Icons.RoomNode3DIcon)]
+    public partial class RoomNode3D : Node3D, IRoomNode
     {
-        /// <summary>
-        /// Signal emitted when a cell area is entered by a tracked area or body.
-        /// </summary>
-        /// <param name="cell">The entered cell.</param>
-        /// <param name="collision">The entering object.</param>
-        [Signal] public delegate void OnCellAreaEnteredEventHandler(CellArea2D cell, Node collision);
-        public Error EmitOnCellAreaEntered(CellArea2D cell, Node collision) => EmitSignal(SignalName.OnCellAreaEntered, cell, collision);
-
-        /// <summary>
-        /// Signal emitted when a cell area is exited by a tracked area or body.
-        /// </summary>
-        /// <param name="cell">The exited cell.</param>
-        /// <param name="collision">The exiting object.</param>
-        [Signal] public delegate void OnCellAreaExitedEventHandler(CellArea2D cell, Node collision);
-        public Error EmitOnCellAreaExited(CellArea2D cell, Node collection) => EmitSignal(SignalName.OnCellAreaExited, cell, collection);
-
         /// <summary>
         /// Signal emitted when the cell grid size or cell sizes are set.
         /// </summary>
@@ -47,11 +28,11 @@ namespace MPewsey.ManiaMapGodot
         /// <inheritdoc/>
         [Export(PropertyHint.Range, "1,10,1,or_greater")] public int Columns { get => _columns; set => SetSizeField(ref _columns, value); }
 
-        private Vector2 _cellSize = new Vector2(96, 96);
+        private Vector3 _cellSize = Vector3.One;
         /// <summary>
         /// The width and height of the room cells.
         /// </summary>
-        [Export(PropertyHint.Range, "0,100,1,or_greater")] public Vector2 CellSize { get => _cellSize; set => SetCellSizeField(ref _cellSize, value); }
+        [Export(PropertyHint.Range, "0,100,1,or_greater")] public Vector3 CellSize { get => _cellSize; set => SetCellSizeField(ref _cellSize, value); }
 
         /// <inheritdoc/>
         [Export] public Godot.Collections.Array<Godot.Collections.Array<bool>> ActiveCells { get; set; } = new Godot.Collections.Array<Godot.Collections.Array<bool>>();
@@ -81,14 +62,14 @@ namespace MPewsey.ManiaMapGodot
 
         private void SetSizeField(ref int field, int value)
         {
-            field = Mathf.Max(value, 1);
+            field = value;
             this.SizeActiveCells();
             EmitOnCellGridChanged();
         }
 
-        private void SetCellSizeField(ref Vector2 field, Vector2 value)
+        private void SetCellSizeField(ref Vector3 field, Vector3 value)
         {
-            field = new Vector2(Mathf.Max(value.X, 0.001f), Mathf.Max(value.Y, 0.001f));
+            field = new Vector3(Mathf.Max(value.X, 0.001f), Mathf.Max(value.Y, 0.001f), Mathf.Max(value.Z, 0.001f));
             EmitOnCellGridChanged();
         }
 
@@ -100,7 +81,7 @@ namespace MPewsey.ManiaMapGodot
             if (Engine.IsEditorHint())
             {
                 this.SizeActiveCells();
-                Editor.CellGrid2D.CreateInstance(this);
+                Editor.CellGrid3D.CreateInstance(this);
                 return;
             }
 #endif
@@ -126,32 +107,49 @@ namespace MPewsey.ManiaMapGodot
 
             if (Engine.IsEditorHint())
             {
-                if (Editor.ManiaMapPlugin.Current.RoomNode2DToolbar.DisplayCells)
+                if (Editor.ManiaMapPlugin.Current.RoomNode3DToolbar.DisplayCells)
                     ProcessEditCellInputs();
             }
         }
 
         private void ProcessEditCellInputs()
         {
-            if (Input.IsMouseButtonPressed(MouseButton.Left) && MouseIsInsideMainScreen())
+            if (Input.IsMouseButtonPressed(MouseButton.Left) && CameraIsLookingDown() && MouseIsInsideMainScreen())
             {
                 if (!MouseButtonPressed)
-                    MouseButtonDownPosition = GetViewport().GetMousePosition();
+                    MouseButtonDownPosition = GetMousePosition();
 
                 MouseButtonPressed = true;
                 return;
             }
 
-            if (MouseButtonPressed && MouseIsInsideMainScreen())
+            if (MouseButtonPressed && CameraIsLookingDown() && MouseIsInsideMainScreen())
             {
-                var startIndex = GlobalPositionToCellIndex(MouseButtonDownPosition);
-                var endIndex = GlobalPositionToCellIndex(GetViewport().GetMousePosition());
-                var editMode = Editor.ManiaMapPlugin.Current.RoomNode2DToolbar.CellEditMode;
+                var mousePosition = GetMousePosition();
+                var startPosition = new Vector3(MouseButtonDownPosition.X, 0, MouseButtonDownPosition.Y);
+                var endPosition = new Vector3(mousePosition.X, 0, mousePosition.Y);
+                var startIndex = GlobalPositionToCellIndex(startPosition);
+                var endIndex = GlobalPositionToCellIndex(endPosition);
+                var editMode = Editor.ManiaMapPlugin.Current.RoomNode3DToolbar.CellEditMode;
                 this.SetCellActivities(startIndex, endIndex, editMode);
                 EmitOnCellGridChanged();
             }
 
             MouseButtonPressed = false;
+        }
+
+        private Vector2 GetMousePosition()
+        {
+            var viewport = EditorInterface.Singleton.GetEditorViewport3D();
+            var camera = viewport.GetCamera3D();
+            var origin = camera.ProjectRayOrigin(viewport.GetMousePosition());
+            return new Vector2(origin.X, origin.Z);
+        }
+
+        private static bool CameraIsLookingDown()
+        {
+            var camera = EditorInterface.Singleton.GetEditorViewport3D().GetCamera3D();
+            return camera.GlobalRotationDegrees.IsEqualApprox(new Vector3(-90, 0, 0));
         }
 
         private static bool MouseIsInsideMainScreen()
@@ -171,7 +169,7 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="scene">The room scene.</param>
         /// <param name="parent">The node to which the room will be added as a child.</param>
         /// <param name="assignLayoutPosition">If true, the position of the room will be set to that of the room layout. Otherwise, it will be initialized at its original position.</param>
-        public static RoomNode2D CreateInstance(Uid id, PackedScene scene, Node parent, bool assignLayoutPosition = false)
+        public static RoomNode3D CreateInstance(Uid id, PackedScene scene, Node parent, bool assignLayoutPosition = false)
         {
             var manager = ManiaMapManager.Current;
             var layout = manager.Layout;
@@ -195,11 +193,11 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="doorConnections">The room's door connections.</param>
         /// <param name="cellCollisionMask">The cell collision mask.</param>
         /// <param name="assignLayoutPosition">If true, the position of the room will be set to that of the room layout. Otherwise, it will be initialized at its original position.</param>
-        public static RoomNode2D CreateInstance(PackedScene scene, Node parent, Layout layout, LayoutState layoutState,
+        public static RoomNode3D CreateInstance(PackedScene scene, Node parent, Layout layout, LayoutState layoutState,
             Room roomLayout, RoomState roomState, IReadOnlyList<DoorConnection> doorConnections,
             uint cellCollisionMask, bool assignLayoutPosition)
         {
-            var room = scene.Instantiate<RoomNode2D>();
+            var room = scene.Instantiate<RoomNode3D>();
             room.Initialize(layout, layoutState, roomLayout, roomState, doorConnections, cellCollisionMask, assignLayoutPosition);
             parent.AddChild(room);
             return room;
@@ -239,11 +237,62 @@ namespace MPewsey.ManiaMapGodot
             return true;
         }
 
+        private void CreateCellAreas(uint cellCollisionMask)
+        {
+
+        }
+
+        /// <summary>
+        /// Returns the cell center global position for the specified cell index.
+        /// </summary>
+        /// <param name="row">The cell row.</param>
+        /// <param name="column">The cell column.</param>
+        public Vector3 CellCenterGlobalPosition(int row, int column)
+        {
+            return CellCenterLocalPosition(row, column) + GlobalPosition;
+        }
+
+        /// <summary>
+        /// Returns the cell center local position for the specified cell index.
+        /// </summary>
+        /// <param name="row">The cell row.</param>
+        /// <param name="column">The cell column.</param>
+        public Vector3 CellCenterLocalPosition(int row, int column)
+        {
+            return new Vector3(column * CellSize.X, 0, row * CellSize.Z) + 0.5f * CellSize;
+        }
+
+        /// <summary>
+        /// Returns the row (x) and column (y) index corresponding to the specified global position.
+        /// If the position is outside the room bounds, returns Vector2I(-1, -1).
+        /// </summary>
+        /// <param name="position">The global position.</param>
+        public Vector2I GlobalPositionToCellIndex(Vector3 position)
+        {
+            return LocalPositionToCellIndex(position - GlobalPosition);
+        }
+
+        /// <summary>
+        /// Returns the row (x) and column (y) index corresponding to the specified local position.
+        /// If the position is outside the room bounds, returns Vector2I(-1, -1).
+        /// </summary>
+        /// <param name="position">The local position.</param>
+        public Vector2I LocalPositionToCellIndex(Vector3 position)
+        {
+            var column = Mathf.FloorToInt(position.X / CellSize.X);
+            var row = Mathf.FloorToInt(position.Z / CellSize.Z);
+
+            if (this.CellIndexExists(row, column))
+                return new Vector2I(row, column);
+
+            return new Vector2I(-1, -1);
+        }
+
         /// <summary>
         /// Returns the closest active cell index to the specified global position.
         /// </summary>
         /// <param name="position">The global position.</param>
-        public Vector2I FindClosestActiveCellIndex(Vector2 position)
+        public Vector2I FindClosestActiveCellIndex(Vector3 position)
         {
             var fastIndex = GlobalPositionToCellIndex(position);
 
@@ -262,7 +311,7 @@ namespace MPewsey.ManiaMapGodot
                     if (row[j])
                     {
                         var delta = CellCenterGlobalPosition(i, j) - position;
-                        var distance = delta.LengthSquared();
+                        var distance = new Vector2(delta.X, delta.Z).LengthSquared();
 
                         if (distance < minDistance)
                         {
@@ -283,7 +332,7 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="row">The cell row.</param>
         /// <param name="column">The cell column.</param>
         /// <param name="position">The global position.</param>
-        public DoorDirection FindClosestDoorDirection(int row, int column, Vector2 position)
+        public DoorDirection FindClosestDoorDirection(int row, int column, Vector3 position)
         {
             Span<DoorDirection> directions = stackalloc DoorDirection[]
             {
@@ -291,14 +340,18 @@ namespace MPewsey.ManiaMapGodot
                 DoorDirection.East,
                 DoorDirection.South,
                 DoorDirection.West,
+                DoorDirection.Top,
+                DoorDirection.Bottom,
             };
 
-            Span<Vector2> vectors = stackalloc Vector2[]
+            Span<Vector3> vectors = stackalloc Vector3[]
             {
-                new Vector2(0, -1),
-                new Vector2(1, 0),
-                new Vector2(0, 1),
-                new Vector2(-1, 0),
+                new Vector3(0, 0, -1),
+                new Vector3(1, 0, 0),
+                new Vector3(0, 0, 1),
+                new Vector3(-1, 0, 0),
+                new Vector3(0, 1, 0),
+                new Vector3(0, -1, 0),
             };
 
             var index = 0;
@@ -320,76 +373,12 @@ namespace MPewsey.ManiaMapGodot
         }
 
         /// <summary>
-        /// Creates CellArea2D for all active cells.
-        /// </summary>
-        /// <param name="cellCollisionMask">The cell collision mask.</param>
-        private void CreateCellAreas(uint cellCollisionMask)
-        {
-            for (int i = 0; i < ActiveCells.Count; i++)
-            {
-                var row = ActiveCells[i];
-
-                for (int j = 0; j < row.Count; j++)
-                {
-                    if (row[j])
-                        CellArea2D.CreateInstance(i, j, this, cellCollisionMask);
-                }
-            }
-        }
-
-        /// <summary>
         /// Moves the room to its position in the `Layout`.
         /// </summary>
         public void MoveToLayoutPosition()
         {
             var position = RoomLayout.Position;
-            Position = new Vector2(CellSize.X * position.Y, CellSize.Y * position.X);
-        }
-
-        /// <summary>
-        /// Returns the cell center global position for the specified cell index.
-        /// </summary>
-        /// <param name="row">The cell row.</param>
-        /// <param name="column">The cell column.</param>
-        public Vector2 CellCenterGlobalPosition(int row, int column)
-        {
-            return CellCenterLocalPosition(row, column) + GlobalPosition;
-        }
-
-        /// <summary>
-        /// Returns the cell center local position for the specified cell index.
-        /// </summary>
-        /// <param name="row">The cell row.</param>
-        /// <param name="column">The cell column.</param>
-        public Vector2 CellCenterLocalPosition(int row, int column)
-        {
-            return new Vector2(column * CellSize.X, row * CellSize.Y) + 0.5f * CellSize;
-        }
-
-        /// <summary>
-        /// Returns the row (x) and column (y) index corresponding to the specified global position.
-        /// If the position is outside the room bounds, returns Vector2I(-1, -1).
-        /// </summary>
-        /// <param name="position">The global position.</param>
-        public Vector2I GlobalPositionToCellIndex(Vector2 position)
-        {
-            return LocalPositionToCellIndex(position - GlobalPosition);
-        }
-
-        /// <summary>
-        /// Returns the row (x) and column (y) index corresponding to the specified local position.
-        /// If the position is outside the room bounds, returns Vector2I(-1, -1).
-        /// </summary>
-        /// <param name="position">The local position.</param>
-        public Vector2I LocalPositionToCellIndex(Vector2 position)
-        {
-            var column = Mathf.FloorToInt(position.X / CellSize.X);
-            var row = Mathf.FloorToInt(position.Y / CellSize.Y);
-
-            if (this.CellIndexExists(row, column))
-                return new Vector2I(row, column);
-
-            return new Vector2I(-1, -1);
+            Position = new Vector3(CellSize.X * position.Y, CellSize.Y * position.Z, CellSize.Z * position.X);
         }
     }
 }

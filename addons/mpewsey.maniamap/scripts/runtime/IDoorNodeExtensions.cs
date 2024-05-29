@@ -46,5 +46,13 @@ namespace MPewsey.ManiaMapGodot
 
             return door.DoorConnection.GetConnectingRoom(door.RoomNode.RoomLayout.Id);
         }
+
+        /// <summary>
+        /// Returns the ManiaMap door used for procedural generation.
+        /// </summary>
+        public static Door GetMMDoor(this IDoorNode door)
+        {
+            return new Door(door.DoorType, (DoorCode)door.DoorCode);
+        }
     }
 }

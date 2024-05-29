@@ -1,3 +1,6 @@
+using MPewsey.Common.Mathematics;
+using MPewsey.ManiaMap;
+
 namespace MPewsey.ManiaMapGodot
 {
     /// <summary>
@@ -51,6 +54,15 @@ namespace MPewsey.ManiaMapGodot
             if (spot.CanAcquire())
                 return spot.RoomNode.RoomState.AcquiredCollectables.Add(spot.Id);
             return false;
+        }
+
+        /// <summary>
+        /// Returns the ManiaMap collectable object used by the procedural generator.
+        /// </summary>
+        public static CollectableSpot GetMMCollectableSpot(this ICollectableSpot spot)
+        {
+            var index = new Vector2DInt(spot.Row, spot.Column);
+            return new CollectableSpot(index, spot.CollectableGroup.GroupName, spot.Weight);
         }
     }
 }

@@ -9,13 +9,13 @@ namespace MPewsey.ManiaMapGodot
     /// </summary>
     [Tool]
     [GlobalClass]
-    [Icon(ManiaMapResources.Icons.DoorNode2DIcon)]
-    public partial class DoorNode2D : CellChild2D, IDoorNode
+    [Icon(ManiaMapResources.Icons.DoorNode3DIcon)]
+    public partial class DoorNode3D : CellChild3D, IDoorNode
     {
         /// <summary>
         /// A dictionary of doors in the scene by room ID.
         /// </summary>
-        private static Dictionary<Uid, LinkedList<DoorNode2D>> ActiveRoomDoors { get; } = new Dictionary<Uid, LinkedList<DoorNode2D>>();
+        private static Dictionary<Uid, LinkedList<DoorNode3D>> ActiveRoomDoors { get; } = new Dictionary<Uid, LinkedList<DoorNode3D>>();
 
         /// <inheritdoc/>
         [Export] public bool AutoAssignDirection { get; set; } = true;
@@ -58,7 +58,7 @@ namespace MPewsey.ManiaMapGodot
         }
 
         /// <inheritdoc/>
-        public override void AutoAssign(RoomNode2D room)
+        public override void AutoAssign(RoomNode3D room)
         {
             base.AutoAssign(room);
 
@@ -77,7 +77,7 @@ namespace MPewsey.ManiaMapGodot
 
                 if (!ActiveRoomDoors.TryGetValue(roomId, out var doors))
                 {
-                    doors = new LinkedList<DoorNode2D>();
+                    doors = new LinkedList<DoorNode3D>();
                     ActiveRoomDoors.Add(roomId, doors);
                 }
 
@@ -109,7 +109,7 @@ namespace MPewsey.ManiaMapGodot
         /// </summary>
         /// <param name="roomId">The door's room ID.</param>
         /// <param name="doorConnection">The door's connection.</param>
-        public static DoorNode2D FindActiveDoor(Uid roomId, DoorConnection doorConnection)
+        public static DoorNode3D FindActiveDoor(Uid roomId, DoorConnection doorConnection)
         {
             if (doorConnection != null && ActiveRoomDoors.TryGetValue(roomId, out var doors))
             {

@@ -1,0 +1,12 @@
+[gd_scene load_steps=5 format=3 uid="uid://b75d5yleoppq3"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/CellGrid3D.cs" id="1_3fwa4"]
+[ext_resource type="Material" uid="uid://1jss81ivbhfv" path="res://addons/mpewsey.maniamap/scenes/cell_grid_3d/active_cell_material.tres" id="2_7u3jp"]
+[ext_resource type="Material" uid="uid://pquv2fkoqcpx" path="res://addons/mpewsey.maniamap/scenes/cell_grid_3d/inactive_cell_material.tres" id="3_qisbc"]
+[ext_resource type="Material" uid="uid://cvxmjb13wcxhk" path="res://addons/mpewsey.maniamap/scenes/cell_grid_3d/wireframe_material.tres" id="4_s74s1"]
+
+[node name="CellGrid3D" type="Node3D"]
+script = ExtResource("1_3fwa4")
+ActiveCellMaterial = ExtResource("2_7u3jp")
+InactiveCellMaterial = ExtResource("3_qisbc")
+WireframeMaterial = ExtResource("4_s74s1")

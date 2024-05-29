@@ -32,39 +32,39 @@ Room = NodePath("../..")
 
 [node name="NorthDoorNode2D2" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("3_fux8u")]
 position = Vector2(144, 16)
-Column = 1
 Room = NodePath("../..")
+Column = 1
 
 [node name="NorthDoorNode2D3" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("3_fux8u")]
 position = Vector2(240, 16)
-Column = 2
 Room = NodePath("../..")
+Column = 2
 
 [node name="SouthDoorNode2D" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("4_3m2hq")]
 position = Vector2(48, 272)
 DoorDirection = 1
-Row = 2
 Room = NodePath("../..")
+Row = 2
 
 [node name="SouthDoorNode2D2" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("4_3m2hq")]
 position = Vector2(144, 272)
 DoorDirection = 1
+Room = NodePath("../..")
 Row = 2
 Column = 1
-Room = NodePath("../..")
 
 [node name="SouthDoorNode2D3" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("4_3m2hq")]
 position = Vector2(240, 272)
 DoorDirection = 1
+Room = NodePath("../..")
 Row = 2
 Column = 2
-Room = NodePath("../..")
 
 [node name="WestDoorNode2D" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("5_2qq6f")]
 position = Vector2(16, 144)
 DoorDirection = 3
-Row = 1
 Room = NodePath("../..")
+Row = 1
 
 [node name="WestDoorNode2D2" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("5_2qq6f")]
 position = Vector2(16, 48)
@@ -74,28 +74,28 @@ Room = NodePath("../..")
 [node name="WestDoorNode2D3" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("5_2qq6f")]
 position = Vector2(16, 240)
 DoorDirection = 3
-Row = 2
 Room = NodePath("../..")
+Row = 2
 
 [node name="EastDoorNode2D" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("6_1puma")]
 position = Vector2(272, 144)
 DoorDirection = 2
+Room = NodePath("../..")
 Row = 1
 Column = 2
-Room = NodePath("../..")
 
 [node name="EastDoorNode2D2" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("6_1puma")]
 position = Vector2(272, 240)
 DoorDirection = 2
+Room = NodePath("../..")
 Row = 2
 Column = 2
-Room = NodePath("../..")
 
 [node name="EastDoorNode2D3" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("6_1puma")]
 position = Vector2(272, 48)
 DoorDirection = 2
-Column = 2
 Room = NodePath("../..")
+Column = 2
 
 [node name="CollectableSpots" type="Node2D" parent="."]
 
@@ -107,18 +107,18 @@ Room = NodePath("../..")
 [node name="Treasure2" parent="CollectableSpots" node_paths=PackedStringArray("Room") instance=ExtResource("8_vgecj")]
 position = Vector2(264, 24)
 Id = 1476847919
-Column = 2
 Room = NodePath("../..")
+Column = 2
 
 [node name="Treasure3" parent="CollectableSpots" node_paths=PackedStringArray("Room") instance=ExtResource("8_vgecj")]
 position = Vector2(24, 264)
 Id = 433258788
-Row = 2
 Room = NodePath("../..")
+Row = 2
 
 [node name="Treasure4" parent="CollectableSpots" node_paths=PackedStringArray("Room") instance=ExtResource("8_vgecj")]
 position = Vector2(264, 264)
 Id = 1751608605
+Room = NodePath("../..")
 Row = 2
 Column = 2
-Room = NodePath("../..")

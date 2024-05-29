@@ -3,6 +3,7 @@ using Godot;
 
 namespace MPewsey.ManiaMapGodot.Editor
 {
+    [Tool]
     public partial class CellGrid2D : Node2D
     {
         private RoomNode2D Room { get; set; }
@@ -43,11 +44,10 @@ namespace MPewsey.ManiaMapGodot.Editor
         {
             var activeFillColor = new Color(0, 0, 1, 0.1f);
             var inactiveFillColor = new Color(1, 0, 0, 0.1f);
-            var activeLineColor = new Color(0.5f, 0.5f, 0.5f);
-            var inactiveLineColor = new Color(0.5f, 0.5f, 0.5f);
-            DrawCellRects(inactiveFillColor, inactiveLineColor, false);
-            DrawCellXs(inactiveLineColor, false);
-            DrawCellRects(activeFillColor, activeLineColor, true);
+            var lineColor = new Color(0.5f, 0.5f, 0.5f);
+            DrawCellRects(inactiveFillColor, lineColor, false);
+            DrawCellXs(lineColor, false);
+            DrawCellRects(activeFillColor, lineColor, true);
         }
 
         private void DrawCellRects(Color fillColor, Color lineColor, bool active)
@@ -63,7 +63,7 @@ namespace MPewsey.ManiaMapGodot.Editor
                 {
                     if (row[j] == active)
                     {
-                        var rect = new Rect2(Room.CellCenterGlobalPosition(i, j) - 0.5f * cellSize, cellSize);
+                        var rect = new Rect2(Room.CellCenterLocalPosition(i, j) - 0.5f * cellSize, cellSize);
                         DrawRect(rect, fillColor);
                         DrawRect(rect, lineColor, false);
                     }
@@ -84,7 +84,7 @@ namespace MPewsey.ManiaMapGodot.Editor
                 {
                     if (row[j] == active)
                     {
-                        var topLeft = Room.CellCenterGlobalPosition(i, j) - 0.5f * cellSize;
+                        var topLeft = Room.CellCenterLocalPosition(i, j) - 0.5f * cellSize;
                         var bottomRight = topLeft + cellSize;
                         DrawLine(topLeft, bottomRight, lineColor);
                         DrawLine(new Vector2(topLeft.X, bottomRight.Y), new Vector2(bottomRight.X, topLeft.Y), lineColor);
