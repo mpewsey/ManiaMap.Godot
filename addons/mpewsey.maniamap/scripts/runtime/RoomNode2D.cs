@@ -124,7 +124,7 @@ namespace MPewsey.ManiaMapGodot
         {
             base._Process(delta);
 
-            if (Engine.IsEditorHint())
+            if (Engine.IsEditorHint() && Editor.ManiaMapPlugin.PluginIsValid())
             {
                 if (Editor.ManiaMapPlugin.Current.RoomNode2DToolbar.DisplayCells)
                     ProcessEditCellInputs();

@@ -21,9 +21,27 @@ namespace MPewsey.ManiaMapGodot.Editor
         private LayoutGraphEditor GraphEditor { get; set; }
         private Button GraphEditorDockButton { get; set; }
 
+        public static bool PluginIsValid()
+        {
+            return PluginIsEnabled() && IsInstanceValid(Current);
+        }
+
         public static bool PluginIsEnabled()
         {
             return EditorInterface.Singleton.IsPluginEnabled(PluginName);
+        }
+
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
+
+            if (Engine.IsEditorHint() && PluginRequiresReset())
+                ResetPlugin();
+        }
+
+        public static bool PluginRequiresReset()
+        {
+            return PluginIsEnabled() && !IsInstanceValid(Current);
         }
 
         public static void ResetPlugin()
@@ -32,6 +50,7 @@ namespace MPewsey.ManiaMapGodot.Editor
             {
                 EditorInterface.Singleton.SetPluginEnabled(PluginName, false);
                 EditorInterface.Singleton.SetPluginEnabled(PluginName, true);
+                GD.Print("Reset ManiaMap plugin.");
             }
         }
 
