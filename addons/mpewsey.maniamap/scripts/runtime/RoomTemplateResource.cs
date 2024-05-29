@@ -87,11 +87,11 @@ namespace MPewsey.ManiaMapGodot
             if (string.IsNullOrWhiteSpace(SceneUidPath) || string.IsNullOrWhiteSpace(ScenePath))
                 throw new RoomTemplateNotInitializedException($"Scene path has not been assigned: {ResourcePath}");
 
-            if (ResourceLoader.Exists(ScenePath))
-                return ScenePath;
-
             if (ResourceLoader.Exists(SceneUidPath))
                 return SceneUidPath;
+
+            if (ResourceLoader.Exists(ScenePath))
+                return ScenePath;
 
             throw new PathDoesNotExistException($"Scene paths do not exist: (SceneUidPath = {SceneUidPath}, ScenePath = {ScenePath})");
         }
