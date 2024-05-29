@@ -32,19 +32,57 @@ namespace MPewsey.ManiaMapGodot.Editor
             var mesh = new ArrayMesh();
             var tool = new SurfaceTool();
             tool.Begin(Mesh.PrimitiveType.Lines);
+            var scale = 0.5001f;
 
-            // Back of cube
-            tool.AddVertex(new Vector3(-1, -1, -1) * 0.5f);
-            tool.AddVertex(new Vector3(1, -1, -1) * 0.5f);
+            var a = new Vector3(-1, -1, -1) * scale;
+            var b = new Vector3(1, -1, -1) * scale;
+            var c = new Vector3(1, 1, -1) * scale;
+            var d = new Vector3(-1, 1, -1) * scale;
 
-            tool.AddVertex(new Vector3(1, -1, -1) * 0.5f);
-            tool.AddVertex(new Vector3(1, 1, -1) * 0.5f);
+            var e = new Vector3(-1, -1, 1) * scale;
+            var f = new Vector3(1, -1, 1) * scale;
+            var g = new Vector3(1, 1, 1) * scale;
+            var h = new Vector3(-1, 1, 1) * scale;
 
-            tool.AddVertex(new Vector3(1, 1, -1) * 0.5f);
-            tool.AddVertex(new Vector3(-1, 1, -1) * 0.5f);
+            // Back side
+            tool.AddVertex(a);
+            tool.AddVertex(b);
 
-            tool.AddVertex(new Vector3(-1, 1, -1) * 0.5f);
-            tool.AddVertex(new Vector3(-1, -1, -1) * 0.5f);
+            tool.AddVertex(b);
+            tool.AddVertex(c);
+
+            tool.AddVertex(c);
+            tool.AddVertex(d);
+
+            tool.AddVertex(d);
+            tool.AddVertex(a);
+
+            // Front side
+            tool.AddVertex(e);
+            tool.AddVertex(f);
+
+            tool.AddVertex(f);
+            tool.AddVertex(g);
+
+            tool.AddVertex(g);
+            tool.AddVertex(h);
+
+            tool.AddVertex(h);
+            tool.AddVertex(e);
+
+            // Left side
+            tool.AddVertex(a);
+            tool.AddVertex(e);
+
+            tool.AddVertex(d);
+            tool.AddVertex(h);
+
+            // Right side
+            tool.AddVertex(b);
+            tool.AddVertex(f);
+
+            tool.AddVertex(c);
+            tool.AddVertex(g);
 
             tool.Commit(mesh);
             return mesh;

@@ -164,13 +164,24 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="name">The template name.</param>
         public static RoomTemplate GetMMRoomTemplate(this IRoomNode room, int id, string name)
         {
+            var roomNode = (Node)room;
             var cells = room.GetMMCells();
             room.AddMMDoors(cells);
             room.AddMMFeatures(cells);
             var spots = room.GetMMCollectableSpots();
             var template = new RoomTemplate(id, name, cells, spots);
-            template.Validate();
-            room.ValidateRoomFlags();
+
+            try
+            {
+                template.Validate();
+                room.ValidateRoomFlags();
+            }
+            catch (Exception exception)
+            {
+                GD.PrintErr($"Room template failed validation: (Scene File Path = {roomNode.SceneFilePath}, Error = {exception.Message})");
+                throw;
+            }
+
             return template;
         }
 

@@ -7,6 +7,7 @@ namespace MPewsey.ManiaMapGodot.Editor
     public static class BatchUpdaterTool
     {
         private const string Room2DScriptReference = "[ext_resource type=\"Script\" path=\"res://addons/mpewsey.maniamap/scripts/runtime/RoomNode2D.cs\"";
+        private const string Room3DScriptReference = "[ext_resource type=\"Script\" path=\"res://addons/mpewsey.maniamap/scripts/runtime/RoomNode3D.cs\"";
 
         public static void BatchUpdateRoomTemplates(string searchPath)
         {
@@ -40,15 +41,14 @@ namespace MPewsey.ManiaMapGodot.Editor
             var scene = ResourceLoader.Load<PackedScene>(path);
             var node = scene.Instantiate<Node>(PackedScene.GenEditState.Instance);
 
-            switch (node)
+            if (node is IRoomNode room)
             {
-                case RoomNode2D room2d:
-                    room2d.UpdateRoomTemplate();
-                    return SaveScene(scene, room2d);
-                default:
-                    GD.PrintErr($"Skipping unhandled room type: (Type = {node.GetType()}, ScenePath = {path})");
-                    return false;
+                room.UpdateRoomTemplate();
+                return SaveScene(scene, node);
             }
+
+            GD.PrintErr($"Skipping unhandled room type: (Type = {node.GetType()}, ScenePath = {path})");
+            return false;
         }
 
         private static bool SaveScene(PackedScene scene, Node node)
@@ -78,7 +78,7 @@ namespace MPewsey.ManiaMapGodot.Editor
 
             foreach (var line in lines)
             {
-                if (line.StartsWith(Room2DScriptReference))
+                if (line.StartsWith(Room2DScriptReference) || line.StartsWith(Room3DScriptReference))
                     return true;
             }
 

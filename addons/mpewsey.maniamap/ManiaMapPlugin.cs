@@ -9,6 +9,7 @@ namespace MPewsey.ManiaMapGodot.Editor
     [Tool]
     public partial class ManiaMapPlugin : EditorPlugin
     {
+        private const string PluginName = "mpewsey.maniamap";
         private const string MenuName = "Mania Map";
         private const string GraphEditorDockButtonName = "Graph Editor";
         private const string BatchUpdateSearchPathSetting = "mania_map/settings/batch_update_search_path";
@@ -19,6 +20,20 @@ namespace MPewsey.ManiaMapGodot.Editor
         public RoomNode3DToolbar RoomNode3DToolbar { get; private set; }
         private LayoutGraphEditor GraphEditor { get; set; }
         private Button GraphEditorDockButton { get; set; }
+
+        public static bool PluginIsEnabled()
+        {
+            return EditorInterface.Singleton.IsPluginEnabled(PluginName);
+        }
+
+        public static void ResetPlugin()
+        {
+            if (PluginIsEnabled())
+            {
+                EditorInterface.Singleton.SetPluginEnabled(PluginName, false);
+                EditorInterface.Singleton.SetPluginEnabled(PluginName, true);
+            }
+        }
 
         public override void _EnterTree()
         {

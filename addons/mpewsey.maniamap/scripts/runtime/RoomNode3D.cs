@@ -32,7 +32,7 @@ namespace MPewsey.ManiaMapGodot
         /// <summary>
         /// The width and height of the room cells.
         /// </summary>
-        [Export(PropertyHint.Range, "0,100,1,or_greater")] public Vector3 CellSize { get => _cellSize; set => SetCellSizeField(ref _cellSize, value); }
+        [Export(PropertyHint.Range, "0,100,0.001,or_greater")] public Vector3 CellSize { get => _cellSize; set => SetCellSizeField(ref _cellSize, value); }
 
         /// <inheritdoc/>
         [Export] public Godot.Collections.Array<Godot.Collections.Array<bool>> ActiveCells { get; set; } = new Godot.Collections.Array<Godot.Collections.Array<bool>>();
@@ -138,7 +138,7 @@ namespace MPewsey.ManiaMapGodot
             MouseButtonPressed = false;
         }
 
-        private Vector2 GetMousePosition()
+        private static Vector2 GetMousePosition()
         {
             var viewport = EditorInterface.Singleton.GetEditorViewport3D();
             var camera = viewport.GetCamera3D();
@@ -149,7 +149,8 @@ namespace MPewsey.ManiaMapGodot
         private static bool CameraIsLookingDown()
         {
             var camera = EditorInterface.Singleton.GetEditorViewport3D().GetCamera3D();
-            return camera.GlobalRotationDegrees.IsEqualApprox(new Vector3(-90, 0, 0));
+            var cameraDirection = camera.GlobalRotationDegrees;
+            return cameraDirection.IsEqualApprox(new Vector3(-90, 0, 0));
         }
 
         private static bool MouseIsInsideMainScreen()

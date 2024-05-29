@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b25t77npx7a3l"]
+[gd_scene load_steps=13 format=3 uid="uid://b25t77npx7a3l"]
 
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/RoomNode3DToolbar.cs" id="1_vkde6"]
+[ext_resource type="Texture2D" uid="uid://de1m1bcqx7scc" path="res://addons/mpewsey.maniamap/scenes/room_node_3d_toolbar/check_mark_icon.svg" id="2_fmffl"]
 [ext_resource type="Texture2D" uid="uid://c6mkqk5qwijr5" path="res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/cell_display_icon.svg" id="2_ghe22"]
 [ext_resource type="ButtonGroup" uid="uid://32i7umthes7c" path="res://addons/mpewsey.maniamap/scenes/room_node_3d_toolbar/edit_mode_button_group.tres" id="3_glhko"]
+[ext_resource type="Texture2D" uid="uid://d2rd7xikgh7hy" path="res://addons/mpewsey.maniamap/scenes/room_node_3d_toolbar/x_mark_icon.svg" id="3_luyb2"]
 [ext_resource type="Texture2D" uid="uid://8gxtfel3hl7l" path="res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/none_edit_mode_icon.svg" id="4_lb8o0"]
 [ext_resource type="Texture2D" uid="uid://cvfm6xc2bpkpi" path="res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/activate_edit_mode_icon.svg" id="5_624dl"]
 [ext_resource type="Texture2D" uid="uid://7mpbjj6d2ld3" path="res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/deactivate_edit_mode_icon.svg" id="6_g408m"]
@@ -17,11 +19,11 @@ border_color = Color(0.439216, 0.729412, 0.980392, 1)
 expand_margin_top = 2.0
 expand_margin_bottom = 2.0
 
-[node name="RoomNode3DToolbar" type="Control" node_paths=PackedStringArray("DisplayCellsButton", "NoneEditModeButton", "ActivateEditModeButton", "DeactivateEditModeButton", "ToggleEditModeButton", "AutoAssignButton", "UpdateRoomTemplateButton")]
-custom_minimum_size = Vector2(200, 0)
+[node name="RoomNode3DToolbar" type="Control" node_paths=PackedStringArray("DisplayCellsButton", "NoneEditModeButton", "ActivateEditModeButton", "DeactivateEditModeButton", "ToggleEditModeButton", "AutoAssignButton", "UpdateRoomTemplateButton", "EditModeEnabledIcon")]
+custom_minimum_size = Vector2(226, 0)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 200.0
+offset_right = 226.0
 offset_bottom = 25.0
 script = ExtResource("1_vkde6")
 DisplayCellsButton = NodePath("HBoxContainer/DisplayCellsButton")
@@ -31,6 +33,9 @@ DeactivateEditModeButton = NodePath("HBoxContainer/DeactivateEditModeButton")
 ToggleEditModeButton = NodePath("HBoxContainer/ToggleEditModeButton")
 AutoAssignButton = NodePath("HBoxContainer/AutoAssignButton")
 UpdateRoomTemplateButton = NodePath("HBoxContainer/UpdateRoomTemplateButton")
+EditModeEnabledIcon = NodePath("HBoxContainer/EditModeEnabledIcon")
+EditModeEnabledTexture = ExtResource("2_fmffl")
+EditModeDisabledTexture = ExtResource("3_luyb2")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -64,6 +69,13 @@ expand_icon = true
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2
+
+[node name="EditModeEnabledIcon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Cannot Edit Cells (Go To Top View)"
+texture = ExtResource("3_luyb2")
+expand_mode = 3
+stretch_mode = 4
 
 [node name="NoneEditModeButton" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)

@@ -6,6 +6,9 @@ namespace MPewsey.ManiaMapGodot.Editor
     [Tool]
     public partial class RoomNode3DToolbar : Control
     {
+        private const string EditModeDisabledTooltip = "Cannot Edit Cells (Go To Top View)";
+        private const string EditModeEnabledTooltip = "Can Edit Cells (In Top View)";
+
         [Export] public Button DisplayCellsButton { get; set; }
         [Export] public Button NoneEditModeButton { get; set; }
         [Export] public Button ActivateEditModeButton { get; set; }
@@ -13,8 +16,14 @@ namespace MPewsey.ManiaMapGodot.Editor
         [Export] public Button ToggleEditModeButton { get; set; }
         [Export] public Button AutoAssignButton { get; set; }
         [Export] public Button UpdateRoomTemplateButton { get; set; }
+
+        [Export] public TextureRect EditModeEnabledIcon { get; set; }
+        [Export] public Texture2D EditModeEnabledTexture { get; set; }
+        [Export] public Texture2D EditModeDisabledTexture { get; set; }
+
         public CellActivity CellEditMode { get; private set; } = CellActivity.None;
         public bool DisplayCells { get; private set; } = true;
+        public bool EditViewEnabled { get; private set; }
         private RoomNode3D Room { get; set; }
 
         public override void _Ready()
@@ -29,6 +38,34 @@ namespace MPewsey.ManiaMapGodot.Editor
             UpdateRoomTemplateButton.Pressed += OnUpdateRoomTemplateButtonPressed;
             ToggleButton(DisplayCellsButton, true);
             ToggleButton(NoneEditModeButton, true);
+        }
+
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
+
+            if (Engine.IsEditorHint())
+                PopulateEditModeEnabledIcon();
+        }
+
+        private void PopulateEditModeEnabledIcon()
+        {
+            if (CameraIsLookingDown())
+            {
+                EditModeEnabledIcon.Texture = EditModeEnabledTexture;
+                EditModeEnabledIcon.TooltipText = EditModeEnabledTooltip;
+                return;
+            }
+
+            EditModeEnabledIcon.Texture = EditModeDisabledTexture;
+            EditModeEnabledIcon.TooltipText = EditModeDisabledTooltip;
+        }
+
+        private static bool CameraIsLookingDown()
+        {
+            var camera = EditorInterface.Singleton.GetEditorViewport3D().GetCamera3D();
+            var cameraDirection = camera.GlobalRotationDegrees;
+            return cameraDirection.IsEqualApprox(new Vector3(-90, 0, 0));
         }
 
         private static void ToggleButton(Button button, bool toggled)
