@@ -54,10 +54,6 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="room">The room to associate with the template.</param>
         public void Initialize(IRoomNode room)
         {
-            SerializedText = string.Empty;
-            ScenePath = string.Empty;
-            SceneUidPath = string.Empty;
-
             var node = (Node)room;
             var scenePath = node.SceneFilePath;
             var sceneUidPath = ResourceUid.IdToText(ResourceLoader.GetResourceUid(scenePath));
@@ -91,11 +87,11 @@ namespace MPewsey.ManiaMapGodot
             if (string.IsNullOrWhiteSpace(SceneUidPath) || string.IsNullOrWhiteSpace(ScenePath))
                 throw new RoomTemplateNotInitializedException($"Scene path has not been assigned: {ResourcePath}");
 
-            if (ResourceLoader.Exists(SceneUidPath))
-                return SceneUidPath;
-
             if (ResourceLoader.Exists(ScenePath))
                 return ScenePath;
+
+            if (ResourceLoader.Exists(SceneUidPath))
+                return SceneUidPath;
 
             throw new PathDoesNotExistException($"Scene paths do not exist: (SceneUidPath = {SceneUidPath}, ScenePath = {ScenePath})");
         }

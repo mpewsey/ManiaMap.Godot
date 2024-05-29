@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace MPewsey.ManiaMapGodot
 {
     /// <summary>
-    /// A possible door location connecting two RoomNode2D.
+    /// A possible door location connecting two RoomNode3D.
     /// </summary>
     [Tool]
     [GlobalClass]

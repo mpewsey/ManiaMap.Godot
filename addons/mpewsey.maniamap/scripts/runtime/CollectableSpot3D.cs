@@ -3,7 +3,7 @@ using Godot;
 namespace MPewsey.ManiaMapGodot
 {
     /// <summary>
-    /// A possible collectable location within a RoomNode2D.
+    /// A possible collectable location within a RoomNode3D.
     /// </summary>
     [Tool]
     [GlobalClass]

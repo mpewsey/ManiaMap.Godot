@@ -27,6 +27,10 @@ project/assembly_name="ManiaMap.Godot"
 
 enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg", "res://addons/mpewsey.maniamap/plugin.cfg")
 
+[gdunit4]
+
+settings/common/update_notification_enabled=false
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

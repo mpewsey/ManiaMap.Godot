@@ -2,6 +2,12 @@ using Godot;
 
 namespace MPewsey.ManiaMapGodot
 {
+    /// <summary>
+    /// Provides area and body entering and exiting detection for a cell.
+    /// 
+    /// Register to a RoomNode3D's `OnCellAreaEntered` and `OnCellAreaExited` signals to monitor these events.
+    /// When the area detects an entering object, the `RoomState` cell visibility is automatically updated.
+    /// </summary>
     public partial class CellArea3D : Area3D
     {
         /// <summary>

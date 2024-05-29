@@ -6,6 +6,11 @@ using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapGodot
 {
+    /// <summary>
+    /// A node serving as the top level of a 3D room.
+    /// 
+    /// See IRoomNodeExtensions for additional methods usable by this class.
+    /// </summary>
     [Tool]
     [GlobalClass]
     [Icon(ManiaMapResources.Icons.RoomNode3DIcon)]

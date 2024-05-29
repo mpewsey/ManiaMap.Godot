@@ -9,7 +9,7 @@ using System.Linq;
 namespace MPewsey.ManiaMapGodot
 {
     /// <summary>
-    /// Contains extension methods for IRoomNode.
+    /// Extension methods for IRoomNode.
     /// </summary>
     public static class IRoomNodeExtensions
     {
