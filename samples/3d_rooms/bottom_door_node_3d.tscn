@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://5eymjw33lylv"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/DoorNode3D.cs" id="1_uvdhm"]
+[ext_resource type="Script" path="res://samples/scripts/DoorNode3DSample.cs" id="2_xkpav"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g74jw"]
+size = Vector3(1, 0.5, 2)
+
+[node name="BottomDoorNode3D" type="Node3D"]
+script = ExtResource("1_uvdhm")
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_g74jw")
+
+[node name="Empty" type="Node3D" parent="."]
+
+[node name="DoorNode3DSample" type="Node" parent="." node_paths=PackedStringArray("DoorContainer", "WallContainer")]
+script = ExtResource("2_xkpav")
+DoorContainer = NodePath("../Empty")
+WallContainer = NodePath("../Wall")

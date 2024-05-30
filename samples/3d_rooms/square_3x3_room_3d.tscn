@@ -1,25 +1,46 @@
-[gd_scene load_steps=8 format=3 uid="uid://i0l4nkbmjqye"]
+[gd_scene load_steps=18 format=3 uid="uid://i0l4nkbmjqye"]
 
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomNode3D.cs" id="1_sxisd"]
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomTemplateResource.cs" id="2_ng2ug"]
+[ext_resource type="Resource" uid="uid://vde0h7n6mse5" path="res://samples/3d_rooms/square_3x3_room_3d.room_template.tres" id="2_1c1c4"]
 [ext_resource type="PackedScene" uid="uid://3x7dw0wnyye5" path="res://samples/3d_rooms/door_node_3d.tscn" id="3_hc8wb"]
 [ext_resource type="PackedScene" uid="uid://borfbd82yciv5" path="res://samples/3d_rooms/collectable_spot_3d.tscn" id="4_lptp0"]
+[ext_resource type="PackedScene" uid="uid://5eymjw33lylv" path="res://samples/3d_rooms/bottom_door_node_3d.tscn" id="5_5nabe"]
 [ext_resource type="PackedScene" uid="uid://qd7xvywc8cjw" path="res://samples/3d_rooms/top_door_node_3d.tscn" id="5_ag8ud"]
+[ext_resource type="Material" uid="uid://vdejptctpmtk" path="res://samples/3d_rooms/wall_material.tres" id="6_yshji"]
 
-[sub_resource type="Resource" id="Resource_v3k0d"]
-script = ExtResource("2_ng2ug")
-Id = 846040505
-TemplateName = "Square 3x3 Room 3D"
-ScenePath = ""
-SceneUidPath = ""
-SerializedText = ""
+[sub_resource type="BoxMesh" id="BoxMesh_pmtfc"]
+size = Vector3(2, 0.1, 2)
 
-[sub_resource type="BoxMesh" id="BoxMesh_d88rq"]
-size = Vector3(18, 0.5, 18)
+[sub_resource type="BoxMesh" id="BoxMesh_7kdy3"]
+size = Vector3(3.5, 0.5, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r3ab1"]
+size = Vector3(1.5, 0.5, 2.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y2e6g"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rfx2q"]
+size = Vector3(2.5, 0.5, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vyhli"]
+size = Vector3(1, 0.5, 3.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ygpc4"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wc7u6"]
+size = Vector3(2.5, 0.5, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1hjka"]
+size = Vector3(1, 0.5, 2.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gmkrv"]
+size = Vector3(1, 0.5, 2)
 
 [node name="Square3x3Room3D" type="Node3D"]
 script = ExtResource("1_sxisd")
-RoomTemplate = SubResource("Resource_v3k0d")
+RoomTemplate = ExtResource("2_1c1c4")
 Rows = 3
 Columns = 3
 CellSize = Vector3(6, 6, 6)
@@ -114,7 +135,7 @@ Room = NodePath("../..")
 Row = 2
 
 [node name="TopDoorNode3D7" parent="TopDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_ag8ud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 6)
 DoorDirection = 4
 Room = NodePath("../..")
 Row = 1
@@ -139,7 +160,7 @@ Room = NodePath("../..")
 Column = 2
 
 [node name="TopDoorNode3D4" parent="TopDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_ag8ud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 6)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 0, 6)
 DoorDirection = 4
 Room = NodePath("../..")
 Row = 1
@@ -158,6 +179,403 @@ DoorDirection = 4
 Room = NodePath("../..")
 Row = 2
 Column = 1
+
+[node name="BottomDoors" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="BottomDoorNode3D" parent="BottomDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_5nabe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+DoorDirection = 5
+Room = NodePath("../..")
+
+[node name="BottomDoorNode3D2" parent="BottomDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_5nabe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 4)
+DoorDirection = 5
+Room = NodePath("../..")
+Column = 1
+
+[node name="BottomDoorNode3D3" parent="BottomDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_5nabe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 4)
+DoorDirection = 5
+Room = NodePath("../..")
+Column = 2
+
+[node name="BottomDoorNode3D4" parent="BottomDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_5nabe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 14)
+DoorDirection = 5
+Room = NodePath("../..")
+Row = 2
+Column = 2
+
+[node name="BottomDoorNode3D5" parent="BottomDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_5nabe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 14)
+DoorDirection = 5
+Room = NodePath("../..")
+Row = 2
+Column = 1
+
+[node name="BottomDoorNode3D6" parent="BottomDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_5nabe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 14)
+DoorDirection = 5
+Room = NodePath("../..")
+Row = 2
+
+[node name="BottomDoorNode3D7" parent="BottomDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_5nabe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 9)
+DoorDirection = 5
+Room = NodePath("../..")
+Row = 1
+Column = 1
+
+[node name="BottomDoorNode3D8" parent="BottomDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_5nabe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 9)
+DoorDirection = 5
+Room = NodePath("../..")
+Row = 1
+
+[node name="BottomDoorNode3D9" parent="BottomDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_5nabe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14, 0, 9)
+DoorDirection = 5
+Room = NodePath("../..")
+Row = 1
+Column = 2
+
+[node name="Ceiling" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, 1)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 6, 1)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6, 1)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, 3)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, 5)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 6, 1)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 6, 1)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 6, 1)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 6, 1)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 6, 1)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 6, 1)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 6, 3)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 6, 5)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, 7)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D33" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, 9)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D34" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, 11)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D50" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 6, 7)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D51" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 6, 9)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D54" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 6, 11)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D55" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, 13)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D60" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, 15)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D61" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, 17)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D62" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 6, 17)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D63" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6, 17)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D64" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 6, 17)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D71" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 6, 17)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D72" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 6, 17)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D73" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 6, 17)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D77" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 6, 13)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D78" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 6, 15)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D80" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 6, 17)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="MeshInstance3D81" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 6, 17)
+material_override = ExtResource("6_yshji")
+mesh = SubResource("BoxMesh_pmtfc")
+
+[node name="Floor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="CornerFloor" type="Node3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CornerFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, 0)
+mesh = SubResource("BoxMesh_7kdy3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor/CornerFloor"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1.25)
+mesh = SubResource("BoxMesh_7kdy3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor/CornerFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, 1.75)
+mesh = SubResource("BoxMesh_r3ab1")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Floor/CornerFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2.5)
+mesh = SubResource("BoxMesh_y2e6g")
+
+[node name="CornerFloor4" type="Node3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 3, 0, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CornerFloor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, 0)
+mesh = SubResource("BoxMesh_7kdy3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor/CornerFloor4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1.25)
+mesh = SubResource("BoxMesh_7kdy3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor/CornerFloor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, 1.75)
+mesh = SubResource("BoxMesh_r3ab1")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Floor/CornerFloor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2.5)
+mesh = SubResource("BoxMesh_y2e6g")
+
+[node name="CornerFloor2" type="Node3D" parent="Floor"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 15, 0, 3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CornerFloor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, 0)
+mesh = SubResource("BoxMesh_7kdy3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor/CornerFloor2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1.25)
+mesh = SubResource("BoxMesh_7kdy3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor/CornerFloor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, 1.75)
+mesh = SubResource("BoxMesh_r3ab1")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Floor/CornerFloor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2.5)
+mesh = SubResource("BoxMesh_y2e6g")
+
+[node name="CornerFloor3" type="Node3D" parent="Floor"]
+transform = Transform3D(-1, 8.74228e-08, 0, 8.74228e-08, 1, 8.74228e-08, 7.64274e-15, 8.74228e-08, -1, 15, 0, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CornerFloor3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, 0)
+mesh = SubResource("BoxMesh_7kdy3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor/CornerFloor3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1.25)
+mesh = SubResource("BoxMesh_7kdy3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor/CornerFloor3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, 1.75)
+mesh = SubResource("BoxMesh_r3ab1")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Floor/CornerFloor3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2.5)
+mesh = SubResource("BoxMesh_y2e6g")
+
+[node name="EdgeFloor" type="Node3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/EdgeFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0, 0)
+mesh = SubResource("BoxMesh_rfx2q")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor/EdgeFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 0)
+mesh = SubResource("BoxMesh_rfx2q")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor/EdgeFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.25)
+mesh = SubResource("BoxMesh_vyhli")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Floor/EdgeFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+mesh = SubResource("BoxMesh_ygpc4")
+
+[node name="EdgeFloor3" type="Node3D" parent="Floor"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 0, 9)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/EdgeFloor3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0, 0)
+mesh = SubResource("BoxMesh_rfx2q")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor/EdgeFloor3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 0)
+mesh = SubResource("BoxMesh_rfx2q")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor/EdgeFloor3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.25)
+mesh = SubResource("BoxMesh_vyhli")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Floor/EdgeFloor3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+mesh = SubResource("BoxMesh_ygpc4")
+
+[node name="EdgeFloor4" type="Node3D" parent="Floor"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0, 9)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/EdgeFloor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0, 0)
+mesh = SubResource("BoxMesh_rfx2q")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor/EdgeFloor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 0)
+mesh = SubResource("BoxMesh_rfx2q")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor/EdgeFloor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.25)
+mesh = SubResource("BoxMesh_vyhli")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Floor/EdgeFloor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+mesh = SubResource("BoxMesh_ygpc4")
+
+[node name="EdgeFloor2" type="Node3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 9, 0, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/EdgeFloor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0, 0)
+mesh = SubResource("BoxMesh_rfx2q")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor/EdgeFloor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 0)
+mesh = SubResource("BoxMesh_rfx2q")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor/EdgeFloor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.25)
+mesh = SubResource("BoxMesh_vyhli")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Floor/EdgeFloor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+mesh = SubResource("BoxMesh_ygpc4")
+
+[node name="CenterFloor" type="Node3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 9)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CenterFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0, 0)
+mesh = SubResource("BoxMesh_wc7u6")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor/CenterFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 0)
+mesh = SubResource("BoxMesh_wc7u6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor/CenterFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.75)
+mesh = SubResource("BoxMesh_1hjka")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Floor/CenterFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+mesh = SubResource("BoxMesh_gmkrv")
 
 [node name="CollectableSpots" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -185,8 +603,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 1)
 Id = 141321685
 Room = NodePath("../..")
 Column = 2
-
-[node name="Ceiling" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 5.75, 9)
-visible = false
-mesh = SubResource("BoxMesh_d88rq")

@@ -1,45 +1,125 @@
-[gd_scene load_steps=6 format=3 uid="uid://3x7dw0wnyye5"]
+[gd_scene load_steps=7 format=3 uid="uid://3x7dw0wnyye5"]
 
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/DoorNode3D.cs" id="1_1ql5h"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_8ijtq"]
-size = Vector3(3.5, 0.3, 0.3)
+[ext_resource type="Material" uid="uid://vdejptctpmtk" path="res://samples/3d_rooms/wall_material.tres" id="2_oeilq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_v6h0p"]
-size = Vector3(3.5, 0.3, 0.5)
+size = Vector3(3.5, 0.3, 0.75)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dvir1"]
-size = Vector3(0.5, 2, 0.2)
+size = Vector3(0.5, 2, 0.6)
 
-[sub_resource type="BoxMesh" id="BoxMesh_17oet"]
-size = Vector3(0.5, 2, 0.5)
+[sub_resource type="BoxMesh" id="BoxMesh_srm6h"]
+size = Vector3(2, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lptru"]
+size = Vector3(2, 1.5, 0.1)
 
 [node name="DoorNode3D" type="Node3D"]
 script = ExtResource("1_1ql5h")
 
-[node name="DoorArch" type="Node3D" parent="."]
+[node name="Door" type="Node3D" parent="."]
+
+[node name="DoorArch" type="Node3D" parent="Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 
-[node name="Beam" type="MeshInstance3D" parent="DoorArch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15, 0.15)
-mesh = SubResource("BoxMesh_8ijtq")
-
-[node name="BeamWall" type="MeshInstance3D" parent="DoorArch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15, -0.25)
+[node name="BeamWall" type="MeshInstance3D" parent="Door/DoorArch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.125)
 mesh = SubResource("BoxMesh_v6h0p")
 
-[node name="RightColumn" type="MeshInstance3D" parent="DoorArch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1, 0.1)
+[node name="RightColumn" type="MeshInstance3D" parent="Door/DoorArch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 1, -0.2)
 mesh = SubResource("BoxMesh_dvir1")
 
-[node name="RightColumnWall" type="MeshInstance3D" parent="DoorArch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1, -0.25)
-mesh = SubResource("BoxMesh_17oet")
-
-[node name="LeftColumn" type="MeshInstance3D" parent="DoorArch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 1, 0.1)
+[node name="LeftColumn" type="MeshInstance3D" parent="Door/DoorArch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 1, -0.2)
 mesh = SubResource("BoxMesh_dvir1")
 
-[node name="LeftColumnWall" type="MeshInstance3D" parent="DoorArch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 1, -0.25)
-mesh = SubResource("BoxMesh_17oet")
+[node name="Wall" type="Node3D" parent="Door"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_srm6h")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Door/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_srm6h")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Door/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_srm6h")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Door/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_srm6h")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Door/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_srm6h")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Door/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4.75, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_lptru")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Door/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_lptru")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Door/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4.75, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_lptru")
+
+[node name="Wall" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_srm6h")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_srm6h")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_srm6h")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_srm6h")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_srm6h")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_srm6h")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4.75, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_lptru")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_lptru")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4.75, 0.05)
+material_override = ExtResource("2_oeilq")
+mesh = SubResource("BoxMesh_lptru")

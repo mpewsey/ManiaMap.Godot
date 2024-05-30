@@ -15,5 +15,6 @@ layer_0/tile_data = PackedInt32Array(-131072, 327680, 1, -65536, 327680, 2, 0, 3
 layer_1/name = "Door"
 layer_1/tile_data = PackedInt32Array(-65536, 589824, 7, 0, 589824, 7, -131072, 131072, 0, 65536, 0, 5)
 
-[node name="DoorNode2DSample" type="Node" parent="."]
+[node name="DoorNode2DSample" type="Node" parent="." node_paths=PackedStringArray("TileMap")]
 script = ExtResource("3_lkr7a")
+TileMap = NodePath("../TileMap")
