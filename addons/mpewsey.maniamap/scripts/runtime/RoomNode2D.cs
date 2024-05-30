@@ -126,15 +126,28 @@ namespace MPewsey.ManiaMapGodot
         {
             base._Process(delta);
 
-            if (Engine.IsEditorHint() && Editor.ManiaMapPlugin.PluginIsValid())
-            {
-                if (Editor.ManiaMapPlugin.Current.RoomNode2DToolbar.DisplayCells)
-                    ProcessEditCellInputs();
-            }
+            if (Engine.IsEditorHint())
+                ProcessEditCellInputs();
+        }
+
+        private static bool DisplayCells()
+        {
+            return Editor.ManiaMapPlugin.PluginIsValid()
+                && Editor.ManiaMapPlugin.Current.RoomNode2DToolbar.DisplayCells;
+        }
+
+        private static CellActivity CellEditMode()
+        {
+            if (!Editor.ManiaMapPlugin.PluginIsValid())
+                return CellActivity.None;
+            return Editor.ManiaMapPlugin.Current.RoomNode2DToolbar.CellEditMode;
         }
 
         private void ProcessEditCellInputs()
         {
+            if (!DisplayCells())
+                return;
+
             if (Input.IsMouseButtonPressed(MouseButton.Left) && MouseIsInsideMainScreen())
             {
                 if (!MouseButtonPressed)
@@ -148,8 +161,7 @@ namespace MPewsey.ManiaMapGodot
             {
                 var startIndex = GlobalPositionToCellIndex(MouseButtonDownPosition);
                 var endIndex = GlobalPositionToCellIndex(GetViewport().GetMousePosition());
-                var editMode = Editor.ManiaMapPlugin.Current.RoomNode2DToolbar.CellEditMode;
-                this.SetCellActivities(startIndex, endIndex, editMode);
+                this.SetCellActivities(startIndex, endIndex, CellEditMode());
                 EmitOnCellGridChanged();
             }
 

@@ -33,21 +33,27 @@ namespace MPewsey.ManiaMapGodot.Editor
         {
             base._Draw();
 
-            if (Engine.IsEditorHint() && ManiaMapPlugin.PluginIsValid())
-            {
-                if (ManiaMapPlugin.Current.RoomNode2DToolbar.DisplayCells)
-                    DrawCells();
-            }
+            if (Engine.IsEditorHint() && IsInstanceValid(Room))
+                DrawCells();
+        }
+
+        private static bool DisplayCells()
+        {
+            return ManiaMapPlugin.PluginIsValid()
+                && ManiaMapPlugin.Current.RoomNode2DToolbar.DisplayCells;
         }
 
         private void DrawCells()
         {
-            var activeFillColor = new Color(0, 0, 1, 0.1f);
-            var inactiveFillColor = new Color(1, 0, 0, 0.1f);
-            var lineColor = new Color(0.5f, 0.5f, 0.5f);
-            DrawCellRects(inactiveFillColor, lineColor, false);
-            DrawCellXs(lineColor, false);
-            DrawCellRects(activeFillColor, lineColor, true);
+            if (DisplayCells())
+            {
+                var activeFillColor = new Color(0, 0, 1, 0.1f);
+                var inactiveFillColor = new Color(1, 0, 0, 0.1f);
+                var lineColor = new Color(0.5f, 0.5f, 0.5f);
+                DrawCellRects(inactiveFillColor, lineColor, false);
+                DrawCellXs(lineColor, false);
+                DrawCellRects(activeFillColor, lineColor, true);
+            }
         }
 
         private void DrawCellRects(Color fillColor, Color lineColor, bool active)

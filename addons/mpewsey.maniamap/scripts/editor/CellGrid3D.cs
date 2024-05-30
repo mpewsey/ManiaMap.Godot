@@ -11,8 +11,8 @@ namespace MPewsey.ManiaMapGodot.Editor
         [Export] public Material WireframeMaterial { get; set; }
 
         private RoomNode3D Room { get; set; }
-        private Mesh BoxMesh { get; set; } = new BoxMesh();
-        private Mesh BoxEdgeMesh { get; set; } = CreateBoxEdgeMesh();
+        private BoxMesh BoxMesh { get; set; } = new BoxMesh();
+        private ArrayMesh BoxEdgeMesh { get; set; } = CreateBoxEdgeMesh();
 
         public static CellGrid3D CreateInstance(RoomNode3D room)
         {
@@ -25,7 +25,7 @@ namespace MPewsey.ManiaMapGodot.Editor
             return grid;
         }
 
-        private static Mesh CreateBoxEdgeMesh()
+        private static ArrayMesh CreateBoxEdgeMesh()
         {
             var mesh = new ArrayMesh();
             var tool = new SurfaceTool();
@@ -88,8 +88,14 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         private void OnCellGridChanged()
         {
-            if (IsInstanceValid(Room) && ManiaMapPlugin.PluginIsValid())
+            if (Engine.IsEditorHint() && IsInstanceValid(Room))
                 PopulateCells();
+        }
+
+        private static bool DisplayCells()
+        {
+            return ManiaMapPlugin.PluginIsValid()
+                && ManiaMapPlugin.Current.RoomNode3DToolbar.DisplayCells;
         }
 
         private void PopulateCells()
@@ -98,7 +104,7 @@ namespace MPewsey.ManiaMapGodot.Editor
             var index = 0;
             var cells = Room.ActiveCells;
             var cellSize = Room.CellSize;
-            var displayCells = ManiaMapPlugin.Current.RoomNode3DToolbar.DisplayCells;
+            var displayCells = DisplayCells();
 
             for (int i = 0; i < cells.Count; i++)
             {

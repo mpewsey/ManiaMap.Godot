@@ -251,7 +251,9 @@ namespace MPewsey.ManiaMapGodot.Graphs.Editor
         {
             CloseOutGraphResource();
             ClearCanvas();
-            ManiaMapPlugin.Current?.HideGraphEditorDock();
+
+            if (IsInstanceValid(ManiaMapPlugin.Current))
+                ManiaMapPlugin.Current.HideGraphEditorDock();
         }
 
         private void OnConnectionRequest(StringName fromNodeName, long fromSlot, StringName toNodeName, long toSlot)
