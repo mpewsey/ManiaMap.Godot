@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_v3k0d"]
 script = ExtResource("2_ng2ug")
 Id = 846040505
-TemplateName = "Square3x3Room"
+TemplateName = "Square 3x3 Room 3D"
 ScenePath = ""
 SceneUidPath = ""
 SerializedText = ""
@@ -17,7 +17,7 @@ SerializedText = ""
 [sub_resource type="BoxMesh" id="BoxMesh_d88rq"]
 size = Vector3(18, 0.5, 18)
 
-[node name="Square3x3Room" type="Node3D"]
+[node name="Square3x3Room3D" type="Node3D"]
 script = ExtResource("1_sxisd")
 RoomTemplate = SubResource("Resource_v3k0d")
 Rows = 3

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CollectableGroup" load_steps=6 format=3 uid="uid://5cjmos17qwf2"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/CollectableResource.cs" id="1_gtyus"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/CollectableGroup.cs" id="1_h6xis"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/CollectableGroupEntry.cs" id="2_xhqru"]
+
+[sub_resource type="Resource" id="Resource_tbkkx"]
+script = ExtResource("1_gtyus")
+Id = 1483837342
+
+[sub_resource type="Resource" id="Resource_gcrqw"]
+script = ExtResource("2_xhqru")
+Collectable = SubResource("Resource_tbkkx")
+Quantity = 8
+
+[resource]
+script = ExtResource("1_h6xis")
+GroupName = "Default"
+Entries = [SubResource("Resource_gcrqw")]

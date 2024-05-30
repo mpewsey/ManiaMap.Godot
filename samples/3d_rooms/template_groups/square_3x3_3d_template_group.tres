@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TemplateGroup" load_steps=2 format=3 uid="uid://dphpmgeuueidn"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/TemplateGroup.cs" id="1_vatro"]
+
+[resource]
+script = ExtResource("1_vatro")
+Name = "3D Square 3x3"
+Entries = []

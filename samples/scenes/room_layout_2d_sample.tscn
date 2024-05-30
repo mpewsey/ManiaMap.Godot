@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://r4g6j31sivcq"]
+[gd_scene load_steps=14 format=3 uid="uid://r4g6j31sivcq"]
 
 [ext_resource type="Script" path="res://samples/scripts/RoomLayout2DSample.cs" id="1_h7rix"]
 [ext_resource type="Resource" uid="uid://cpbx1jxf4xwvd" path="res://samples/2d_rooms/template_groups/2d_room_template_database.tres" id="2_7b3bw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphsInput.cs" id="6_2aawm"]
 [ext_resource type="Resource" uid="uid://c2vpyp38ge6oo" path="res://samples/graphs/cross_graph.tres" id="7_esaaw"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGroupsInput.cs" id="8_t8pl4"]
+[ext_resource type="Resource" uid="uid://bq7q406xfxw5t" path="res://samples/2d_rooms/collectable_group.tres" id="8_v0uie"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphSelectorStep.cs" id="9_ld5ga"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphRandomizerStep.cs" id="10_a52k0"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGeneratorStep.cs" id="11_ykao8"]
@@ -39,6 +40,7 @@ LayoutGraphs = [ExtResource("7_esaaw")]
 
 [node name="CollectableGroupsInput" type="Node" parent="GenerationPipeline/Inputs"]
 script = ExtResource("8_t8pl4")
+CollectableGroups = [ExtResource("8_v0uie")]
 
 [node name="Steps" type="Node" parent="GenerationPipeline"]
 

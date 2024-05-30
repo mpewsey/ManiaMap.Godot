@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphEdge.cs" id="1_cwcn5"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphResource.cs" id="1_fbh8l"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphNode.cs" id="2_4ovvf"]
-[ext_resource type="Resource" uid="uid://biswrlal64ytr" path="res://samples/2d_rooms/template_groups/single_square_template_group.tres" id="2_5tfr5"]
+[ext_resource type="Resource" uid="uid://biswrlal64ytr" path="res://samples/2d_rooms/template_groups/square_3x3_2d_template_group.tres" id="2_5tfr5"]
 
 [sub_resource type="Resource" id="Resource_vbfkl"]
 script = ExtResource("1_cwcn5")
