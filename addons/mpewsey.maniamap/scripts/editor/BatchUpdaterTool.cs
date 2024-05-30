@@ -41,10 +41,19 @@ namespace MPewsey.ManiaMapGodot.Editor
             var scene = ResourceLoader.Load<PackedScene>(path);
             var node = scene.Instantiate<Node>(PackedScene.GenEditState.Instance);
 
-            if (node is IRoomNode room)
+            if (node is RoomNode2D room2d)
             {
-                room.UpdateRoomTemplate();
+                room2d.UpdateRoomTemplate();
                 return SaveScene(scene, node);
+            }
+            else if (node is RoomNode3D room3d)
+            {
+                // We have to add 3D scenes to the tree otherwise we get errors when accessing global positions.
+                ManiaMapPlugin.Current.AddChild(node);
+                room3d.UpdateRoomTemplate();
+                var success = SaveScene(scene, node);
+                node.QueueFree();
+                return success;
             }
 
             GD.PrintErr($"Skipping unhandled room type: (Type = {node.GetType()}, ScenePath = {path})");
