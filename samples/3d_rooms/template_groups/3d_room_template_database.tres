@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="RoomTemplateDatabase" load_steps=2 format=3 uid="uid://l38x064m8j7q"]
+[gd_resource type="Resource" script_class="RoomTemplateDatabase" load_steps=3 format=3 uid="uid://l38x064m8j7q"]
 
+[ext_resource type="Resource" uid="uid://dphpmgeuueidn" path="res://samples/3d_rooms/template_groups/square_3x3_3d_template_group.tres" id="1_qdb78"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomTemplateDatabase.cs" id="1_y3w6b"]
 
 [resource]
 script = ExtResource("1_y3w6b")
-TemplateGroups = []
+TemplateGroups = [ExtResource("1_qdb78")]
