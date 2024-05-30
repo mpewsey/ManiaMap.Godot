@@ -5,9 +5,9 @@ using MPewsey.ManiaMapGodot.Generators;
 namespace MPewsey.ManiaMapGodot.Samples
 {
     [GlobalClass]
-    public partial class RoomLayoutSample : Node
+    public partial class RoomLayout2DSample : Node
     {
-        [Export] public CameraController Camera { get; set; }
+        [Export] public Camera2DController Camera { get; set; }
         [Export] public Node2D Container { get; set; }
         [Export] public GenerationPipeline Pipeline { get; set; }
         [Export] public Button GenerateButton { get; set; }

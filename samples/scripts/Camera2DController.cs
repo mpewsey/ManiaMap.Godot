@@ -4,7 +4,7 @@ using MPewsey.ManiaMap;
 namespace MPewsey.ManiaMapGodot.Samples
 {
     [GlobalClass]
-    public partial class CameraController : Camera2D
+    public partial class Camera2DController : Camera2D
     {
         [Export] public float ScrollSpeed { get; set; } = 1;
         [Export] public float ZoomSpeed { get; set; } = 2;

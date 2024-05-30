@@ -4,6 +4,8 @@ namespace MPewsey.ManiaMapGodot
 {
     /// <summary>
     /// A room flag that can be set or toggled to alter the `LayoutState`.
+    /// 
+    /// See IRoomFlagExtensions for additional methods usable by this class.
     /// </summary>
     [Tool]
     [GlobalClass]

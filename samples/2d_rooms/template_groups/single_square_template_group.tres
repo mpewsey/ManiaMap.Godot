@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/TemplateGroup.cs" id="1_pt2ha"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/TemplateGroupEntry.cs" id="1_qxkda"]
-[ext_resource type="Resource" uid="uid://bkwrb8mkh8tol" path="res://samples/rooms/square_3x3_room.room_template.tres" id="1_s3kec"]
+[ext_resource type="Resource" uid="uid://bkwrb8mkh8tol" path="res://samples/2d_rooms/square_3x3_room.room_template.tres" id="1_s3kec"]
 
 [sub_resource type="Resource" id="Resource_5ew7m"]
 script = ExtResource("1_qxkda")

@@ -6,6 +6,8 @@ namespace MPewsey.ManiaMapGodot
 {
     /// <summary>
     /// A possible door location connecting two RoomNode2D.
+    /// 
+    /// See IDoorNodeExtensions for additional methods usable by this class.
     /// </summary>
     [Tool]
     [GlobalClass]

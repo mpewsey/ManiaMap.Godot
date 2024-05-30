@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvsavdbf16irg"
-path="res://.godot/imported/dungeon_tiles.png-730cdb474283441a2f63c502fb6fd3ca.ctex"
+path="res://.godot/imported/dungeon_tiles.png-2028b6ca8c0a131ec8084e9fa2fa6953.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://samples/tile_sets/dungeon_tiles.png"
-dest_files=["res://.godot/imported/dungeon_tiles.png-730cdb474283441a2f63c502fb6fd3ca.ctex"]
+source_file="res://samples/2d_rooms/tile_sets/dungeon_tiles.png"
+dest_files=["res://.godot/imported/dungeon_tiles.png-2028b6ca8c0a131ec8084e9fa2fa6953.ctex"]
 
 [params]
 

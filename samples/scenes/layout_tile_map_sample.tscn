@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://samples/scripts/LayoutTileMapSample.cs" id="1_dndsn"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/drawing/LayoutTileMap.cs" id="2_n2qxi"]
 [ext_resource type="Resource" uid="uid://bwrla0hqiarrv" path="res://addons/mpewsey.maniamap/map_tiles/default_map_tile_set.tres" id="3_phkx2"]
-[ext_resource type="Script" path="res://samples/scripts/CameraController.cs" id="4_s7yhs"]
+[ext_resource type="Script" path="res://samples/scripts/Camera2DController.cs" id="4_s7yhs"]
 
 [node name="LayoutTileMapSample" type="Node" node_paths=PackedStringArray("Camera", "Map", "GenerateButton", "MessageLabel")]
 script = ExtResource("1_dndsn")

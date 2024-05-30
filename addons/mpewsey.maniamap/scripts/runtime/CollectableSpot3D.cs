@@ -4,6 +4,8 @@ namespace MPewsey.ManiaMapGodot
 {
     /// <summary>
     /// A possible collectable location within a RoomNode3D.
+    /// 
+    /// See ICollectableSpotExtensions for additional methods usable by this class.
     /// </summary>
     [Tool]
     [GlobalClass]

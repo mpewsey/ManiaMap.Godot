@@ -1,0 +1,192 @@
+[gd_scene load_steps=8 format=3 uid="uid://i0l4nkbmjqye"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomNode3D.cs" id="1_sxisd"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomTemplateResource.cs" id="2_ng2ug"]
+[ext_resource type="PackedScene" uid="uid://3x7dw0wnyye5" path="res://samples/3d_rooms/door_node_3d.tscn" id="3_hc8wb"]
+[ext_resource type="PackedScene" uid="uid://borfbd82yciv5" path="res://samples/3d_rooms/collectable_spot_3d.tscn" id="4_lptp0"]
+[ext_resource type="PackedScene" uid="uid://qd7xvywc8cjw" path="res://samples/3d_rooms/top_door_node_3d.tscn" id="5_ag8ud"]
+
+[sub_resource type="Resource" id="Resource_v3k0d"]
+script = ExtResource("2_ng2ug")
+Id = 846040505
+TemplateName = "Square3x3Room"
+ScenePath = ""
+SceneUidPath = ""
+SerializedText = ""
+
+[sub_resource type="BoxMesh" id="BoxMesh_d88rq"]
+size = Vector3(18, 0.5, 18)
+
+[node name="Square3x3Room" type="Node3D"]
+script = ExtResource("1_sxisd")
+RoomTemplate = SubResource("Resource_v3k0d")
+Rows = 3
+Columns = 3
+CellSize = Vector3(6, 6, 6)
+ActiveCells = [[true, true, true], [true, true, true], [true, true, true]]
+
+[node name="WallDoors" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="DoorNode3D" parent="WallDoors" node_paths=PackedStringArray("Room") instance=ExtResource("3_hc8wb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+Room = NodePath("../..")
+
+[node name="DoorNode3D2" parent="WallDoors" node_paths=PackedStringArray("Room") instance=ExtResource("3_hc8wb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+Room = NodePath("../..")
+Column = 1
+
+[node name="DoorNode3D3" parent="WallDoors" node_paths=PackedStringArray("Room") instance=ExtResource("3_hc8wb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+Room = NodePath("../..")
+Column = 2
+
+[node name="DoorNode3D4" parent="WallDoors" node_paths=PackedStringArray("Room") instance=ExtResource("3_hc8wb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 3)
+DoorDirection = 3
+Room = NodePath("../..")
+
+[node name="DoorNode3D5" parent="WallDoors" node_paths=PackedStringArray("Room") instance=ExtResource("3_hc8wb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 9)
+DoorDirection = 3
+Room = NodePath("../..")
+Row = 1
+
+[node name="DoorNode3D6" parent="WallDoors" node_paths=PackedStringArray("Room") instance=ExtResource("3_hc8wb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 15)
+DoorDirection = 3
+Room = NodePath("../..")
+Row = 2
+
+[node name="DoorNode3D7" parent="WallDoors" node_paths=PackedStringArray("Room") instance=ExtResource("3_hc8wb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18, 0, 15)
+DoorDirection = 2
+Room = NodePath("../..")
+Row = 2
+Column = 2
+
+[node name="DoorNode3D8" parent="WallDoors" node_paths=PackedStringArray("Room") instance=ExtResource("3_hc8wb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18, 0, 9)
+DoorDirection = 2
+Room = NodePath("../..")
+Row = 1
+Column = 2
+
+[node name="DoorNode3D9" parent="WallDoors" node_paths=PackedStringArray("Room") instance=ExtResource("3_hc8wb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18, 0, 3)
+DoorDirection = 2
+Room = NodePath("../..")
+Column = 2
+
+[node name="DoorNode3D10" parent="WallDoors" node_paths=PackedStringArray("Room") instance=ExtResource("3_hc8wb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, 18)
+DoorDirection = 1
+Room = NodePath("../..")
+Row = 2
+
+[node name="DoorNode3D11" parent="WallDoors" node_paths=PackedStringArray("Room") instance=ExtResource("3_hc8wb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, 0, 18)
+DoorDirection = 1
+Room = NodePath("../..")
+Row = 2
+Column = 1
+
+[node name="DoorNode3D12" parent="WallDoors" node_paths=PackedStringArray("Room") instance=ExtResource("3_hc8wb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 15, 0, 18)
+DoorDirection = 1
+Room = NodePath("../..")
+Row = 2
+Column = 2
+
+[node name="TopDoors" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 6, 3)
+
+[node name="TopDoorNode3D" parent="TopDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_ag8ud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+DoorDirection = 4
+Room = NodePath("../..")
+
+[node name="TopDoorNode3D6" parent="TopDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_ag8ud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 11)
+DoorDirection = 4
+Room = NodePath("../..")
+Row = 2
+
+[node name="TopDoorNode3D7" parent="TopDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_ag8ud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6)
+DoorDirection = 4
+Room = NodePath("../..")
+Row = 1
+
+[node name="TopDoorNode3D8" parent="TopDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_ag8ud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+DoorDirection = 4
+Room = NodePath("../..")
+Row = 1
+Column = 1
+
+[node name="TopDoorNode3D2" parent="TopDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_ag8ud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 1)
+DoorDirection = 4
+Room = NodePath("../..")
+Column = 1
+
+[node name="TopDoorNode3D3" parent="TopDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_ag8ud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 1)
+DoorDirection = 4
+Room = NodePath("../..")
+Column = 2
+
+[node name="TopDoorNode3D4" parent="TopDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_ag8ud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 6)
+DoorDirection = 4
+Room = NodePath("../..")
+Row = 1
+Column = 2
+
+[node name="TopDoorNode3D5" parent="TopDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_ag8ud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 11)
+DoorDirection = 4
+Room = NodePath("../..")
+Row = 2
+Column = 2
+
+[node name="TopDoorNode3D9" parent="TopDoors" node_paths=PackedStringArray("Room") instance=ExtResource("5_ag8ud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 11)
+DoorDirection = 4
+Room = NodePath("../..")
+Row = 2
+Column = 1
+
+[node name="CollectableSpots" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollectableSpot3D" parent="CollectableSpots" node_paths=PackedStringArray("Room") instance=ExtResource("4_lptp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+Id = 346837833
+Room = NodePath("../..")
+
+[node name="CollectableSpot3D2" parent="CollectableSpots" node_paths=PackedStringArray("Room") instance=ExtResource("4_lptp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 17)
+Id = 395779143
+Room = NodePath("../..")
+Row = 2
+
+[node name="CollectableSpot3D3" parent="CollectableSpots" node_paths=PackedStringArray("Room") instance=ExtResource("4_lptp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 17)
+Id = 1950019376
+Room = NodePath("../..")
+Row = 2
+Column = 2
+
+[node name="CollectableSpot3D4" parent="CollectableSpots" node_paths=PackedStringArray("Room") instance=ExtResource("4_lptp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 1)
+Id = 141321685
+Room = NodePath("../..")
+Column = 2
+
+[node name="Ceiling" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 5.75, 9)
+visible = false
+mesh = SubResource("BoxMesh_d88rq")

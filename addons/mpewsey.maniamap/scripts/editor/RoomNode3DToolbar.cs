@@ -85,6 +85,9 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         private void OnRoomExitedTree()
         {
+            if (IsInstanceValid(Room))
+                Room.TreeExited -= OnRoomExitedTree;
+
             Room = null;
         }
 

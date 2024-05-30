@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://q5m1xi8abbjp"]
 
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomNode2D.cs" id="1_c0wlp"]
-[ext_resource type="Resource" uid="uid://bkwrb8mkh8tol" path="res://samples/rooms/square_3x3_room.room_template.tres" id="2_alrqx"]
-[ext_resource type="TileSet" uid="uid://ykn7rmdr2b4y" path="res://samples/tile_sets/dungeon_tile_set.tres" id="2_xfoc3"]
-[ext_resource type="PackedScene" uid="uid://bf2qehl2sd4ks" path="res://samples/rooms/north_door_node_2d.tscn" id="3_fux8u"]
-[ext_resource type="PackedScene" uid="uid://cjye64fgx2q1" path="res://samples/rooms/south_door_node_2d.tscn" id="4_3m2hq"]
-[ext_resource type="PackedScene" uid="uid://xkhj4cw4nxkw" path="res://samples/rooms/west_door_node_2d.tscn" id="5_2qq6f"]
-[ext_resource type="PackedScene" uid="uid://b6kteenwbvjcj" path="res://samples/rooms/east_door_node_2d.tscn" id="6_1puma"]
-[ext_resource type="PackedScene" uid="uid://bdeivfhh25np3" path="res://samples/rooms/treasure.tscn" id="8_vgecj"]
+[ext_resource type="Resource" uid="uid://bkwrb8mkh8tol" path="res://samples/2d_rooms/square_3x3_room.room_template.tres" id="2_alrqx"]
+[ext_resource type="TileSet" uid="uid://ykn7rmdr2b4y" path="res://samples/2d_rooms/tile_sets/dungeon_tile_set.tres" id="2_xfoc3"]
+[ext_resource type="PackedScene" uid="uid://bf2qehl2sd4ks" path="res://samples/2d_rooms/north_door_node_2d.tscn" id="3_fux8u"]
+[ext_resource type="PackedScene" uid="uid://cjye64fgx2q1" path="res://samples/2d_rooms/south_door_node_2d.tscn" id="4_3m2hq"]
+[ext_resource type="PackedScene" uid="uid://xkhj4cw4nxkw" path="res://samples/2d_rooms/west_door_node_2d.tscn" id="5_2qq6f"]
+[ext_resource type="PackedScene" uid="uid://b6kteenwbvjcj" path="res://samples/2d_rooms/east_door_node_2d.tscn" id="6_1puma"]
+[ext_resource type="PackedScene" uid="uid://bdeivfhh25np3" path="res://samples/2d_rooms/treasure.tscn" id="8_vgecj"]
 
 [node name="Square3x3Room" type="Node2D"]
 script = ExtResource("1_c0wlp")
