@@ -6,6 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_rgpfh"]
 script = ExtResource("1_vq4c8")
+EditId = false
 Id = 931928185
 
 [sub_resource type="Resource" id="Resource_f2d6b"]

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cjye64fgx2q1" path="res://samples/2d_rooms/south_door_node_2d.tscn" id="4_3m2hq"]
 [ext_resource type="PackedScene" uid="uid://xkhj4cw4nxkw" path="res://samples/2d_rooms/west_door_node_2d.tscn" id="5_2qq6f"]
 [ext_resource type="PackedScene" uid="uid://b6kteenwbvjcj" path="res://samples/2d_rooms/east_door_node_2d.tscn" id="6_1puma"]
-[ext_resource type="PackedScene" uid="uid://bdeivfhh25np3" path="res://samples/2d_rooms/treasure.tscn" id="8_vgecj"]
+[ext_resource type="PackedScene" uid="uid://bdeivfhh25np3" path="res://samples/2d_rooms/collectable_spot_2d.tscn" id="8_vgecj"]
 
 [node name="Square3x3Room2D" type="Node2D"]
 script = ExtResource("1_c0wlp")

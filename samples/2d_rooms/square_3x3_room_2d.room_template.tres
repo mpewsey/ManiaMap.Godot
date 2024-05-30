@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_ah531")
+EditId = false
 Id = 1626833756
 TemplateName = "Square 3x3 Room 2D"
 ScenePath = "res://samples/2d_rooms/square_3x3_room_2d.tscn"
