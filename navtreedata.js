@@ -27,6 +27,7 @@ var NAVTREE =
   [ "ManiaMap.Godot", "index.html", [
     [ "About", "index.html#autotoc_md1", null ],
     [ "Installation", "index.html#autotoc_md2", null ],
+    [ "Samples", "index.html#autotoc_md3", null ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ],
       [ "Package Functions", "namespacemembers.html", [
