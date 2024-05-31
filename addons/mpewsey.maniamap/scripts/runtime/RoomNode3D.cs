@@ -271,9 +271,22 @@ namespace MPewsey.ManiaMapGodot
             return true;
         }
 
+        /// <summary>
+        /// Creates CellArea3D for all active cells.
+        /// </summary>
+        /// <param name="cellCollisionMask">The cell collision mask.</param>
         private void CreateCellAreas(uint cellCollisionMask)
         {
+            for (int i = 0; i < ActiveCells.Count; i++)
+            {
+                var row = ActiveCells[i];
 
+                for (int j = 0; j < row.Count; j++)
+                {
+                    if (row[j])
+                        CellArea3D.CreateInstance(i, j, this, cellCollisionMask);
+                }
+            }
         }
 
         /// <summary>

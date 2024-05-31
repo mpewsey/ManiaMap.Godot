@@ -1,0 +1,92 @@
+[gd_scene load_steps=17 format=3 uid="uid://duaufvulkyino"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationPipeline.cs" id="1_qt3sn"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationIntInput.cs" id="2_1nxns"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/RandomSeedInput.cs" id="3_ev0sj"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphsInput.cs" id="4_bf2lo"]
+[ext_resource type="Resource" uid="uid://e4d85cd7126l" path="res://samples/3d_rooms/graphs/cross_graph_3d.tres" id="5_57mkp"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGroupsInput.cs" id="6_b4mhk"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphSelectorStep.cs" id="7_2hrsn"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphRandomizerStep.cs" id="8_f1odl"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGeneratorStep.cs" id="9_vxunf"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGeneratorStep.cs" id="10_hjq6t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5qrng"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_rhlmc"]
+sky_material = SubResource("ProceduralSkyMaterial_5qrng")
+
+[sub_resource type="Environment" id="Environment_srts6"]
+background_mode = 2
+sky = SubResource("Sky_rhlmc")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ujdb6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_joo6h"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gqsr6"]
+
+[node name="TestRoom3DCellAreas" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_srts6")
+
+[node name="GenerationPipeline" type="Node" parent="."]
+script = ExtResource("1_qt3sn")
+
+[node name="Inputs" type="Node" parent="GenerationPipeline"]
+
+[node name="LayoutIdInput" type="Node" parent="GenerationPipeline/Inputs"]
+script = ExtResource("2_1nxns")
+InputName = "LayoutId"
+Value = 530369953
+
+[node name="RandomSeedInput" type="Node" parent="GenerationPipeline/Inputs"]
+script = ExtResource("3_ev0sj")
+
+[node name="LayoutGraphsInput" type="Node" parent="GenerationPipeline/Inputs"]
+script = ExtResource("4_bf2lo")
+LayoutGraphs = [ExtResource("5_57mkp")]
+
+[node name="CollectableGroupsInput" type="Node" parent="GenerationPipeline/Inputs"]
+script = ExtResource("6_b4mhk")
+
+[node name="Steps" type="Node" parent="GenerationPipeline"]
+
+[node name="LayoutGraphSelectorStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("7_2hrsn")
+
+[node name="LayoutGraphRandomizerStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("8_f1odl")
+
+[node name="LayoutGeneratorStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("9_vxunf")
+
+[node name="CollectableGeneratorStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("10_hjq6t")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 20, 20, 20)
+projection = 1
+size = 50.0
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 1000, 1000)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_ujdb6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+material_override = SubResource("StandardMaterial3D_joo6h")
+mesh = SubResource("BoxMesh_gqsr6")

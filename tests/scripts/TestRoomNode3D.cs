@@ -12,11 +12,12 @@ using System.Threading.Tasks;
 namespace MPewsey.ManiaMapGodot.Tests
 {
     [TestSuite]
-    public class TestRoomNode2D
+    public class TestRoomNode3D
     {
-        private const string TestCellAreasScene = "uid://i1ywx2t50wxg";
-        private const string RoomTemplateDatabase = "uid://cpbx1jxf4xwvd";
-        private const string ArtifactDirectory = "user://tests/room2d/";
+        private const string EmptyScene = "uid://m8fcccufss1";
+        private const string TestCellAreasScene = "uid://duaufvulkyino";
+        private const string RoomTemplateDatabase = "uid://l38x064m8j7q";
+        private const string ArtifactDirectory = "user://tests/room3d/";
 
         [Before]
         public void Before()
@@ -32,21 +33,24 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestAutoAssign()
         {
-            var room = new RoomNode2D() { Rows = 3, Columns = 2, CellSize = new Vector2(100, 100) };
-            var feature = new Feature2D() { Position = new Vector2(150, 250) };
+            var runner = SceneRunner.RunScene(EmptyScene);
+            var root = runner.Scene();
+            var room = new RoomNode3D() { Rows = 3, Columns = 2, CellSize = new Vector3(100, 100, 100) };
+            var feature = new Feature3D() { Position = new Vector3(150, 0, 250) };
             room.AddChild(feature);
+            root.AddChild(room);
+
             room.AutoAssign();
             Assertions.AssertThat(feature.Room == room).IsTrue();
             Assertions.AssertThat(feature.Row).IsEqual(2);
             Assertions.AssertThat(feature.Column).IsEqual(1);
-            room.QueueFree();
         }
 
         [TestCase]
         public void TestUpdateRoomTemplateResourceReturnsFalseIfNotSavedToFile()
         {
-            var room = new RoomNode2D() { Rows = 3, Columns = 2, CellSize = new Vector2(100, 100) };
-            var feature = new Feature2D() { Position = new Vector2(150, 250) };
+            var room = new RoomNode3D() { Rows = 3, Columns = 2, CellSize = new Vector3(100, 100, 100) };
+            var feature = new Feature3D() { Position = new Vector3(150, 0, 250) };
             room.AddChild(feature);
             Assertions.AssertThat(room.UpdateRoomTemplate()).IsFalse();
             room.QueueFree();
@@ -59,9 +63,9 @@ namespace MPewsey.ManiaMapGodot.Tests
             var path = ArtifactDirectory + "test_room.tscn";
             var templatePath = ArtifactDirectory + "test_room.room_template.tres";
             var packedScene = new PackedScene();
-            var room = new RoomNode2D() { Rows = 3, Columns = 2, CellSize = new Vector2(100, 100) };
-            var feature = new Feature2D() { Position = new Vector2(150, 250) };
-            var door = new DoorNode2D();
+            var room = new RoomNode3D() { Rows = 3, Columns = 2, CellSize = new Vector3(100, 100, 100) };
+            var feature = new Feature3D() { Position = new Vector3(150, 0, 250) };
+            var door = new DoorNode3D();
 
             room.AddChild(feature);
             room.AddChild(door);
@@ -73,14 +77,18 @@ namespace MPewsey.ManiaMapGodot.Tests
             room.QueueFree();
 
             // Open and check the saved scenes.
+            var runner = SceneRunner.RunScene(EmptyScene);
+            var root = runner.Scene();
             var scene = ResourceLoader.Load<PackedScene>(path);
-            var savedRoom = scene.Instantiate<RoomNode2D>();
+            var savedRoom = scene.Instantiate<RoomNode3D>();
+            root.AddChild(savedRoom);
+
             Assertions.AssertThat(savedRoom.UpdateRoomTemplate()).IsTrue();
             var template = ResourceLoader.Load<RoomTemplateResource>(templatePath);
             Assertions.AssertThat(savedRoom.RoomTemplate == template).IsTrue();
             Assertions.AssertThat(ResourceLoader.Exists(templatePath)).IsTrue();
 
-            var savedFeature = savedRoom.GetChild(0) as Feature2D;
+            var savedFeature = savedRoom.GetChild(0) as Feature3D;
             Assertions.AssertThat(savedFeature != null).IsTrue();
             Assertions.AssertThat(savedFeature.Room == savedRoom).IsTrue();
             Assertions.AssertThat(savedFeature.Row).IsEqual(2);
@@ -91,9 +99,9 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestValidateRoomFlagsThrowsException()
         {
-            var room = new RoomNode2D();
-            var flag1 = new RoomFlag2D() { Id = 1 };
-            var flag2 = new RoomFlag2D() { Id = 1 };
+            var room = new RoomNode3D();
+            var flag1 = new RoomFlag3D() { Id = 1 };
+            var flag2 = new RoomFlag3D() { Id = 1 };
             room.AddChild(flag1);
             room.AddChild(flag2);
             Assertions.AssertThrown(() => room.ValidateRoomFlags()).IsInstanceOf<DuplicateIdException>();
@@ -103,12 +111,12 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestValidateRoomFlags()
         {
-            var room = new RoomNode2D();
-            var flag1 = new RoomFlag2D() { Id = 1 };
-            var flag2 = new RoomFlag2D() { Id = 2 };
+            var room = new RoomNode3D();
+            var flag1 = new RoomFlag3D() { Id = 1 };
+            var flag2 = new RoomFlag3D() { Id = 2 };
             room.AddChild(flag1);
             room.AddChild(flag2);
-            Assertions.AssertThat(room.FindChildren("*", nameof(RoomFlag2D), true, false).Count).IsEqual(2);
+            Assertions.AssertThat(room.FindChildren("*", nameof(RoomFlag3D), true, false).Count).IsEqual(2);
             room.ValidateRoomFlags();
             room.QueueFree();
         }
@@ -116,7 +124,7 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestCellIndexExists()
         {
-            var room = new RoomNode2D() { Rows = 2, Columns = 3 };
+            var room = new RoomNode3D() { Rows = 2, Columns = 3 };
             Assertions.AssertThat(room.CellIndexExists(0, 0)).IsTrue();
             Assertions.AssertThat(room.CellIndexExists(1, 0)).IsTrue();
             Assertions.AssertThat(room.CellIndexExists(0, 2)).IsTrue();
@@ -149,16 +157,15 @@ namespace MPewsey.ManiaMapGodot.Tests
 
             // Create room and hook up signals to detect the cells the test area is touching.
             var database = ResourceLoader.Load<RoomTemplateDatabase>(RoomTemplateDatabase);
-            var room = database.CreateRoom2DInstance(roomId, root);
+            var room = database.CreateRoom3DInstance(roomId, root);
             var cellSize = room.CellSize;
             room.OnCellAreaEntered += (area, collision) => indexes.Add(new Vector2(area.Row, area.Column));
             room.OnCellAreaExited += (area, collision) => indexes.Remove(new Vector2(area.Row, area.Column));
 
             // Move the area around and test the detected areas.
-            var area = root.FindChild(nameof(Area2D)) as Area2D;
+            var area = root.FindChild(nameof(Area3D)) as Area3D;
             Assertions.AssertThat(area != null).IsTrue();
             Assertions.AssertThat(area.CollisionLayer).IsEqual(cellCollisionMask);
-            area.MoveToFront();
 
             // Area should start out with no collisions
             await runner.AwaitPhysicsFrames();
@@ -166,14 +173,14 @@ namespace MPewsey.ManiaMapGodot.Tests
             Assertions.AssertThat(roomState.CellIsVisible(0, 0)).IsFalse();
 
             // Move area inside (0, 0) cell.
-            area.GlobalPosition = new Vector2(10, 10);
+            area.GlobalPosition = new Vector3(3, 0, 3);
             await runner.AwaitPhysicsFrames();
             Assertions.AssertThat(indexes.Count).IsEqual(1);
             Assertions.AssertThat(indexes.Contains(new Vector2(0, 0))).IsTrue();
             Assertions.AssertThat(roomState.CellIsVisible(0, 0)).IsTrue();
 
             // Move area to border of (0, 0) and (0, 1) cell.
-            area.GlobalPosition = new Vector2(cellSize.X, 0);
+            area.GlobalPosition = new Vector3(cellSize.X, 0, 0);
             await runner.AwaitPhysicsFrames();
             Assertions.AssertThat(indexes.Count).IsEqual(2);
             Assertions.AssertThat(indexes.Contains(new Vector2(0, 0))).IsTrue();
@@ -186,7 +193,7 @@ namespace MPewsey.ManiaMapGodot.Tests
             {
                 for (int j = 1; j < room.Columns; j++)
                 {
-                    area.GlobalPosition = cellSize * new Vector2(j, i);
+                    area.GlobalPosition = cellSize * new Vector3(j, 0, i);
                     await runner.AwaitPhysicsFrames();
                     Assertions.AssertThat(indexes.Count).IsEqual(4);
                     Assertions.AssertThat(indexes.Contains(new Vector2(i, j))).IsTrue();
@@ -197,7 +204,7 @@ namespace MPewsey.ManiaMapGodot.Tests
             }
 
             // Move area outside of all cells
-            area.GlobalPosition = new Vector2(-100, -100);
+            area.GlobalPosition = new Vector3(-100, -100, -100);
             await runner.AwaitPhysicsFrames();
             Assertions.AssertThat(indexes.Count).IsEqual(0);
         }
@@ -205,7 +212,7 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestGetCellActivityThrowsOutOfRangeException()
         {
-            var room = new RoomNode2D() { Rows = 3, Columns = 3 };
+            var room = new RoomNode3D() { Rows = 3, Columns = 3 };
             Assertions.AssertThrown(() => room.GetCellActivity(-1, -1)).IsInstanceOf<IndexOutOfRangeException>();
             Assertions.AssertThrown(() => room.GetCellActivity(-1, -1)).IsInstanceOf<IndexOutOfRangeException>();
             room.QueueFree();
@@ -214,7 +221,7 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestSetCellActivityByBoolean()
         {
-            var room = new RoomNode2D() { Rows = 3, Columns = 3 };
+            var room = new RoomNode3D() { Rows = 3, Columns = 3 };
             Assertions.AssertThat(room.GetCellActivity(0, 0)).IsTrue();
             room.SetCellActivity(0, 0, false);
             Assertions.AssertThat(room.GetCellActivity(0, 0)).IsFalse();
@@ -224,7 +231,7 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestSetCellActivity()
         {
-            var room = new RoomNode2D() { Rows = 3, Columns = 3 };
+            var room = new RoomNode3D() { Rows = 3, Columns = 3 };
             Assertions.AssertThat(room.GetCellActivity(0, 0)).IsTrue();
             room.SetCellActivity(0, 0, CellActivity.Deactivate);
             Assertions.AssertThat(room.GetCellActivity(0, 0)).IsFalse();
@@ -242,7 +249,7 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestSetCellActivityThrowsOutOfRangeException()
         {
-            var room = new RoomNode2D() { Rows = 3, Columns = 3 };
+            var room = new RoomNode3D() { Rows = 3, Columns = 3 };
             Assertions.AssertThrown(() => room.SetCellActivity(-1, -1, true)).IsInstanceOf<IndexOutOfRangeException>();
             Assertions.AssertThrown(() => room.SetCellActivity(-1, -1, CellActivity.Deactivate)).IsInstanceOf<IndexOutOfRangeException>();
             room.QueueFree();
@@ -251,7 +258,7 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestSetCellActivities()
         {
-            var room = new RoomNode2D() { Rows = 3, Columns = 3 };
+            var room = new RoomNode3D() { Rows = 3, Columns = 3 };
             room.SetCellActivities(new Vector2I(1, 1), new Vector2I(2, 2), CellActivity.Deactivate);
             Assertions.AssertThat(room.GetCellActivity(1, 1)).IsFalse();
             Assertions.AssertThat(room.GetCellActivity(2, 1)).IsFalse();
@@ -268,7 +275,7 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestSetCellActivitiesOutOfRangeDoesNothing()
         {
-            var room = new RoomNode2D() { Rows = 3, Columns = 3 };
+            var room = new RoomNode3D() { Rows = 3, Columns = 3 };
             room.SetCellActivities(new Vector2I(-1, -1), new Vector2I(2, 2), CellActivity.Deactivate);
             Assertions.AssertThat(room.GetCellActivity(1, 1)).IsTrue();
             Assertions.AssertThat(room.GetCellActivity(2, 1)).IsTrue();
@@ -285,99 +292,119 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestFindClosestActiveCellIndex()
         {
-            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100) };
+            var runner = SceneRunner.RunScene(EmptyScene);
+            var root = runner.Scene();
+            var room = new RoomNode3D() { Rows = 3, Columns = 3, CellSize = new Vector3(100, 100, 100) };
+            root.AddChild(room);
+
             room.SetCellActivities(new Vector2I(1, 1), new Vector2I(2, 2), CellActivity.Deactivate);
-            Assertions.AssertThat(room.FindClosestActiveCellIndex(Vector2.Zero)).IsEqual(Vector2I.Zero);
-            Assertions.AssertThat(room.FindClosestActiveCellIndex(new Vector2(125, 50))).IsEqual(new Vector2I(0, 1));
-            Assertions.AssertThat(room.FindClosestActiveCellIndex(new Vector2(125, 150))).IsEqual(new Vector2I(1, 0));
-            Assertions.AssertThat(room.FindClosestActiveCellIndex(new Vector2(150, 125))).IsEqual(new Vector2I(0, 1));
+            Assertions.AssertThat(room.FindClosestActiveCellIndex(Vector3.Zero)).IsEqual(Vector2I.Zero);
+            Assertions.AssertThat(room.FindClosestActiveCellIndex(new Vector3(125, 1000, 50))).IsEqual(new Vector2I(0, 1));
+            Assertions.AssertThat(room.FindClosestActiveCellIndex(new Vector3(125, -1000, 150))).IsEqual(new Vector2I(1, 0));
+            Assertions.AssertThat(room.FindClosestActiveCellIndex(new Vector3(150, 0, 125))).IsEqual(new Vector2I(0, 1));
             room.QueueFree();
         }
 
         [TestCase]
         public void TestFindClosestDoorDirection()
         {
-            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100) };
-            Assertions.AssertThat(room.FindClosestDoorDirection(0, 0, new Vector2(50, 0))).IsEqual(DoorDirection.North);
-            Assertions.AssertThat(room.FindClosestDoorDirection(0, 0, new Vector2(0, 50))).IsEqual(DoorDirection.West);
-            Assertions.AssertThat(room.FindClosestDoorDirection(0, 0, new Vector2(50, 100))).IsEqual(DoorDirection.South);
-            Assertions.AssertThat(room.FindClosestDoorDirection(0, 0, new Vector2(100, 50))).IsEqual(DoorDirection.East);
+            var runner = SceneRunner.RunScene(EmptyScene);
+            var root = runner.Scene();
+            var room = new RoomNode3D() { Rows = 3, Columns = 3, CellSize = new Vector3(100, 100, 100) };
+            root.AddChild(room);
+
+            Assertions.AssertThat(room.FindClosestDoorDirection(0, 0, new Vector3(50, 50, 0))).IsEqual(DoorDirection.North);
+            Assertions.AssertThat(room.FindClosestDoorDirection(0, 0, new Vector3(0, 50, 50))).IsEqual(DoorDirection.West);
+            Assertions.AssertThat(room.FindClosestDoorDirection(0, 0, new Vector3(50, 50, 100))).IsEqual(DoorDirection.South);
+            Assertions.AssertThat(room.FindClosestDoorDirection(0, 0, new Vector3(100, 50, 50))).IsEqual(DoorDirection.East);
+            Assertions.AssertThat(room.FindClosestDoorDirection(0, 0, new Vector3(50, 100, 50))).IsEqual(DoorDirection.Top);
+            Assertions.AssertThat(room.FindClosestDoorDirection(0, 0, new Vector3(50, 0, 50))).IsEqual(DoorDirection.Bottom);
             room.QueueFree();
         }
 
         [TestCase]
         public void TestGlobalPositionToCellIndex()
         {
-            var offset = new Vector2(543, 9084);
-            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100), Position = offset };
+            var runner = SceneRunner.RunScene(EmptyScene);
+            var root = runner.Scene();
+            var offset = new Vector3(543, 9084, 234);
+            var room = new RoomNode3D() { Rows = 3, Columns = 3, CellSize = new Vector3(100, 100, 100), Position = offset };
+            root.AddChild(room);
 
             for (int i = 0; i < room.Rows; i++)
             {
                 for (int j = 0; j < room.Columns; j++)
                 {
-                    var position = room.CellSize * new Vector2(j, i) + offset + 0.5f * room.CellSize;
+                    var position = room.CellSize * new Vector3(j, 0, i) + offset + 0.5f * room.CellSize;
                     Assertions.AssertThat(room.GlobalPositionToCellIndex(position)).IsEqual(new Vector2I(i, j));
                 }
             }
 
-            Assertions.AssertThat(room.GlobalPositionToCellIndex(Vector2.Zero)).IsEqual(new Vector2I(-1, -1));
+            Assertions.AssertThat(room.GlobalPositionToCellIndex(Vector3.Zero)).IsEqual(new Vector2I(-1, -1));
             room.QueueFree();
         }
 
         [TestCase]
         public void TestLocalPositionToCellIndex()
         {
-            var offset = new Vector2(543, 9084);
-            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100), Position = offset };
+            var offset = new Vector3(543, 9084, 234);
+            var room = new RoomNode3D() { Rows = 3, Columns = 3, CellSize = new Vector3(100, 100, 100), Position = offset };
 
             for (int i = 0; i < room.Rows; i++)
             {
                 for (int j = 0; j < room.Columns; j++)
                 {
-                    var position = room.CellSize * new Vector2(j, i) + 0.5f * room.CellSize;
+                    var position = room.CellSize * new Vector3(j, 0, i) + 0.5f * room.CellSize;
                     Assertions.AssertThat(room.LocalPositionToCellIndex(position)).IsEqual(new Vector2I(i, j));
                 }
             }
 
-            Assertions.AssertThat(room.LocalPositionToCellIndex(new Vector2(-100, -100))).IsEqual(new Vector2I(-1, -1));
+            Assertions.AssertThat(room.LocalPositionToCellIndex(new Vector3(-100, -100, -100))).IsEqual(new Vector2I(-1, -1));
             room.QueueFree();
         }
 
         [TestCase]
         public void TestCellCenterLocalPosition()
         {
-            var offset = new Vector2(543, 9084);
-            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100), Position = offset };
-            Assertions.AssertThat(room.CellCenterLocalPosition(0, 0)).IsEqual(new Vector2(50, 50));
-            Assertions.AssertThat(room.CellCenterLocalPosition(1, 0)).IsEqual(new Vector2(50, 150));
-            Assertions.AssertThat(room.CellCenterLocalPosition(2, 0)).IsEqual(new Vector2(50, 250));
-            Assertions.AssertThat(room.CellCenterLocalPosition(0, 1)).IsEqual(new Vector2(150, 50));
-            Assertions.AssertThat(room.CellCenterLocalPosition(0, 2)).IsEqual(new Vector2(250, 50));
-            Assertions.AssertThat(room.CellCenterLocalPosition(1, 1)).IsEqual(new Vector2(150, 150));
-            Assertions.AssertThat(room.CellCenterLocalPosition(2, 2)).IsEqual(new Vector2(250, 250));
+            var offset = new Vector3(543, 9084, 234);
+            var room = new RoomNode3D() { Rows = 3, Columns = 3, CellSize = new Vector3(100, 100, 100), Position = offset };
+            Assertions.AssertThat(room.CellCenterLocalPosition(0, 0)).IsEqual(new Vector3(50, 50, 50));
+            Assertions.AssertThat(room.CellCenterLocalPosition(1, 0)).IsEqual(new Vector3(50, 50, 150));
+            Assertions.AssertThat(room.CellCenterLocalPosition(2, 0)).IsEqual(new Vector3(50, 50, 250));
+            Assertions.AssertThat(room.CellCenterLocalPosition(0, 1)).IsEqual(new Vector3(150, 50, 50));
+            Assertions.AssertThat(room.CellCenterLocalPosition(0, 2)).IsEqual(new Vector3(250, 50, 50));
+            Assertions.AssertThat(room.CellCenterLocalPosition(1, 1)).IsEqual(new Vector3(150, 50, 150));
+            Assertions.AssertThat(room.CellCenterLocalPosition(2, 2)).IsEqual(new Vector3(250, 50, 250));
             room.QueueFree();
         }
 
         [TestCase]
         public void TestCellCenterGlobalPosition()
         {
-            var offset = new Vector2(543, 9084);
-            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100), Position = offset };
-            Assertions.AssertThat(room.CellCenterGlobalPosition(0, 0)).IsEqual(new Vector2(50, 50) + offset);
-            Assertions.AssertThat(room.CellCenterGlobalPosition(1, 0)).IsEqual(new Vector2(50, 150) + offset);
-            Assertions.AssertThat(room.CellCenterGlobalPosition(2, 0)).IsEqual(new Vector2(50, 250) + offset);
-            Assertions.AssertThat(room.CellCenterGlobalPosition(0, 1)).IsEqual(new Vector2(150, 50) + offset);
-            Assertions.AssertThat(room.CellCenterGlobalPosition(0, 2)).IsEqual(new Vector2(250, 50) + offset);
-            Assertions.AssertThat(room.CellCenterGlobalPosition(1, 1)).IsEqual(new Vector2(150, 150) + offset);
-            Assertions.AssertThat(room.CellCenterGlobalPosition(2, 2)).IsEqual(new Vector2(250, 250) + offset);
+            var runner = SceneRunner.RunScene(EmptyScene);
+            var root = runner.Scene();
+            var offset = new Vector3(543, 9084, 234);
+            var room = new RoomNode3D() { Rows = 3, Columns = 3, CellSize = new Vector3(100, 100, 100), Position = offset };
+            root.AddChild(room);
+
+            Assertions.AssertThat(room.CellCenterGlobalPosition(0, 0)).IsEqual(new Vector3(50, 50, 50) + offset);
+            Assertions.AssertThat(room.CellCenterGlobalPosition(1, 0)).IsEqual(new Vector3(50, 50, 150) + offset);
+            Assertions.AssertThat(room.CellCenterGlobalPosition(2, 0)).IsEqual(new Vector3(50, 50, 250) + offset);
+            Assertions.AssertThat(room.CellCenterGlobalPosition(0, 1)).IsEqual(new Vector3(150, 50, 50) + offset);
+            Assertions.AssertThat(room.CellCenterGlobalPosition(0, 2)).IsEqual(new Vector3(250, 50, 50) + offset);
+            Assertions.AssertThat(room.CellCenterGlobalPosition(1, 1)).IsEqual(new Vector3(150, 50, 150) + offset);
+            Assertions.AssertThat(room.CellCenterGlobalPosition(2, 2)).IsEqual(new Vector3(250, 50, 250) + offset);
             room.QueueFree();
         }
 
         [TestCase]
         public void TestGlobalPositionToCellIndexFromCellCenterGlobalPosition()
         {
-            var offset = new Vector2(543, 9084);
-            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100), Position = offset };
+            var runner = SceneRunner.RunScene(EmptyScene);
+            var root = runner.Scene();
+            var offset = new Vector3(543, 9084, 234);
+            var room = new RoomNode3D() { Rows = 3, Columns = 3, CellSize = new Vector3(100, 100, 100), Position = offset };
+            root.AddChild(room);
 
             for (int i = 0; i < room.Rows; i++)
             {
@@ -395,8 +422,8 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestLocalPositionToCellIndexFromCellCenterLocalPosition()
         {
-            var offset = new Vector2(543, 9084);
-            var room = new RoomNode2D() { Rows = 3, Columns = 3, CellSize = new Vector2(100, 100), Position = offset };
+            var offset = new Vector3(543, 9084, 234);
+            var room = new RoomNode3D() { Rows = 3, Columns = 3, CellSize = new Vector3(100, 100, 100), Position = offset };
 
             for (int i = 0; i < room.Rows; i++)
             {

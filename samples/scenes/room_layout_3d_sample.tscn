@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationPipeline.cs" id="3_jybne"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationIntInput.cs" id="4_tvir0"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphsInput.cs" id="5_rabtt"]
-[ext_resource type="Resource" uid="uid://c6g3mgcb7bvvy" path="res://samples/graphs/multi_level_graph.tres" id="6_euiaa"]
+[ext_resource type="Resource" uid="uid://c6g3mgcb7bvvy" path="res://samples/3d_rooms/graphs/multi_level_graph_3d.tres" id="6_euiaa"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGroupsInput.cs" id="7_6fr8m"]
 [ext_resource type="Resource" uid="uid://5cjmos17qwf2" path="res://samples/3d_rooms/collectable_group_3d.tres" id="8_qqhrt"]
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphSelectorStep.cs" id="9_5je4a"]
