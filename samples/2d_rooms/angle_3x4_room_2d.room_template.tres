@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RoomTemplateResource" load_steps=2 format=3 uid="uid://dl1117qwjcvsf"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomTemplateResource.cs" id="1_h16un"]
+
+[resource]
+script = ExtResource("1_h16un")
+EditId = false
+Id = 353812577
+TemplateName = "Angle 3x4 Room 2D"
+ScenePath = "res://samples/2d_rooms/angle_3x4_room_2d.tscn"
+SceneUidPath = "uid://cmbm6pde1s3yx"
+SerializedText = "{\"Id\":353812577,\"Name\":\"Angle3x4Room2D\",\"Cells\":{\"Rows\":4,\"Columns\":3,\"Array\":[{\"Doors\":{\"Map\":[{\"Key\":0,\"Value\":{\"Type\":0,\"Code\":0}},{\"Key\":3,\"Value\":{\"Type\":0,\"Code\":0}}]},\"Features\":[]},{\"Doors\":{\"Map\":[]},\"Features\":[]},{\"Doors\":{\"Map\":[{\"Key\":0,\"Value\":{\"Type\":0,\"Code\":0}},{\"Key\":1,\"Value\":{\"Type\":0,\"Code\":0}},{\"Key\":2,\"Value\":{\"Type\":0,\"Code\":0}}]},\"Features\":[]},{\"Doors\":{\"Map\":[]},\"Features\":[]},null,null,{\"Doors\":{\"Map\":[]},\"Features\":[]},null,null,{\"Doors\":{\"Map\":[{\"Key\":1,\"Value\":{\"Type\":0,\"Code\":0}},{\"Key\":3,\"Value\":{\"Type\":0,\"Code\":0}},{\"Key\":2,\"Value\":{\"Type\":0,\"Code\":0}}]},\"Features\":[]},null,null]},\"CollectableSpots\":{\"Map\":[{\"Key\":1058014276,\"Value\":{\"Position\":{\"X\":0,\"Y\":2},\"Group\":\"Default\",\"Weight\":1}},{\"Key\":737995895,\"Value\":{\"Position\":{\"X\":3,\"Y\":0},\"Group\":\"Default\",\"Weight\":1}},{\"Key\":1011657545,\"Value\":{\"Position\":{\"X\":0,\"Y\":0},\"Group\":\"Default\",\"Weight\":1}}]}}"
