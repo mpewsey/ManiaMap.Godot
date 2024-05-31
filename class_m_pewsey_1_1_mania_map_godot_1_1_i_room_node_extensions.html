@@ -98,16 +98,20 @@ $(document).ready(function(){initNavTree('class_m_pewsey_1_1_mania_map_godot_1_1
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">IRoomNodeExtensions Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Contains extension methods for <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html" title="The interface for a room node.">IRoomNode</a>.  
+<p>Extension methods for <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html" title="The interface for a room node.">IRoomNode</a>.  
  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a70c37b2fb2d29b8dc304bf10e087cc17"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a70c37b2fb2d29b8dc304bf10e087cc17">AutoAssign</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room)</td></tr>
+<tr class="memdesc:a70c37b2fb2d29b8dc304bf10e087cc17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the room template if it doesn't already exist and runs auto assign on all descendent cell children.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a70c37b2fb2d29b8dc304bf10e087cc17">More...</a><br /></td></tr>
+<tr class="separator:a70c37b2fb2d29b8dc304bf10e087cc17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ead270113cd2de890c1d792c99f174f"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a1ead270113cd2de890c1d792c99f174f">CellIndexExists</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room, int row, int column)</td></tr>
 <tr class="memdesc:a1ead270113cd2de890c1d792c99f174f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the specified cell index is within the bounds of the room.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a1ead270113cd2de890c1d792c99f174f">More...</a><br /></td></tr>
 <tr class="separator:a1ead270113cd2de890c1d792c99f174f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,6 +121,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a323a40368e90922abe8130428e7ab99f"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a323a40368e90922abe8130428e7ab99f">GetCellActivity</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room, int row, int column)</td></tr>
 <tr class="memdesc:a323a40368e90922abe8130428e7ab99f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the cell activity for the specified cell index.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a323a40368e90922abe8130428e7ab99f">More...</a><br /></td></tr>
 <tr class="separator:a323a40368e90922abe8130428e7ab99f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab161b0329588cd968945271b57b7d2ad"><td class="memItemLeft" align="right" valign="top">static RoomTemplate&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ab161b0329588cd968945271b57b7d2ad">GetMMRoomTemplate</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room, int id, string name)</td></tr>
+<tr class="memdesc:ab161b0329588cd968945271b57b7d2ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ManiaMap room template used for procedural generation.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ab161b0329588cd968945271b57b7d2ad">More...</a><br /></td></tr>
+<tr class="separator:ab161b0329588cd968945271b57b7d2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab33059828a67d6a344f4d3648007d5ad"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ab33059828a67d6a344f4d3648007d5ad">SetCellActivities</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room, Vector2I startIndex, Vector2I endIndex, <a class="el" href="namespace_m_pewsey_1_1_mania_map_godot.html#a6a753fde07d2f95f8fce42819db99f02">CellActivity</a> activity)</td></tr>
 <tr class="memdesc:ab33059828a67d6a344f4d3648007d5ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the cell activities for all cells in the specified index range. The order of the start and end indexes does not matter. If either the start or end indexes fall outside the cell grid, no action is taken and the method returns false.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ab33059828a67d6a344f4d3648007d5ad">More...</a><br /></td></tr>
 <tr class="separator:ab33059828a67d6a344f4d3648007d5ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,12 +136,276 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ad3ff329da305ded47cf7f9a49086c24a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ad3ff329da305ded47cf7f9a49086c24a">SizeActiveCells</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room)</td></tr>
 <tr class="memdesc:ad3ff329da305ded47cf7f9a49086c24a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sizes the active cells array to match the current rows and columns properties. Any newly added cells are active by default.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ad3ff329da305ded47cf7f9a49086c24a">More...</a><br /></td></tr>
 <tr class="separator:ad3ff329da305ded47cf7f9a49086c24a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addc47e40ba8966e6ab58ec3c779559de"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#addc47e40ba8966e6ab58ec3c779559de">UpdateRoomTemplate</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room)</td></tr>
+<tr class="memdesc:addc47e40ba8966e6ab58ec3c779559de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs auto assign and updates the referenced <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html" title="Provides a reference to a room scene and information for the room required by the procedural generato...">RoomTemplateResource</a>. Saves the room template resource to a separate file if it is not saved already.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#addc47e40ba8966e6ab58ec3c779559de">More...</a><br /></td></tr>
+<tr class="separator:addc47e40ba8966e6ab58ec3c779559de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3bb387a0643b6c47f0f628bc7446776"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ae3bb387a0643b6c47f0f628bc7446776">ValidateRoomFlags</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room)</td></tr>
+<tr class="memdesc:ae3bb387a0643b6c47f0f628bc7446776"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates that the room flags have unique ID's. Throws an exception if they do not.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ae3bb387a0643b6c47f0f628bc7446776">More...</a><br /></td></tr>
+<tr class="separator:ae3bb387a0643b6c47f0f628bc7446776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:ad7c8d9d1c5bf1de65e642e5800180156"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ad7c8d9d1c5bf1de65e642e5800180156">AddMMDoors</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room, Array2D&lt; Cell &gt; cells)</td></tr>
+<tr class="memdesc:ad7c8d9d1c5bf1de65e642e5800180156"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds ManiaMap doors for the room to the specified cells array.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ad7c8d9d1c5bf1de65e642e5800180156">More...</a><br /></td></tr>
+<tr class="separator:ad7c8d9d1c5bf1de65e642e5800180156"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cf659e462533dbc05604116f1664b27"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a6cf659e462533dbc05604116f1664b27">AddMMFeatures</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room, Array2D&lt; Cell &gt; cells)</td></tr>
+<tr class="memdesc:a6cf659e462533dbc05604116f1664b27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds ManiaMap features for the room to the specified cells array.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a6cf659e462533dbc05604116f1664b27">More...</a><br /></td></tr>
+<tr class="separator:a6cf659e462533dbc05604116f1664b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2b8c28df9bfe1527edde0ad14c38883"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#aa2b8c28df9bfe1527edde0ad14c38883">AutoAssign2D</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html">RoomNode2D</a> room, Godot.Collections.Array&lt; Node &gt; nodes)</td></tr>
+<tr class="memdesc:aa2b8c28df9bfe1527edde0ad14c38883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs 2D auto assignment on the array of nodes.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#aa2b8c28df9bfe1527edde0ad14c38883">More...</a><br /></td></tr>
+<tr class="separator:aa2b8c28df9bfe1527edde0ad14c38883"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5890a3b9b14838d4f47a6bf69f2a719"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ab5890a3b9b14838d4f47a6bf69f2a719">AutoAssign3D</a> (<a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node3_d.html">RoomNode3D</a> room, Godot.Collections.Array&lt; Node &gt; nodes)</td></tr>
+<tr class="memdesc:ab5890a3b9b14838d4f47a6bf69f2a719"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs 3D auto assignment on the array of nodes.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ab5890a3b9b14838d4f47a6bf69f2a719">More...</a><br /></td></tr>
+<tr class="separator:ab5890a3b9b14838d4f47a6bf69f2a719"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99b0299da81dca5a9fed619ebcaa42e2"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a99b0299da81dca5a9fed619ebcaa42e2">GetCellChildClassName</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room)</td></tr>
+<tr class="memdesc:a99b0299da81dca5a9fed619ebcaa42e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the cell child class name corresponding to the room type.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a99b0299da81dca5a9fed619ebcaa42e2">More...</a><br /></td></tr>
+<tr class="separator:a99b0299da81dca5a9fed619ebcaa42e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a973ef232055cd926e5647a990d9cf6df"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a973ef232055cd926e5647a990d9cf6df">GetCollectableSpotClassName</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room)</td></tr>
+<tr class="memdesc:a973ef232055cd926e5647a990d9cf6df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the cell collectable spot class name corresponding to the room type.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a973ef232055cd926e5647a990d9cf6df">More...</a><br /></td></tr>
+<tr class="separator:a973ef232055cd926e5647a990d9cf6df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7de9310970463fac5bcb1569d9ca12b3"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a7de9310970463fac5bcb1569d9ca12b3">GetDoorClassName</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room)</td></tr>
+<tr class="memdesc:a7de9310970463fac5bcb1569d9ca12b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the door class name corresponding to the room type.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a7de9310970463fac5bcb1569d9ca12b3">More...</a><br /></td></tr>
+<tr class="separator:a7de9310970463fac5bcb1569d9ca12b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bf909a96d2e6d2c39fb87cc683561d2"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a6bf909a96d2e6d2c39fb87cc683561d2">GetFeatureClassName</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room)</td></tr>
+<tr class="memdesc:a6bf909a96d2e6d2c39fb87cc683561d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the feature class name corresponding to the room type.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a6bf909a96d2e6d2c39fb87cc683561d2">More...</a><br /></td></tr>
+<tr class="separator:a6bf909a96d2e6d2c39fb87cc683561d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdc8e69691b608bd3203b65181e8adb8"><td class="memItemLeft" align="right" valign="top">static Array2D&lt; Cell &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#afdc8e69691b608bd3203b65181e8adb8">GetMMCells</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room)</td></tr>
+<tr class="memdesc:afdc8e69691b608bd3203b65181e8adb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an new array of ManiaMap cells for the room.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#afdc8e69691b608bd3203b65181e8adb8">More...</a><br /></td></tr>
+<tr class="separator:afdc8e69691b608bd3203b65181e8adb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6f1abdc64f142ad359b9cfd96bcdb9b"><td class="memItemLeft" align="right" valign="top">static HashMap&lt; int, CollectableSpot &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#aa6f1abdc64f142ad359b9cfd96bcdb9b">GetMMCollectableSpots</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room)</td></tr>
+<tr class="memdesc:aa6f1abdc64f142ad359b9cfd96bcdb9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a dictionary of ManiaMap collectable spots used by the procedural generator.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#aa6f1abdc64f142ad359b9cfd96bcdb9b">More...</a><br /></td></tr>
+<tr class="separator:aa6f1abdc64f142ad359b9cfd96bcdb9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb8f064442e002f0c403657e72797e76"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#abb8f064442e002f0c403657e72797e76">GetRoomFlagClassName</a> (this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a> room)</td></tr>
+<tr class="memdesc:abb8f064442e002f0c403657e72797e76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the room flag class name corresponding to the room type.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#abb8f064442e002f0c403657e72797e76">More...</a><br /></td></tr>
+<tr class="separator:abb8f064442e002f0c403657e72797e76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d4428998ce7c05abbdd0a2eb2fcd147"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a7d4428998ce7c05abbdd0a2eb2fcd147">ResourceIsSavedToFile</a> (Resource resource, string sceneFilePath)</td></tr>
+<tr class="memdesc:a7d4428998ce7c05abbdd0a2eb2fcd147"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the specified resource is saved in a separate file.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a7d4428998ce7c05abbdd0a2eb2fcd147">More...</a><br /></td></tr>
+<tr class="separator:a7d4428998ce7c05abbdd0a2eb2fcd147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bd52bc4362f65a5bebf2e4257c3d5f1"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a8bd52bc4362f65a5bebf2e4257c3d5f1">SceneIsSavedToFile</a> (string sceneFilePath)</td></tr>
+<tr class="memdesc:a8bd52bc4362f65a5bebf2e4257c3d5f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the room scene is saved to a file.  <a href="class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a8bd52bc4362f65a5bebf2e4257c3d5f1">More...</a><br /></td></tr>
+<tr class="separator:a8bd52bc4362f65a5bebf2e4257c3d5f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Contains extension methods for <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html" title="The interface for a room node.">IRoomNode</a>. </p>
+<div class="textblock"><p >Extension methods for <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html" title="The interface for a room node.">IRoomNode</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00010">10</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00014">14</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad7c8d9d1c5bf1de65e642e5800180156" name="ad7c8d9d1c5bf1de65e642e5800180156"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7c8d9d1c5bf1de65e642e5800180156">&#9670;&nbsp;</a></span>AddMMDoors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void AddMMDoors </td>
+          <td>(</td>
+          <td class="paramtype">this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a>&#160;</td>
+          <td class="paramname"><em>room</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Array2D&lt; Cell &gt;&#160;</td>
+          <td class="paramname"><em>cells</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds ManiaMap doors for the room to the specified cells array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cells</td><td>The cells array.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00288">288</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="a6cf659e462533dbc05604116f1664b27" name="a6cf659e462533dbc05604116f1664b27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cf659e462533dbc05604116f1664b27">&#9670;&nbsp;</a></span>AddMMFeatures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void AddMMFeatures </td>
+          <td>(</td>
+          <td class="paramtype">this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a>&#160;</td>
+          <td class="paramname"><em>room</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Array2D&lt; Cell &gt;&#160;</td>
+          <td class="paramname"><em>cells</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds ManiaMap features for the room to the specified cells array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cells</td><td>The cells array.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00253">253</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="a70c37b2fb2d29b8dc304bf10e087cc17" name="a70c37b2fb2d29b8dc304bf10e087cc17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70c37b2fb2d29b8dc304bf10e087cc17">&#9670;&nbsp;</a></span>AutoAssign()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void AutoAssign </td>
+          <td>(</td>
+          <td class="paramtype">this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a>&#160;</td>
+          <td class="paramname"><em>room</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the room template if it doesn't already exist and runs auto assign on all descendent cell children. </p>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00412">412</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="aa2b8c28df9bfe1527edde0ad14c38883" name="aa2b8c28df9bfe1527edde0ad14c38883"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2b8c28df9bfe1527edde0ad14c38883">&#9670;&nbsp;</a></span>AutoAssign2D()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void AutoAssign2D </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html">RoomNode2D</a>&#160;</td>
+          <td class="paramname"><em>room</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Godot.Collections.Array&lt; Node &gt;&#160;</td>
+          <td class="paramname"><em>nodes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs 2D auto assignment on the array of nodes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">room</td><td>The ancestor room.</td></tr>
+    <tr><td class="paramname">nodes</td><td>The array of nodes.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00443">443</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="ab5890a3b9b14838d4f47a6bf69f2a719" name="ab5890a3b9b14838d4f47a6bf69f2a719"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5890a3b9b14838d4f47a6bf69f2a719">&#9670;&nbsp;</a></span>AutoAssign3D()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void AutoAssign3D </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_node3_d.html">RoomNode3D</a>&#160;</td>
+          <td class="paramname"><em>room</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Godot.Collections.Array&lt; Node &gt;&#160;</td>
+          <td class="paramname"><em>nodes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs 3D auto assignment on the array of nodes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">room</td><td>The ancestor room.</td></tr>
+    <tr><td class="paramname">nodes</td><td>The array of nodes.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00457">457</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
 <a id="a1ead270113cd2de890c1d792c99f174f" name="a1ead270113cd2de890c1d792c99f174f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1ead270113cd2de890c1d792c99f174f">&#9670;&nbsp;</a></span>CellIndexExists()</h2>
 
@@ -184,7 +455,7 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00017">17</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00021">21</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
 
 </div>
 </div>
@@ -237,7 +508,7 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00041">41</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00045">45</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
 
 </div>
 </div>
@@ -296,7 +567,406 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00028">28</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00032">32</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="a99b0299da81dca5a9fed619ebcaa42e2" name="a99b0299da81dca5a9fed619ebcaa42e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99b0299da81dca5a9fed619ebcaa42e2">&#9670;&nbsp;</a></span>GetCellChildClassName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string GetCellChildClassName </td>
+          <td>(</td>
+          <td class="paramtype">this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a>&#160;</td>
+          <td class="paramname"><em>room</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the cell child class name corresponding to the room type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">room</td><td>The room.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">NotImplementedException</td><td>Raised if the room type is not handled.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00471">471</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="a973ef232055cd926e5647a990d9cf6df" name="a973ef232055cd926e5647a990d9cf6df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a973ef232055cd926e5647a990d9cf6df">&#9670;&nbsp;</a></span>GetCollectableSpotClassName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string GetCollectableSpotClassName </td>
+          <td>(</td>
+          <td class="paramtype">this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a>&#160;</td>
+          <td class="paramname"><em>room</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the cell collectable spot class name corresponding to the room type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">room</td><td>The room.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">NotImplementedException</td><td>Raised if the room type is not handled.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00236">236</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7de9310970463fac5bcb1569d9ca12b3" name="a7de9310970463fac5bcb1569d9ca12b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7de9310970463fac5bcb1569d9ca12b3">&#9670;&nbsp;</a></span>GetDoorClassName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string GetDoorClassName </td>
+          <td>(</td>
+          <td class="paramtype">this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a>&#160;</td>
+          <td class="paramname"><em>room</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the door class name corresponding to the room type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">room</td><td>The room.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">NotImplementedException</td><td>Raised if the room type is not handled.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00306">306</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="a6bf909a96d2e6d2c39fb87cc683561d2" name="a6bf909a96d2e6d2c39fb87cc683561d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bf909a96d2e6d2c39fb87cc683561d2">&#9670;&nbsp;</a></span>GetFeatureClassName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string GetFeatureClassName </td>
+          <td>(</td>
+          <td class="paramtype">this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a>&#160;</td>
+          <td class="paramname"><em>room</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the feature class name corresponding to the room type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">room</td><td>The room.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">NotImplementedException</td><td>Raised if the room type is not handled.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00271">271</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="afdc8e69691b608bd3203b65181e8adb8" name="afdc8e69691b608bd3203b65181e8adb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdc8e69691b608bd3203b65181e8adb8">&#9670;&nbsp;</a></span>GetMMCells()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static Array2D&lt; Cell &gt; GetMMCells </td>
+          <td>(</td>
+          <td class="paramtype">this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a>&#160;</td>
+          <td class="paramname"><em>room</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns an new array of ManiaMap cells for the room. </p>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00191">191</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="aa6f1abdc64f142ad359b9cfd96bcdb9b" name="aa6f1abdc64f142ad359b9cfd96bcdb9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6f1abdc64f142ad359b9cfd96bcdb9b">&#9670;&nbsp;</a></span>GetMMCollectableSpots()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static HashMap&lt; int, CollectableSpot &gt; GetMMCollectableSpots </td>
+          <td>(</td>
+          <td class="paramtype">this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a>&#160;</td>
+          <td class="paramname"><em>room</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a dictionary of ManiaMap collectable spots used by the procedural generator. </p>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00216">216</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="ab161b0329588cd968945271b57b7d2ad" name="ab161b0329588cd968945271b57b7d2ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab161b0329588cd968945271b57b7d2ad">&#9670;&nbsp;</a></span>GetMMRoomTemplate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static RoomTemplate GetMMRoomTemplate </td>
+          <td>(</td>
+          <td class="paramtype">this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a>&#160;</td>
+          <td class="paramname"><em>room</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the ManiaMap room template used for procedural generation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The unique template ID.</td></tr>
+    <tr><td class="paramname">name</td><td>The template name.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00165">165</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="abb8f064442e002f0c403657e72797e76" name="abb8f064442e002f0c403657e72797e76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb8f064442e002f0c403657e72797e76">&#9670;&nbsp;</a></span>GetRoomFlagClassName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string GetRoomFlagClassName </td>
+          <td>(</td>
+          <td class="paramtype">this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a>&#160;</td>
+          <td class="paramname"><em>room</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the room flag class name corresponding to the room type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">room</td><td>The room.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">NotImplementedException</td><td>Raised if the room type is not handled.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00343">343</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7d4428998ce7c05abbdd0a2eb2fcd147" name="a7d4428998ce7c05abbdd0a2eb2fcd147"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d4428998ce7c05abbdd0a2eb2fcd147">&#9670;&nbsp;</a></span>ResourceIsSavedToFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool ResourceIsSavedToFile </td>
+          <td>(</td>
+          <td class="paramtype">Resource&#160;</td>
+          <td class="paramname"><em>resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>sceneFilePath</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns true if the specified resource is saved in a separate file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">resource</td><td>The resource.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00395">395</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="a8bd52bc4362f65a5bebf2e4257c3d5f1" name="a8bd52bc4362f65a5bebf2e4257c3d5f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bd52bc4362f65a5bebf2e4257c3d5f1">&#9670;&nbsp;</a></span>SceneIsSavedToFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool SceneIsSavedToFile </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>sceneFilePath</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns true if the room scene is saved to a file. </p>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00404">404</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
 
 </div>
 </div>
@@ -356,7 +1026,7 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00055">55</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00059">59</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
 
 </div>
 </div>
@@ -422,7 +1092,7 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00083">83</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00087">87</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
 
 </div>
 </div>
@@ -489,7 +1159,7 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00099">99</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00103">103</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
 
 </div>
 </div>
@@ -519,7 +1189,74 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Sizes the active cells array to match the current rows and columns properties. Any newly added cells are active by default. </p>
 
-<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00126">126</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00130">130</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="addc47e40ba8966e6ab58ec3c779559de" name="addc47e40ba8966e6ab58ec3c779559de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addc47e40ba8966e6ab58ec3c779559de">&#9670;&nbsp;</a></span>UpdateRoomTemplate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool UpdateRoomTemplate </td>
+          <td>(</td>
+          <td class="paramtype">this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a>&#160;</td>
+          <td class="paramname"><em>room</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Runs auto assign and updates the referenced <a class="el" href="class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html" title="Provides a reference to a room scene and information for the room required by the procedural generato...">RoomTemplateResource</a>. Saves the room template resource to a separate file if it is not saved already. </p>
+<p >This method returns true when successful and false otherwise. </p>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00362">362</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
+
+</div>
+</div>
+<a id="ae3bb387a0643b6c47f0f628bc7446776" name="ae3bb387a0643b6c47f0f628bc7446776"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3bb387a0643b6c47f0f628bc7446776">&#9670;&nbsp;</a></span>ValidateRoomFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void ValidateRoomFlags </td>
+          <td>(</td>
+          <td class="paramtype">this <a class="el" href="interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html">IRoomNode</a>&#160;</td>
+          <td class="paramname"><em>room</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Validates that the room flags have unique ID's. Throws an exception if they do not. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">DuplicateIdException</td><td>Thrown if two room flags share the same ID.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_room_node_extensions_8cs_source.html#l00323">323</a> of file <a class="el" href="_i_room_node_extensions_8cs_source.html">IRoomNodeExtensions.cs</a>.</p>
 
 </div>
 </div>

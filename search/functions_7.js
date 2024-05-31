@@ -6,5 +6,5 @@ var searchData=
   ['loadscene_3',['LoadScene',['../class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html#aadb9a026a2034fa0db4309cdee67085b',1,'MPewsey::ManiaMapGodot::RoomTemplateResource']]],
   ['loadsceneasync_4',['LoadSceneAsync',['../class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html#ad8827298ffd5985be4b597c0f4571983',1,'MPewsey::ManiaMapGodot::RoomTemplateResource']]],
   ['loadscenesasync_5',['LoadScenesAsync',['../class_m_pewsey_1_1_mania_map_godot_1_1_room_template_database.html#ab2cd122590aca6260b8165f10a3fbb87',1,'MPewsey::ManiaMapGodot::RoomTemplateDatabase']]],
-  ['localpositiontocellindex_6',['LocalPositionToCellIndex',['../class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a2a5617444c3cd8f8839ce90972e0b74a',1,'MPewsey::ManiaMapGodot::RoomNode2D']]]
+  ['localpositiontocellindex_6',['LocalPositionToCellIndex',['../class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#a2a5617444c3cd8f8839ce90972e0b74a',1,'MPewsey.ManiaMapGodot.RoomNode2D.LocalPositionToCellIndex()'],['../class_m_pewsey_1_1_mania_map_godot_1_1_room_node3_d.html#af4a412b0f58490e26edc1f903e0d654b',1,'MPewsey.ManiaMapGodot.RoomNode3D.LocalPositionToCellIndex()']]]
 ];

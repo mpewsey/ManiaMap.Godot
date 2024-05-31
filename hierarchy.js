@@ -3,6 +3,9 @@ var hierarchy =
     [ "Area2D", null, [
       [ "CellArea2D", "class_m_pewsey_1_1_mania_map_godot_1_1_cell_area2_d.html", null ]
     ] ],
+    [ "Area3D", null, [
+      [ "CellArea3D", "class_m_pewsey_1_1_mania_map_godot_1_1_cell_area3_d.html", null ]
+    ] ],
     [ "AsyncResourceLoader", "class_m_pewsey_1_1_mania_map_godot_1_1_async_resource_loader.html", null ],
     [ "ColorUtility", "class_m_pewsey_1_1_mania_map_godot_1_1_color_utility.html", null ],
     [ "ManiaMapResources.Enums", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources_1_1_enums.html", null ],
@@ -25,17 +28,27 @@ var hierarchy =
         [ "Feature2D", "class_m_pewsey_1_1_mania_map_godot_1_1_feature2_d.html", null ],
         [ "RoomFlag2D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html", null ]
       ] ],
+      [ "CellChild3D", "class_m_pewsey_1_1_mania_map_godot_1_1_cell_child3_d.html", [
+        [ "CollectableSpot3D", "class_m_pewsey_1_1_mania_map_godot_1_1_collectable_spot3_d.html", null ],
+        [ "DoorNode3D", "class_m_pewsey_1_1_mania_map_godot_1_1_door_node3_d.html", null ],
+        [ "Feature3D", "class_m_pewsey_1_1_mania_map_godot_1_1_feature3_d.html", null ],
+        [ "RoomFlag3D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_flag3_d.html", null ]
+      ] ],
       [ "ICollectableSpot", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_collectable_spot.html", [
-        [ "CollectableSpot2D", "class_m_pewsey_1_1_mania_map_godot_1_1_collectable_spot2_d.html", null ]
+        [ "CollectableSpot2D", "class_m_pewsey_1_1_mania_map_godot_1_1_collectable_spot2_d.html", null ],
+        [ "CollectableSpot3D", "class_m_pewsey_1_1_mania_map_godot_1_1_collectable_spot3_d.html", null ]
       ] ],
       [ "IDoorNode", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_door_node.html", [
-        [ "DoorNode2D", "class_m_pewsey_1_1_mania_map_godot_1_1_door_node2_d.html", null ]
+        [ "DoorNode2D", "class_m_pewsey_1_1_mania_map_godot_1_1_door_node2_d.html", null ],
+        [ "DoorNode3D", "class_m_pewsey_1_1_mania_map_godot_1_1_door_node3_d.html", null ]
       ] ],
       [ "IFeature", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_feature.html", [
-        [ "Feature2D", "class_m_pewsey_1_1_mania_map_godot_1_1_feature2_d.html", null ]
+        [ "Feature2D", "class_m_pewsey_1_1_mania_map_godot_1_1_feature2_d.html", null ],
+        [ "Feature3D", "class_m_pewsey_1_1_mania_map_godot_1_1_feature3_d.html", null ]
       ] ],
       [ "IRoomFlag", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_flag.html", [
-        [ "RoomFlag2D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html", null ]
+        [ "RoomFlag2D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html", null ],
+        [ "RoomFlag3D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_flag3_d.html", null ]
       ] ]
     ] ],
     [ "ICollectableSpotExtensions", "class_m_pewsey_1_1_mania_map_godot_1_1_i_collectable_spot_extensions.html", null ],
@@ -43,7 +56,8 @@ var hierarchy =
     [ "IDoorNodeExtensions", "class_m_pewsey_1_1_mania_map_godot_1_1_i_door_node_extensions.html", null ],
     [ "IRoomFlagExtensions", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_flag_extensions.html", null ],
     [ "IRoomNode", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html", [
-      [ "RoomNode2D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html", null ]
+      [ "RoomNode2D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html", null ],
+      [ "RoomNode3D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node3_d.html", null ]
     ] ],
     [ "IRoomNodeExtensions", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html", null ],
     [ "ManiaMapResources", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources.html", null ],
@@ -74,6 +88,11 @@ var hierarchy =
         [ "LayoutTileMapBook", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_book.html", null ]
       ] ],
       [ "RoomNode2D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html", null ]
+    ] ],
+    [ "Node3D", null, [
+      [ "CellChild3D", "class_m_pewsey_1_1_mania_map_godot_1_1_cell_child3_d.html", null ],
+      [ "DoorThreshold3D", "class_m_pewsey_1_1_mania_map_godot_1_1_door_threshold3_d.html", null ],
+      [ "RoomNode3D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node3_d.html", null ]
     ] ],
     [ "Rand", "class_m_pewsey_1_1_mania_map_godot_1_1_rand.html", null ],
     [ "Resource", null, [

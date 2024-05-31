@@ -5,6 +5,7 @@ var class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource =
     [ "Initialize", "class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html#a0a690fba695cbafdffb00b78c4dfcbeb", null ],
     [ "LoadScene", "class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html#aadb9a026a2034fa0db4309cdee67085b", null ],
     [ "LoadSceneAsync", "class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html#ad8827298ffd5985be4b597c0f4571983", null ],
+    [ "EditId", "class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html#ad39512a9383949a23d73aeca1a839f19", null ],
     [ "Id", "class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html#afe0b47b3c92f2f69ea3da50cb72553eb", null ],
     [ "ScenePath", "class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html#a769ec561c3faa4167f96022cc18223d5", null ],
     [ "SceneUidPath", "class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html#a08d58dd863260745591c419842a08391", null ],

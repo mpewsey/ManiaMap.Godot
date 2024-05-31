@@ -1,6 +1,5 @@
 var interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node =
 [
-    [ "GetMMRoomTemplate", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html#ad70703a12aa8a6b615acbfd68b16aeaf", null ],
     [ "ActiveCells", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html#a218d6bdfe43a453e61b4ec9e5c0a187f", null ],
     [ "Columns", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html#acefc28d6fe4006e7d14b35aa89c14337", null ],
     [ "DoorConnections", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_room_node.html#af2b2d06cda47b7123df77a76a3a473a7", null ],

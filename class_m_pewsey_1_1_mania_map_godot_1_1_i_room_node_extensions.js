@@ -1,10 +1,27 @@
 var class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions =
 [
+    [ "AddMMDoors", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ad7c8d9d1c5bf1de65e642e5800180156", null ],
+    [ "AddMMFeatures", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a6cf659e462533dbc05604116f1664b27", null ],
+    [ "AutoAssign", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a70c37b2fb2d29b8dc304bf10e087cc17", null ],
+    [ "AutoAssign2D", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#aa2b8c28df9bfe1527edde0ad14c38883", null ],
+    [ "AutoAssign3D", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ab5890a3b9b14838d4f47a6bf69f2a719", null ],
     [ "CellIndexExists", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a1ead270113cd2de890c1d792c99f174f", null ],
     [ "CellIndexRangeExists", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a4b3007aca41099e26cd15b279d444455", null ],
     [ "GetCellActivity", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a323a40368e90922abe8130428e7ab99f", null ],
+    [ "GetCellChildClassName", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a99b0299da81dca5a9fed619ebcaa42e2", null ],
+    [ "GetCollectableSpotClassName", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a973ef232055cd926e5647a990d9cf6df", null ],
+    [ "GetDoorClassName", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a7de9310970463fac5bcb1569d9ca12b3", null ],
+    [ "GetFeatureClassName", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a6bf909a96d2e6d2c39fb87cc683561d2", null ],
+    [ "GetMMCells", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#afdc8e69691b608bd3203b65181e8adb8", null ],
+    [ "GetMMCollectableSpots", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#aa6f1abdc64f142ad359b9cfd96bcdb9b", null ],
+    [ "GetMMRoomTemplate", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ab161b0329588cd968945271b57b7d2ad", null ],
+    [ "GetRoomFlagClassName", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#abb8f064442e002f0c403657e72797e76", null ],
+    [ "ResourceIsSavedToFile", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a7d4428998ce7c05abbdd0a2eb2fcd147", null ],
+    [ "SceneIsSavedToFile", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a8bd52bc4362f65a5bebf2e4257c3d5f1", null ],
     [ "SetCellActivities", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ab33059828a67d6a344f4d3648007d5ad", null ],
     [ "SetCellActivity", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a6d7ae8a01e280c1a930fe1cbe7196edf", null ],
     [ "SetCellActivity", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#adc94ac002707e7475fa6f3ec5ccd7dc0", null ],
-    [ "SizeActiveCells", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ad3ff329da305ded47cf7f9a49086c24a", null ]
+    [ "SizeActiveCells", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ad3ff329da305ded47cf7f9a49086c24a", null ],
+    [ "UpdateRoomTemplate", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#addc47e40ba8966e6ab58ec3c779559de", null ],
+    [ "ValidateRoomFlags", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#ae3bb387a0643b6c47f0f628bc7446776", null ]
 ];

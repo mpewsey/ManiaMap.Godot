@@ -40,7 +40,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
         [ "Properties", "functions_prop.html", null ]
       ] ]
@@ -54,9 +54,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_async_resource_loader_8cs_source.html",
-"class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_book.html#a3a6b297218c96f0deb5edd69e2ef1a0c",
-"class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_graphs_input.html#ada0cd8d7462492eea59394ee36772e4e",
-"class_m_pewsey_1_1_mania_map_godot_1_1_room_node2_d.html#aacd84fe3991a31360df9315e81a5759a"
+"class_m_pewsey_1_1_mania_map_godot_1_1_door_threshold3_d.html#abee176add5c7997b26f3d76612bd199d",
+"class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a56da3231b2fe09b1f2eb0ce7a750f782",
+"class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a8bd52bc4362f65a5bebf2e4257c3d5f1",
+"class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html#ad8827298ffd5985be4b597c0f4571983"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
