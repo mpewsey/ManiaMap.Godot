@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 namespace MPewsey.ManiaMapGodot.Samples.Tests
 {
     [TestSuite]
-    public class TestRoomLayoutSample
+    public class TestRoomLayout2DSample
     {
-        private const string RoomLayoutSampleScene = "uid://r4g6j31sivcq";
+        private const string RoomLayout2DSampleScene = "uid://r4g6j31sivcq";
 
         [TestCase]
         public async Task TestSampleSceneRuns()
         {
-            var runner = SceneRunner.RunScene(RoomLayoutSampleScene);
+            var runner = SceneRunner.RunScene(RoomLayout2DSampleScene);
             var buttons = runner.Scene().FindChildren("*", nameof(Button));
             Assertions.AssertThat(buttons.Count).IsEqual(1);
             var button = buttons[0] as Button;
