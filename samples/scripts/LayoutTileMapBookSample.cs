@@ -13,7 +13,7 @@ namespace MPewsey.ManiaMapGodot.Samples
     [GlobalClass]
     public partial class LayoutTileMapBookSample : Node
     {
-        [Export] public CameraController Camera { get; set; }
+        [Export] public Camera2DController Camera { get; set; }
         [Export] public LayoutTileMapBook Map { get; set; }
         [Export] public Gradient Gradient { get; set; }
         [Export] public Slider Slider { get; set; }

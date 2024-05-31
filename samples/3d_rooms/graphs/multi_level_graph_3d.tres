@@ -1,0 +1,258 @@
+[gd_resource type="Resource" script_class="LayoutGraphResource" load_steps=23 format=3 uid="uid://c6g3mgcb7bvvy"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphEdge.cs" id="1_n203c"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphResource.cs" id="1_qqikv"]
+[ext_resource type="Resource" uid="uid://dphpmgeuueidn" path="res://samples/3d_rooms/template_groups/square_3x3_3d_template_group.tres" id="2_k217u"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphNode.cs" id="2_xgnpf"]
+
+[sub_resource type="Resource" id="Resource_xkut1"]
+script = ExtResource("1_n203c")
+FromNode = 1
+ToNode = 2
+Name = "Edge (1, 2)"
+Direction = 0
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 1
+RequireRoom = false
+RoomChance = 0.0
+Tags = PackedStringArray()
+DoorCode = 0
+
+[sub_resource type="Resource" id="Resource_06rte"]
+script = ExtResource("1_n203c")
+FromNode = 2
+ToNode = 3
+Name = "Edge (2, 3)"
+Direction = 0
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 0
+RequireRoom = false
+RoomChance = 0.0
+Tags = PackedStringArray()
+DoorCode = 0
+
+[sub_resource type="Resource" id="Resource_hfvf7"]
+script = ExtResource("1_n203c")
+FromNode = 3
+ToNode = 6
+Name = "Edge (3, 6)"
+Direction = 0
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 0
+RequireRoom = false
+RoomChance = 0.0
+Tags = PackedStringArray()
+DoorCode = 0
+
+[sub_resource type="Resource" id="Resource_k5bek"]
+script = ExtResource("1_n203c")
+FromNode = 4
+ToNode = 8
+Name = "Edge (4, 8)"
+Direction = 0
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 0
+RequireRoom = false
+RoomChance = 0.0
+Tags = PackedStringArray()
+DoorCode = 0
+
+[sub_resource type="Resource" id="Resource_5pmup"]
+script = ExtResource("1_n203c")
+FromNode = 6
+ToNode = 7
+Name = "Edge (6, 7)"
+Direction = 0
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 0
+RequireRoom = false
+RoomChance = 0.0
+Tags = PackedStringArray()
+DoorCode = 0
+
+[sub_resource type="Resource" id="Resource_x5g2a"]
+script = ExtResource("1_n203c")
+FromNode = 7
+ToNode = 8
+Name = "Edge (7, 8)"
+Direction = 0
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 0
+RequireRoom = false
+RoomChance = 0.0
+Tags = PackedStringArray()
+DoorCode = 0
+
+[sub_resource type="Resource" id="Resource_bipxx"]
+script = ExtResource("1_n203c")
+FromNode = 9
+ToNode = 1
+Name = "Edge (9, 1)"
+Direction = 0
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 1
+RequireRoom = false
+RoomChance = 0.0
+Tags = PackedStringArray()
+DoorCode = 0
+
+[sub_resource type="Resource" id="Resource_itwe5"]
+script = ExtResource("1_n203c")
+FromNode = 9
+ToNode = 8
+Name = "Edge (9, 8)"
+Direction = 0
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 0
+RequireRoom = false
+RoomChance = 0.0
+Tags = PackedStringArray()
+DoorCode = 0
+
+[sub_resource type="Resource" id="Resource_hma2s"]
+script = ExtResource("1_n203c")
+FromNode = 10
+ToNode = 1
+Name = "Edge (10, 1)"
+Direction = 0
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 2
+RequireRoom = false
+RoomChance = 0.0
+Tags = PackedStringArray()
+DoorCode = 0
+
+[sub_resource type="Resource" id="Resource_f1sgs"]
+script = ExtResource("2_xgnpf")
+Id = 1
+Name = "Node 1"
+VariationGroup = ""
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 1
+Tags = PackedStringArray()
+Position = Vector2(420, 160)
+
+[sub_resource type="Resource" id="Resource_v6iob"]
+script = ExtResource("2_xgnpf")
+Id = 2
+Name = "Node 2"
+VariationGroup = ""
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 1
+Tags = PackedStringArray()
+Position = Vector2(-320, 160)
+
+[sub_resource type="Resource" id="Resource_55u7i"]
+script = ExtResource("2_xgnpf")
+Id = 3
+Name = "Node 3"
+VariationGroup = ""
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 0
+Tags = PackedStringArray()
+Position = Vector2(-320, 660)
+
+[sub_resource type="Resource" id="Resource_i5j7y"]
+script = ExtResource("2_xgnpf")
+Id = 4
+Name = "Node 4"
+VariationGroup = ""
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 0
+Tags = PackedStringArray()
+Position = Vector2(1300, 660)
+
+[sub_resource type="Resource" id="Resource_5so5g"]
+script = ExtResource("2_xgnpf")
+Id = 6
+Name = "Node 6"
+VariationGroup = ""
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 0
+Tags = PackedStringArray()
+Position = Vector2(80, 660)
+
+[sub_resource type="Resource" id="Resource_7xttf"]
+script = ExtResource("2_xgnpf")
+Id = 7
+Name = "Node 7"
+VariationGroup = ""
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 0
+Tags = PackedStringArray()
+Position = Vector2(520, 660)
+
+[sub_resource type="Resource" id="Resource_8hka7"]
+script = ExtResource("2_xgnpf")
+Id = 8
+Name = "Node 8"
+VariationGroup = ""
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 0
+Tags = PackedStringArray()
+Position = Vector2(940, 660)
+
+[sub_resource type="Resource" id="Resource_2diky"]
+script = ExtResource("2_xgnpf")
+Id = 9
+Name = "Node 9"
+VariationGroup = ""
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 1
+Tags = PackedStringArray()
+Position = Vector2(1020, 160)
+
+[sub_resource type="Resource" id="Resource_s1ob6"]
+script = ExtResource("2_xgnpf")
+Id = 10
+Name = "Node 10"
+VariationGroup = ""
+TemplateGroup = ExtResource("2_k217u")
+Color = Color(0.0980392, 0.0980392, 0.439216, 1)
+Z = 2
+Tags = PackedStringArray()
+Position = Vector2(420, -140)
+
+[resource]
+script = ExtResource("1_qqikv")
+Id = 25798738
+Name = "<None>"
+Nodes = {
+1: SubResource("Resource_f1sgs"),
+2: SubResource("Resource_v6iob"),
+3: SubResource("Resource_55u7i"),
+4: SubResource("Resource_i5j7y"),
+6: SubResource("Resource_5so5g"),
+7: SubResource("Resource_7xttf"),
+8: SubResource("Resource_8hka7"),
+9: SubResource("Resource_2diky"),
+10: SubResource("Resource_s1ob6")
+}
+Edges = {
+Vector2i(1, 2): SubResource("Resource_xkut1"),
+Vector2i(2, 3): SubResource("Resource_06rte"),
+Vector2i(3, 6): SubResource("Resource_hfvf7"),
+Vector2i(4, 8): SubResource("Resource_k5bek"),
+Vector2i(6, 7): SubResource("Resource_5pmup"),
+Vector2i(7, 8): SubResource("Resource_x5g2a"),
+Vector2i(9, 1): SubResource("Resource_bipxx"),
+Vector2i(9, 8): SubResource("Resource_itwe5"),
+Vector2i(10, 1): SubResource("Resource_hma2s")
+}

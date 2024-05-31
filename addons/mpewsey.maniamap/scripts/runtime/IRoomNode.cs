@@ -11,22 +11,22 @@ namespace MPewsey.ManiaMapGodot
         /// <summary>
         /// The room template used by the procedural generator.
         /// </summary>
-        public RoomTemplateResource RoomTemplate { get; }
+        public RoomTemplateResource RoomTemplate { get; set; }
 
         /// <summary>
         /// The number or cell rows in the room.
         /// </summary>
-        public int Rows { get; }
+        public int Rows { get; set; }
 
         /// <summary>
         /// The number of cell columns in the room.
         /// </summary>
-        public int Columns { get; }
+        public int Columns { get; set; }
 
         /// <summary>
         /// A nested array of room cell activities.
         /// </summary>
-        public Godot.Collections.Array<Godot.Collections.Array<bool>> ActiveCells { get; }
+        public Godot.Collections.Array<Godot.Collections.Array<bool>> ActiveCells { get; set; }
 
         /// <summary>
         /// The current layout.
@@ -57,12 +57,5 @@ namespace MPewsey.ManiaMapGodot
         /// True if the room has been initialized.
         /// </summary>
         public bool IsInitialized { get; }
-
-        /// <summary>
-        /// Returns the ManiaMap room template used for procedural generation.
-        /// </summary>
-        /// <param name="id">The unique template ID.</param>
-        /// <param name="name">The template name.</param>
-        public RoomTemplate GetMMRoomTemplate(int id, string name);
     }
 }

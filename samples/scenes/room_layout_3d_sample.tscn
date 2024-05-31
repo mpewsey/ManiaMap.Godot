@@ -1,0 +1,130 @@
+[gd_scene load_steps=17 format=3 uid="uid://db0v7xb0tey8b"]
+
+[ext_resource type="Script" path="res://samples/scripts/RoomLayout3DSample.cs" id="1_alnk6"]
+[ext_resource type="Resource" uid="uid://l38x064m8j7q" path="res://samples/3d_rooms/template_groups/3d_room_template_database.tres" id="2_bgku6"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationPipeline.cs" id="3_jybne"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationIntInput.cs" id="4_tvir0"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphsInput.cs" id="5_rabtt"]
+[ext_resource type="Resource" uid="uid://c6g3mgcb7bvvy" path="res://samples/3d_rooms/graphs/multi_level_graph_3d.tres" id="6_euiaa"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGroupsInput.cs" id="7_6fr8m"]
+[ext_resource type="Resource" uid="uid://5cjmos17qwf2" path="res://samples/3d_rooms/collectable_group_3d.tres" id="8_qqhrt"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphSelectorStep.cs" id="9_5je4a"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphRandomizerStep.cs" id="10_pdaak"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGeneratorStep.cs" id="11_g0a4g"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGeneratorStep.cs" id="12_q78cb"]
+[ext_resource type="Script" path="res://samples/scripts/Camera3DController.cs" id="13_ltidk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jvbpp"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_kt1y6"]
+sky_material = SubResource("ProceduralSkyMaterial_jvbpp")
+
+[sub_resource type="Environment" id="Environment_25xkc"]
+background_mode = 2
+sky = SubResource("Sky_kt1y6")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="RoomLayout3DSample" type="Node" node_paths=PackedStringArray("Camera", "Container", "Pipeline", "GenerateButton", "MessageLabel")]
+script = ExtResource("1_alnk6")
+Camera = NodePath("Camera3DController")
+Container = NodePath("Container")
+Pipeline = NodePath("GenerationPipeline")
+GenerateButton = NodePath("UI/HBoxContainer/GenerateButton")
+MessageLabel = NodePath("UI/HBoxContainer/VBoxContainer/MessageLabel")
+RoomTemplateDatabase = ExtResource("2_bgku6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_25xkc")
+
+[node name="GenerationPipeline" type="Node" parent="."]
+script = ExtResource("3_jybne")
+ManualInputNames = PackedStringArray("RandomSeed")
+
+[node name="Inputs" type="Node" parent="GenerationPipeline"]
+
+[node name="LayoutIdInput" type="Node" parent="GenerationPipeline/Inputs"]
+script = ExtResource("4_tvir0")
+InputName = "LayoutId"
+Value = 530369953
+
+[node name="LayoutGraphsInput" type="Node" parent="GenerationPipeline/Inputs"]
+script = ExtResource("5_rabtt")
+LayoutGraphs = [ExtResource("6_euiaa")]
+
+[node name="CollectableGroupsInput" type="Node" parent="GenerationPipeline/Inputs"]
+script = ExtResource("7_6fr8m")
+CollectableGroups = [ExtResource("8_qqhrt")]
+
+[node name="Steps" type="Node" parent="GenerationPipeline"]
+
+[node name="LayoutGraphSelectorStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("9_5je4a")
+
+[node name="LayoutGraphRandomizerStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("10_pdaak")
+
+[node name="LayoutGeneratorStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("11_g0a4g")
+
+[node name="CollectableGeneratorStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("12_q78cb")
+
+[node name="Container" type="Node3D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InputsLabel" type="Label" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -59.0
+offset_right = 253.0
+offset_bottom = -10.0
+grow_vertical = 0
+text = "Pan = Left Mouse Click & Drag
+Rotate = Right Mouse Click & Drag
+Zoom = Middle Mouse Wheel
+Reset Camera = Middle Mouse Click"
+vertical_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+top_level = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -95.0
+offset_top = -50.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MessageLabel" type="RichTextLabel" parent="UI/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+
+[node name="GenerateButton" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+text = "Generate"
+
+[node name="Camera3DController" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 40, 40, 40)
+size = 50.0
+script = ExtResource("13_ltidk")

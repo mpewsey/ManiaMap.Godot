@@ -6,6 +6,8 @@ namespace MPewsey.ManiaMapGodot
 {
     /// <summary>
     /// A possible door location connecting two RoomNode2D.
+    /// 
+    /// See IDoorNodeExtensions for additional methods usable by this class.
     /// </summary>
     [Tool]
     [GlobalClass]
@@ -55,14 +57,6 @@ namespace MPewsey.ManiaMapGodot
 
             if (!Engine.IsEditorHint())
                 RemoveFromActiveRoomDoors();
-        }
-
-        /// <summary>
-        /// Returns the ManiaMap door used for procedural generation.
-        /// </summary>
-        public Door GetMMDoor()
-        {
-            return new Door(DoorType, (DoorCode)DoorCode);
         }
 
         /// <inheritdoc/>

@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=3 uid="uid://q5m1xi8abbjp"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomNode2D.cs" id="1_c0wlp"]
+[ext_resource type="Resource" uid="uid://bkwrb8mkh8tol" path="res://samples/2d_rooms/square_3x3_room_2d.room_template.tres" id="2_alrqx"]
+[ext_resource type="TileSet" uid="uid://ykn7rmdr2b4y" path="res://samples/2d_rooms/tile_sets/dungeon_tile_set.tres" id="2_xfoc3"]
+[ext_resource type="PackedScene" uid="uid://bf2qehl2sd4ks" path="res://samples/2d_rooms/north_door_node_2d.tscn" id="3_fux8u"]
+[ext_resource type="PackedScene" uid="uid://cjye64fgx2q1" path="res://samples/2d_rooms/south_door_node_2d.tscn" id="4_3m2hq"]
+[ext_resource type="PackedScene" uid="uid://xkhj4cw4nxkw" path="res://samples/2d_rooms/west_door_node_2d.tscn" id="5_2qq6f"]
+[ext_resource type="PackedScene" uid="uid://b6kteenwbvjcj" path="res://samples/2d_rooms/east_door_node_2d.tscn" id="6_1puma"]
+[ext_resource type="PackedScene" uid="uid://bdeivfhh25np3" path="res://samples/2d_rooms/collectable_spot_2d.tscn" id="8_vgecj"]
+
+[node name="Square3x3Room2D" type="Node2D"]
+script = ExtResource("1_c0wlp")
+RoomTemplate = ExtResource("2_alrqx")
+Rows = 3
+Columns = 3
+ActiveCells = [[true, true, true], [true, true, true], [true, true, true]]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_xfoc3")
+format = 2
+layer_0/name = "Floor"
+layer_0/tile_data = PackedInt32Array(0, 589824, 7, 65536, 589824, 7, 131072, 589824, 7, 196608, 589824, 7, 262144, 589824, 7, 327680, 589824, 7, 393216, 589824, 7, 458752, 589824, 7, 524288, 589824, 7, 589824, 589824, 7, 655360, 589824, 7, 720896, 589824, 7, 786432, 589824, 7, 851968, 589824, 7, 917504, 589824, 7, 983040, 589824, 7, 1048576, 589824, 7, 1114112, 589824, 7, 1, 589824, 7, 65537, 589824, 7, 131073, 589824, 7, 196609, 589824, 7, 262145, 589824, 7, 327681, 589824, 7, 393217, 589824, 7, 458753, 589824, 7, 524289, 589824, 7, 589825, 589824, 7, 655361, 589824, 7, 720897, 589824, 7, 786433, 589824, 7, 851969, 589824, 7, 917505, 589824, 7, 983041, 589824, 7, 1048577, 589824, 7, 1114113, 589824, 7, 2, 589824, 7, 65538, 589824, 7, 131074, 589824, 7, 196610, 589824, 7, 262146, 589824, 7, 327682, 589824, 7, 393218, 589824, 7, 458754, 589824, 7, 524290, 589824, 7, 589826, 589824, 7, 655362, 589824, 7, 720898, 589824, 7, 786434, 589824, 7, 851970, 589824, 7, 917506, 589824, 7, 983042, 589824, 7, 1048578, 589824, 7, 1114114, 589824, 7, 3, 589824, 7, 65539, 589824, 7, 131075, 589824, 7, 196611, 589824, 7, 262147, 589824, 7, 327683, 589824, 7, 393219, 589824, 7, 458755, 589824, 7, 524291, 589824, 7, 589827, 589824, 7, 655363, 589824, 7, 720899, 589824, 7, 786435, 589824, 7, 851971, 589824, 7, 917507, 589824, 7, 983043, 589824, 7, 1048579, 589824, 7, 1114115, 589824, 7, 4, 589824, 7, 65540, 589824, 7, 131076, 589824, 7, 196612, 589824, 7, 262148, 589824, 7, 327684, 589824, 7, 393220, 589824, 7, 458756, 589824, 7, 524292, 589824, 7, 589828, 589824, 7, 655364, 589824, 7, 720900, 589824, 7, 786436, 589824, 7, 851972, 589824, 7, 917508, 589824, 7, 983044, 589824, 7, 1048580, 589824, 7, 1114116, 589824, 7, 5, 589824, 7, 65541, 589824, 7, 131077, 589824, 7, 196613, 589824, 7, 262149, 589824, 7, 327685, 589824, 7, 393221, 589824, 7, 458757, 589824, 7, 524293, 589824, 7, 589829, 589824, 7, 655365, 589824, 7, 720901, 589824, 7, 786437, 589824, 7, 851973, 589824, 7, 917509, 589824, 7, 983045, 589824, 7, 1048581, 589824, 7, 1114117, 589824, 7, 6, 589824, 7, 65542, 589824, 7, 131078, 589824, 7, 196614, 589824, 7, 262150, 589824, 7, 327686, 589824, 7, 393222, 589824, 7, 458758, 589824, 7, 524294, 589824, 7, 589830, 589824, 7, 655366, 589824, 7, 720902, 589824, 7, 786438, 589824, 7, 851974, 589824, 7, 917510, 589824, 7, 983046, 589824, 7, 1048582, 589824, 7, 1114118, 589824, 7, 7, 589824, 7, 65543, 589824, 7, 131079, 589824, 7, 196615, 589824, 7, 262151, 589824, 7, 327687, 589824, 7, 393223, 589824, 7, 458759, 589824, 7, 524295, 589824, 7, 589831, 589824, 7, 655367, 589824, 7, 720903, 589824, 7, 786439, 589824, 7, 851975, 589824, 7, 917511, 589824, 7, 983047, 589824, 7, 1048583, 589824, 7, 1114119, 589824, 7, 8, 589824, 7, 65544, 589824, 7, 131080, 589824, 7, 196616, 589824, 7, 262152, 589824, 7, 327688, 589824, 7, 393224, 589824, 7, 458760, 589824, 7, 524296, 589824, 7, 589832, 589824, 7, 655368, 589824, 7, 720904, 589824, 7, 786440, 589824, 7, 851976, 589824, 7, 917512, 589824, 7, 983048, 589824, 7, 1048584, 589824, 7, 1114120, 589824, 7, 9, 589824, 7, 65545, 589824, 7, 131081, 589824, 7, 196617, 589824, 7, 262153, 589824, 7, 327689, 589824, 7, 393225, 589824, 7, 458761, 589824, 7, 524297, 589824, 7, 589833, 589824, 7, 655369, 589824, 7, 720905, 589824, 7, 786441, 589824, 7, 851977, 589824, 7, 917513, 589824, 7, 983049, 589824, 7, 1048585, 589824, 7, 1114121, 589824, 7, 10, 589824, 7, 65546, 589824, 7, 131082, 589824, 7, 196618, 589824, 7, 262154, 589824, 7, 327690, 589824, 7, 393226, 589824, 7, 458762, 589824, 7, 524298, 589824, 7, 589834, 589824, 7, 655370, 589824, 7, 720906, 589824, 7, 786442, 589824, 7, 851978, 589824, 7, 917514, 589824, 7, 983050, 589824, 7, 1048586, 589824, 7, 1114122, 589824, 7, 11, 589824, 7, 65547, 589824, 7, 131083, 589824, 7, 196619, 589824, 7, 262155, 589824, 7, 327691, 589824, 7, 393227, 589824, 7, 458763, 589824, 7, 524299, 589824, 7, 589835, 589824, 7, 655371, 589824, 7, 720907, 589824, 7, 786443, 589824, 7, 851979, 589824, 7, 917515, 589824, 7, 983051, 589824, 7, 1048587, 589824, 7, 1114123, 589824, 7, 12, 589824, 7, 65548, 589824, 7, 131084, 589824, 7, 196620, 589824, 7, 262156, 589824, 7, 327692, 589824, 7, 393228, 589824, 7, 458764, 589824, 7, 524300, 589824, 7, 589836, 589824, 7, 655372, 589824, 7, 720908, 589824, 7, 786444, 589824, 7, 851980, 589824, 7, 917516, 589824, 7, 983052, 589824, 7, 1048588, 589824, 7, 1114124, 589824, 7, 13, 589824, 7, 65549, 589824, 7, 131085, 589824, 7, 196621, 589824, 7, 262157, 589824, 7, 327693, 589824, 7, 393229, 589824, 7, 458765, 589824, 7, 524301, 589824, 7, 589837, 589824, 7, 655373, 589824, 7, 720909, 589824, 7, 786445, 589824, 7, 851981, 589824, 7, 917517, 589824, 7, 983053, 589824, 7, 1048589, 589824, 7, 1114125, 589824, 7, 14, 589824, 7, 65550, 589824, 7, 131086, 589824, 7, 196622, 589824, 7, 262158, 589824, 7, 327694, 589824, 7, 393230, 589824, 7, 458766, 589824, 7, 524302, 589824, 7, 589838, 589824, 7, 655374, 589824, 7, 720910, 589824, 7, 786446, 589824, 7, 851982, 589824, 7, 917518, 589824, 7, 983054, 589824, 7, 1048590, 589824, 7, 1114126, 589824, 7, 15, 589824, 7, 65551, 589824, 7, 131087, 589824, 7, 196623, 589824, 7, 262159, 589824, 7, 327695, 589824, 7, 393231, 589824, 7, 458767, 589824, 7, 524303, 589824, 7, 589839, 589824, 7, 655375, 589824, 7, 720911, 589824, 7, 786447, 589824, 7, 851983, 589824, 7, 917519, 589824, 7, 983055, 589824, 7, 1048591, 589824, 7, 1114127, 589824, 7, 16, 589824, 7, 65552, 589824, 7, 131088, 589824, 7, 196624, 589824, 7, 262160, 589824, 7, 327696, 589824, 7, 393232, 589824, 7, 458768, 589824, 7, 524304, 589824, 7, 589840, 589824, 7, 655376, 589824, 7, 720912, 589824, 7, 786448, 589824, 7, 851984, 589824, 7, 917520, 589824, 7, 983056, 589824, 7, 1048592, 589824, 7, 1114128, 589824, 7, 17, 589824, 7, 65553, 589824, 7, 131089, 589824, 7, 196625, 589824, 7, 262161, 589824, 7, 327697, 589824, 7, 393233, 589824, 7, 458769, 589824, 7, 524305, 589824, 7, 589841, 589824, 7, 655377, 589824, 7, 720913, 589824, 7, 786449, 589824, 7, 851985, 589824, 7, 917521, 589824, 7, 983057, 589824, 7, 1048593, 589824, 7, 1114129, 589824, 7)
+layer_1/name = "Walls"
+layer_1/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 262144, 0, 0, 327680, 0, 1, 393216, 0, 2, 458752, 0, 3, 655360, 0, 2, 720896, 0, 3, 786432, 0, 0, 851968, 0, 1, 1048576, 0, 0, 1114112, 0, 4, 17, 327680, 0, 65553, 327680, 1, 262161, 327680, 0, 327697, 327680, 1, 393233, 327680, 2, 458769, 327680, 3, 655377, 327680, 2, 720913, 327680, 3, 786449, 327680, 0, 851985, 327680, 1, 1048593, 327680, 0, 1114129, 327680, 4, 1114113, 65536, 4, 1114116, 262144, 4, 1114117, 65536, 4, 1114118, 131072, 4, 1114119, 196608, 4, 1114122, 131072, 4, 1114123, 196608, 4, 1114124, 262144, 4, 1114125, 65536, 4, 1114128, 262144, 4, 1, 65536, 0, 4, 262144, 0, 5, 65536, 0, 6, 131072, 0, 7, 196608, 0, 10, 131072, 0, 11, 196608, 0, 12, 262144, 0, 13, 65536, 0, 16, 262144, 0)
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="NorthDoorNode2D" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("3_fux8u")]
+position = Vector2(48, 16)
+Room = NodePath("../..")
+
+[node name="NorthDoorNode2D2" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("3_fux8u")]
+position = Vector2(144, 16)
+Room = NodePath("../..")
+Column = 1
+
+[node name="NorthDoorNode2D3" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("3_fux8u")]
+position = Vector2(240, 16)
+Room = NodePath("../..")
+Column = 2
+
+[node name="SouthDoorNode2D" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("4_3m2hq")]
+position = Vector2(48, 272)
+DoorDirection = 1
+Room = NodePath("../..")
+Row = 2
+
+[node name="SouthDoorNode2D2" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("4_3m2hq")]
+position = Vector2(144, 272)
+DoorDirection = 1
+Room = NodePath("../..")
+Row = 2
+Column = 1
+
+[node name="SouthDoorNode2D3" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("4_3m2hq")]
+position = Vector2(240, 272)
+DoorDirection = 1
+Room = NodePath("../..")
+Row = 2
+Column = 2
+
+[node name="WestDoorNode2D" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("5_2qq6f")]
+position = Vector2(16, 144)
+DoorDirection = 3
+Room = NodePath("../..")
+Row = 1
+
+[node name="WestDoorNode2D2" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("5_2qq6f")]
+position = Vector2(16, 48)
+DoorDirection = 3
+Room = NodePath("../..")
+
+[node name="WestDoorNode2D3" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("5_2qq6f")]
+position = Vector2(16, 240)
+DoorDirection = 3
+Room = NodePath("../..")
+Row = 2
+
+[node name="EastDoorNode2D" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("6_1puma")]
+position = Vector2(272, 144)
+DoorDirection = 2
+Room = NodePath("../..")
+Row = 1
+Column = 2
+
+[node name="EastDoorNode2D2" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("6_1puma")]
+position = Vector2(272, 240)
+DoorDirection = 2
+Room = NodePath("../..")
+Row = 2
+Column = 2
+
+[node name="EastDoorNode2D3" parent="Doors" node_paths=PackedStringArray("Room") instance=ExtResource("6_1puma")]
+position = Vector2(272, 48)
+DoorDirection = 2
+Room = NodePath("../..")
+Column = 2
+
+[node name="CollectableSpots" type="Node2D" parent="."]
+
+[node name="Treasure" parent="CollectableSpots" node_paths=PackedStringArray("Room") instance=ExtResource("8_vgecj")]
+position = Vector2(24, 24)
+Id = 2109409975
+Room = NodePath("../..")
+
+[node name="Treasure2" parent="CollectableSpots" node_paths=PackedStringArray("Room") instance=ExtResource("8_vgecj")]
+position = Vector2(264, 24)
+Id = 1476847919
+Room = NodePath("../..")
+Column = 2
+
+[node name="Treasure3" parent="CollectableSpots" node_paths=PackedStringArray("Room") instance=ExtResource("8_vgecj")]
+position = Vector2(24, 264)
+Id = 433258788
+Room = NodePath("../..")
+Row = 2
+
+[node name="Treasure4" parent="CollectableSpots" node_paths=PackedStringArray("Room") instance=ExtResource("8_vgecj")]
+position = Vector2(264, 264)
+Id = 1751608605
+Room = NodePath("../..")
+Row = 2
+Column = 2

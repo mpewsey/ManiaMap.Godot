@@ -1,7 +1,5 @@
 using Godot;
-using MPewsey.Common.Collections;
 using MPewsey.ManiaMap;
-using MPewsey.ManiaMap.Exceptions;
 using MPewsey.ManiaMapGodot.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -9,7 +7,9 @@ using System.Collections.Generic;
 namespace MPewsey.ManiaMapGodot
 {
     /// <summary>
-    /// A node serving as the top level of a room.
+    /// A node serving as the top level of a 2D room.
+    /// 
+    /// See IRoomNodeExtensions for additional methods usable by this class.
     /// </summary>
     [Tool]
     [GlobalClass]
@@ -127,14 +127,27 @@ namespace MPewsey.ManiaMapGodot
             base._Process(delta);
 
             if (Engine.IsEditorHint())
-            {
-                if (Editor.ManiaMapPlugin.Current.RoomNode2DToolbar.DisplayCells)
-                    ProcessEditCellInputs();
-            }
+                ProcessEditCellInputs();
+        }
+
+        private static bool DisplayCells()
+        {
+            return Editor.ManiaMapPlugin.PluginIsValid()
+                && Editor.ManiaMapPlugin.Current.RoomNode2DToolbar.DisplayCells;
+        }
+
+        private static CellActivity CellEditMode()
+        {
+            if (!Editor.ManiaMapPlugin.PluginIsValid())
+                return CellActivity.None;
+            return Editor.ManiaMapPlugin.Current.RoomNode2DToolbar.CellEditMode;
         }
 
         private void ProcessEditCellInputs()
         {
+            if (!DisplayCells())
+                return;
+
             if (Input.IsMouseButtonPressed(MouseButton.Left) && MouseIsInsideMainScreen())
             {
                 if (!MouseButtonPressed)
@@ -148,8 +161,7 @@ namespace MPewsey.ManiaMapGodot
             {
                 var startIndex = GlobalPositionToCellIndex(MouseButtonDownPosition);
                 var endIndex = GlobalPositionToCellIndex(GetViewport().GetMousePosition());
-                var editMode = Editor.ManiaMapPlugin.Current.RoomNode2DToolbar.CellEditMode;
-                this.SetCellActivities(startIndex, endIndex, editMode);
+                this.SetCellActivities(startIndex, endIndex, CellEditMode());
                 EmitOnCellGridChanged();
             }
 
@@ -242,25 +254,6 @@ namespace MPewsey.ManiaMapGodot
         }
 
         /// <summary>
-        /// Sets the room template if it doesn't already exist and runs auto assign on all descendent CellChild2D.
-        /// </summary>
-        public void AutoAssign()
-        {
-            RoomTemplate ??= new RoomTemplateResource() { TemplateName = Name };
-            RoomTemplate.Id = Rand.AutoAssignId(RoomTemplate.Id);
-            this.SizeActiveCells();
-            var nodes = FindChildren("*", nameof(CellChild2D), true, false);
-
-            foreach (var node in nodes)
-            {
-                var child = (CellChild2D)node;
-                child.AutoAssign(this);
-            }
-
-            GD.PrintRich($"[color=#00ff00]Performed auto assign on {nodes.Count} cell children.[/color]");
-        }
-
-        /// <summary>
         /// Returns the closest active cell index to the specified global position.
         /// </summary>
         /// <param name="position">The global position.</param>
@@ -324,7 +317,7 @@ namespace MPewsey.ManiaMapGodot
 
             var index = 0;
             var maxDistance = float.NegativeInfinity;
-            var delta = position - CellCenterGlobalPosition(row, column);
+            var delta = (position - CellCenterGlobalPosition(row, column)) / CellSize;
 
             for (int i = 0; i < vectors.Length; i++)
             {
@@ -411,156 +404,6 @@ namespace MPewsey.ManiaMapGodot
                 return new Vector2I(row, column);
 
             return new Vector2I(-1, -1);
-        }
-
-        /// <inheritdoc/>
-        public RoomTemplate GetMMRoomTemplate(int id, string name)
-        {
-            var cells = GetMMCells();
-            AddMMDoors(cells);
-            AddMMFeatures(cells);
-            var spots = GetMMCollectableSpots();
-            var template = new RoomTemplate(id, name, cells, spots);
-            template.Validate();
-            ValidateRoomFlags();
-            return template;
-        }
-
-        /// <summary>
-        /// Returns a dictionary of ManiaMap collectable spots used by the procedural generator.
-        /// </summary>
-        private HashMap<int, CollectableSpot> GetMMCollectableSpots()
-        {
-            var nodes = FindChildren("*", nameof(CollectableSpot2D), true, false);
-            var result = new HashMap<int, CollectableSpot>();
-
-            foreach (var node in nodes)
-            {
-                var spot = (CollectableSpot2D)node;
-                result.Add(spot.Id, spot.GetMMCollectableSpot());
-            }
-
-            return result;
-        }
-
-        /// <summary>
-        /// Adds ManiaMap doors for the room to the specified cells array.
-        /// </summary>
-        /// <param name="cells">The cells array.</param>
-        private void AddMMDoors(Array2D<Cell> cells)
-        {
-            var nodes = FindChildren("*", nameof(DoorNode2D), true, false);
-
-            foreach (var node in nodes)
-            {
-                var door = (DoorNode2D)node;
-                var cell = cells[door.Row, door.Column];
-                cell.SetDoor(door.DoorDirection, door.GetMMDoor());
-            }
-        }
-
-        /// <summary>
-        /// Returns an new array of ManiaMap cells for the room.
-        /// </summary>
-        private Array2D<Cell> GetMMCells()
-        {
-            this.SizeActiveCells();
-            var cells = new Array2D<Cell>(Rows, Columns);
-
-            for (int i = 0; i < Rows; i++)
-            {
-                var row = ActiveCells[i];
-
-                for (int j = 0; j < Columns; j++)
-                {
-                    if (row[j])
-                        cells[i, j] = Cell.New;
-                }
-            }
-
-            return cells;
-        }
-
-        /// <summary>
-        /// Adds ManiaMap features for the room to the specified cells array.
-        /// </summary>
-        /// <param name="cells">The cells array.</param>
-        private void AddMMFeatures(Array2D<Cell> cells)
-        {
-            var nodes = FindChildren("*", nameof(Feature2D), true, false);
-
-            foreach (var node in nodes)
-            {
-                var feature = (Feature2D)node;
-                var cell = cells[feature.Row, feature.Column];
-                cell.AddFeature(feature.FeatureName);
-            }
-        }
-
-        /// <summary>
-        /// Validates that the room flags have unique ID's. Throws an exception if they do not.
-        /// </summary>
-        /// <exception cref="DuplicateIdException">Thrown if two room flags share the same ID.</exception>
-        public void ValidateRoomFlags()
-        {
-            var nodes = FindChildren("*", nameof(RoomFlag2D), true, false);
-            var flags = new HashSet<int>(nodes.Count);
-
-            foreach (var node in nodes)
-            {
-                var flag = (RoomFlag2D)node;
-
-                if (!flags.Add(flag.Id))
-                    throw new DuplicateIdException($"Duplicate room flag ID: (ID = {flag.Id}, Path = {GetPathTo(flag)}.");
-            }
-        }
-
-        /// <summary>
-        /// Runs auto assign and updates the referenced RoomTemplateResource.
-        /// Saves the room template resource to a separate file if it is not saved already.
-        /// 
-        /// This method returns does not run and returns false if the room scene is not saved to file.
-        /// </summary>
-        /// <param name="run">This method is only executed if true.</param>
-        public bool UpdateRoomTemplate()
-        {
-            if (!SceneIsSavedToFile())
-            {
-                GD.PrintErr("Scene must be saved to file first.");
-                return false;
-            }
-
-            AutoAssign();
-            RoomTemplate.Initialize(this);
-
-            if (!ResourceIsSavedToFile(RoomTemplate))
-            {
-                var path = SceneFilePath.GetBaseName() + ".room_template.tres";
-                ResourceSaver.Save(RoomTemplate, path);
-                RoomTemplate = ResourceLoader.Load<RoomTemplateResource>(path);
-                GD.Print($"Saved room template to: {path}");
-            }
-
-            GD.Print("Room template updated.");
-            return true;
-        }
-
-        /// <summary>
-        /// Returns true if the specified resource is saved in a separate file.
-        /// </summary>
-        /// <param name="resource">The resource.</param>
-        private bool ResourceIsSavedToFile(Resource resource)
-        {
-            var path = resource.ResourcePath;
-            return !string.IsNullOrEmpty(path) && !path.StartsWith(SceneFilePath);
-        }
-
-        /// <summary>
-        /// Returns true if the room scene is saved to a file.
-        /// </summary>
-        private bool SceneIsSavedToFile()
-        {
-            return !string.IsNullOrEmpty(SceneFilePath);
         }
     }
 }

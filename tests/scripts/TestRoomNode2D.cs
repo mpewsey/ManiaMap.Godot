@@ -55,6 +55,7 @@ namespace MPewsey.ManiaMapGodot.Tests
         [TestCase]
         public void TestUpdateRoomTemplateResource()
         {
+            // Create and save a scene.
             var path = ArtifactDirectory + "test_room.tscn";
             var templatePath = ArtifactDirectory + "test_room.room_template.tres";
             var packedScene = new PackedScene();
@@ -71,6 +72,7 @@ namespace MPewsey.ManiaMapGodot.Tests
             ResourceSaver.Save(packedScene, path);
             room.QueueFree();
 
+            // Open and check the saved scenes.
             var scene = ResourceLoader.Load<PackedScene>(path);
             var savedRoom = scene.Instantiate<RoomNode2D>();
             Assertions.AssertThat(savedRoom.UpdateRoomTemplate()).IsTrue();
@@ -337,7 +339,7 @@ namespace MPewsey.ManiaMapGodot.Tests
                 }
             }
 
-            Assertions.AssertThat(room.GlobalPositionToCellIndex(new Vector2(-100, -100))).IsEqual(new Vector2I(-1, -1));
+            Assertions.AssertThat(room.LocalPositionToCellIndex(new Vector2(-100, -100))).IsEqual(new Vector2I(-1, -1));
             room.QueueFree();
         }
 

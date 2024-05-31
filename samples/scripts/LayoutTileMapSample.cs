@@ -9,7 +9,7 @@ namespace MPewsey.ManiaMapGodot.Samples
     [GlobalClass]
     public partial class LayoutTileMapSample : Node
     {
-        [Export] public CameraController Camera { get; set; }
+        [Export] public Camera2DController Camera { get; set; }
         [Export] public LayoutTileMap Map { get; set; }
         [Export] public Button GenerateButton { get; set; }
         [Export] public RichTextLabel MessageLabel { get; set; }

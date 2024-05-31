@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3 uid="uid://qd7xvywc8cjw"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/DoorNode3D.cs" id="1_ai0kk"]
+[ext_resource type="Script" path="res://samples/scripts/DoorNode3DSample.cs" id="2_hen2s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2r80t"]
+size = Vector3(0.1, 7, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wcf0w"]
+size = Vector3(0.5, 0.1, 0.1)
+
+[node name="TopDoorNode3D" type="Node3D"]
+script = ExtResource("1_ai0kk")
+
+[node name="Ladder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+
+[node name="LeftColumn" type="MeshInstance3D" parent="Ladder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 3.5, 0)
+mesh = SubResource("BoxMesh_2r80t")
+
+[node name="RightColumn" type="MeshInstance3D" parent="Ladder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 3.5, 0)
+mesh = SubResource("BoxMesh_2r80t")
+
+[node name="LadderRungs1" type="Node3D" parent="Ladder"]
+
+[node name="LadderRung" type="MeshInstance3D" parent="Ladder/LadderRungs1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_wcf0w")
+skeleton = NodePath("../..")
+
+[node name="LadderRung2" type="MeshInstance3D" parent="Ladder/LadderRungs1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("BoxMesh_wcf0w")
+skeleton = NodePath("../..")
+
+[node name="LadderRung3" type="MeshInstance3D" parent="Ladder/LadderRungs1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("BoxMesh_wcf0w")
+skeleton = NodePath("../..")
+
+[node name="LadderRung4" type="MeshInstance3D" parent="Ladder/LadderRungs1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+mesh = SubResource("BoxMesh_wcf0w")
+skeleton = NodePath("../..")
+
+[node name="LadderRung5" type="MeshInstance3D" parent="Ladder/LadderRungs1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+mesh = SubResource("BoxMesh_wcf0w")
+skeleton = NodePath("../..")
+
+[node name="LadderRung6" type="MeshInstance3D" parent="Ladder/LadderRungs1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+mesh = SubResource("BoxMesh_wcf0w")
+skeleton = NodePath("../..")
+
+[node name="LadderRungs2" type="Node3D" parent="Ladder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="LadderRung" type="MeshInstance3D" parent="Ladder/LadderRungs2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_wcf0w")
+skeleton = NodePath("../..")
+
+[node name="LadderRung2" type="MeshInstance3D" parent="Ladder/LadderRungs2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("BoxMesh_wcf0w")
+skeleton = NodePath("../..")
+
+[node name="LadderRung3" type="MeshInstance3D" parent="Ladder/LadderRungs2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("BoxMesh_wcf0w")
+skeleton = NodePath("../..")
+
+[node name="LadderRung4" type="MeshInstance3D" parent="Ladder/LadderRungs2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+mesh = SubResource("BoxMesh_wcf0w")
+skeleton = NodePath("../..")
+
+[node name="LadderRung5" type="MeshInstance3D" parent="Ladder/LadderRungs2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+mesh = SubResource("BoxMesh_wcf0w")
+skeleton = NodePath("../..")
+
+[node name="LadderRung6" type="MeshInstance3D" parent="Ladder/LadderRungs2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+mesh = SubResource("BoxMesh_wcf0w")
+skeleton = NodePath("../..")
+
+[node name="LadderRung7" type="MeshInstance3D" parent="Ladder/LadderRungs2"]
+mesh = SubResource("BoxMesh_wcf0w")
+skeleton = NodePath("../..")
+
+[node name="Empty" type="Node3D" parent="."]
+
+[node name="DoorNode3DSample" type="Node" parent="." node_paths=PackedStringArray("DoorContainer", "WallContainer")]
+script = ExtResource("2_hen2s")
+DoorContainer = NodePath("../Ladder")
+WallContainer = NodePath("../Empty")

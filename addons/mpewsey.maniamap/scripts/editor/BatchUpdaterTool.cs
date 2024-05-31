@@ -7,6 +7,7 @@ namespace MPewsey.ManiaMapGodot.Editor
     public static class BatchUpdaterTool
     {
         private const string Room2DScriptReference = "[ext_resource type=\"Script\" path=\"res://addons/mpewsey.maniamap/scripts/runtime/RoomNode2D.cs\"";
+        private const string Room3DScriptReference = "[ext_resource type=\"Script\" path=\"res://addons/mpewsey.maniamap/scripts/runtime/RoomNode3D.cs\"";
 
         public static void BatchUpdateRoomTemplates(string searchPath)
         {
@@ -23,7 +24,7 @@ namespace MPewsey.ManiaMapGodot.Editor
 
             foreach (var path in paths)
             {
-                if (FileContainsRoom(path) && UpdateRoomTemplate(path))
+                if (UpdateRoomTemplate(path))
                     count++;
             }
 
@@ -37,18 +38,29 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         private static bool UpdateRoomTemplate(string path)
         {
+            if (!FileContainsRoom(path))
+                return false;
+
             var scene = ResourceLoader.Load<PackedScene>(path);
             var node = scene.Instantiate<Node>(PackedScene.GenEditState.Instance);
 
-            switch (node)
+            if (node is RoomNode2D room2d)
             {
-                case RoomNode2D room2d:
-                    room2d.UpdateRoomTemplate();
-                    return SaveScene(scene, room2d);
-                default:
-                    GD.PrintErr($"Skipping unhandled room type: (Type = {node.GetType()}, ScenePath = {path})");
-                    return false;
+                room2d.UpdateRoomTemplate();
+                return SaveScene(scene, node);
             }
+
+            if (node is RoomNode3D room3d)
+            {
+                // We have to add 3D scenes to the tree otherwise we get errors when accessing global positions.
+                node.QueueFree();
+                ManiaMapPlugin.Current.AddChild(node);
+                room3d.UpdateRoomTemplate();
+                return SaveScene(scene, node);
+            }
+
+            GD.PrintErr($"Skipping unhandled room type: (Type = {node.GetType()}, ScenePath = {path})");
+            return false;
         }
 
         private static bool SaveScene(PackedScene scene, Node node)
@@ -78,7 +90,7 @@ namespace MPewsey.ManiaMapGodot.Editor
 
             foreach (var line in lines)
             {
-                if (line.StartsWith(Room2DScriptReference))
+                if (line.StartsWith(Room2DScriptReference) || line.StartsWith(Room3DScriptReference))
                     return true;
             }
 

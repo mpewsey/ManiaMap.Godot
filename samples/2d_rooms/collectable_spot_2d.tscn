@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdeivfhh25np3"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/CollectableSpot2D.cs" id="1_pw74u"]
+[ext_resource type="Resource" uid="uid://bq7q406xfxw5t" path="res://samples/2d_rooms/collectable_group_2d.tres" id="2_44dcx"]
+[ext_resource type="TileSet" uid="uid://ykn7rmdr2b4y" path="res://samples/2d_rooms/tile_sets/dungeon_tile_set.tres" id="2_s4jup"]
+[ext_resource type="Script" path="res://samples/scripts/CollectableSpot2DSample.cs" id="4_x5up4"]
+
+[node name="CollectableSpot2D" type="Node2D"]
+script = ExtResource("1_pw74u")
+CollectableGroup = ExtResource("2_44dcx")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-8, -8)
+tile_set = ExtResource("2_s4jup")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 262144, 8)
+
+[node name="CollectableSpot2DSample" type="Node" parent="."]
+script = ExtResource("4_x5up4")
