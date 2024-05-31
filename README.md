@@ -17,3 +17,30 @@ This package provides components for interfacing the [ManiaMap](https://github.c
 2. Copy the `addons/mpewsey.maniamap` directory from this repository into the `addons` folder of your Godot project.
 3. Build your Godot project solution, so that the newly incorporated C# addon scripts are compiled.
 4. Enable the addon by going to `Project > Project Settings` and clicking the enable checkbox next to the `ManiaMap.Godot` plugin.
+
+## Samples
+
+Sample projects are available in the `samples` directory. To explore them, clone this repository and open it like any other Godot project.
+
+<table style='text-align: center'>
+    <tr>
+        <td width='50%' align='center'>
+            <img width=450 alt='layout map book' src='https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/a7b18eac-1432-402c-aec0-44b0882397e5'><br>
+            Layout tile map book sample with onionskin map display.
+        </td>
+        <td width='50%' align='center'>
+            <img width=450 alt='layout map' src='https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/cf86ca2b-5dd8-4480-9932-375fd1c933e6'><br>
+            Layout tile map sample.
+        </td>
+    </tr>
+    <tr>
+        <td width='50%' align='center'>
+            <img width=450 alt='2d layout' src='https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/07c9da75-0489-4362-8957-05634932d28c'><br>
+            2D layout generation sample.
+        </td>
+        <td width='50%' align='center'>
+            <img width=450 alt='3d layout' src='https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/d8cbda20-e74c-4fc4-967b-c8a2c8333bbb'><br>
+            Multi-layer 3D layout generation sample.
+        </td>
+    </tr>
+</table>
