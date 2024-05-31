@@ -24,7 +24,7 @@ namespace MPewsey.ManiaMapGodot.Editor
 
             foreach (var path in paths)
             {
-                if (FileContainsRoom(path) && UpdateRoomTemplate(path))
+                if (UpdateRoomTemplate(path))
                     count++;
             }
 
@@ -38,6 +38,9 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         private static bool UpdateRoomTemplate(string path)
         {
+            if (!FileContainsRoom(path))
+                return false;
+
             var scene = ResourceLoader.Load<PackedScene>(path);
             var node = scene.Instantiate<Node>(PackedScene.GenEditState.Instance);
 
@@ -46,13 +49,14 @@ namespace MPewsey.ManiaMapGodot.Editor
                 room2d.UpdateRoomTemplate();
                 return SaveScene(scene, node);
             }
-            else if (node is RoomNode3D room3d)
+
+            if (node is RoomNode3D room3d)
             {
                 // We have to add 3D scenes to the tree otherwise we get errors when accessing global positions.
                 ManiaMapPlugin.Current.AddChild(node);
+                node.QueueFree();
                 room3d.UpdateRoomTemplate();
                 var success = SaveScene(scene, node);
-                node.QueueFree();
                 return success;
             }
 
