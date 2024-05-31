@@ -53,8 +53,8 @@ namespace MPewsey.ManiaMapGodot.Editor
             if (node is RoomNode3D room3d)
             {
                 // We have to add 3D scenes to the tree otherwise we get errors when accessing global positions.
-                ManiaMapPlugin.Current.AddChild(node);
                 node.QueueFree();
+                ManiaMapPlugin.Current.AddChild(node);
                 room3d.UpdateRoomTemplate();
                 return SaveScene(scene, node);
             }
