@@ -56,8 +56,7 @@ namespace MPewsey.ManiaMapGodot.Editor
                 ManiaMapPlugin.Current.AddChild(node);
                 node.QueueFree();
                 room3d.UpdateRoomTemplate();
-                var success = SaveScene(scene, node);
-                return success;
+                return SaveScene(scene, node);
             }
 
             GD.PrintErr($"Skipping unhandled room type: (Type = {node.GetType()}, ScenePath = {path})");
