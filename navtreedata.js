@@ -65,10 +65,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_async_resource_loader_8cs_source.html",
-"class_m_pewsey_1_1_mania_map_godot_1_1_door_threshold3_d.html#abee176add5c7997b26f3d76612bd199d",
-"class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a56da3231b2fe09b1f2eb0ce7a750f782",
-"class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a8bd52bc4362f65a5bebf2e4257c3d5f1",
-"class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html#ad8827298ffd5985be4b597c0f4571983"
+"class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_feature_atlas_coordinate.html",
+"class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#aa38269ed8f033133544aef8604c90bc7",
+"class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a99b0299da81dca5a9fed619ebcaa42e2",
+"class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html#afe0b47b3c92f2f69ea3da50cb72553eb"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -35,6 +35,7 @@ var namespace_m_pewsey_1_1_mania_map_godot =
     [ "ManiaMapResources", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources.html", [
       [ "Enums", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources_1_1_enums.html", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources_1_1_enums" ],
       [ "Icons", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources_1_1_icons.html", null ],
+      [ "Materials", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources_1_1_materials.html", null ],
       [ "Scenes", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources_1_1_scenes.html", null ]
     ] ],
     [ "ManiaMapSettings", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_settings.html", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_settings" ],

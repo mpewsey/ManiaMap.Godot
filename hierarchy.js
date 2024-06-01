@@ -61,6 +61,7 @@ var hierarchy =
     ] ],
     [ "IRoomNodeExtensions", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html", null ],
     [ "ManiaMapResources", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources.html", null ],
+    [ "ManiaMapResources.Materials", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources_1_1_materials.html", null ],
     [ "Node", null, [
       [ "GenerationInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_input.html", [
         [ "CollectableGroupsInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_collectable_groups_input.html", null ],

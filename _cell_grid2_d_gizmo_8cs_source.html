@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ManiaMap.Godot: /github/workspace/addons/mpewsey.maniamap/scripts/editor/CellGrid2D.cs Source File</title>
+<title>ManiaMap.Godot: /github/workspace/addons/mpewsey.maniamap/scripts/editor/CellGrid2DGizmo.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -77,7 +77,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('_cell_grid2_d_8cs_source.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('_cell_grid2_d_gizmo_8cs_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('_cell_grid2_d_8cs_source.html',''); in
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">CellGrid2D.cs</div></div>
+  <div class="headertitle"><div class="title">CellGrid2DGizmo.cs</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#if TOOLS</span></div>
@@ -105,16 +105,16 @@ $(document).ready(function(){initNavTree('_cell_grid2_d_8cs_source.html',''); in
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">namespace </span>MPewsey.ManiaMapGodot.Editor</div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    [Tool]</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keyword">public</span> <span class="keyword">partial class </span>CellGrid2D : Node2D</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keyword">public</span> <span class="keyword">partial class </span>CellGrid2DGizmo : Node2D</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    {</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        <span class="keyword">private</span> RoomNode2D Room { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="keyword">public</span> <span class="keyword">static</span> CellGrid2D CreateInstance(RoomNode2D room)</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="keyword">public</span> <span class="keyword">static</span> CellGrid2DGizmo CreateInstance(RoomNode2D room)</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>            var grid = <span class="keyword">new</span> CellGrid2D() { Room = room, ZIndex = (int)RenderingServer.CanvasItemZMax };</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            room.OnCellGridChanged += grid.OnCellGridChanged;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>            room.AddChild(grid);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            <span class="keywordflow">return</span> grid;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>            var gizmo = <span class="keyword">new</span> CellGrid2DGizmo() { Room = room, ZIndex = (int)RenderingServer.CanvasItemZMax };</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            room.OnCellGridChanged += gizmo.OnCellGridChanged;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>            room.AddChild(gizmo);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            <span class="keywordflow">return</span> gizmo;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        }</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">private</span> <span class="keywordtype">void</span> OnCellGridChanged()</div>
@@ -207,7 +207,7 @@ $(document).ready(function(){initNavTree('_cell_grid2_d_8cs_source.html',''); in
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_1233bc0a3e869c10318208e4553a4fcb.html">addons</a></li><li class="navelem"><a class="el" href="dir_768f469cd6e0d20cfbc9faff8c7a97e2.html">mpewsey.maniamap</a></li><li class="navelem"><a class="el" href="dir_e2b6e4616e289d04a4990d2afe0579ef.html">scripts</a></li><li class="navelem"><a class="el" href="dir_b33c1f970144400b2279b90dd20b0f22.html">editor</a></li><li class="navelem"><b>CellGrid2D.cs</b></li>
+    <li class="navelem"><a class="el" href="dir_1233bc0a3e869c10318208e4553a4fcb.html">addons</a></li><li class="navelem"><a class="el" href="dir_768f469cd6e0d20cfbc9faff8c7a97e2.html">mpewsey.maniamap</a></li><li class="navelem"><a class="el" href="dir_e2b6e4616e289d04a4990d2afe0579ef.html">scripts</a></li><li class="navelem"><a class="el" href="dir_b33c1f970144400b2279b90dd20b0f22.html">editor</a></li><li class="navelem"><b>CellGrid2DGizmo.cs</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>

@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['manualinputnames_0',['ManualInputNames',['../class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a221b04fe49954ca33fe7fcb3ab3189eb',1,'MPewsey::ManiaMapGodot::Generators::GenerationPipeline']]],
-  ['maptileset_1',['MapTileSet',['../class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#ae5b5bd0854708f7bb93819f930310352',1,'MPewsey::ManiaMapGodot::Drawing::LayoutTileMapBase']]],
-  ['maxbranchlength_2',['MaxBranchLength',['../class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_generator_step.html#a1c6686f21fb7fe9786103fa17c026fea',1,'MPewsey::ManiaMapGodot::Generators::LayoutGeneratorStep']]],
-  ['maxquantity_3',['MaxQuantity',['../class_m_pewsey_1_1_mania_map_godot_1_1_template_group_entry.html#a2b4bcc97477c605deac8256e6515950b',1,'MPewsey::ManiaMapGodot::TemplateGroupEntry']]],
-  ['maxrebases_4',['MaxRebases',['../class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_layout_generator_step.html#a320ff834377a70cddb26e83e1f48dfd1',1,'MPewsey::ManiaMapGodot::Generators::LayoutGeneratorStep']]],
-  ['minquantity_5',['MinQuantity',['../class_m_pewsey_1_1_mania_map_godot_1_1_template_group_entry.html#a78cd1b4fc9da52e61160a17df7b9aef3',1,'MPewsey::ManiaMapGodot::TemplateGroupEntry']]]
+  ['name_0',['Name',['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_edge.html#a7ee9065718e6628dc7791b756fa6c0f9',1,'MPewsey.ManiaMapGodot.Graphs.LayoutGraphEdge.Name()'],['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_node.html#a7ee9065718e6628dc7791b756fa6c0f9',1,'MPewsey.ManiaMapGodot.Graphs.LayoutGraphNode.Name()'],['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource.html#a7ee9065718e6628dc7791b756fa6c0f9',1,'MPewsey.ManiaMapGodot.Graphs.LayoutGraphResource.Name()'],['../class_m_pewsey_1_1_mania_map_godot_1_1_template_group.html#a7ee9065718e6628dc7791b756fa6c0f9',1,'MPewsey.ManiaMapGodot.TemplateGroup.Name()']]],
+  ['neighborpower_1',['NeighborPower',['../class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_collectable_generator_step.html#aad1c9e129bf1efd4199bec05edf80761',1,'MPewsey::ManiaMapGodot::Generators::CollectableGeneratorStep']]],
+  ['nodes_2',['Nodes',['../class_m_pewsey_1_1_mania_map_godot_1_1_graphs_1_1_layout_graph_resource.html#aaf904462adfb0ee5e493a59e44a018d3',1,'MPewsey::ManiaMapGodot::Graphs::LayoutGraphResource']]],
+  ['northdoor_3',['NorthDoor',['../class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_map_tile_set.html#a04cadab27b2c24b33c168d445fb26c47',1,'MPewsey::ManiaMapGodot::Drawing::MapTileSet']]],
+  ['northwall_4',['NorthWall',['../class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_map_tile_set.html#a1d36fb5de408fa5e4684a236e378d40c',1,'MPewsey::ManiaMapGodot::Drawing::MapTileSet']]]
 ];
