@@ -28,6 +28,16 @@ var NAVTREE =
     [ "About", "index.html#autotoc_md1", null ],
     [ "Installation", "index.html#autotoc_md2", null ],
     [ "Samples", "index.html#autotoc_md3", null ],
+    [ "Usage", "index.html#autotoc_md4", [
+      [ "Step 1: Create Rooms and Room Templates", "index.html#autotoc_md5", [
+        [ "Creating a Room", "index.html#autotoc_md6", null ],
+        [ "Creating Doors", "index.html#autotoc_md7", null ],
+        [ "Exporting Room Templates", "index.html#autotoc_md8", null ]
+      ] ],
+      [ "Step 2: Create Room Template Groups", "index.html#autotoc_md9", null ],
+      [ "Step 3: Create a Layout Graph", "index.html#autotoc_md10", null ],
+      [ "Step 4: Create a Generation Pipeline", "index.html#autotoc_md11", null ]
+    ] ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ],
       [ "Package Functions", "namespacemembers.html", [
