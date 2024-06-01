@@ -114,7 +114,7 @@ The `GenerationPipeline` takes various inputs and feeds them through a series of
 2. Select the pipeline and select `Add Default Nodes` in the inspector. This will create a pipeline capable of generating a `Layout`.
 3. Add one or more `LayoutGraphResource` to the automatically generated `LayoutGraphsInput` node.
 4. Optionally, add one or more `CollectableGroup` to the automatically generated `CollectableGroupsInput` node.
-5. Create a script that references the `GenerationPipeline` you wish to run, and call the `Run`, `RunAsync`, or `RunAttemptsAsync` methods to generate a layout.
+5. Create a script that references the `GenerationPipeline` you wish to run, and call the `Run`, `RunAsync`, or `RunAttemptsAsync` methods to generate a layout. For example:
 
 ```ExampleGenerationPipelineRunner.cs
 public partial class ExampleGenerationPipelineRunner : Node
