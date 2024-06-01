@@ -20,7 +20,7 @@ This package provides components for interfacing the [ManiaMap](https://github.c
 
 ## Samples
 
-Sample scenes are available in the `samples` directory. To explore them, clone this repository and open it like any other Godot project.
+Sample scenes are available in the `samples` directory. To explore them, clone this repository, open it in Godot, and perform Steps 3 through 4 under [Installation](##Installation). The requisite NuGet package dependencies should automatically be downloaded when building in Visual Studio.
 
 <table style='text-align: center'>
     <tr>
