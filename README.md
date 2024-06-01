@@ -81,9 +81,8 @@ Note: Additional room child nodes such as `CollectableSpot2D`, `Feature2D`, `Roo
 
 The procedural generator uses one or more `RoomTemplateResource` exported from `RoomNode2D` or `RoomNode3D` to generate layouts.
 
-To perform auto assignment and save the room template for an individual room, click the `Update Room Template` button on the room toolbar. This will create a `RoomTemplateResource` with the `.room_template.tres` extension at the same path as the scene.
-
-Alternately, to perform this operation on multiple saved rooms within a project, select the `Project > Tools > Mania Map > Batch Update Room Templates` option from the menu.
+* To perform auto assignment and save the room template for an individual room, click the `Update Room Template` button on the room toolbar. This will create a `RoomTemplateResource` with the `.room_template.tres` extension at the same path as the scene.
+* Alternately, to perform this operation on multiple saved rooms within a project, select the `Project > Tools > Mania Map > Batch Update Room Templates` option from the menu.
 
 ### Step 2: Create Room Template Groups
 
