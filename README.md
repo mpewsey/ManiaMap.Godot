@@ -73,7 +73,7 @@ Doors define the locations where two rooms can be connected. At least one door m
 2. Position the door within the room and assign its direction and connection constraints.
 3. To auto assign the closest cell and direction to the door, make sure the applicable flags are selected in the inspector and click the `Auto Assign` button on the room toolbar. The assigned door direction will be based on its location relative to the center of its assigned cell.
 
-Note: Additional room child nodes such as `CollectableSpot2D`, `Feature2D`, `RoomFlag2D`, or their respective 3D nodes can also be added to the room if you wish them to be included.
+*Note:* Additional room child nodes such as `CollectableSpot2D`, `Feature2D`, `RoomFlag2D`, or their respective 3D nodes can also be added to the room if you wish them to be included.
 
 ![Screenshot 2024-05-31 150604](https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/f7bff083-d1a2-452f-9d57-c79f68b1b31e)
 
@@ -102,7 +102,7 @@ The procedural generator uses a `LayoutGraphResource` as a base for generating l
 4. To add edges, serving as connections between rooms, to the graph, click and drag between the circular handles on the right and left sides of two nodes.
 5. Selecting nodes and/or edges will allow you to edit their properties in the Godot inspector. Each node must have a `TemplateGroup` assigned; though it is optional for edges. 
 
-Note: Edits to the layout graph will be saved automatically when Godot or the graph editor panel are closed.
+*Note:* Edits to the layout graph will be saved automatically when Godot or the graph editor panel are closed.
 
 ![Screenshot 2024-05-31 193835](https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/5e2daf51-6ae6-47f7-8ccb-981780de94ec)
 
@@ -137,4 +137,4 @@ public partial class ExampleGenerationPipelineRunner : Node
 }
 ```
 
-Note: Depending on your room templates and layout graph, it may not be possible to generate a layout for all (if any) random seeds. If you are encountering issues with successfully generating a layout, you may need to reconsider the constraints imposed on its generation. For example, you may need to add more doors to ensure that your rooms have a better chance of connecting. Even then, you may still encounter some isolated failures, in which case the generation pipeline `RunAttempsAsync` method can help by automatically falling back to other seeds.
+*Note:* Depending on your room templates and layout graph, it may not be possible to generate a layout for all (if any) random seeds. If you are encountering issues with successfully generating a layout, you may need to reconsider the constraints imposed on its generation. For example, you may need to add more doors to ensure that your rooms have a better chance of connecting. Even then, you may still encounter some isolated failures, in which case the generation pipeline `RunAttempsAsync` method can help by automatically falling back to other seeds.
