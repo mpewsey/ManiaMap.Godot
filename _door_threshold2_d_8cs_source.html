@@ -143,8 +143,8 @@ $(document).ready(function(){initNavTree('_door_threshold2_d_8cs_source.html',''
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keyword">private</span> <span class="keywordtype">void</span> DrawArea()</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        {</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            var size = <span class="keyword">new</span> Vector2(<a class="code hl_property" href="class_m_pewsey_1_1_mania_map_godot_1_1_door_threshold2_d.html#a7de4690b4c35b991ee86032c52d974ab">Width</a>, <a class="code hl_property" href="class_m_pewsey_1_1_mania_map_godot_1_1_door_threshold2_d.html#a0f776a4ace9e9771de0a864193f3de0b">Height</a>);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            var lineColor = <span class="keyword">new</span> Color(1, 1, 0);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            var fillColor = <span class="keyword">new</span> Color(1, 1, 0, 0.1f);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            var lineColor = Editor.ManiaMapProjectSettings.GetDoorThreshold2DLineColor();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            var fillColor = Editor.ManiaMapProjectSettings.GetDoorThreshold2DFillColor();</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            var rect = <span class="keyword">new</span> Rect2(GlobalPosition - 0.5f * size, size);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            DrawRect(rect, fillColor);</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            DrawRect(rect, lineColor, <span class="keyword">false</span>);</div>
