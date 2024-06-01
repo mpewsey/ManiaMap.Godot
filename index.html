@@ -154,7 +154,7 @@ Creating Doors</h3>
 <li>Position the door within the room and assign its direction and connection constraints.</li>
 <li>To auto assign the closest cell and direction to the door, make sure the applicable flags are selected in the inspector and click the <code>Auto Assign</code> button on the room toolbar. The assigned door direction will be based on its location relative to the center of its assigned cell.</li>
 </ol>
-<p >Note: Additional room child nodes such as <code>CollectableSpot2D</code>, <code>Feature2D</code>, <code>RoomFlag2D</code>, or their respective 3D nodes can also be added to the room if you wish them to be included.</p>
+<p ><em>Note:</em> Additional room child nodes such as <code>CollectableSpot2D</code>, <code>Feature2D</code>, <code>RoomFlag2D</code>, or their respective 3D nodes can also be added to the room if you wish them to be included.</p>
 <p ><img src="https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/f7bff083-d1a2-452f-9d57-c79f68b1b31e" alt="Screenshot 2024-05-31 150604" class="inline"/></p>
 <h3><a class="anchor" id="autotoc_md8"></a>
 Exporting Room Templates</h3>
@@ -181,7 +181,7 @@ Step 3: Create a Layout Graph</h2>
 <li>To add edges, serving as connections between rooms, to the graph, click and drag between the circular handles on the right and left sides of two nodes.</li>
 <li>Selecting nodes and/or edges will allow you to edit their properties in the Godot inspector. Each node must have a <code>TemplateGroup</code> assigned; though it is optional for edges.</li>
 </ol>
-<p >Note: Edits to the layout graph will be saved automatically when Godot or the graph editor panel are closed.</p>
+<p ><em>Note:</em> Edits to the layout graph will be saved automatically when Godot or the graph editor panel are closed.</p>
 <p ><img src="https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/5e2daf51-6ae6-47f7-8ccb-981780de94ec" alt="Screenshot 2024-05-31 193835" class="inline"/></p>
 <h2><a class="anchor" id="autotoc_md11"></a>
 Step 4: Create a Generation Pipeline</h2>
@@ -212,7 +212,7 @@ Step 4: Create a Generation Pipeline</h2>
 <div class="line">        // See the project samples for example implementations.</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-</div><!-- fragment --><p >Note: Depending on your room templates and layout graph, it may not be possible to generate a layout for all (if any) random seeds. If you are encountering issues with successfully generating a layout, you may need to reconsider the constraints imposed on its generation. For example, you may need to add more doors to ensure that your rooms have a better chance of connecting. Even then, you may still encounter some isolated failures, in which case the generation pipeline <code>RunAttempsAsync</code> method can help by automatically falling back to other seeds. </p>
+</div><!-- fragment --><p ><em>Note:</em> Depending on your room templates and layout graph, it may not be possible to generate a layout for all (if any) random seeds. If you are encountering issues with successfully generating a layout, you may need to reconsider the constraints imposed on its generation. For example, you may need to add more doors to ensure that your rooms have a better chance of connecting. Even then, you may still encounter some isolated failures, in which case the generation pipeline <code>RunAttempsAsync</code> method can help by automatically falling back to other seeds. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
