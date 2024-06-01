@@ -34,7 +34,7 @@ namespace MPewsey.ManiaMapGodot.Tests
         public void TestOutOfBoundsParameterizePosition()
         {
             var runner = SceneRunner.RunScene(EmptyScene);
-            var threshold = new DoorThreshold2D() { Width = 100, Height = 50, Position = new Vector2(200, 300) };
+            var threshold = new DoorThreshold2D() { Size = new Vector2(100, 50), Position = new Vector2(200, 300) };
             runner.Scene().AddChild(threshold);
             var approx = new Vector2(0.01f, 0.01f);
 
@@ -59,7 +59,7 @@ namespace MPewsey.ManiaMapGodot.Tests
         public void TestParameterizePosition()
         {
             var runner = SceneRunner.RunScene(EmptyScene);
-            var threshold = new DoorThreshold2D() { Width = 100, Height = 50, Position = new Vector2(200, 300) };
+            var threshold = new DoorThreshold2D() { Size = new Vector2(100, 50), Position = new Vector2(200, 300) };
             runner.Scene().AddChild(threshold);
             var approx = new Vector2(0.01f, 0.01f);
 
@@ -80,7 +80,7 @@ namespace MPewsey.ManiaMapGodot.Tests
         public void TestOutOfBoundsInterpolatePosition()
         {
             var runner = SceneRunner.RunScene(EmptyScene);
-            var threshold = new DoorThreshold2D() { Width = 100, Height = 50, Position = new Vector2(200, 300) };
+            var threshold = new DoorThreshold2D() { Size = new Vector2(100, 50), Position = new Vector2(200, 300) };
             runner.Scene().AddChild(threshold);
             var approx = new Vector2(0.01f, 0.01f);
 
@@ -105,7 +105,7 @@ namespace MPewsey.ManiaMapGodot.Tests
         public void TestInterpolatePosition()
         {
             var runner = SceneRunner.RunScene(EmptyScene);
-            var threshold = new DoorThreshold2D() { Width = 100, Height = 50, Position = new Vector2(200, 300) };
+            var threshold = new DoorThreshold2D() { Size = new Vector2(100, 50), Position = new Vector2(200, 300) };
             runner.Scene().AddChild(threshold);
             var approx = new Vector2(0.01f, 0.01f);
 

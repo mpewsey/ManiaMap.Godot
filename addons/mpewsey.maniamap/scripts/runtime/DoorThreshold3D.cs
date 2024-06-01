@@ -10,28 +10,30 @@ namespace MPewsey.ManiaMapGodot
     [GlobalClass]
     public partial class DoorThreshold3D : Node3D
     {
-        private float _width = 20;
-        /// <summary>
-        /// The width of the rectangular region.
-        /// </summary>
-        [Export(PropertyHint.Range, "0,100,0.001,or_greater")] public float Width { get => _width; set => SetField(ref _width, value); }
+        [Signal] public delegate void OnSizeChangedEventHandler(Vector3 size);
+        public Error EmitOnSizeChanged(Vector3 size) => EmitSignal(SignalName.OnSizeChanged, size);
 
-        private float _height = 20;
+        private Vector3 _size = new Vector3(1, 1, 1);
         /// <summary>
-        /// The height of the rectangular region.
+        /// The width, height, and depth of the threshold.
         /// </summary>
-        [Export(PropertyHint.Range, "0,100,0.001,or_greater")] public float Height { get => _height; set => SetField(ref _height, value); }
+        [Export(PropertyHint.Range, "0,100,0.001,or_greater")] public Vector3 Size { get => _size; set => SetSize(ref _size, value); }
 
-        private float _depth = 20;
-        /// <summary>
-        /// The height of the rectangular region.
-        /// </summary>
-        [Export(PropertyHint.Range, "0,100,0.001,or_greater")] public float Depth { get => _depth; set => SetField(ref _depth, value); }
-
-        private void SetField<T>(ref T field, T value)
+        private void SetSize(ref Vector3 field, Vector3 value)
         {
-            field = value;
+            field = new Vector3(Mathf.Max(value.X, 0), Mathf.Max(value.Y, 0), Mathf.Max(value.Z, 0));
+            EmitOnSizeChanged(field);
         }
+
+#if TOOLS
+        public override void _Ready()
+        {
+            base._Ready();
+
+            if (Engine.IsEditorHint())
+                Editor.BoxGizmo.CreateInstance(this);
+        }
+#endif
 
         /// <summary>
         /// Converts a global position to a parameterized position on the interval [0, 1].
@@ -39,12 +41,11 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="position">The global position.</param>
         public Vector3 ParameterizePosition(Vector3 position)
         {
-            var size = new Vector3(Width, Height, Depth);
-            var topLeft = GlobalPosition - 0.5f * size;
+            var topLeft = GlobalPosition - 0.5f * Size;
             var delta = position - topLeft;
-            var x = size.X > 0 ? Mathf.Clamp(delta.X / size.X, 0, 1) : 0.5f;
-            var y = size.Y > 0 ? Mathf.Clamp(delta.Y / size.Y, 0, 1) : 0.5f;
-            var z = size.Z > 0 ? Mathf.Clamp(delta.Z / size.Z, 0, 1) : 0.5f;
+            var x = Size.X > 0 ? Mathf.Clamp(delta.X / Size.X, 0, 1) : 0.5f;
+            var y = Size.Y > 0 ? Mathf.Clamp(delta.Y / Size.Y, 0, 1) : 0.5f;
+            var z = Size.Z > 0 ? Mathf.Clamp(delta.Z / Size.Z, 0, 1) : 0.5f;
             return new Vector3(x, y, z);
         }
 
@@ -54,17 +55,12 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="parameters">The parameterized position.</param>
         public Vector3 InterpolatePosition(Vector3 parameters)
         {
-            var size = new Vector3(Width, Height, Depth);
-            var topLeft = GlobalPosition - 0.5f * size;
-            var bottomRight = topLeft + size;
+            var topLeft = GlobalPosition - 0.5f * Size;
+            var bottomRight = topLeft + Size;
 
-            var tx = Mathf.Clamp(parameters.X, 0, 1);
-            var ty = Mathf.Clamp(parameters.Y, 0, 1);
-            var tz = Mathf.Clamp(parameters.Z, 0, 1);
-
-            var x = Mathf.Lerp(topLeft.X, bottomRight.X, tx);
-            var y = Mathf.Lerp(topLeft.Y, bottomRight.Y, ty);
-            var z = Mathf.Lerp(topLeft.Z, bottomRight.Z, tz);
+            var x = Mathf.Lerp(topLeft.X, bottomRight.X, Mathf.Clamp(parameters.X, 0, 1));
+            var y = Mathf.Lerp(topLeft.Y, bottomRight.Y, Mathf.Clamp(parameters.Y, 0, 1));
+            var z = Mathf.Lerp(topLeft.Z, bottomRight.Z, Mathf.Clamp(parameters.Z, 0, 1));
 
             return new Vector3(x, y, z);
         }

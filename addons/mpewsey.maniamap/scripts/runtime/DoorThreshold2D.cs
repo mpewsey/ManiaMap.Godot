@@ -10,21 +10,15 @@ namespace MPewsey.ManiaMapGodot
     [GlobalClass]
     public partial class DoorThreshold2D : Node2D
     {
-        private float _width = 20;
+        private Vector2 _size = new Vector2(20, 20);
         /// <summary>
-        /// The width of the rectangular region.
+        /// The width and height of the threshold.
         /// </summary>
-        [Export(PropertyHint.Range, "0,100,1,or_greater")] public float Width { get => _width; set => SetField(ref _width, value); }
+        [Export(PropertyHint.Range, "0,100,1,or_greater")] public Vector2 Size { get => _size; set => SetSize(ref _size, value); }
 
-        private float _height = 20;
-        /// <summary>
-        /// The height of the rectangular region.
-        /// </summary>
-        [Export(PropertyHint.Range, "0,100,1,or_greater")] public float Height { get => _height; set => SetField(ref _height, value); }
-
-        private void SetField<T>(ref T field, T value)
+        private void SetSize(ref Vector2 field, Vector2 value)
         {
-            field = value;
+            field = new Vector2(Mathf.Max(value.X, 0), Mathf.Max(value.Y, 0));
 
 #if TOOLS
             if (Engine.IsEditorHint())
@@ -51,10 +45,9 @@ namespace MPewsey.ManiaMapGodot
 
         private void DrawArea()
         {
-            var size = new Vector2(Width, Height);
             var lineColor = Editor.ManiaMapProjectSettings.GetDoorThreshold2DLineColor();
             var fillColor = Editor.ManiaMapProjectSettings.GetDoorThreshold2DFillColor();
-            var rect = new Rect2(GlobalPosition - 0.5f * size, size);
+            var rect = new Rect2(GlobalPosition - 0.5f * Size, Size);
             DrawRect(rect, fillColor);
             DrawRect(rect, lineColor, false);
         }
@@ -66,11 +59,10 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="position">The global position.</param>
         public Vector2 ParameterizePosition(Vector2 position)
         {
-            var size = new Vector2(Width, Height);
-            var topLeft = GlobalPosition - 0.5f * size;
+            var topLeft = GlobalPosition - 0.5f * Size;
             var delta = position - topLeft;
-            var x = size.X > 0 ? Mathf.Clamp(delta.X / size.X, 0, 1) : 0.5f;
-            var y = size.Y > 0 ? Mathf.Clamp(delta.Y / size.Y, 0, 1) : 0.5f;
+            var x = Size.X > 0 ? Mathf.Clamp(delta.X / Size.X, 0, 1) : 0.5f;
+            var y = Size.Y > 0 ? Mathf.Clamp(delta.Y / Size.Y, 0, 1) : 0.5f;
             return new Vector2(x, y);
         }
 
@@ -80,15 +72,11 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="parameters">The parameterized position.</param>
         public Vector2 InterpolatePosition(Vector2 parameters)
         {
-            var size = new Vector2(Width, Height);
-            var topLeft = GlobalPosition - 0.5f * size;
-            var bottomRight = topLeft + size;
+            var topLeft = GlobalPosition - 0.5f * Size;
+            var bottomRight = topLeft + Size;
 
-            var tx = Mathf.Clamp(parameters.X, 0, 1);
-            var ty = Mathf.Clamp(parameters.Y, 0, 1);
-
-            var x = Mathf.Lerp(topLeft.X, bottomRight.X, tx);
-            var y = Mathf.Lerp(topLeft.Y, bottomRight.Y, ty);
+            var x = Mathf.Lerp(topLeft.X, bottomRight.X, Mathf.Clamp(parameters.X, 0, 1));
+            var y = Mathf.Lerp(topLeft.Y, bottomRight.Y, Mathf.Clamp(parameters.Y, 0, 1));
 
             return new Vector2(x, y);
         }

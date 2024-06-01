@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ppa2shs6thgv"]
+
+[ext_resource type="Shader" path="res://addons/mpewsey.maniamap/materials/albedo_shader.gdshader" id="1_1hjtm"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_1hjtm")

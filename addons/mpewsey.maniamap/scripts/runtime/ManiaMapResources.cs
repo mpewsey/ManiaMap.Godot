@@ -1,3 +1,5 @@
+using Godot;
+
 namespace MPewsey.ManiaMapGodot
 {
     /// <summary>
@@ -24,7 +26,14 @@ namespace MPewsey.ManiaMapGodot
             public const string LayoutGraphEditorScene = "uid://ckyjrhwvcs6fi";
             public const string RoomNode2DToolbarScene = "uid://ceij50wkmgvyi";
             public const string RoomNode3DToolbarScene = "uid://b25t77npx7a3l";
-            public const string CellGrid3DScene = "uid://b75d5yleoppq3";
+        }
+
+        /// <summary>
+        /// Contains materials.
+        /// </summary>
+        public static class Materials
+        {
+            public static Material AlbedoMaterial { get; } = ResourceLoader.Load<Material>("uid://ppa2shs6thgv");
         }
 
         /// <summary>

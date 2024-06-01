@@ -36,6 +36,13 @@ namespace MPewsey.ManiaMapGodot.Editor
         private const string DoorThreshold2DLineColorSetting = "mania_map/2d_gizmos/door_threshold_2d/line_color";
         private static Color DoorThreshold2DLineColorDefaultValue { get; } = new Color(1, 1, 0);
 
+        // Door Threshold 3D
+        private const string DoorThreshold3DFillColorSetting = "mania_map/3d_gizmos/door_threshold_3d/fill_color";
+        private static Color DoorThreshold3DFillColorDefaultValue { get; } = new Color(1, 1, 0, 0.1f);
+
+        private const string DoorThreshold3DLineColorSetting = "mania_map/3d_gizmos/door_threshold_3d/line_color";
+        private static Color DoorThreshold3DLineColorDefaultValue { get; } = new Color(1, 1, 0);
+
         private static Godot.Collections.Dictionary[] GetPropertyInfos()
         {
             return new Godot.Collections.Dictionary[]
@@ -116,6 +123,23 @@ namespace MPewsey.ManiaMapGodot.Editor
                     { "hint_string", string.Empty },
                     { "default_value", DoorThreshold2DLineColorDefaultValue },
                 },
+                // Door Threshold 3D
+                new Godot.Collections.Dictionary()
+                {
+                    { "name",  DoorThreshold3DFillColorSetting },
+                    { "type", (int)Variant.Type.Color },
+                    { "hint", (int)PropertyHint.None },
+                    { "hint_string", string.Empty },
+                    { "default_value", DoorThreshold3DFillColorDefaultValue },
+                },
+                new Godot.Collections.Dictionary()
+                {
+                    { "name",  DoorThreshold3DLineColorSetting },
+                    { "type", (int)Variant.Type.Color },
+                    { "hint", (int)PropertyHint.None },
+                    { "hint_string", string.Empty },
+                    { "default_value", DoorThreshold3DLineColorDefaultValue },
+                },
             };
         }
 
@@ -162,6 +186,16 @@ namespace MPewsey.ManiaMapGodot.Editor
         public static Color GetDoorThreshold2DLineColor()
         {
             return ProjectSettings.GetSetting(DoorThreshold2DLineColorSetting, DoorThreshold2DLineColorDefaultValue).AsColor();
+        }
+
+        public static Color GetDoorThreshold3DFillColor()
+        {
+            return ProjectSettings.GetSetting(DoorThreshold3DFillColorSetting, DoorThreshold3DFillColorDefaultValue).AsColor();
+        }
+
+        public static Color GetDoorThreshold3DLineColor()
+        {
+            return ProjectSettings.GetSetting(DoorThreshold3DLineColorSetting, DoorThreshold3DLineColorDefaultValue).AsColor();
         }
 
         public static void CreateProjectSettings()

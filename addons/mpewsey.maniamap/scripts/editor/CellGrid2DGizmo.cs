@@ -4,16 +4,16 @@ using Godot;
 namespace MPewsey.ManiaMapGodot.Editor
 {
     [Tool]
-    public partial class CellGrid2D : Node2D
+    public partial class CellGrid2DGizmo : Node2D
     {
         private RoomNode2D Room { get; set; }
 
-        public static CellGrid2D CreateInstance(RoomNode2D room)
+        public static CellGrid2DGizmo CreateInstance(RoomNode2D room)
         {
-            var grid = new CellGrid2D() { Room = room, ZIndex = (int)RenderingServer.CanvasItemZMax };
-            room.OnCellGridChanged += grid.OnCellGridChanged;
-            room.AddChild(grid);
-            return grid;
+            var gizmo = new CellGrid2DGizmo() { Room = room, ZIndex = (int)RenderingServer.CanvasItemZMax };
+            room.OnCellGridChanged += gizmo.OnCellGridChanged;
+            room.AddChild(gizmo);
+            return gizmo;
         }
 
         private void OnCellGridChanged()

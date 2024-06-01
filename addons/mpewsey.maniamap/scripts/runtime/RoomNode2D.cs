@@ -102,7 +102,7 @@ namespace MPewsey.ManiaMapGodot
             if (Engine.IsEditorHint())
             {
                 this.SizeActiveCells();
-                Editor.CellGrid2D.CreateInstance(this);
+                Editor.CellGrid2DGizmo.CreateInstance(this);
                 return;
             }
 #endif
