@@ -191,7 +191,7 @@ Step 4: Create a Generation Pipeline</h2>
 <li>Select the pipeline and select <code>Add Default Nodes</code> in the inspector. This will create a pipeline capable of generating a <code>Layout</code>.</li>
 <li>Add one or more <code>LayoutGraphResource</code> to the automatically generated <code>LayoutGraphsInput</code> node.</li>
 <li>Optionally, add one or more <code>CollectableGroup</code> to the automatically generated <code>CollectableGroupsInput</code> node.</li>
-<li>Create a script that references the <code>GenerationPipeline</code> you wish to run, and call the <code>Run</code>, <code>RunAsync</code>, or <code>RunAttemptsAsync</code> methods to generate a layout.</li>
+<li>Create a script that references the <code>GenerationPipeline</code> you wish to run, and call the <code>Run</code>, <code>RunAsync</code>, or <code>RunAttemptsAsync</code> methods to generate a layout. For example:</li>
 </ol>
 <div class="fragment"><div class="line">{ExampleGenerationPipelineRunner.cs} </div>
 <div class="line">public partial class ExampleGenerationPipelineRunner : Node</div>
