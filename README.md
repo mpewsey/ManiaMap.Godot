@@ -137,3 +137,5 @@ public partial class ExampleGenerationPipelineRunner : Node
     }
 }
 ```
+
+Note: Depending on your room templates and layout graph, it may not be possible to generate a layout for all (if any) random seeds. If you are encountering issues with successfully generating a layout, you may need to reconsider the constraints imposed on its generation. For example, you may need to add more doors to ensure that your rooms have a better chance of connecting. Even then, you may still encounter some isolated failures, in which case the generation pipeline `RunAttempsAsync` method can help by automatically falling back to other seeds.
