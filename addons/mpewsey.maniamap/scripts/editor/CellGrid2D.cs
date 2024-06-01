@@ -47,9 +47,9 @@ namespace MPewsey.ManiaMapGodot.Editor
         {
             if (DisplayCells())
             {
-                var activeFillColor = new Color(0, 0, 1, 0.1f);
-                var inactiveFillColor = new Color(1, 0, 0, 0.1f);
-                var lineColor = new Color(0.5f, 0.5f, 0.5f);
+                var activeFillColor = ManiaMapProjectSettings.GetRoom2DActiveCellColor();
+                var inactiveFillColor = ManiaMapProjectSettings.GetRoom2DInactiveCellColor();
+                var lineColor = ManiaMapProjectSettings.GetRoom2DCellLineColor();
                 DrawCellRects(inactiveFillColor, lineColor, false);
                 DrawCellXs(lineColor, false);
                 DrawCellRects(activeFillColor, lineColor, true);

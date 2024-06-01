@@ -52,8 +52,8 @@ namespace MPewsey.ManiaMapGodot
         private void DrawArea()
         {
             var size = new Vector2(Width, Height);
-            var lineColor = new Color(1, 1, 0);
-            var fillColor = new Color(1, 1, 0, 0.1f);
+            var lineColor = Editor.ManiaMapProjectSettings.GetDoorThreshold2DLineColor();
+            var fillColor = Editor.ManiaMapProjectSettings.GetDoorThreshold2DFillColor();
             var rect = new Rect2(GlobalPosition - 0.5f * size, size);
             DrawRect(rect, fillColor);
             DrawRect(rect, lineColor, false);

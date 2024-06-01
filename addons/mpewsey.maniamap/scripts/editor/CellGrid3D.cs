@@ -6,13 +6,11 @@ namespace MPewsey.ManiaMapGodot.Editor
     [Tool]
     public partial class CellGrid3D : Node3D
     {
-        [Export] public Material ActiveCellMaterial { get; set; }
-        [Export] public Material InactiveCellMaterial { get; set; }
-        [Export] public Material WireframeMaterial { get; set; }
+        private static StringName AlbedoParameterName { get; } = "albedo";
+
+        [Export] public Material CellMaterial { get; set; }
 
         private RoomNode3D Room { get; set; }
-        private BoxMesh BoxMesh { get; set; } = new BoxMesh();
-        private ArrayMesh BoxEdgeMesh { get; set; } = CreateBoxEdgeMesh();
 
         public static CellGrid3D CreateInstance(RoomNode3D room)
         {
@@ -25,11 +23,12 @@ namespace MPewsey.ManiaMapGodot.Editor
             return grid;
         }
 
-        private static ArrayMesh CreateBoxEdgeMesh()
+        private ArrayMesh CreateBoxEdgeMesh()
         {
             var mesh = new ArrayMesh();
             var tool = new SurfaceTool();
             tool.Begin(Mesh.PrimitiveType.Lines);
+            tool.SetMaterial(CellMaterial);
             var scale = 0.5001f;
 
             var a = new Vector3(-1, -1, -1) * scale;
@@ -105,6 +104,9 @@ namespace MPewsey.ManiaMapGodot.Editor
             var cells = Room.ActiveCells;
             var cellSize = Room.CellSize;
             var displayCells = DisplayCells();
+            var edgeColor = ManiaMapProjectSettings.GetRoom3DCellLineColor();
+            var activeColor = ManiaMapProjectSettings.GetRoom3DActiveCellColor();
+            var inactivecolor = ManiaMapProjectSettings.GetRoom3DInactiveCellColor();
 
             for (int i = 0; i < cells.Count; i++)
             {
@@ -113,7 +115,10 @@ namespace MPewsey.ManiaMapGodot.Editor
                 for (int j = 0; j < row.Count; j++)
                 {
                     var cell = GetChild<MeshInstance3D>(index++);
-                    cell.MaterialOverride = row[j] ? ActiveCellMaterial : InactiveCellMaterial;
+                    var edges = cell.GetChild<MeshInstance3D>(0);
+                    edges.SetInstanceShaderParameter(AlbedoParameterName, edgeColor);
+                    var color = row[j] ? activeColor : inactivecolor;
+                    cell.SetInstanceShaderParameter(AlbedoParameterName, color);
                     cell.Position = Room.CellCenterLocalPosition(i, j);
                     cell.Scale = cellSize;
                     cell.Visible = displayCells;
@@ -133,8 +138,9 @@ namespace MPewsey.ManiaMapGodot.Editor
 
             for (int i = count; i < size; i++)
             {
-                var edges = new MeshInstance3D() { Mesh = BoxEdgeMesh, MaterialOverride = WireframeMaterial };
-                var cell = new MeshInstance3D() { Mesh = BoxMesh };
+                var edges = new MeshInstance3D() { Mesh = CreateBoxEdgeMesh() };
+                var boxMesh = new BoxMesh() { Material = CellMaterial };
+                var cell = new MeshInstance3D() { Mesh = boxMesh };
                 cell.AddChild(edges);
                 AddChild(cell);
             }

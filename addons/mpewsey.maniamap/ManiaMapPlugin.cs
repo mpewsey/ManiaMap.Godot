@@ -12,7 +12,6 @@ namespace MPewsey.ManiaMapGodot.Editor
         public const string PluginName = "mpewsey.maniamap";
         private const string MenuName = "Mania Map";
         private const string GraphEditorDockButtonName = "Graph Editor";
-        private const string BatchUpdateSearchPathSetting = "mania_map/settings/batch_update_search_path";
 
         public static ManiaMapPlugin Current { get; private set; }
 
@@ -23,11 +22,7 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         public static bool PluginIsValid()
         {
-            return PluginIsEnabled()
-                && IsInstanceValid(Current)
-                && IsInstanceValid(Current.RoomNode2DToolbar)
-                && IsInstanceValid(Current.RoomNode3DToolbar)
-                && IsInstanceValid(Current.GraphEditor);
+            return PluginIsEnabled() && IsInstanceValid(Current);
         }
 
         public static bool PluginIsEnabled()
@@ -62,7 +57,7 @@ namespace MPewsey.ManiaMapGodot.Editor
         {
             Current = this;
             EditorInputs.AddInputActions();
-            CreateProjectSettings();
+            ManiaMapProjectSettings.CreateProjectSettings();
             AddToolMenu();
             AddGraphEditorDock();
             CreateRoomNode2DToolbar();
@@ -109,18 +104,6 @@ namespace MPewsey.ManiaMapGodot.Editor
                 MakeBottomPanelItemVisible(GraphEditor);
                 GraphEditor.SetEditorTarget(graph);
             }
-        }
-
-        private static void CreateProjectSettings()
-        {
-            CreateSetting(BatchUpdateSearchPathSetting, "res://");
-        }
-
-        private static void CreateSetting(string name, Variant defaultValue)
-        {
-            if (!ProjectSettings.HasSetting(name))
-                ProjectSettings.SetSetting(name, defaultValue);
-            ProjectSettings.SetInitialValue(name, defaultValue);
         }
 
         private void AddGraphEditorDock()
@@ -209,7 +192,7 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         private static void BatchUpdateRoomTemplates()
         {
-            var path = ProjectSettings.GetSetting(BatchUpdateSearchPathSetting, "res://").AsString();
+            var path = ManiaMapProjectSettings.GetBatchUpdateSearchPath();
             BatchUpdaterTool.BatchUpdateRoomTemplates(path);
         }
     }
