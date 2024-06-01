@@ -20,7 +20,7 @@ This package provides components for interfacing the [ManiaMap](https://github.c
 
 ## Samples
 
-Sample projects are available in the `samples` directory. To explore them, clone this repository and open it like any other Godot project.
+Sample scenes are available in the `samples` directory. To explore them, clone this repository and open it like any other Godot project.
 
 <table style='text-align: center'>
     <tr>
