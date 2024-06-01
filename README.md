@@ -88,7 +88,7 @@ The procedural generator uses one or more `RoomTemplateResource` exported from `
 
 One or more `TemplateGroup` are used by the procedural generator to determine which rooms can be assigned to a given position in a layout.
 
-1. To create a template group, right click in the Godot File System doc, select `Create New... Resource`, then create a new `TemplateGroup`.
+1. To create a template group, right click in the Godot File System doc, select `Create New... > Resource`, then create a new `TemplateGroup`.
 2. Double click on the newly created template group and, in the Godot inspector, assign a unique name to the group.
 3. For the `Entries` property, add a new `TemplateGroupEntry` element and assign a `RoomTemplateResource` to the `Room Template` property slot. Repeat this for all rooms that you wish to assign to the group.
 
