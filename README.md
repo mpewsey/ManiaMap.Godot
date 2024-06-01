@@ -84,3 +84,56 @@ The procedural generator uses one or more `RoomTemplateResource` exported from `
 To perform auto assignment and save the room template for an individual room, click the `Update Room Template` button on the room toolbar. This will create a `RoomTemplateResource` with the `.room_template.tres` extension at the same path as the scene.
 
 Alternately, to perform this operation on multiple saved rooms within a project, select the `Project > Tools > Mania Map > Batch Update Room Templates` option from the menu.
+
+### Step 2: Create Room Template Groups
+
+One or more `TemplateGroup` are used by the procedural generator to determine which rooms can be assigned to a given position in a layout.
+
+1. To create a template group, right click in the Godot File System doc, select `Create New... Resource`, then create a new `TemplateGroup`.
+2. Double click on the newly created template group and, in the Godot inspector, assign a unique name to the group.
+3. For the `Entries` property, add a new `TemplateGroupEntry` element and assign a `RoomTemplateResource` to the `Room Template` property slot. Repeat this for all rooms that you wish to assign to the group.
+
+### Step 3: Create a Layout Graph
+
+The procedural generator uses a `LayoutGraphResource` as a base for generating layouts. This allows you to design high level relationships between rooms while still making the resulting layout appear random.
+
+1. To create a layout graph, right click in the Godot File System dock, select `Create New... > Resource`, then create a new `LayoutGraphResource`.
+2. Double click on created resource and a `Graph Editor` tab will appear in Godot's bottom panel.
+3. In the `Graph Editor` panel, right click to add nodes, which will serve as room locations, to the graph.
+4. To add edges, serving as connections between rooms, to the graph, click and drag between the circular handles on the right and left sides of two nodes.
+5. Selecting nodes and/or edges will allow you to edit their properties in the Godot inspector. Each node must have a `TemplateGroup` assigned; though it is optional for edges. 
+
+Note: Edits to the layout graph will be saved automatically when Godot or the graph editor panel are closed.
+
+![Screenshot 2024-05-31 193835](https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/5e2daf51-6ae6-47f7-8ccb-981780de94ec)
+
+### Step 4: Create a Generation Pipeline
+
+The `GenerationPipeline` takes various inputs and feeds them through a series of operational steps to generate one or more outputs. In the context of this plugin, the output is most notably a room `Layout`.
+
+1. To create a pipeline, add a `GenerationPipeline` node to a new or existing scene.
+2. Select the pipeline and select `Add Default Nodes` in the inspector. This will create a pipeline capable of generating a `Layout`.
+3. Add one or more `LayoutGraphResource` to the automatically generated `LayoutGraphsInput` node.
+4. Optionally, add one or more `CollectableGroup` to the automatically generated `CollectableGroupsInput` node.
+5. Create a script that references the `GenerationPipeline` you wish to run, and call the `Run`, `RunAsync`, or `RunAttemptsAsync` methods to generate a layout.
+
+```ExampleGenerationPipelineRunner.cs
+public partial class ExampleGenerationPipelineRunner : Node
+{
+    [Export] public GenerationPipeline Pipeline { get; set; }
+
+    public void RunPipeline()
+    {
+        var results = Pipeline.Run();
+        var layout = results.GetOutput<Layout>("Layout");
+
+        // At this point, you will probably want to do something with the layout...
+        //
+        // * You could save it to file using the JsonSerialization or XmlSerialization static classes.
+        // * You could use the ManiaMapManager and RoomTemplateGroupDatabase to instantiate the rooms in the layout.
+        // * You could use it with the LayoutTileMap or LayoutTileMapBook nodes to generate maps.
+        //
+        // See the project samples for example implementations.
+    }
+}
+```
