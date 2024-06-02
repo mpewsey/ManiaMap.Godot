@@ -2,4 +2,4 @@
 * text=auto eol=lf
 
 docs/** linguist-documentation
-addons/gdUnit4/** -linguist-vendored
+addons/gdUnit4/** linguist-vendored
