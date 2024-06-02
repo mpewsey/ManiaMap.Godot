@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://i0l4nkbmjqye"]
+[gd_scene load_steps=13 format=3 uid="uid://i0l4nkbmjqye"]
 
 [ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomNode3D.cs" id="1_sxisd"]
 [ext_resource type="Resource" uid="uid://vde0h7n6mse5" path="res://samples/3d_rooms/square_3x3_room_3d.room_template.tres" id="2_1c1c4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://5eymjw33lylv" path="res://samples/3d_rooms/bottom_door_node_3d.tscn" id="5_5nabe"]
 [ext_resource type="PackedScene" uid="uid://qd7xvywc8cjw" path="res://samples/3d_rooms/top_door_node_3d.tscn" id="5_ag8ud"]
 [ext_resource type="Material" uid="uid://vdejptctpmtk" path="res://samples/3d_rooms/wall_material.tres" id="6_yshji"]
+[ext_resource type="PackedScene" uid="uid://q4v0d0mtto26" path="res://samples/3d_rooms/room_flag_3d.tscn" id="8_bqqxb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pmtfc"]
 size = Vector3(2, 0.1, 2)
@@ -584,3 +585,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 1)
 Id = 141321685
 Room = NodePath("../..")
 Column = 2
+
+[node name="RoomFlags" type="Node3D" parent="."]
+
+[node name="RoomFlag3D" parent="RoomFlags" node_paths=PackedStringArray("Room") instance=ExtResource("8_bqqxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 10)
+Id = 1375822846
+Room = NodePath("../..")
+Row = 1
+Column = 1

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbpnjxxkk1k0n"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomFlag2D.cs" id="1_0xcd1"]
+[ext_resource type="TileSet" uid="uid://ykn7rmdr2b4y" path="res://samples/2d_rooms/tile_sets/dungeon_tile_set.tres" id="2_u01be"]
+
+[node name="RoomFlag2D" type="Node2D"]
+script = ExtResource("1_0xcd1")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-8, -8)
+tile_set = ExtResource("2_u01be")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 393216, 8)

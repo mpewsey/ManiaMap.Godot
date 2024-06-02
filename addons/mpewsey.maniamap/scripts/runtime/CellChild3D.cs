@@ -2,6 +2,9 @@ using Godot;
 
 namespace MPewsey.ManiaMapGodot
 {
+    /// <summary>
+    /// The base class for elements tied to a RoomNode3D's cell index.
+    /// </summary>
     [Tool]
     [GlobalClass]
     public abstract partial class CellChild3D : Node3D, ICellChild

@@ -16,6 +16,7 @@ namespace MPewsey.ManiaMapGodot.Tests
     {
         private const string EmptyScene = "uid://m8fcccufss1";
         private const string TestCellAreasScene = "uid://duaufvulkyino";
+        private const string TestRoomScene = "uid://chi7ur84wslyu";
         private const string RoomTemplateDatabase = "uid://l38x064m8j7q";
         private const string ArtifactDirectory = "user://tests/room3d/";
 
@@ -133,6 +134,49 @@ namespace MPewsey.ManiaMapGodot.Tests
             Assertions.AssertThat(room.CellIndexExists(2, 0)).IsFalse();
             Assertions.AssertThat(room.CellIndexExists(0, 3)).IsFalse();
             room.QueueFree();
+        }
+
+        [TestCase]
+        public void TestRoomFlag()
+        {
+            var database = ResourceLoader.Load<RoomTemplateDatabase>(RoomTemplateDatabase);
+            var runner = SceneRunner.RunScene(TestRoomScene);
+            var root = runner.Scene();
+            var pipeline = root.FindChild(nameof(GenerationPipeline)) as GenerationPipeline;
+            Assertions.AssertThat(pipeline != null).IsTrue();
+            var results = pipeline.Run(logger: GD.Print);
+            Assertions.AssertThat(results.Success).IsTrue();
+            var layout = results.GetOutput<Layout>("Layout");
+            var state = new LayoutState(layout);
+            var roomId = layout.Rooms.Keys.First();
+            var roomState = state.RoomStates[roomId];
+            ManiaMapManager.Initialize(layout, state, new ManiaMapSettings());
+
+            var room = database.CreateRoom3DInstance(roomId, root);
+            var roomFlags = room.FindChildren("*", nameof(RoomFlag3D), true, false);
+            Assertions.AssertThat(roomFlags.Count).IsGreater(0);
+            var roomFlag = roomFlags[0] as RoomFlag3D;
+            Assertions.AssertThat(roomFlag != null).IsTrue();
+
+            Assertions.AssertThat(roomFlag.FlagIsSet()).IsFalse();
+            Assertions.AssertThat(roomState.Flags.Contains(roomFlag.Id)).IsFalse();
+
+            Assertions.AssertThat(roomFlag.SetFlag()).IsTrue();
+            Assertions.AssertThat(roomState.Flags.Contains(roomFlag.Id)).IsTrue();
+            Assertions.AssertThat(roomFlag.FlagIsSet()).IsTrue();
+
+            Assertions.AssertThat(roomFlag.RemoveFlag()).IsTrue();
+            Assertions.AssertThat(roomState.Flags.Contains(roomFlag.Id)).IsFalse();
+            Assertions.AssertThat(roomFlag.FlagIsSet()).IsFalse();
+            Assertions.AssertThat(roomFlag.RemoveFlag()).IsFalse();
+
+            Assertions.AssertThat(roomFlag.ToggleFlag()).IsTrue();
+            Assertions.AssertThat(roomState.Flags.Contains(roomFlag.Id)).IsTrue();
+            Assertions.AssertThat(roomFlag.FlagIsSet()).IsTrue();
+
+            Assertions.AssertThat(roomFlag.ToggleFlag()).IsFalse();
+            Assertions.AssertThat(roomState.Flags.Contains(roomFlag.Id)).IsFalse();
+            Assertions.AssertThat(roomFlag.FlagIsSet()).IsFalse();
         }
 
         [TestCase]

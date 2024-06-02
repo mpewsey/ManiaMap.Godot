@@ -1,0 +1,50 @@
+[gd_scene load_steps=12 format=3 uid="uid://dsyp4281u8x3n"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationPipeline.cs" id="1_lbkuj"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationIntInput.cs" id="2_ecn8f"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/RandomSeedInput.cs" id="3_sn0uq"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphsInput.cs" id="4_irfgy"]
+[ext_resource type="Resource" uid="uid://c2vpyp38ge6oo" path="res://samples/2d_rooms/graphs/cross_graph_2d.tres" id="5_kivkf"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGroupsInput.cs" id="6_88goh"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphSelectorStep.cs" id="7_gqw7m"]
+[ext_resource type="Resource" uid="uid://bq7q406xfxw5t" path="res://samples/2d_rooms/collectable_group_2d.tres" id="7_uyvor"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphRandomizerStep.cs" id="8_fe031"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGeneratorStep.cs" id="9_ag5oc"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGeneratorStep.cs" id="10_2iygp"]
+
+[node name="TestRoom2DCellAreas" type="Node"]
+
+[node name="GenerationPipeline" type="Node" parent="."]
+script = ExtResource("1_lbkuj")
+
+[node name="Inputs" type="Node" parent="GenerationPipeline"]
+
+[node name="LayoutIdInput" type="Node" parent="GenerationPipeline/Inputs"]
+script = ExtResource("2_ecn8f")
+InputName = "LayoutId"
+Value = 530369953
+
+[node name="RandomSeedInput" type="Node" parent="GenerationPipeline/Inputs"]
+script = ExtResource("3_sn0uq")
+
+[node name="LayoutGraphsInput" type="Node" parent="GenerationPipeline/Inputs"]
+script = ExtResource("4_irfgy")
+LayoutGraphs = [ExtResource("5_kivkf")]
+
+[node name="CollectableGroupsInput" type="Node" parent="GenerationPipeline/Inputs"]
+script = ExtResource("6_88goh")
+CollectableGroups = [ExtResource("7_uyvor")]
+
+[node name="Steps" type="Node" parent="GenerationPipeline"]
+
+[node name="LayoutGraphSelectorStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("7_gqw7m")
+
+[node name="LayoutGraphRandomizerStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("8_fe031")
+
+[node name="LayoutGeneratorStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("9_ag5oc")
+
+[node name="CollectableGeneratorStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("10_2iygp")

@@ -1,0 +1,70 @@
+[gd_scene load_steps=15 format=3 uid="uid://chi7ur84wslyu"]
+
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationPipeline.cs" id="1_uiu4r"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/GenerationIntInput.cs" id="2_mgqko"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/RandomSeedInput.cs" id="3_x132s"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphsInput.cs" id="4_f6cwk"]
+[ext_resource type="Resource" uid="uid://e4d85cd7126l" path="res://samples/3d_rooms/graphs/cross_graph_3d.tres" id="5_6stf3"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGroupsInput.cs" id="6_ta3tv"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphSelectorStep.cs" id="7_8juyy"]
+[ext_resource type="Resource" uid="uid://5cjmos17qwf2" path="res://samples/3d_rooms/collectable_group_3d.tres" id="7_f1v1t"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGraphRandomizerStep.cs" id="8_02fmc"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/LayoutGeneratorStep.cs" id="9_4kaw6"]
+[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/generators/CollectableGeneratorStep.cs" id="10_ak3d7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5qrng"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_rhlmc"]
+sky_material = SubResource("ProceduralSkyMaterial_5qrng")
+
+[sub_resource type="Environment" id="Environment_srts6"]
+background_mode = 2
+sky = SubResource("Sky_rhlmc")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="TestRoom3DCellAreas" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_srts6")
+
+[node name="GenerationPipeline" type="Node" parent="."]
+script = ExtResource("1_uiu4r")
+
+[node name="Inputs" type="Node" parent="GenerationPipeline"]
+
+[node name="LayoutIdInput" type="Node" parent="GenerationPipeline/Inputs"]
+script = ExtResource("2_mgqko")
+InputName = "LayoutId"
+Value = 530369953
+
+[node name="RandomSeedInput" type="Node" parent="GenerationPipeline/Inputs"]
+script = ExtResource("3_x132s")
+
+[node name="LayoutGraphsInput" type="Node" parent="GenerationPipeline/Inputs"]
+script = ExtResource("4_f6cwk")
+LayoutGraphs = [ExtResource("5_6stf3")]
+
+[node name="CollectableGroupsInput" type="Node" parent="GenerationPipeline/Inputs"]
+script = ExtResource("6_ta3tv")
+CollectableGroups = [ExtResource("7_f1v1t")]
+
+[node name="Steps" type="Node" parent="GenerationPipeline"]
+
+[node name="LayoutGraphSelectorStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("7_8juyy")
+
+[node name="LayoutGraphRandomizerStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("8_02fmc")
+
+[node name="LayoutGeneratorStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("9_4kaw6")
+
+[node name="CollectableGeneratorStep" type="Node" parent="GenerationPipeline/Steps"]
+script = ExtResource("10_ak3d7")
