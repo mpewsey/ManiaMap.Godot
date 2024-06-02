@@ -114,18 +114,18 @@ $(document).ready(function(){initNavTree('_box_gizmo_8cs_source.html',''); initR
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>            var material = ManiaMapResources.Materials.AlbedoMaterial;</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            var gizmo = <span class="keyword">new</span> BoxGizmo() { Mesh = <span class="keyword">new</span> BoxMesh(), MaterialOverride = material };</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>            var edges = <span class="keyword">new</span> MeshInstance3D() { Mesh = CreateCubeEdgeMesh(), MaterialOverride = material };</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            gizmo.AddChild(edges);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            gizmo.OnDoorThreshold3DSizeChanged(threshold.Size);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            threshold.OnSizeChanged += gizmo.OnDoorThreshold3DSizeChanged;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            threshold.AddChild(gizmo);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            threshold.OnSizeChanged += gizmo.OnDoorThreshold3DSizeChanged;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            gizmo.AddChild(edges);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            threshold.AddChild(gizmo);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            gizmo.OnDoorThreshold3DSizeChanged(threshold.Size);</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="keywordflow">return</span> gizmo;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        }</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">private</span> <span class="keywordtype">void</span> OnDoorThreshold3DSizeChanged(Vector3 size)</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        {</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            Scale = size;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            Scale = size * GetParent&lt;Node3D&gt;().Scale;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            var lineColor = ManiaMapProjectSettings.GetDoorThreshold3DLineColor();</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            var fillColor = ManiaMapProjectSettings.GetDoorThreshold3DFillColor();</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            SetInstanceShaderParameter(AlbedoParameterName, fillColor);</div>
