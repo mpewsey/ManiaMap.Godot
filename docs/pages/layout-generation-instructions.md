@@ -71,7 +71,7 @@ The `GenerationPipeline` takes various inputs and feeds them through a series of
 
 ```ExampleGenerationPipelineRunner.cs
 using MPewsey.ManiaMap;
-using MPewsey.ManiaMapGodot.Generators
+using MPewsey.ManiaMapGodot.Generators;
 
 public partial class ExampleGenerationPipelineRunner : Node
 {
