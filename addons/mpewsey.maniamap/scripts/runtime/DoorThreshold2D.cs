@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 namespace MPewsey.ManiaMapGodot
 {
@@ -54,15 +55,46 @@ namespace MPewsey.ManiaMapGodot
 #endif
 
         /// <summary>
+        /// Gets the axis aligned bounding box for the threshold.
+        /// </summary>
+        private Rect2 GetAABB()
+        {
+            var size = 0.5f * Size;
+            var transform = Transform;
+
+            var min = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
+            var max = new Vector2(float.NegativeInfinity, float.NegativeInfinity);
+
+            Span<Vector2> corners = stackalloc Vector2[]
+            {
+                new Vector2(1, 1),
+                new Vector2(1, -1),
+                new Vector2(-1, 1),
+                new Vector2(-1, -1),
+            };
+
+            foreach (var corner in corners)
+            {
+                var localPosition = corner * size;
+                var position = transform.BasisXform(localPosition);
+                min = new Vector2(Mathf.Min(position.X, min.X), Mathf.Min(position.Y, min.Y));
+                max = new Vector2(Mathf.Max(position.X, max.X), Mathf.Max(position.Y, max.Y));
+            }
+
+            return new Rect2(min + GlobalPosition, max - min);
+        }
+
+        /// <summary>
         /// Converts a global position to a parameterized position on the interval [0, 1].
         /// </summary>
         /// <param name="position">The global position.</param>
         public Vector2 ParameterizePosition(Vector2 position)
         {
-            var topLeft = GlobalPosition - 0.5f * Size;
-            var delta = position - topLeft;
-            var x = Size.X > 0 ? Mathf.Clamp(delta.X / Size.X, 0, 1) : 0.5f;
-            var y = Size.Y > 0 ? Mathf.Clamp(delta.Y / Size.Y, 0, 1) : 0.5f;
+            var bounds = GetAABB();
+            var size = bounds.Size;
+            var delta = position - bounds.Position;
+            var x = size.X > 0 ? Mathf.Clamp(delta.X / size.X, 0, 1) : 0.5f;
+            var y = size.Y > 0 ? Mathf.Clamp(delta.Y / size.Y, 0, 1) : 0.5f;
             return new Vector2(x, y);
         }
 
@@ -72,8 +104,9 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="parameters">The parameterized position.</param>
         public Vector2 InterpolatePosition(Vector2 parameters)
         {
-            var topLeft = GlobalPosition - 0.5f * Size;
-            var bottomRight = topLeft + Size;
+            var bounds = GetAABB();
+            var topLeft = bounds.Position;
+            var bottomRight = topLeft + bounds.Size;
 
             var x = Mathf.Lerp(topLeft.X, bottomRight.X, Mathf.Clamp(parameters.X, 0, 1));
             var y = Mathf.Lerp(topLeft.Y, bottomRight.Y, Mathf.Clamp(parameters.Y, 0, 1));

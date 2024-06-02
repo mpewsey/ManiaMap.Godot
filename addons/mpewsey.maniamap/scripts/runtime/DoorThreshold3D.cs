@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 namespace MPewsey.ManiaMapGodot
 {
@@ -36,16 +37,53 @@ namespace MPewsey.ManiaMapGodot
 #endif
 
         /// <summary>
+        /// Gets the axis aligned bounding box for the threshold.
+        /// </summary>
+        private Aabb GetAABB()
+        {
+            var size = 0.5f * Size;
+            var basis = Transform.Basis;
+
+            var min = new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
+            var max = new Vector3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
+
+            Span<Vector3> corners = stackalloc Vector3[]
+            {
+                new Vector3(-1, -1, -1),
+                new Vector3(1, -1, -1),
+                new Vector3(1, 1, -1),
+                new Vector3(-1, 1, -1),
+                new Vector3(-1, -1, 1),
+                new Vector3(1, -1, 1),
+                new Vector3(1, 1, 1),
+                new Vector3(-1, 1, 1),
+            };
+
+            foreach (var corner in corners)
+            {
+                var localPosition = corner * size;
+                var x = basis.X.Dot(localPosition);
+                var y = basis.Y.Dot(localPosition);
+                var z = basis.Z.Dot(localPosition);
+                min = new Vector3(Mathf.Min(x, min.X), Mathf.Min(y, min.Y), Mathf.Min(z, min.X));
+                max = new Vector3(Mathf.Max(x, max.X), Mathf.Max(y, max.Y), Mathf.Max(z, max.X));
+            }
+
+            return new Aabb(min + GlobalPosition, max - min);
+        }
+
+        /// <summary>
         /// Converts a global position to a parameterized position on the interval [0, 1].
         /// </summary>
         /// <param name="position">The global position.</param>
         public Vector3 ParameterizePosition(Vector3 position)
         {
-            var topLeft = GlobalPosition - 0.5f * Size;
-            var delta = position - topLeft;
-            var x = Size.X > 0 ? Mathf.Clamp(delta.X / Size.X, 0, 1) : 0.5f;
-            var y = Size.Y > 0 ? Mathf.Clamp(delta.Y / Size.Y, 0, 1) : 0.5f;
-            var z = Size.Z > 0 ? Mathf.Clamp(delta.Z / Size.Z, 0, 1) : 0.5f;
+            var bounds = GetAABB();
+            var size = bounds.Size;
+            var delta = position - bounds.Position;
+            var x = size.X > 0 ? Mathf.Clamp(delta.X / size.X, 0, 1) : 0.5f;
+            var y = size.Y > 0 ? Mathf.Clamp(delta.Y / size.Y, 0, 1) : 0.5f;
+            var z = size.Z > 0 ? Mathf.Clamp(delta.Z / size.Z, 0, 1) : 0.5f;
             return new Vector3(x, y, z);
         }
 
@@ -55,8 +93,9 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="parameters">The parameterized position.</param>
         public Vector3 InterpolatePosition(Vector3 parameters)
         {
-            var topLeft = GlobalPosition - 0.5f * Size;
-            var bottomRight = topLeft + Size;
+            var bounds = GetAABB();
+            var topLeft = bounds.Position;
+            var bottomRight = topLeft + bounds.Size;
 
             var x = Mathf.Lerp(topLeft.X, bottomRight.X, Mathf.Clamp(parameters.X, 0, 1));
             var y = Mathf.Lerp(topLeft.Y, bottomRight.Y, Mathf.Clamp(parameters.Y, 0, 1));
