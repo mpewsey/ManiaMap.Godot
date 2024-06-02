@@ -13,18 +13,18 @@ namespace MPewsey.ManiaMapGodot.Editor
             var material = ManiaMapResources.Materials.AlbedoMaterial;
             var gizmo = new BoxGizmo() { Mesh = new BoxMesh(), MaterialOverride = material };
             var edges = new MeshInstance3D() { Mesh = CreateCubeEdgeMesh(), MaterialOverride = material };
+            threshold.OnSizeChanged += gizmo.OnDoorThreshold3DSizeChanged;
 
             gizmo.AddChild(edges);
-            gizmo.OnDoorThreshold3DSizeChanged(threshold.Size);
-            threshold.OnSizeChanged += gizmo.OnDoorThreshold3DSizeChanged;
             threshold.AddChild(gizmo);
+            gizmo.OnDoorThreshold3DSizeChanged(threshold.Size);
 
             return gizmo;
         }
 
         private void OnDoorThreshold3DSizeChanged(Vector3 size)
         {
-            Scale = size;
+            Scale = size * GetParent<Node3D>().Scale;
             var lineColor = ManiaMapProjectSettings.GetDoorThreshold3DLineColor();
             var fillColor = ManiaMapProjectSettings.GetDoorThreshold3DFillColor();
             SetInstanceShaderParameter(AlbedoParameterName, fillColor);
