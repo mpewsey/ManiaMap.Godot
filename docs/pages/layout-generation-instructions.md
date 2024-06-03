@@ -12,8 +12,7 @@ The procedural generator creates layouts by pulling from user-defined room templ
 2. In the inspector, specify the number of cell rows and columns, along with the cell size to create the bounding shape of the room.
 3. When the room node is selected, a toolbar will appear in the Godot main window (Circled in red in the screenshot below). The options on this toolbar may be used to edit the cell activities to further define the shape of the room. For instance, selecting the toggle edit mode button, then clicking or dragging over cells in the view will toggle the targeted cells on or off.
 
-> [!NOTE]
-> For `RoomNode3D`, you must be in the top view in order to edit cell activities. The top view can be navigated to by clicking the positive Y axis on the axis gizmo or selecting `Top View` from the 3D main window's perspective menu. The toolbar will show a check mark when the cells can be edited.
+> **Note:** For `RoomNode3D`, you must be in the top view in order to edit cell activities. The top view can be navigated to by clicking the positive Y axis on the axis gizmo or selecting `Top View` from the 3D main window's perspective menu. The toolbar will show a check mark when the cells can be edited.
 
 In the below screenshot, the cells for an angle shaped room have been created, with the active cells shown in blue and inactive cells shown in red and crossed-out. The active cells are the regions where we intend to build our scene.
 
@@ -56,8 +55,7 @@ The procedural generator uses a `LayoutGraphResource` as a base for generating l
 4. To add edges, serving as connections between rooms, to the graph, click and drag between the circular handles on the right and left sides of two nodes.
 5. Selecting nodes and/or edges will allow you to edit their properties in the Godot inspector. Each node must have a `TemplateGroup` assigned; though it is optional for edges.
    
-> [!NOTE]
-> Edits to the layout graph will be saved automatically when Godot or the graph editor panel are closed.
+> **Note:** Edits to the layout graph will be saved automatically when Godot or the graph editor panel are closed.
 
 ![Screenshot 2024-05-31 193835](https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/5e2daf51-6ae6-47f7-8ccb-981780de94ec)
 
@@ -95,5 +93,4 @@ public partial class ExampleGenerationPipelineRunner : Node
 }
 ```
 
-> [!NOTE]
-> Depending on your room templates and layout graph, it may not be possible to generate a layout for all (if any) random seeds. If you are encountering issues with successfully generating a layout, you may need to reconsider the constraints imposed on its generation. For example, you may need to add more doors to ensure that your rooms have a better chance of connecting. Even then, you may still encounter some isolated failures, in which case the generation pipeline `RunAttempsAsync` method can help by automatically falling back to other seeds.
+> **Note:** Depending on your room templates and layout graph, it may not be possible to generate a layout for all (if any) random seeds. If you are encountering issues with successfully generating a layout, you may need to reconsider the constraints imposed on its generation. For example, you may need to add more doors to ensure that your rooms have a better chance of connecting. Even then, you may still encounter some isolated failures, in which case the generation pipeline `RunAttempsAsync` method can help by automatically falling back to other seeds.
