@@ -108,25 +108,22 @@ Creating a Room</h2>
 <ol type="1">
 <li>From an empty scene in Godot, create a <code>RoomNode2D</code> or <code>RoomNode3D</code> depending on whether you wish to develop in 2D or 3D. One of these node types must serve as the root of your room scene.</li>
 <li>In the inspector, specify the number of cell rows and columns, along with the cell size to create the bounding shape of the room.</li>
-<li>When the room node is selected, a toolbar will appear in the Godot main window (Circled in red in the screenshot below). The options on this toolbar may be used to edit the cell activities to further define the shape of the room. For instance, selecting the toggle edit mode button, then clicking or dragging over cells in the view will toggle the targeted cells on or off.<ul>
-<li><b>Note:</b> For <code>RoomNode3D</code>, you must be in the top view in order to edit cell activities. The top view can be navigated to by clicking the positive Y axis on the axis gizmo or selecting <code>Top View</code> from the 3D main window's perspective menu. The toolbar will show a check mark when the cells can be edited.</li>
-</ul>
-</li>
+<li>When the room node is selected, a toolbar will appear in the Godot main window (Circled in red in the screenshot below). The options on this toolbar may be used to edit the cell activities to further define the shape of the room. For instance, selecting the toggle edit mode button, then clicking or dragging over cells in the view will toggle the targeted cells on or off.</li>
 </ol>
-<p >In the below screenshot, the cells for an angle shaped room have been created, with the active cells shown in blue and inactive cells shown in red and crossed-out. The active cells are the regions where we intend to build our scene.</p>
+<blockquote class="doxtable">
+<p >[!NOTE] For <code>RoomNode3D</code>, you must be in the top view in order to edit cell activities. The top view can be navigated to by clicking the positive Y axis on the axis gizmo or selecting <code>Top View</code> from the 3D main window's perspective menu. The toolbar will show a check mark when the cells can be edited. </p>
+</blockquote>
+<p>In the below screenshot, the cells for an angle shaped room have been created, with the active cells shown in blue and inactive cells shown in red and crossed-out. The active cells are the regions where we intend to build our scene.</p>
 <p ><img src="https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/15c94ef3-387c-43fa-8b46-a6bd2341dba4" alt="Screenshot 2024-05-31 141058" class="inline"/></p>
 <h2><a class="anchor" id="autotoc_md7"></a>
 Creating Doors</h2>
 <p >Doors define the locations where two rooms can be connected. At least one door must be added to a room.</p>
 <ol type="1">
-<li>Add a <code>DoorNode2D</code> or <code>DoorNode3D</code> as a child of the room based on your room type.<ul>
-<li>To save time, you may wish to create your doors as separate scenes with any related nodes, such as sprites or collision, as children. These scenes can then be referenced in your room scene.</li>
-</ul>
-</li>
+<li>Add a <code>DoorNode2D</code> or <code>DoorNode3D</code> as a child of the room based on your room type. To save time, you may wish to create your doors as separate scenes with any related nodes, such as sprites or collision, as children. These scenes can then be referenced in your room scene.</li>
 <li>Position the door within the room and assign its direction and connection constraints.</li>
 <li>To auto assign the closest cell and direction to the door, make sure the applicable flags are selected in the inspector and click the <code>Auto Assign</code> button on the room toolbar. The assigned door direction will be based on its location relative to the center of its assigned cell.</li>
 </ol>
-<p ><b>Note:</b> Additional room child nodes such as <code>CollectableSpot2D</code>, <code>Feature2D</code>, <code>RoomFlag2D</code>, or their respective 3D nodes can also be added to the room if you wish them to be included.</p>
+<p >Additional room child nodes such as <code>CollectableSpot2D</code>, <code>Feature2D</code>, <code>RoomFlag2D</code>, or their respective 3D nodes can also be added to the room if you wish them to be included.</p>
 <p ><img src="https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/f7bff083-d1a2-452f-9d57-c79f68b1b31e" alt="Screenshot 2024-05-31 150604" class="inline"/></p>
 <h2><a class="anchor" id="autotoc_md8"></a>
 Exporting Room Templates</h2>
@@ -153,8 +150,10 @@ Step 3: Create a Layout Graph</h1>
 <li>To add edges, serving as connections between rooms, to the graph, click and drag between the circular handles on the right and left sides of two nodes.</li>
 <li>Selecting nodes and/or edges will allow you to edit their properties in the Godot inspector. Each node must have a <code>TemplateGroup</code> assigned; though it is optional for edges.</li>
 </ol>
-<p ><b>Note:</b> Edits to the layout graph will be saved automatically when Godot or the graph editor panel are closed.</p>
-<p ><img src="https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/5e2daf51-6ae6-47f7-8ccb-981780de94ec" alt="Screenshot 2024-05-31 193835" class="inline"/></p>
+<blockquote class="doxtable">
+<p >[!NOTE] Edits to the layout graph will be saved automatically when Godot or the graph editor panel are closed. </p>
+</blockquote>
+<p><img src="https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/5e2daf51-6ae6-47f7-8ccb-981780de94ec" alt="Screenshot 2024-05-31 193835" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md11"></a>
 Step 4: Create a Generation Pipeline</h1>
 <p >The <code>GenerationPipeline</code> takes various inputs and feeds them through a series of operational steps to generate one or more outputs. In the context of this plugin, the output is most notably a room <code>Layout</code>.</p>
@@ -187,7 +186,9 @@ Step 4: Create a Generation Pipeline</h1>
 <div class="line">        // See the project samples for example implementations.</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-</div><!-- fragment --><p ><b>Note:</b> Depending on your room templates and layout graph, it may not be possible to generate a layout for all (if any) random seeds. If you are encountering issues with successfully generating a layout, you may need to reconsider the constraints imposed on its generation. For example, you may need to add more doors to ensure that your rooms have a better chance of connecting. Even then, you may still encounter some isolated failures, in which case the generation pipeline <code>RunAttempsAsync</code> method can help by automatically falling back to other seeds. </p>
+</div><!-- fragment --><blockquote class="doxtable">
+<p >[!NOTE] Depending on your room templates and layout graph, it may not be possible to generate a layout for all (if any) random seeds. If you are encountering issues with successfully generating a layout, you may need to reconsider the constraints imposed on its generation. For example, you may need to add more doors to ensure that your rooms have a better chance of connecting. Even then, you may still encounter some isolated failures, in which case the generation pipeline <code>RunAttempsAsync</code> method can help by automatically falling back to other seeds. </p>
+</blockquote>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
