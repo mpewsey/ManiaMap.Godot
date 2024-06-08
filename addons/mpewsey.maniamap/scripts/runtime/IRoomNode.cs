@@ -1,5 +1,4 @@
 using MPewsey.ManiaMap;
-using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapGodot
 {
@@ -29,14 +28,9 @@ namespace MPewsey.ManiaMapGodot
         public Godot.Collections.Array<Godot.Collections.Array<bool>> ActiveCells { get; set; }
 
         /// <summary>
-        /// The current layout.
+        /// The current layout pack.
         /// </summary>
-        public Layout Layout { get; }
-
-        /// <summary>
-        /// The current layout state.
-        /// </summary>
-        public LayoutState LayoutState { get; }
+        public LayoutPack LayoutPack { get; }
 
         /// <summary>
         /// This room's layout.
@@ -47,11 +41,6 @@ namespace MPewsey.ManiaMapGodot
         /// This room's layout state.
         /// </summary>
         public RoomState RoomState { get; }
-
-        /// <summary>
-        /// A list of door connections for the room.
-        /// </summary>
-        public IReadOnlyList<DoorConnection> DoorConnections { get; }
 
         /// <summary>
         /// True if the room has been initialized.

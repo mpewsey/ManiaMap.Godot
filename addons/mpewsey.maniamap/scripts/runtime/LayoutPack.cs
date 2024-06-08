@@ -8,54 +8,49 @@ namespace MPewsey.ManiaMapGodot
     /// <summary>
     /// Holds the current `Layout` and `LayoutState`.
     /// </summary>
-    public partial class ManiaMapManager : GodotObject
+    public class LayoutPack
     {
         /// <summary>
-        /// The current manager.
+        /// The layout.
         /// </summary>
-        public static ManiaMapManager Current { get; private set; }
+        public Layout Layout { get; }
 
         /// <summary>
-        /// The current layout.
+        /// The layout state.
         /// </summary>
-        public Layout Layout { get; private set; }
+        public LayoutState LayoutState { get; }
 
         /// <summary>
-        /// The current layout state.
+        /// The settings.
         /// </summary>
-        public LayoutState LayoutState { get; private set; }
-
-        /// <summary>
-        /// The current settings.
-        /// </summary>
-        public ManiaMapSettings Settings { get; private set; }
+        public ManiaMapSettings Settings { get; }
 
         /// <summary>
         /// A dictionary of door connections by room ID.
         /// </summary>
-        private Dictionary<Uid, List<DoorConnection>> RoomConnections { get; set; } = new Dictionary<Uid, List<DoorConnection>>();
+        private Dictionary<Uid, List<DoorConnection>> RoomConnections { get; } = new Dictionary<Uid, List<DoorConnection>>();
 
         /// <summary>
-        /// Initializes a new manager and sets it as the current manager.
+        /// Initializes a new layout pack.
         /// </summary>
         /// <param name="layout">The layout.</param>
         /// <param name="state">The layout state.</param>
         /// <param name="settingsPath">The path to the ManiaMapSettings resource.</param>
-        public static ManiaMapManager Initialize(Layout layout, LayoutState state, string settingsPath)
+        public LayoutPack(Layout layout, LayoutState state, string settingsPath)
+            : this(layout, state, ResourceLoader.Load<ManiaMapSettings>(settingsPath))
         {
-            var settings = ResourceLoader.Load<ManiaMapSettings>(settingsPath);
-            return Initialize(layout, state, settings);
+
         }
 
         /// <summary>
-        /// Initializes a new manager and sets it as the current manager.
+        /// Initializes a new layout pack.
         /// </summary>
         /// <param name="layout">The layout.</param>
         /// <param name="state">The layout state.</param>
         /// <param name="settings">The settings resource. If null, a new default instance of the settings will be used.</param>
         /// <exception cref="ArgumentNullException">Thrown if the layout or layout state is null.</exception>
         /// <exception cref="ArgumentException">Thrown if the layout and layout state ID's do not match.</exception>
-        public static ManiaMapManager Initialize(Layout layout, LayoutState state, ManiaMapSettings settings = null)
+        public LayoutPack(Layout layout, LayoutState state, ManiaMapSettings settings = null)
         {
             ArgumentNullException.ThrowIfNull(layout, nameof(layout));
             ArgumentNullException.ThrowIfNull(state, nameof(state));
@@ -63,24 +58,10 @@ namespace MPewsey.ManiaMapGodot
             if (layout.Id != state.Id)
                 throw new ArgumentException($"Layout and layout state ID's do not match: (Layout ID = {layout.Id}, Layout State ID = {state.Id})");
 
-            var manager = new ManiaMapManager()
-            {
-                Layout = layout,
-                LayoutState = state,
-                Settings = settings ?? new ManiaMapSettings(),
-                RoomConnections = layout.GetRoomConnections(),
-            };
-
-            manager.SetAsCurrent();
-            return manager;
-        }
-
-        /// <summary>
-        /// Assigns the manager to the current manager static property.
-        /// </summary>
-        private void SetAsCurrent()
-        {
-            Current = this;
+            Layout = layout;
+            LayoutState = state;
+            Settings = settings;
+            RoomConnections = layout.GetRoomConnections();
         }
 
         /// <summary>
