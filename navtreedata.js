@@ -68,7 +68,7 @@ var NAVTREEINDEX =
 "class_m_pewsey_1_1_mania_map_godot_1_1_door_threshold3_d.html#a6123fc1ada31b8a9e10b96b509b3fee0",
 "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_generation_pipeline.html#a56da3231b2fe09b1f2eb0ce7a750f782",
 "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html#a8bd52bc4362f65a5bebf2e4257c3d5f1",
-"class_m_pewsey_1_1_mania_map_godot_1_1_room_template_resource.html#ad39512a9383949a23d73aeca1a839f19"
+"class_m_pewsey_1_1_mania_map_godot_1_1_template_group.html#ae2178442115c9bb7cea8e444e0a00df3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

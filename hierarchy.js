@@ -18,9 +18,6 @@ var hierarchy =
       [ "RoomTemplateNotInitializedException", "class_m_pewsey_1_1_mania_map_godot_1_1_exceptions_1_1_room_template_not_initialized_exception.html", null ],
       [ "ThreadedResourceRequestException", "class_m_pewsey_1_1_mania_map_godot_1_1_exceptions_1_1_threaded_resource_request_exception.html", null ]
     ] ],
-    [ "GodotObject", null, [
-      [ "ManiaMapManager", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_manager.html", null ]
-    ] ],
     [ "ICellChild", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child.html", [
       [ "CellChild2D", "class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html", [
         [ "CollectableSpot2D", "class_m_pewsey_1_1_mania_map_godot_1_1_collectable_spot2_d.html", null ],
@@ -60,6 +57,7 @@ var hierarchy =
       [ "RoomNode3D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node3_d.html", null ]
     ] ],
     [ "IRoomNodeExtensions", "class_m_pewsey_1_1_mania_map_godot_1_1_i_room_node_extensions.html", null ],
+    [ "LayoutPack", "class_m_pewsey_1_1_mania_map_godot_1_1_layout_pack.html", null ],
     [ "ManiaMapResources", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources.html", null ],
     [ "ManiaMapResources.Materials", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources_1_1_materials.html", null ],
     [ "Node", null, [
