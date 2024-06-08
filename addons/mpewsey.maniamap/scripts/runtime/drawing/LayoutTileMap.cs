@@ -28,13 +28,13 @@ namespace MPewsey.ManiaMapGodot.Drawing
         }
 
         /// <summary>
-        /// Draws the map for the specified layer (z) coordinate based on the current ManiaMapManager layout.
+        /// Draws the map for the specified layer (z) coordinate.
         /// </summary>
+        /// <param name="layoutPack">The layout pack.</param>
         /// <param name="z">The layer coordinate. If null, the minimum layer coordinate in the layout will be used.</param>
-        public void DrawMap(int? z = null)
+        public void DrawMap(LayoutPack layoutPack, int? z = null)
         {
-            var manager = ManiaMapManager.Current;
-            DrawMap(manager.Layout, manager.LayoutState, z);
+            DrawMap(layoutPack.Layout, layoutPack.LayoutState, z);
         }
 
         /// <summary>

@@ -41,17 +41,19 @@ namespace MPewsey.ManiaMapGodot.Drawing
         }
 
         /// <summary>
-        /// Draws all layout layers onto tile maps using the ManiaMapManager layout.
+        /// Draws all layout layers onto tile maps.
         /// </summary>
-        public void DrawPages()
+        /// <param name="layoutPack">The layout pack.</param>
+        public void DrawPages(LayoutPack layoutPack)
         {
-            var manager = ManiaMapManager.Current;
-            DrawPages(manager.Layout, manager.LayoutState);
+            DrawPages(layoutPack.Layout, layoutPack.LayoutState);
         }
 
         /// <summary>
         /// Draws all layout layers onto tile maps.
         /// </summary>
+        /// <param name="layout">The layout.</param>
+        /// <param name="layoutState">The layout state. If null, the full map will be drawn. Otherwise, the layout state cell visibilities will be applied.</param>
         public void DrawPages(Layout layout, LayoutState layoutState = null)
         {
             Initialize(layout, layoutState);

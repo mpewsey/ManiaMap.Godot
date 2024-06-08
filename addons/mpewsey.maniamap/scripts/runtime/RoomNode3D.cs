@@ -2,7 +2,6 @@ using Godot;
 using MPewsey.ManiaMap;
 using MPewsey.ManiaMapGodot.Exceptions;
 using System;
-using System.Collections.Generic;
 
 namespace MPewsey.ManiaMapGodot
 {
@@ -59,19 +58,13 @@ namespace MPewsey.ManiaMapGodot
         [Export] public Godot.Collections.Array<Godot.Collections.Array<bool>> ActiveCells { get; set; } = new Godot.Collections.Array<Godot.Collections.Array<bool>>();
 
         /// <inheritdoc/>
-        public Layout Layout { get; private set; }
-
-        /// <inheritdoc/>
-        public LayoutState LayoutState { get; private set; }
+        public LayoutPack LayoutPack { get; private set; }
 
         /// <inheritdoc/>
         public Room RoomLayout { get; private set; }
 
         /// <inheritdoc/>
         public RoomState RoomState { get; private set; }
-
-        /// <inheritdoc/>
-        public IReadOnlyList<DoorConnection> DoorConnections { get; private set; } = Array.Empty<DoorConnection>();
 
         /// <inheritdoc/>
         public bool IsInitialized { get; private set; }
@@ -200,19 +193,16 @@ namespace MPewsey.ManiaMapGodot
         /// The layout and layout state are assigned to the room based on the current ManiaMapManager.
         /// </summary>
         /// <param name="id">The room ID.</param>
+        /// <param name="layoutPack">The layout pack.</param>
         /// <param name="scene">The room scene.</param>
         /// <param name="parent">The node to which the room will be added as a child.</param>
         /// <param name="assignLayoutPosition">If true, the position of the room will be set to that of the room layout. Otherwise, it will be initialized at its original position.</param>
-        public static RoomNode3D CreateInstance(Uid id, PackedScene scene, Node parent, bool assignLayoutPosition = false)
+        public static RoomNode3D CreateInstance(Uid id, LayoutPack layoutPack, PackedScene scene, Node parent, bool assignLayoutPosition = false)
         {
-            var manager = ManiaMapManager.Current;
-            var layout = manager.Layout;
-            var layoutState = manager.LayoutState;
-            var roomLayout = layout.Rooms[id];
-            var roomState = layoutState.RoomStates[id];
-            var doorConnections = manager.GetDoorConnections(id);
-            var collisionMask = manager.Settings.CellCollisionMask;
-            return CreateInstance(scene, parent, layout, layoutState, roomLayout, roomState, doorConnections, collisionMask, assignLayoutPosition);
+            var roomLayout = layoutPack.Layout.Rooms[id];
+            var roomState = layoutPack.LayoutState.RoomStates[id];
+            var collisionMask = layoutPack.Settings.CellCollisionMask;
+            return CreateInstance(scene, parent, layoutPack, roomLayout, roomState, collisionMask, assignLayoutPosition);
         }
 
         /// <summary>
@@ -227,12 +217,11 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="doorConnections">The room's door connections.</param>
         /// <param name="cellCollisionMask">The cell collision mask.</param>
         /// <param name="assignLayoutPosition">If true, the position of the room will be set to that of the room layout. Otherwise, it will be initialized at its original position.</param>
-        public static RoomNode3D CreateInstance(PackedScene scene, Node parent, Layout layout, LayoutState layoutState,
-            Room roomLayout, RoomState roomState, IReadOnlyList<DoorConnection> doorConnections,
-            uint cellCollisionMask, bool assignLayoutPosition)
+        public static RoomNode3D CreateInstance(PackedScene scene, Node parent, LayoutPack layoutPack,
+            Room roomLayout, RoomState roomState, uint cellCollisionMask, bool assignLayoutPosition)
         {
             var room = scene.Instantiate<RoomNode3D>();
-            room.Initialize(layout, layoutState, roomLayout, roomState, doorConnections, cellCollisionMask, assignLayoutPosition);
+            room.Initialize(layoutPack, roomLayout, roomState, cellCollisionMask, assignLayoutPosition);
             parent.AddChild(room);
             return room;
         }
@@ -251,17 +240,15 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="doorConnections">The room's door connections.</param>
         /// <param name="cellCollisionMask">The cell collision mask.</param>
         /// <param name="assignLayoutPosition">If true, the position of the room will be set to that of the room layout. Otherwise, it will be initialized at its original position.</param>
-        public bool Initialize(Layout layout, LayoutState layoutState, Room roomLayout, RoomState roomState,
-            IReadOnlyList<DoorConnection> doorConnections, uint cellCollisionMask, bool assignLayoutPosition)
+        public bool Initialize(LayoutPack layoutPack, Room roomLayout, RoomState roomState,
+            uint cellCollisionMask, bool assignLayoutPosition)
         {
             if (IsInitialized)
                 return false;
 
-            Layout = layout;
-            LayoutState = layoutState;
+            LayoutPack = layoutPack;
             RoomLayout = roomLayout;
             RoomState = roomState;
-            DoorConnections = doorConnections;
 
             if (assignLayoutPosition)
                 MoveToLayoutPosition();

@@ -53,9 +53,9 @@ namespace MPewsey.ManiaMapGodot.Samples
 
             MessageLabel.Text = string.Empty;
             var layout = results.GetOutput<Layout>("Layout");
-            ManiaMapManager.Initialize(layout, new LayoutState(layout), new ManiaMapSettings());
+            var layoutPack = new LayoutPack(layout, new LayoutState(layout), new ManiaMapSettings());
             ClearContainer();
-            RoomTemplateDatabase.CreateRoom3DInstances(Container);
+            RoomTemplateDatabase.CreateRoom3DInstances(Container, layoutPack);
             Camera.ResetPosition();
         }
     }

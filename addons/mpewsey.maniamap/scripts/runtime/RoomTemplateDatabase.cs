@@ -99,10 +99,9 @@ namespace MPewsey.ManiaMapGodot
         /// This method uses the layout from the current ManiaMapManager.
         /// </summary>
         /// <param name="id">The room ID.</param>
-        public RoomTemplateResource GetRoomTemplate(Uid id)
+        public RoomTemplateResource GetRoomTemplate(Uid id, LayoutPack layoutPack)
         {
-            var manager = ManiaMapManager.Current;
-            var room = manager.Layout.Rooms[id];
+            var room = layoutPack.Layout.Rooms[id];
             return GetRoomTemplate(room.Template.Id);
         }
 
@@ -139,18 +138,17 @@ namespace MPewsey.ManiaMapGodot
         /// </summary>
         /// <param name="parent">The node serving as the parent of the rooms.</param>
         /// <param name="z">The layer coordinate to instantiate.</param>
-        public async Task<List<RoomNode2D>> CreateRoom2DInstancesAsync(Node parent, int? z = null, bool useSubThreads = false)
+        public async Task<List<RoomNode2D>> CreateRoom2DInstancesAsync(Node parent, LayoutPack layoutPack, int? z = null, bool useSubThreads = false)
         {
-            var manager = ManiaMapManager.Current;
-            z ??= manager.Layout.Rooms.Values.Select(x => x.Position.Z).First();
-            var rooms = manager.Layout.Rooms.Values.Where(x => x.Position.Z == z).ToList();
+            z ??= layoutPack.Layout.Rooms.Values.Select(x => x.Position.Z).First();
+            var rooms = layoutPack.Layout.Rooms.Values.Where(x => x.Position.Z == z).ToList();
             var scenes = await LoadScenesAsync(rooms, useSubThreads);
             var result = new List<RoomNode2D>(rooms.Count);
 
             foreach (var room in rooms)
             {
                 var scene = scenes[room.Template.Id];
-                result.Add(RoomNode2D.CreateInstance(room.Id, scene, parent, true));
+                result.Add(RoomNode2D.CreateInstance(room.Id, layoutPack, scene, parent, true));
             }
 
             return result;
@@ -161,17 +159,16 @@ namespace MPewsey.ManiaMapGodot
         /// Returns a list of the instantiated rooms.
         /// </summary>
         /// <param name="parent">The node serving as the parent of the rooms.</param>
-        public async Task<List<RoomNode3D>> CreateRoom3DInstancesAsync(Node parent, bool useSubThreads = false)
+        public async Task<List<RoomNode3D>> CreateRoom3DInstancesAsync(Node parent, LayoutPack layoutPack, bool useSubThreads = false)
         {
-            var manager = ManiaMapManager.Current;
-            var rooms = manager.Layout.Rooms.Values.ToList();
+            var rooms = layoutPack.Layout.Rooms.Values.ToList();
             var scenes = await LoadScenesAsync(rooms, useSubThreads);
             var result = new List<RoomNode3D>(rooms.Count);
 
             foreach (var room in rooms)
             {
                 var scene = scenes[room.Template.Id];
-                result.Add(RoomNode3D.CreateInstance(room.Id, scene, parent, true));
+                result.Add(RoomNode3D.CreateInstance(room.Id, layoutPack, scene, parent, true));
             }
 
             return result;
@@ -183,18 +180,17 @@ namespace MPewsey.ManiaMapGodot
         /// </summary>
         /// <param name="parent">The node serving as the parent of the rooms.</param>
         /// <param name="z">The layer coordinate to instantiate.</param>
-        public List<RoomNode2D> CreateRoom2DInstances(Node parent, int? z = null)
+        public List<RoomNode2D> CreateRoom2DInstances(Node parent, LayoutPack layoutPack, int? z = null)
         {
-            var manager = ManiaMapManager.Current;
-            z ??= manager.Layout.Rooms.Values.Select(x => x.Position.Z).First();
+            z ??= layoutPack.Layout.Rooms.Values.Select(x => x.Position.Z).First();
             var result = new List<RoomNode2D>();
 
-            foreach (var room in manager.Layout.Rooms.Values)
+            foreach (var room in layoutPack.Layout.Rooms.Values)
             {
                 if (room.Position.Z == z)
                 {
                     var template = GetRoomTemplate(room.Template.Id);
-                    result.Add(RoomNode2D.CreateInstance(room.Id, template.LoadScene(), parent, true));
+                    result.Add(RoomNode2D.CreateInstance(room.Id, layoutPack, template.LoadScene(), parent, true));
                 }
             }
 
@@ -206,15 +202,14 @@ namespace MPewsey.ManiaMapGodot
         /// Returns a list of the instantiated rooms.
         /// </summary>
         /// <param name="parent">The node serving as the parent of the rooms.</param>
-        public List<RoomNode3D> CreateRoom3DInstances(Node parent)
+        public List<RoomNode3D> CreateRoom3DInstances(Node parent, LayoutPack layoutPack)
         {
-            var manager = ManiaMapManager.Current;
             var result = new List<RoomNode3D>();
 
-            foreach (var room in manager.Layout.Rooms.Values)
+            foreach (var room in layoutPack.Layout.Rooms.Values)
             {
                 var template = GetRoomTemplate(room.Template.Id);
-                result.Add(RoomNode3D.CreateInstance(room.Id, template.LoadScene(), parent, true));
+                result.Add(RoomNode3D.CreateInstance(room.Id, layoutPack, template.LoadScene(), parent, true));
             }
 
             return result;
@@ -227,10 +222,10 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="id">The room ID.</param>
         /// <param name="parent">The node serving as the room's parent.</param>
         /// <param name="assignLayoutPosition">If true, the layout position will be assigned to the room.</param>
-        public async Task<RoomNode2D> CreateRoom2DInstanceAsync(Uid id, Node parent, bool assignLayoutPosition = false, bool useSubThreads = false)
+        public async Task<RoomNode2D> CreateRoom2DInstanceAsync(Uid id, LayoutPack layoutPack, Node parent, bool assignLayoutPosition = false, bool useSubThreads = false)
         {
-            var scene = await GetRoomTemplate(id).LoadSceneAsync(useSubThreads);
-            return RoomNode2D.CreateInstance(id, scene, parent, assignLayoutPosition);
+            var scene = await GetRoomTemplate(id, layoutPack).LoadSceneAsync(useSubThreads);
+            return RoomNode2D.CreateInstance(id, layoutPack, scene, parent, assignLayoutPosition);
         }
 
         /// <summary>
@@ -240,10 +235,10 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="id">The room ID.</param>
         /// <param name="parent">The node serving as the room's parent.</param>
         /// <param name="assignLayoutPosition">If true, the layout position will be assigned to the room.</param>
-        public async Task<RoomNode3D> CreateRoom3DInstanceAsync(Uid id, Node parent, bool assignLayoutPosition = false, bool useSubThreads = false)
+        public async Task<RoomNode3D> CreateRoom3DInstanceAsync(Uid id, LayoutPack layoutPack, Node parent, bool assignLayoutPosition = false, bool useSubThreads = false)
         {
-            var scene = await GetRoomTemplate(id).LoadSceneAsync(useSubThreads);
-            return RoomNode3D.CreateInstance(id, scene, parent, assignLayoutPosition);
+            var scene = await GetRoomTemplate(id, layoutPack).LoadSceneAsync(useSubThreads);
+            return RoomNode3D.CreateInstance(id, layoutPack, scene, parent, assignLayoutPosition);
         }
 
         /// <summary>
@@ -253,9 +248,10 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="id">The room ID.</param>
         /// <param name="parent">The node serving as the room's parent.</param>
         /// <param name="assignLayoutPosition">If true, the layout position will be assigned to the room.</param>
-        public RoomNode2D CreateRoom2DInstance(Uid id, Node parent, bool assignLayoutPosition = false)
+        public RoomNode2D CreateRoom2DInstance(Uid id, LayoutPack layoutPack, Node parent, bool assignLayoutPosition = false)
         {
-            return RoomNode2D.CreateInstance(id, GetRoomTemplate(id).LoadScene(), parent, assignLayoutPosition);
+            var scene = GetRoomTemplate(id, layoutPack).LoadScene();
+            return RoomNode2D.CreateInstance(id, layoutPack, scene, parent, assignLayoutPosition);
         }
 
         /// <summary>
@@ -265,9 +261,10 @@ namespace MPewsey.ManiaMapGodot
         /// <param name="id">The room ID.</param>
         /// <param name="parent">The node serving as the room's parent.</param>
         /// <param name="assignLayoutPosition">If true, the layout position will be assigned to the room.</param>
-        public RoomNode3D CreateRoom3DInstance(Uid id, Node parent, bool assignLayoutPosition = false)
+        public RoomNode3D CreateRoom3DInstance(Uid id, LayoutPack layoutPack, Node parent, bool assignLayoutPosition = false)
         {
-            return RoomNode3D.CreateInstance(id, GetRoomTemplate(id).LoadScene(), parent, assignLayoutPosition);
+            var scene = GetRoomTemplate(id, layoutPack).LoadScene();
+            return RoomNode3D.CreateInstance(id, layoutPack, scene, parent, assignLayoutPosition);
         }
     }
 }

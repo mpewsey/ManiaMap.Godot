@@ -23,10 +23,11 @@ namespace MPewsey.ManiaMapGodot
         public static DoorConnection FindDoorConnection(this IDoorNode door)
         {
             var roomId = door.RoomNode.RoomLayout.Id;
+            var doorConnections = door.RoomNode.LayoutPack.GetDoorConnections(roomId);
             var position = new Vector2DInt(door.Row, door.Column);
             var direction = door.DoorDirection;
 
-            foreach (var connection in door.RoomNode.DoorConnections)
+            foreach (var connection in doorConnections)
             {
                 if (connection.ContainsDoor(roomId, position, direction))
                     return connection;

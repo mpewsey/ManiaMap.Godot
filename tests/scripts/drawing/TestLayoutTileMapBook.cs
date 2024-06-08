@@ -22,8 +22,8 @@ namespace MPewsey.ManiaMapGodot.Drawing.Tests
             var layout = results.GetOutput<Layout>("Layout");
             var layoutState = new LayoutState(layout);
 
-            ManiaMapManager.Initialize(layout, layoutState);
-            map.DrawPages();
+            var layoutPack = new LayoutPack(layout, layoutState);
+            map.DrawPages(layoutPack);
         }
     }
 }

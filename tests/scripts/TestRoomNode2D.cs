@@ -142,9 +142,9 @@ namespace MPewsey.ManiaMapGodot.Tests
             var state = new LayoutState(layout);
             var roomId = layout.Rooms.Keys.First();
             var roomState = state.RoomStates[roomId];
-            ManiaMapManager.Initialize(layout, state, new ManiaMapSettings());
+            var layoutPack = new LayoutPack(layout, state, new ManiaMapSettings());
 
-            var room = database.CreateRoom2DInstance(roomId, root);
+            var room = database.CreateRoom2DInstance(roomId, layoutPack, root);
             var roomFlags = room.FindChildren("*", nameof(RoomFlag2D), true, false);
             Assertions.AssertThat(roomFlags.Count).IsGreater(0);
             var roomFlag = roomFlags[0] as RoomFlag2D;
@@ -189,11 +189,11 @@ namespace MPewsey.ManiaMapGodot.Tests
             var state = new LayoutState(layout);
             var roomId = layout.Rooms.Keys.First();
             var roomState = state.RoomStates[roomId];
-            ManiaMapManager.Initialize(layout, state, settings);
+            var layoutPack = new LayoutPack(layout, state, settings);
 
             // Create room and hook up signals to detect the cells the test area is touching.
             var database = ResourceLoader.Load<RoomTemplateDatabase>(RoomTemplateDatabase);
-            var room = database.CreateRoom2DInstance(roomId, root);
+            var room = database.CreateRoom2DInstance(roomId, layoutPack, root);
             var cellSize = room.CellSize;
             room.OnCellAreaEntered += (area, collision) => indexes.Add(new Vector2(area.Row, area.Column));
             room.OnCellAreaExited += (area, collision) => indexes.Remove(new Vector2(area.Row, area.Column));
