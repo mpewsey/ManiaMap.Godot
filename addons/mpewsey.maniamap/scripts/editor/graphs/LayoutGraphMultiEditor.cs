@@ -13,13 +13,13 @@ namespace MPewsey.ManiaMapGodot.Graphs.Editor
         private bool _editName;
         [Export] public bool EditName { get => _editName; set => SetEditField(ref _editName, value); }
 
-        private string _name;
+        private string _name = "<Edit Value>";
         [Export] public string Name { get => _name; set => SetElementField(ref _name, value, PropertyName.Name); }
 
         private bool _editVariationGroup;
         [Export] public bool EditVariationGroup { get => _editVariationGroup; set => SetEditField(ref _editVariationGroup, value); }
 
-        private string _variationGroup;
+        private string _variationGroup = "<Edit Value>";
         [Export] public string VariationGroup { get => _variationGroup; set => SetElementField(ref _variationGroup, value, PropertyName.VariationGroup); }
 
         private bool _editEdgeDirection;
@@ -37,13 +37,13 @@ namespace MPewsey.ManiaMapGodot.Graphs.Editor
         private bool _editColor;
         [Export] public bool EditColor { get => _editColor; set => SetEditField(ref _editColor, value); }
 
-        private Color _color = new Color(1, 1, 1);
+        private Color _color = new Color(0, 0, 0);
         [Export] public Color Color { get => _color; set => SetElementField(ref _color, value, PropertyName.Color); }
 
         private bool _editZ;
         [Export] public bool EditZ { get => _editZ; set => SetEditField(ref _editZ, value); }
 
-        private int _z;
+        private int _z = int.MinValue;
         [Export] public int Z { get => _z; set => SetElementField(ref _z, value, PropertyName.Z); }
 
         private bool _editRequireRoom;
@@ -56,7 +56,7 @@ namespace MPewsey.ManiaMapGodot.Graphs.Editor
         [Export] public bool EditRoomChance { get => _editRoomChance; set => SetEditField(ref _editRoomChance, value); }
 
         private float _roomChance;
-        [Export] public float RoomChance { get => _roomChance; set => SetElementField(ref _roomChance, value, PropertyName.RoomChance); }
+        [Export(PropertyHint.Range, "0,1,0.0001")] public float RoomChance { get => _roomChance; set => SetElementField(ref _roomChance, value, PropertyName.RoomChance); }
 
         private bool _editDoorCode;
         [Export] public bool EditDoorCode { get => _editDoorCode; set => SetEditField(ref _editDoorCode, value); }
