@@ -20,13 +20,6 @@ namespace MPewsey.ManiaMapGodot.Drawing
         /// </summary>
         public int LayerCoordinate { get; private set; }
 
-        /// <inheritdoc/>
-        protected override void Initialize(Layout layout, LayoutState layoutState)
-        {
-            base.Initialize(layout, layoutState);
-            TileMap ??= CreateTileMap();
-        }
-
         /// <summary>
         /// Draws the map for the specified layer (z) coordinate.
         /// </summary>
@@ -34,7 +27,10 @@ namespace MPewsey.ManiaMapGodot.Drawing
         /// <param name="z">The layer coordinate. If null, the minimum layer coordinate in the layout will be used.</param>
         public void DrawMap(LayoutPack layoutPack, int? z = null)
         {
-            DrawMap(layoutPack.Layout, layoutPack.LayoutState, z);
+            LayoutPack = layoutPack;
+            LayerCoordinate = z ?? layoutPack.GetLayerCoordinates().Order().First();
+            TileMap ??= CreateTileMap();
+            SetTiles(TileMap, LayerCoordinate);
         }
 
         /// <summary>
@@ -45,9 +41,9 @@ namespace MPewsey.ManiaMapGodot.Drawing
         /// <param name="z">The layer coordinate. If null, the minimum layer coordinate in the layout will be used.</param>
         public void DrawMap(Layout layout, LayoutState layoutState = null, int? z = null)
         {
-            Initialize(layout, layoutState);
-            LayerCoordinate = z ?? RoomsByLayer.Keys.Order().First();
-            SetTiles(TileMap, LayerCoordinate);
+            layoutState ??= CreateFullyVisibleLayoutState(layout);
+            var layoutPack = new LayoutPack(layout, layoutState, new ManiaMapSettings());
+            DrawMap(layoutPack, z);
         }
     }
 }
