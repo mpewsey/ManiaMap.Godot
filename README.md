@@ -18,6 +18,10 @@ This package provides components for interfacing the [ManiaMap](https://github.c
 3. Build your Godot project solution, so that the newly incorporated C# addon scripts are compiled.
 4. Enable the addon by going to `Project > Project Settings` and clicking the enable checkbox next to the `ManiaMap.Godot` plugin.
 
+## Documentation
+
+For information on the scripting API, as well as instructions related to procedurally generating a room layout, see the [documentation](https://mpewsey.github.io/ManiaMap.Godot/md_pages_layout_generation_instructions.html).
+
 ## Samples
 
 Sample scenes are available in the `samples` directory. To explore them, clone this repository, open it in Godot, and perform Steps 3 through 4 under [Installation](#Installation). The requisite NuGet package dependencies should automatically be downloaded when building in Visual Studio.
