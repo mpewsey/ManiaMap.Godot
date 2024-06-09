@@ -1,7 +1,7 @@
 using Godot;
 using MPewsey.Common.Mathematics;
 using MPewsey.ManiaMap;
-using System.Collections.Generic;
+using System;
 
 namespace MPewsey.ManiaMapGodot.Drawing
 {
@@ -77,24 +77,9 @@ namespace MPewsey.ManiaMapGodot.Drawing
         [Export] public DoorDrawMode DoorDrawMode { get; set; } = DoorDrawMode.AllDoors;
 
         /// <summary>
-        /// The currently drawn layout.
+        /// The currently drawn layout pack.
         /// </summary>
-        public Layout Layout { get; protected set; }
-
-        /// <summary>
-        /// The currently drawn layout state.
-        /// </summary>
-        public LayoutState LayoutState { get; protected set; }
-
-        /// <summary>
-        /// A dictionary of rooms by layer coordinate.
-        /// </summary>
-        protected Dictionary<int, List<Room>> RoomsByLayer { get; set; } = new Dictionary<int, List<Room>>();
-
-        /// <summary>
-        /// A dictionary of door positions by room ID.
-        /// </summary>
-        protected Dictionary<Uid, List<DoorPosition>> RoomDoors { get; set; } = new Dictionary<Uid, List<DoorPosition>>();
+        public LayoutPack LayoutPack { get; protected set; }
 
         public override void _Ready()
         {
@@ -103,16 +88,19 @@ namespace MPewsey.ManiaMapGodot.Drawing
         }
 
         /// <summary>
-        /// Performs basic set up for the tile map before drawing.
+        /// Returns a new layout state for the given layout with all cells visible.
         /// </summary>
         /// <param name="layout">The layout.</param>
-        /// <param name="layoutState">The layout state.</param>
-        protected virtual void Initialize(Layout layout, LayoutState layoutState)
+        protected static LayoutState CreateFullyVisibleLayoutState(Layout layout)
         {
-            Layout = layout;
-            LayoutState = layoutState;
-            RoomDoors = layout.GetRoomDoors();
-            RoomsByLayer = layout.GetRoomsByLayer();
+            var layoutState = new LayoutState(layout);
+
+            foreach (var roomState in layoutState.RoomStates.Values)
+            {
+                Array.Fill(roomState.VisibleCells.Array, ~0);
+            }
+
+            return layoutState;
         }
 
         /// <summary>
@@ -124,10 +112,10 @@ namespace MPewsey.ManiaMapGodot.Drawing
         {
             tileMap.Clear();
 
-            foreach (var room in RoomsByLayer[z])
+            foreach (var room in LayoutPack.GetRoomsInLayer(z))
             {
                 var cells = room.Template.Cells;
-                var roomState = LayoutState?.RoomStates[room.Id];
+                var roomState = LayoutPack.LayoutState?.RoomStates[room.Id];
 
                 for (int i = 0; i < cells.Rows; i++)
                 {
@@ -235,33 +223,13 @@ namespace MPewsey.ManiaMapGodot.Drawing
         /// <param name="direction">The door direction.</param>
         protected Vector2I GetTileCoordinate(Room room, Cell cell, Cell neighbor, Vector2DInt position, DoorDirection direction)
         {
-            if (Door.ShowDoor(DoorDrawMode, direction) && cell.GetDoor(direction) != null && DoorExists(room, position, direction))
+            if (Door.ShowDoor(DoorDrawMode, direction) && cell.GetDoor(direction) != null && LayoutPack.DoorExists(room.Id, position, direction))
                 return MapTileSet.GetTileCoordinate(MapTileType.GetDoorTileType(direction));
 
             if (neighbor == null)
                 return MapTileSet.GetTileCoordinate(MapTileType.GetWallTileType(direction));
 
             return new Vector2I(-1, -1);
-        }
-
-        /// <summary>
-        /// Returns true if the door exists for the specified cell index and direction.
-        /// </summary>
-        /// <param name="room">The room.</param>
-        /// <param name="position">The cell index in the room.</param>
-        /// <param name="direction">The door direction.</param>
-        protected bool DoorExists(Room room, Vector2DInt position, DoorDirection direction)
-        {
-            if (RoomDoors.TryGetValue(room.Id, out var doors))
-            {
-                foreach (var door in doors)
-                {
-                    if (door.Matches(position, direction))
-                        return true;
-                }
-            }
-
-            return false;
         }
 
         /// <summary>

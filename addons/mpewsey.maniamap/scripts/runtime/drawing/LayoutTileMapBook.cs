@@ -31,22 +31,21 @@ namespace MPewsey.ManiaMapGodot.Drawing
         /// </summary>
         public IReadOnlyList<int> GetPageLayerCoordinates() => PageLayerCoordinates;
 
-        /// <inheritdoc/>
-        protected override void Initialize(Layout layout, LayoutState layoutState)
-        {
-            base.Initialize(layout, layoutState);
-            PageLayerCoordinates = RoomsByLayer.Keys.ToList();
-            PageLayerCoordinates.Sort();
-            SizePages();
-        }
-
         /// <summary>
         /// Draws all layout layers onto tile maps.
         /// </summary>
         /// <param name="layoutPack">The layout pack.</param>
         public void DrawPages(LayoutPack layoutPack)
         {
-            DrawPages(layoutPack.Layout, layoutPack.LayoutState);
+            LayoutPack = layoutPack;
+            PageLayerCoordinates = layoutPack.GetLayerCoordinates().ToList();
+            PageLayerCoordinates.Sort();
+            SizePages();
+
+            for (int i = 0; i < Pages.Count; i++)
+            {
+                SetTiles(Pages[i], PageLayerCoordinates[i]);
+            }
         }
 
         /// <summary>
@@ -56,12 +55,9 @@ namespace MPewsey.ManiaMapGodot.Drawing
         /// <param name="layoutState">The layout state. If null, the full map will be drawn. Otherwise, the layout state cell visibilities will be applied.</param>
         public void DrawPages(Layout layout, LayoutState layoutState = null)
         {
-            Initialize(layout, layoutState);
-
-            for (int i = 0; i < Pages.Count; i++)
-            {
-                SetTiles(Pages[i], PageLayerCoordinates[i]);
-            }
+            layoutState ??= CreateFullyVisibleLayoutState(layout);
+            var layoutPack = new LayoutPack(layout, layoutState, new ManiaMapSettings());
+            DrawPages(layoutPack);
         }
 
         /// <summary>
