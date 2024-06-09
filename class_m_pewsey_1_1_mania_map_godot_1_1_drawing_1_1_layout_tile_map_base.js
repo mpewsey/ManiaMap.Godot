@@ -1,11 +1,10 @@
 var class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base =
 [
+    [ "CreateFullyVisibleLayoutState", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#aab509820ff1ee321ec05efd487f9bd35", null ],
     [ "CreateTileMap", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a7d6aca7983e3d4add858538b35c64b66", null ],
     [ "CreateTileMapLayers", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a6df99cf3bafc63f1054edc06336d12e9", null ],
-    [ "DoorExists", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a7d928844b448f654553bd95a1a528eda", null ],
     [ "GetFeatureCoordinate", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#aefa749c72b172c518181d649e80a09a1", null ],
     [ "GetTileCoordinate", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#abd8bce7cd417c44f73f77686324bfac7", null ],
-    [ "Initialize", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a41dd08cb49875daa5a00b6e0b3c426c9", null ],
     [ "SetBackgroundTile", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a85b4eb9d2aecdd14088fc1bf79f7c41a", null ],
     [ "SetTile", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a1731d471deba9a05ebc78ef02878a227", null ],
     [ "SetTiles", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a10733ae37e7249e36a48d61c1cf5deb5", null ],
@@ -20,10 +19,7 @@ var class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base =
     [ "WestLayer", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a8f908b6ce0b4eb9ade72bba0a9296973", null ],
     [ "Container", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a20dc553519aefcf0721e5d008a10bc32", null ],
     [ "DoorDrawMode", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a6c2bc873c0d4b3d46fb8e0cf51caff42", null ],
-    [ "Layout", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a6860a4215b072014f8972b7611c569fd", null ],
-    [ "LayoutState", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a25a58a509186fa802307b2b7e754ee7a", null ],
+    [ "LayoutPack", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a552429363b2a670d8f83fd9c5d58a378", null ],
     [ "MapTileSet", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#ae5b5bd0854708f7bb93819f930310352", null ],
-    [ "RoomColor", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#ac5221b4d5eeb7620db5968a92566b9fe", null ],
-    [ "RoomDoors", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#af6901c27c0ad5374d543807e0b588791", null ],
-    [ "RoomsByLayer", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#a123c24ef37eba421e037c8204f861896", null ]
+    [ "RoomColor", "class_m_pewsey_1_1_mania_map_godot_1_1_drawing_1_1_layout_tile_map_base.html#ac5221b4d5eeb7620db5968a92566b9fe", null ]
 ];
