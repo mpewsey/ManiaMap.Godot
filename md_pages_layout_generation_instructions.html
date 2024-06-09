@@ -100,10 +100,10 @@ $(document).ready(function(){initNavTree('md_pages_layout_generation_instruction
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p >The following subsections outline how to procedurally generate an arrangement of rooms, called a <code>Layout</code>.</p>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 Step 1: Create Rooms and Room Templates</h1>
 <p >The procedural generator creates layouts by pulling from user-defined room templates. To the generator, a room is a collection of cells in a grid, with information, such as the available door connections, assigned to them.</p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Creating a Room</h2>
 <ol type="1">
 <li>From an empty scene in Godot, create a <code>RoomNode2D</code> or <code>RoomNode3D</code> depending on whether you wish to develop in 2D or 3D. One of these node types must serve as the root of your room scene.</li>
@@ -115,7 +115,7 @@ Creating a Room</h2>
 </blockquote>
 <p>In the below screenshot, the cells for an angle shaped room have been created, with the active cells shown in blue and inactive cells shown in red and crossed-out. The active cells are the regions where we intend to build our scene.</p>
 <p ><img src="https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/15c94ef3-387c-43fa-8b46-a6bd2341dba4" alt="Screenshot 2024-05-31 141058" class="inline"/></p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Creating Doors</h2>
 <p >Doors define the locations where two rooms can be connected. At least one door must be added to a room.</p>
 <ol type="1">
@@ -125,14 +125,14 @@ Creating Doors</h2>
 </ol>
 <p >Additional room child nodes such as <code>CollectableSpot2D</code>, <code>Feature2D</code>, <code>RoomFlag2D</code>, or their respective 3D nodes can also be added to the room if you wish them to be included.</p>
 <p ><img src="https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/f7bff083-d1a2-452f-9d57-c79f68b1b31e" alt="Screenshot 2024-05-31 150604" class="inline"/></p>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Exporting Room Templates</h2>
 <p >The procedural generator uses one or more <code>RoomTemplateResource</code> exported from <code>RoomNode2D</code> or <code>RoomNode3D</code> to generate layouts.</p>
 <ul>
 <li>To perform auto assignment and save the room template for an individual room, click the <code>Update Room Template</code> button on the room toolbar. This will create a <code>RoomTemplateResource</code> with the <code>.room_template.tres</code> extension at the same path as the scene.</li>
 <li>Alternately, to perform this operation on multiple saved rooms within a project, select the <code>Project &gt; Tools &gt; Mania Map &gt; Batch Update Room Templates</code> option from the menu.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md9"></a>
+<h1><a class="anchor" id="autotoc_md10"></a>
 Step 2: Create Room Template Groups</h1>
 <p >One or more <code>TemplateGroup</code> are used by the procedural generator to determine which rooms can be assigned to a given position in a layout.</p>
 <ol type="1">
@@ -140,7 +140,7 @@ Step 2: Create Room Template Groups</h1>
 <li>Double click on the newly created template group and, in the Godot inspector, assign a unique name to the group.</li>
 <li>For the <code>Entries</code> property, add a new <code>TemplateGroupEntry</code> element and assign a <code>RoomTemplateResource</code> to the <code>Room Template</code> property slot. Repeat this for all rooms that you wish to assign to the group.</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md11"></a>
 Step 3: Create a Layout Graph</h1>
 <p >The procedural generator uses a <code>LayoutGraphResource</code> as a base for generating layouts. This allows you to design high level relationships between rooms while still making the resulting layout appear random.</p>
 <ol type="1">
@@ -154,7 +154,7 @@ Step 3: Create a Layout Graph</h1>
 <p ><b>Note:</b> Edits to the layout graph will be saved automatically when Godot or the graph editor panel are closed. </p>
 </blockquote>
 <p><img src="https://github.com/mpewsey/ManiaMap.Godot/assets/23442063/5e2daf51-6ae6-47f7-8ccb-981780de94ec" alt="Screenshot 2024-05-31 193835" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md11"></a>
+<h1><a class="anchor" id="autotoc_md12"></a>
 Step 4: Create a Generation Pipeline</h1>
 <p >The <code>GenerationPipeline</code> takes various inputs and feeds them through a series of operational steps to generate one or more outputs. In the context of this plugin, the output is most notably a room <code>Layout</code>.</p>
 <ol type="1">

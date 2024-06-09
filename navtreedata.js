@@ -27,16 +27,17 @@ var NAVTREE =
   [ "ManiaMap.Godot", "index.html", [
     [ "About", "index.html#autotoc_md1", null ],
     [ "Installation", "index.html#autotoc_md2", null ],
-    [ "Samples", "index.html#autotoc_md3", null ],
+    [ "Documentation", "index.html#autotoc_md3", null ],
+    [ "Samples", "index.html#autotoc_md4", null ],
     [ "Generating a Layout", "md_pages_layout_generation_instructions.html", [
-      [ "Step 1: Create Rooms and Room Templates", "md_pages_layout_generation_instructions.html#autotoc_md5", [
-        [ "Creating a Room", "md_pages_layout_generation_instructions.html#autotoc_md6", null ],
-        [ "Creating Doors", "md_pages_layout_generation_instructions.html#autotoc_md7", null ],
-        [ "Exporting Room Templates", "md_pages_layout_generation_instructions.html#autotoc_md8", null ]
+      [ "Step 1: Create Rooms and Room Templates", "md_pages_layout_generation_instructions.html#autotoc_md6", [
+        [ "Creating a Room", "md_pages_layout_generation_instructions.html#autotoc_md7", null ],
+        [ "Creating Doors", "md_pages_layout_generation_instructions.html#autotoc_md8", null ],
+        [ "Exporting Room Templates", "md_pages_layout_generation_instructions.html#autotoc_md9", null ]
       ] ],
-      [ "Step 2: Create Room Template Groups", "md_pages_layout_generation_instructions.html#autotoc_md9", null ],
-      [ "Step 3: Create a Layout Graph", "md_pages_layout_generation_instructions.html#autotoc_md10", null ],
-      [ "Step 4: Create a Generation Pipeline", "md_pages_layout_generation_instructions.html#autotoc_md11", null ]
+      [ "Step 2: Create Room Template Groups", "md_pages_layout_generation_instructions.html#autotoc_md10", null ],
+      [ "Step 3: Create a Layout Graph", "md_pages_layout_generation_instructions.html#autotoc_md11", null ],
+      [ "Step 4: Create a Generation Pipeline", "md_pages_layout_generation_instructions.html#autotoc_md12", null ]
     ] ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ],
