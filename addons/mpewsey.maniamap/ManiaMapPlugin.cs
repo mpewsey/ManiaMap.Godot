@@ -76,19 +76,21 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         public override bool _Handles(GodotObject obj)
         {
-            return obj is LayoutGraphResource || obj is RoomNode2D || obj is RoomNode3D;
+            return obj is Node || obj is LayoutGraphResource;
         }
 
         public override void _Edit(GodotObject obj)
         {
-            if (obj is RoomNode2D room2d)
+            var room = FindContainingRoom(obj);
+
+            if (room is RoomNode2D room2d)
             {
                 RoomNode2DToolbar.SetTargetRoom(room2d);
                 RoomNode2DToolbar.Visible = true;
                 return;
             }
 
-            if (obj is RoomNode3D room3d)
+            if (room is RoomNode3D room3d)
             {
                 RoomNode3DToolbar.SetTargetRoom(room3d);
                 RoomNode3DToolbar.Visible = true;
@@ -104,6 +106,20 @@ namespace MPewsey.ManiaMapGodot.Editor
                 MakeBottomPanelItemVisible(GraphEditor);
                 GraphEditor.SetEditorTarget(graph);
             }
+        }
+
+        private static Node FindContainingRoom(GodotObject obj)
+        {
+            if (IsInstanceValid(obj) && obj is Node node)
+            {
+                if (obj is RoomNode2D room2d)
+                    return room2d;
+                if (obj is RoomNode3D room3d)
+                    return room3d;
+                return FindContainingRoom(node.GetParent());
+            }
+
+            return null;
         }
 
         private void AddGraphEditorDock()
