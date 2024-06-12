@@ -257,8 +257,8 @@ namespace MPewsey.ManiaMapGodot.Tests
         public void TestGetCellActivityThrowsOutOfRangeException()
         {
             var room = new RoomNode3D() { Rows = 3, Columns = 3 };
-            Assertions.AssertThrown(() => room.GetCellActivity(-1, -1)).IsInstanceOf<IndexOutOfRangeException>();
-            Assertions.AssertThrown(() => room.GetCellActivity(-1, -1)).IsInstanceOf<IndexOutOfRangeException>();
+            Assertions.AssertThrown(() => room.GetCellActivity(-1, 1)).IsInstanceOf<IndexOutOfRangeException>();
+            Assertions.AssertThrown(() => room.GetCellActivity(1, -1)).IsInstanceOf<IndexOutOfRangeException>();
             room.QueueFree();
         }
 
