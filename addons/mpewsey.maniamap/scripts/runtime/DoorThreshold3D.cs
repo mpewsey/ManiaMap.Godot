@@ -65,11 +65,12 @@ namespace MPewsey.ManiaMapGodot
                 var x = basis.X.Dot(localPosition);
                 var y = basis.Y.Dot(localPosition);
                 var z = basis.Z.Dot(localPosition);
-                min = new Vector3(Mathf.Min(x, min.X), Mathf.Min(y, min.Y), Mathf.Min(z, min.X));
-                max = new Vector3(Mathf.Max(x, max.X), Mathf.Max(y, max.Y), Mathf.Max(z, max.X));
+                min = new Vector3(Mathf.Min(x, min.X), Mathf.Min(y, min.Y), Mathf.Min(z, min.Z));
+                max = new Vector3(Mathf.Max(x, max.X), Mathf.Max(y, max.Y), Mathf.Max(z, max.Z));
             }
 
-            return new Aabb(min + GlobalPosition, max - min);
+            var delta = max - min;
+            return new Aabb(GlobalPosition - 0.5f * delta, delta);
         }
 
         /// <summary>
@@ -94,8 +95,9 @@ namespace MPewsey.ManiaMapGodot
         public Vector3 InterpolatePosition(Vector3 parameters)
         {
             var bounds = GetAABB();
+            var size = bounds.Size;
             var topLeft = bounds.Position;
-            var bottomRight = topLeft + bounds.Size;
+            var bottomRight = topLeft + size;
 
             var x = Mathf.Lerp(topLeft.X, bottomRight.X, Mathf.Clamp(parameters.X, 0, 1));
             var y = Mathf.Lerp(topLeft.Y, bottomRight.Y, Mathf.Clamp(parameters.Y, 0, 1));

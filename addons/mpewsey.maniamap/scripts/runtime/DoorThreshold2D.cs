@@ -81,7 +81,8 @@ namespace MPewsey.ManiaMapGodot
                 max = new Vector2(Mathf.Max(position.X, max.X), Mathf.Max(position.Y, max.Y));
             }
 
-            return new Rect2(min + GlobalPosition, max - min);
+            var delta = max - min;
+            return new Rect2(GlobalPosition - 0.5f * delta, delta);
         }
 
         /// <summary>
