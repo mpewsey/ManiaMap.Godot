@@ -86,7 +86,7 @@ namespace MPewsey.ManiaMapGodot.Drawing
         /// <param name="z">The viewer's layer position.</param>
         /// <param name="gradient">The color gradient.</param>
         /// <param name="drawDepth">The maximum draw depth forward and behind a given layer coordinate.</param>
-        public float SetOnionMapColors(float z, Gradient gradient, float drawDepth = 1)
+        public float SetOnionskinColors(float z, Gradient gradient, float drawDepth = 1)
         {
             if (PageLayerCoordinates.Count > 0)
             {

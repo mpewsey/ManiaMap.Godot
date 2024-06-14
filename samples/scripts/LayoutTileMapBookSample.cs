@@ -34,7 +34,7 @@ namespace MPewsey.ManiaMapGodot.Samples
 
         private void OnSliderValueChanged(double value)
         {
-            Map.SetOnionMapColors((float)value, Gradient);
+            Map.SetOnionskinColors((float)value, Gradient);
             ZLabel.Text = value.ToString("0.00");
         }
 
