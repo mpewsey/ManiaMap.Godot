@@ -85,7 +85,7 @@ public partial class ExampleGenerationPipelineRunner : Node
         // At this point, you will probably want to do something with the layout...
         //
         // * You could save it to file using the JsonSerialization or XmlSerialization static classes.
-        // * You could use the ManiaMapManager and RoomTemplateGroupDatabase to instantiate the rooms in the layout.
+        // * You could use the RoomTemplateGroupDatabase to instantiate the rooms in the layout.
         // * You could use it with the LayoutTileMap or LayoutTileMapBook nodes to generate maps.
         //
         // See the project samples for example implementations.
