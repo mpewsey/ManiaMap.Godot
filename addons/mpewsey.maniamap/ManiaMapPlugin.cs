@@ -124,7 +124,7 @@ namespace MPewsey.ManiaMapGodot.Editor
 
         private void AddGraphEditorDock()
         {
-            var scene = ResourceLoader.Load<PackedScene>(ManiaMapResources.Scenes.LayoutGraphEditorScene);
+            var scene = ManiaMapResources.Scenes.LayoutGraphEditorScene.Load<PackedScene>();
             GraphEditor = scene.Instantiate<LayoutGraphEditor>();
             GraphEditorDockButton = AddControlToBottomPanel(GraphEditor, GraphEditorDockButtonName);
             GraphEditorDockButton.Visible = false;
@@ -155,7 +155,7 @@ namespace MPewsey.ManiaMapGodot.Editor
             var mainScreen2d = EditorInterface.Singleton.GetEditorMainScreen().GetChild(0);
             var hFlowContainers = mainScreen2d.FindChildren("*", nameof(HFlowContainer), true, false);
             var buttonContainer = (HFlowContainer)hFlowContainers[0];
-            var scene = ResourceLoader.Load<PackedScene>(ManiaMapResources.Scenes.RoomNode2DToolbarScene);
+            var scene = ManiaMapResources.Scenes.RoomNode2DToolbarScene.Load<PackedScene>();
             var toolbar = scene.Instantiate<RoomNode2DToolbar>();
             RoomNode2DToolbar = toolbar;
             buttonContainer.AddChild(toolbar);
@@ -167,7 +167,7 @@ namespace MPewsey.ManiaMapGodot.Editor
             var mainScreen3d = EditorInterface.Singleton.GetEditorMainScreen().GetChild(1);
             var hFlowContainers = mainScreen3d.FindChildren("*", nameof(HFlowContainer), true, false);
             var buttonContainer = (HFlowContainer)hFlowContainers[0];
-            var scene = ResourceLoader.Load<PackedScene>(ManiaMapResources.Scenes.RoomNode3DToolbarScene);
+            var scene = ManiaMapResources.Scenes.RoomNode3DToolbarScene.Load<PackedScene>();
             var toolbar = scene.Instantiate<RoomNode3DToolbar>();
             RoomNode3DToolbar = toolbar;
             buttonContainer.AddChild(toolbar);
