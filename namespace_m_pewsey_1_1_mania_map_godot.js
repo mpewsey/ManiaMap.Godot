@@ -39,6 +39,7 @@ var namespace_m_pewsey_1_1_mania_map_godot =
       [ "Scenes", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_resources_1_1_scenes.html", null ]
     ] ],
     [ "ManiaMapSettings", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_settings.html", "class_m_pewsey_1_1_mania_map_godot_1_1_mania_map_settings" ],
+    [ "PathRef", "struct_m_pewsey_1_1_mania_map_godot_1_1_path_ref.html", null ],
     [ "Rand", "class_m_pewsey_1_1_mania_map_godot_1_1_rand.html", "class_m_pewsey_1_1_mania_map_godot_1_1_rand" ],
     [ "RoomFlag2D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d.html", "class_m_pewsey_1_1_mania_map_godot_1_1_room_flag2_d" ],
     [ "RoomFlag3D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_flag3_d.html", "class_m_pewsey_1_1_mania_map_godot_1_1_room_flag3_d" ],

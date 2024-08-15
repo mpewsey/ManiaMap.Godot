@@ -93,6 +93,7 @@ var hierarchy =
       [ "DoorThreshold3D", "class_m_pewsey_1_1_mania_map_godot_1_1_door_threshold3_d.html", null ],
       [ "RoomNode3D", "class_m_pewsey_1_1_mania_map_godot_1_1_room_node3_d.html", null ]
     ] ],
+    [ "PathRef", "struct_m_pewsey_1_1_mania_map_godot_1_1_path_ref.html", null ],
     [ "Rand", "class_m_pewsey_1_1_mania_map_godot_1_1_rand.html", null ],
     [ "Resource", null, [
       [ "CollectableGroup", "class_m_pewsey_1_1_mania_map_godot_1_1_collectable_group.html", null ],

@@ -35,6 +35,7 @@ var dir_fce9639ea27cc9f8f93ede0153f77114 =
     [ "LayoutPack.cs", "_layout_pack_8cs_source.html", null ],
     [ "ManiaMapResources.cs", "_mania_map_resources_8cs_source.html", null ],
     [ "ManiaMapSettings.cs", "_mania_map_settings_8cs_source.html", null ],
+    [ "PathRef.cs", "_path_ref_8cs_source.html", null ],
     [ "Rand.cs", "_rand_8cs_source.html", null ],
     [ "RoomFlag2D.cs", "_room_flag2_d_8cs_source.html", null ],
     [ "RoomFlag3D.cs", "_room_flag3_d_8cs_source.html", null ],
