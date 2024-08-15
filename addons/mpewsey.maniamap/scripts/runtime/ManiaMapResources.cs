@@ -23,9 +23,9 @@ namespace MPewsey.ManiaMapGodot
         /// </summary>
         public static class Scenes
         {
-            public static SceneRef LayoutGraphEditorScene { get; } = new SceneRef("uid://ckyjrhwvcs6fi", "res://addons/mpewsey.maniamap/scenes/layout_graph_editor/layout_graph_editor.tscn");
-            public static SceneRef RoomNode2DToolbarScene { get; } = new SceneRef("uid://ceij50wkmgvyi", "res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/room_node_2d_toolbar.tscn");
-            public static SceneRef RoomNode3DToolbarScene { get; } = new SceneRef("uid://b25t77npx7a3l", "res://addons/mpewsey.maniamap/scenes/room_node_3d_toolbar/room_node_3d_toolbar.tscn");
+            public static PathRef LayoutGraphEditorScene { get; } = new PathRef("uid://ckyjrhwvcs6fi", "res://addons/mpewsey.maniamap/scenes/layout_graph_editor/layout_graph_editor.tscn");
+            public static PathRef RoomNode2DToolbarScene { get; } = new PathRef("uid://ceij50wkmgvyi", "res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/room_node_2d_toolbar.tscn");
+            public static PathRef RoomNode3DToolbarScene { get; } = new PathRef("uid://b25t77npx7a3l", "res://addons/mpewsey.maniamap/scenes/room_node_3d_toolbar/room_node_3d_toolbar.tscn");
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace MPewsey.ManiaMapGodot
         /// </summary>
         public static class Materials
         {
-            public static SceneRef AlbedoMaterialPath { get; } = new SceneRef("uid://ppa2shs6thgv", "res://addons/mpewsey.maniamap/materials/albedo_material.tres");
+            public static PathRef AlbedoMaterialPath { get; } = new PathRef("uid://ppa2shs6thgv", "res://addons/mpewsey.maniamap/materials/albedo_material.tres");
             public static Material AlbedoMaterial { get; } = AlbedoMaterialPath.Load<Material>();
         }
 

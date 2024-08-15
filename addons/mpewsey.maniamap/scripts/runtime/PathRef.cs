@@ -2,12 +2,12 @@ using Godot;
 
 namespace MPewsey.ManiaMapGodot
 {
-    public readonly struct SceneRef
+    public readonly struct PathRef
     {
         public string UidPath { get; }
         public string ResPath { get; }
 
-        public SceneRef(string uidPath, string resPath)
+        public PathRef(string uidPath, string resPath)
         {
             UidPath = uidPath;
             ResPath = resPath;
@@ -15,7 +15,7 @@ namespace MPewsey.ManiaMapGodot
 
         public string GetLoadPath()
         {
-            return ResourceLoader.Exists(UidPath) ? UidPath : ResPath;
+            return ResourceLoader.Exists(ResPath) ? ResPath : UidPath;
         }
 
         public T Load<T>() where T : class
