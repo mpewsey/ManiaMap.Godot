@@ -2,6 +2,7 @@ var namespace_m_pewsey_1_1_mania_map_godot =
 [
     [ "Drawing", "namespace_m_pewsey_1_1_mania_map_godot_1_1_drawing.html", "namespace_m_pewsey_1_1_mania_map_godot_1_1_drawing" ],
     [ "Exceptions", "namespace_m_pewsey_1_1_mania_map_godot_1_1_exceptions.html", "namespace_m_pewsey_1_1_mania_map_godot_1_1_exceptions" ],
+    [ "Extensions", "namespace_m_pewsey_1_1_mania_map_godot_1_1_extensions.html", "namespace_m_pewsey_1_1_mania_map_godot_1_1_extensions" ],
     [ "Generators", "namespace_m_pewsey_1_1_mania_map_godot_1_1_generators.html", "namespace_m_pewsey_1_1_mania_map_godot_1_1_generators" ],
     [ "Graphs", "namespace_m_pewsey_1_1_mania_map_godot_1_1_graphs.html", "namespace_m_pewsey_1_1_mania_map_godot_1_1_graphs" ],
     [ "AsyncResourceLoader", "class_m_pewsey_1_1_mania_map_godot_1_1_async_resource_loader.html", "class_m_pewsey_1_1_mania_map_godot_1_1_async_resource_loader" ],

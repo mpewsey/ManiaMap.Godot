@@ -18,6 +18,9 @@ var annotated_dup =
           [ "RoomTemplateNotInitializedException", "class_m_pewsey_1_1_mania_map_godot_1_1_exceptions_1_1_room_template_not_initialized_exception.html", null ],
           [ "ThreadedResourceRequestException", "class_m_pewsey_1_1_mania_map_godot_1_1_exceptions_1_1_threaded_resource_request_exception.html", null ]
         ] ],
+        [ "Extensions", "namespace_m_pewsey_1_1_mania_map_godot_1_1_extensions.html", [
+          [ "GodotObjectExtensions", "class_m_pewsey_1_1_mania_map_godot_1_1_extensions_1_1_godot_object_extensions.html", null ]
+        ] ],
         [ "Generators", "namespace_m_pewsey_1_1_mania_map_godot_1_1_generators.html", [
           [ "CollectableGeneratorStep", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_collectable_generator_step.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_collectable_generator_step" ],
           [ "CollectableGroupsInput", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_collectable_groups_input.html", "class_m_pewsey_1_1_mania_map_godot_1_1_generators_1_1_collectable_groups_input" ],

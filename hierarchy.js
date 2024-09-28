@@ -18,6 +18,7 @@ var hierarchy =
       [ "RoomTemplateNotInitializedException", "class_m_pewsey_1_1_mania_map_godot_1_1_exceptions_1_1_room_template_not_initialized_exception.html", null ],
       [ "ThreadedResourceRequestException", "class_m_pewsey_1_1_mania_map_godot_1_1_exceptions_1_1_threaded_resource_request_exception.html", null ]
     ] ],
+    [ "GodotObjectExtensions", "class_m_pewsey_1_1_mania_map_godot_1_1_extensions_1_1_godot_object_extensions.html", null ],
     [ "ICellChild", "interface_m_pewsey_1_1_mania_map_godot_1_1_i_cell_child.html", [
       [ "CellChild2D", "class_m_pewsey_1_1_mania_map_godot_1_1_cell_child2_d.html", [
         [ "CollectableSpot2D", "class_m_pewsey_1_1_mania_map_godot_1_1_collectable_spot2_d.html", null ],
