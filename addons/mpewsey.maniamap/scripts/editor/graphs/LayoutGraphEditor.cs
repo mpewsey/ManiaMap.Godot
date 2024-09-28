@@ -1,6 +1,7 @@
 #if TOOLS
 using Godot;
 using MPewsey.ManiaMapGodot.Editor;
+using MPewsey.ManiaMapGodot.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -293,7 +294,7 @@ namespace MPewsey.ManiaMapGodot.Graphs.Editor
             if (GraphResource != null)
             {
                 GraphResource.SaveIfDirty();
-                GraphResource.Changed -= OnGraphResourceChanged;
+                GraphResource.QuietDisconnect(Resource.SignalName.Changed, OnGraphResourceChanged);
                 GraphResource.UnregisterOnSubresourceChangedSignals();
                 GraphResource = null;
             }

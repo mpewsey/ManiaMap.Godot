@@ -1,5 +1,6 @@
 #if TOOLS
 using Godot;
+using MPewsey.ManiaMapGodot.Extensions;
 
 namespace MPewsey.ManiaMapGodot.Editor
 {
@@ -86,7 +87,7 @@ namespace MPewsey.ManiaMapGodot.Editor
         private void OnRoomExitedTree()
         {
             if (IsInstanceValid(Room))
-                Room.TreeExited -= OnRoomExitedTree;
+                Room.QuietDisconnect(Node.SignalName.TreeExited, OnRoomExitedTree);
 
             Room = null;
         }

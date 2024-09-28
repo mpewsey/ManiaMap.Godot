@@ -1,5 +1,6 @@
 using Godot;
 using MPewsey.ManiaMap.Graphs;
+using MPewsey.ManiaMapGodot.Extensions;
 using System;
 using System.Collections.Generic;
 
@@ -78,12 +79,12 @@ namespace MPewsey.ManiaMapGodot.Graphs
         {
             foreach (var node in Nodes.Values)
             {
-                node.Changed -= OnSubresourceChanged;
+                node.QuietDisconnect(Resource.SignalName.Changed, OnSubresourceChanged);
             }
 
             foreach (var edge in Edges.Values)
             {
-                edge.Changed -= OnSubresourceChanged;
+                edge.QuietDisconnect(Resource.SignalName.Changed, OnSubresourceChanged);
             }
         }
 
