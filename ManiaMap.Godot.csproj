@@ -9,6 +9,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="gdUnit4.api" Version="4.2.3" />
-    <PackageReference Include="MPewsey.ManiaMap" Version="2.5.1" />
+    <PackageReference Include="MPewsey.ManiaMap" Version="2.5.2" />
   </ItemGroup>
 </Project>
