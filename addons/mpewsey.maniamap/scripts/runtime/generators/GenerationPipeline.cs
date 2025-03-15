@@ -18,18 +18,25 @@ namespace MPewsey.ManiaMapGodot.Generators
     [Icon(ManiaMapResources.Icons.GenerationPipelineIcon)]
     public partial class GenerationPipeline : Node
     {
+        /// <summary>
+        /// An array of input strings that the user will supply manually to any of the run pipeline methods.
+        /// These names are used for pipeline input validation.
+        /// </summary>
+        [Export] public string[] ManualInputNames { get; set; } = Array.Empty<string>();
+
 #if TOOLS
+
+#if GODOT4_4_0_OR_GREATER
+        [ExportToolButton("Add Default Nodes")] public Callable AddDefaultNodesButton => Callable.From(OnSubmitAddDefaultNodesButton);
+        private void OnSubmitAddDefaultNodesButton() => CreateDefaultNodes();
+#else
         /// <summary>
         /// [Editor] When set to true, adds a set of default input and step nodes as children of the node.
         /// </summary>
         [Export] public bool AddDefaultNodes { get => false; set => CreateDefaultNodes(value); }
 #endif
 
-        /// <summary>
-        /// An array of input strings that the user will supply manually to any of the run pipeline methods.
-        /// These names are used for pipeline input validation.
-        /// </summary>
-        [Export] public string[] ManualInputNames { get; set; } = Array.Empty<string>();
+#endif
 
 #if TOOLS
         public override string[] _GetConfigurationWarnings()
