@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CollectableGroup" load_steps=6 format=3 uid="uid://bq7q406xfxw5t"]
 
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/CollectableResource.cs" id="1_vq4c8"]
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/CollectableGroupEntry.cs" id="2_cppki"]
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/CollectableGroup.cs" id="3_4wpgb"]
+[ext_resource type="Script" uid="uid://dx61lmr3haibu" path="res://addons/mpewsey.maniamap/scripts/runtime/CollectableResource.cs" id="1_vq4c8"]
+[ext_resource type="Script" uid="uid://khhkj8m8bfqw" path="res://addons/mpewsey.maniamap/scripts/runtime/CollectableGroupEntry.cs" id="2_cppki"]
+[ext_resource type="Script" uid="uid://d2eebmuetaskl" path="res://addons/mpewsey.maniamap/scripts/runtime/CollectableGroup.cs" id="3_4wpgb"]
 
 [sub_resource type="Resource" id="Resource_rgpfh"]
 script = ExtResource("1_vq4c8")

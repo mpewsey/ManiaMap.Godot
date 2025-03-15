@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="TemplateGroup" load_steps=5 format=3 uid="uid://dphpmgeuueidn"]
 
 [ext_resource type="Resource" uid="uid://vde0h7n6mse5" path="res://samples/3d_rooms/square_3x3_room_3d.room_template.tres" id="1_fgtc4"]
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/TemplateGroup.cs" id="1_vatro"]
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/TemplateGroupEntry.cs" id="2_ma2mv"]
+[ext_resource type="Script" uid="uid://bvntr8xean7iy" path="res://addons/mpewsey.maniamap/scripts/runtime/TemplateGroup.cs" id="1_vatro"]
+[ext_resource type="Script" uid="uid://k1wsok8j1w3u" path="res://addons/mpewsey.maniamap/scripts/runtime/TemplateGroupEntry.cs" id="2_ma2mv"]
 
 [sub_resource type="Resource" id="Resource_qxmhh"]
 script = ExtResource("2_ma2mv")

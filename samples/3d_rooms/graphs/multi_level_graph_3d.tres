@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="LayoutGraphResource" load_steps=23 format=3 uid="uid://c6g3mgcb7bvvy"]
 
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphEdge.cs" id="1_n203c"]
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphResource.cs" id="1_qqikv"]
+[ext_resource type="Script" uid="uid://bwi4yxu5ui4lt" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphEdge.cs" id="1_n203c"]
+[ext_resource type="Script" uid="uid://bn48o52t2ri22" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphResource.cs" id="1_qqikv"]
 [ext_resource type="Resource" uid="uid://dphpmgeuueidn" path="res://samples/3d_rooms/template_groups/square_3x3_3d_template_group.tres" id="2_k217u"]
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphNode.cs" id="2_xgnpf"]
+[ext_resource type="Script" uid="uid://dkjl0jus7a3xk" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphNode.cs" id="2_xgnpf"]
 
 [sub_resource type="Resource" id="Resource_xkut1"]
 script = ExtResource("1_n203c")
@@ -234,7 +234,7 @@ Position = Vector2(420, -140)
 script = ExtResource("1_qqikv")
 Id = 25798738
 Name = "<None>"
-Nodes = {
+Nodes = Dictionary[int, ExtResource("2_xgnpf")]({
 1: SubResource("Resource_f1sgs"),
 2: SubResource("Resource_v6iob"),
 3: SubResource("Resource_55u7i"),
@@ -244,8 +244,8 @@ Nodes = {
 8: SubResource("Resource_8hka7"),
 9: SubResource("Resource_2diky"),
 10: SubResource("Resource_s1ob6")
-}
-Edges = {
+})
+Edges = Dictionary[Vector2i, ExtResource("1_n203c")]({
 Vector2i(1, 2): SubResource("Resource_xkut1"),
 Vector2i(2, 3): SubResource("Resource_06rte"),
 Vector2i(3, 6): SubResource("Resource_hfvf7"),
@@ -255,4 +255,4 @@ Vector2i(7, 8): SubResource("Resource_x5g2a"),
 Vector2i(9, 1): SubResource("Resource_bipxx"),
 Vector2i(9, 8): SubResource("Resource_itwe5"),
 Vector2i(10, 1): SubResource("Resource_hma2s")
-}
+})

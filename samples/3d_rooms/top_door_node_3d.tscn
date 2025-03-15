@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://qd7xvywc8cjw"]
 
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/DoorNode3D.cs" id="1_ai0kk"]
-[ext_resource type="Script" path="res://samples/scripts/DoorNode3DSample.cs" id="2_hen2s"]
+[ext_resource type="Script" uid="uid://b1axxrfwmsqac" path="res://addons/mpewsey.maniamap/scripts/runtime/DoorNode3D.cs" id="1_ai0kk"]
+[ext_resource type="Script" uid="uid://cc5jv76bp36ug" path="res://samples/scripts/DoorNode3DSample.cs" id="2_hen2s"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2r80t"]
 size = Vector3(0.1, 7, 0.1)
