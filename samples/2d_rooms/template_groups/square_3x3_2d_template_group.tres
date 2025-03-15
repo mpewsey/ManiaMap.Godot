@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TemplateGroup" load_steps=5 format=3 uid="uid://biswrlal64ytr"]
 
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/TemplateGroup.cs" id="1_pt2ha"]
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/TemplateGroupEntry.cs" id="1_qxkda"]
+[ext_resource type="Script" uid="uid://bvntr8xean7iy" path="res://addons/mpewsey.maniamap/scripts/runtime/TemplateGroup.cs" id="1_pt2ha"]
+[ext_resource type="Script" uid="uid://k1wsok8j1w3u" path="res://addons/mpewsey.maniamap/scripts/runtime/TemplateGroupEntry.cs" id="1_qxkda"]
 [ext_resource type="Resource" uid="uid://bkwrb8mkh8tol" path="res://samples/2d_rooms/square_3x3_room_2d.room_template.tres" id="1_s3kec"]
 
 [sub_resource type="Resource" id="Resource_5ew7m"]

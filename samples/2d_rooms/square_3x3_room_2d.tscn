@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://q5m1xi8abbjp"]
 
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomNode2D.cs" id="1_c0wlp"]
+[ext_resource type="Script" uid="uid://cunbm76k4tmra" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomNode2D.cs" id="1_c0wlp"]
 [ext_resource type="Resource" uid="uid://bkwrb8mkh8tol" path="res://samples/2d_rooms/square_3x3_room_2d.room_template.tres" id="2_alrqx"]
 [ext_resource type="TileSet" uid="uid://ykn7rmdr2b4y" path="res://samples/2d_rooms/tile_sets/dungeon_tile_set.tres" id="2_xfoc3"]
 [ext_resource type="PackedScene" uid="uid://bf2qehl2sd4ks" path="res://samples/2d_rooms/north_door_node_2d.tscn" id="3_fux8u"]

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="LayoutGraphResource" load_steps=16 format=3 uid="uid://e4d85cd7126l"]
 
 [ext_resource type="Resource" uid="uid://dphpmgeuueidn" path="res://samples/3d_rooms/template_groups/square_3x3_3d_template_group.tres" id="1_0348r"]
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphEdge.cs" id="2_f6abg"]
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphNode.cs" id="3_sg0wb"]
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphResource.cs" id="4_q1rc1"]
+[ext_resource type="Script" uid="uid://bwi4yxu5ui4lt" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphEdge.cs" id="2_f6abg"]
+[ext_resource type="Script" uid="uid://dkjl0jus7a3xk" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphNode.cs" id="3_sg0wb"]
+[ext_resource type="Script" uid="uid://bn48o52t2ri22" path="res://addons/mpewsey.maniamap/scripts/runtime/graphs/LayoutGraphResource.cs" id="4_q1rc1"]
 
 [sub_resource type="Resource" id="Resource_vbfkl"]
 script = ExtResource("2_f6abg")
@@ -145,18 +145,18 @@ Position = Vector2(1060, 400)
 script = ExtResource("4_q1rc1")
 Id = 1836341116
 Name = "Cross Graph"
-Nodes = {
+Nodes = Dictionary[int, ExtResource("3_sg0wb")]({
 1: SubResource("Resource_75ala"),
 2: SubResource("Resource_i7lmb"),
 3: SubResource("Resource_3yxx8"),
 4: SubResource("Resource_m5qg7"),
 5: SubResource("Resource_p2h1a"),
 6: SubResource("Resource_4ga25")
-}
-Edges = {
+})
+Edges = Dictionary[Vector2i, ExtResource("2_f6abg")]({
 Vector2i(1, 3): SubResource("Resource_vbfkl"),
 Vector2i(2, 3): SubResource("Resource_lkm7i"),
 Vector2i(3, 4): SubResource("Resource_bnkgl"),
 Vector2i(3, 5): SubResource("Resource_jjah5"),
 Vector2i(5, 6): SubResource("Resource_76ltf")
-}
+})

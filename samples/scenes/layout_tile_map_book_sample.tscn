@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://creevc2xnibxl"]
 
-[ext_resource type="Script" path="res://samples/scripts/LayoutTileMapBookSample.cs" id="1_gup05"]
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/drawing/LayoutTileMapBook.cs" id="2_xq3a0"]
+[ext_resource type="Script" uid="uid://dvhvfs5n0qhyt" path="res://samples/scripts/LayoutTileMapBookSample.cs" id="1_gup05"]
+[ext_resource type="Script" uid="uid://bphc2ixvrpj1b" path="res://addons/mpewsey.maniamap/scripts/runtime/drawing/LayoutTileMapBook.cs" id="2_xq3a0"]
 [ext_resource type="Gradient" uid="uid://chxyr5r6pgoy4" path="res://addons/mpewsey.maniamap/gradients/red_white_blue_gradient.tres" id="2_yreaw"]
 [ext_resource type="Resource" uid="uid://bwrla0hqiarrv" path="res://addons/mpewsey.maniamap/map_tiles/default_map_tile_set.tres" id="3_f5f0s"]
-[ext_resource type="Script" path="res://samples/scripts/Camera2DController.cs" id="4_s6bhv"]
+[ext_resource type="Script" uid="uid://brxn3x17mpun0" path="res://samples/scripts/Camera2DController.cs" id="4_s6bhv"]
 
 [node name="LayoutTileMapBookSample" type="Node" node_paths=PackedStringArray("Camera", "Map", "Slider", "GenerateButton", "MessageLabel", "ZLabel", "SliderContainer")]
 script = ExtResource("1_gup05")

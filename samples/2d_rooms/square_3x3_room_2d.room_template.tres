@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RoomTemplateResource" load_steps=2 format=3 uid="uid://bkwrb8mkh8tol"]
 
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomTemplateResource.cs" id="1_ah531"]
+[ext_resource type="Script" uid="uid://de8rlxraskml3" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomTemplateResource.cs" id="1_ah531"]
 
 [resource]
 script = ExtResource("1_ah531")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://ceij50wkmgvyi"]
 
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/RoomNode2DToolbar.cs" id="1_a4r4d"]
+[ext_resource type="Script" uid="uid://bxdnitsiegupn" path="res://addons/mpewsey.maniamap/scripts/editor/RoomNode2DToolbar.cs" id="1_a4r4d"]
 [ext_resource type="ButtonGroup" uid="uid://dny3cxl3yfjod" path="res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/edit_mode_button_group.tres" id="2_5r1yr"]
 [ext_resource type="Texture2D" uid="uid://c6mkqk5qwijr5" path="res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/cell_display_icon.svg" id="2_ynmag"]
 [ext_resource type="Texture2D" uid="uid://8gxtfel3hl7l" path="res://addons/mpewsey.maniamap/scenes/room_node_2d_toolbar/none_edit_mode_icon.svg" id="4_wdqac"]

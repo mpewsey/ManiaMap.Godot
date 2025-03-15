@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://i0l4nkbmjqye"]
 
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomNode3D.cs" id="1_sxisd"]
+[ext_resource type="Script" uid="uid://c217viwidxvfo" path="res://addons/mpewsey.maniamap/scripts/runtime/RoomNode3D.cs" id="1_sxisd"]
 [ext_resource type="Resource" uid="uid://vde0h7n6mse5" path="res://samples/3d_rooms/square_3x3_room_3d.room_template.tres" id="2_1c1c4"]
 [ext_resource type="PackedScene" uid="uid://3x7dw0wnyye5" path="res://samples/3d_rooms/door_node_3d.tscn" id="3_hc8wb"]
 [ext_resource type="PackedScene" uid="uid://borfbd82yciv5" path="res://samples/3d_rooms/collectable_spot_3d.tscn" id="4_lptp0"]
