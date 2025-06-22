@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://dofs67iy1cj5v"]
 
-[ext_resource type="Script" path="res://addons/gdUnit4/src/ui/settings/GdUnitInputCapture.gd" id="1_gki1u"]
+[ext_resource type="Script" uid="uid://cmq3vg55fc2hq" path="res://addons/gdUnit4/src/ui/settings/GdUnitInputCapture.gd" id="1_gki1u"]
 
 [node name="GdUnitInputMapper" type="Control"]
 top_level = true

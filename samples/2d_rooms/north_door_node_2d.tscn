@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bf2qehl2sd4ks"]
 
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/runtime/DoorNode2D.cs" id="1_o2nda"]
+[ext_resource type="Script" uid="uid://0d1o73bhuhed" path="res://addons/mpewsey.maniamap/scripts/runtime/DoorNode2D.cs" id="1_o2nda"]
 [ext_resource type="TileSet" uid="uid://ykn7rmdr2b4y" path="res://samples/2d_rooms/tile_sets/dungeon_tile_set.tres" id="2_8aext"]
-[ext_resource type="Script" path="res://samples/scripts/DoorNode2DSample.cs" id="3_k24a5"]
+[ext_resource type="Script" uid="uid://bokxwpeyk7cm3" path="res://samples/scripts/DoorNode2DSample.cs" id="3_k24a5"]
 
 [node name="NorthDoorNode2D" type="Node2D"]
 script = ExtResource("1_o2nda")

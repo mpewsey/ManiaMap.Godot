@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4nif3uqgvtko"]
 
-[ext_resource type="Script" path="res://addons/mpewsey.maniamap/scripts/editor/graphs/LayoutGraphEdgeLine.cs" id="1_3bm1q"]
+[ext_resource type="Script" uid="uid://rcd40o7qkr76" path="res://addons/mpewsey.maniamap/scripts/editor/graphs/LayoutGraphEdgeLine.cs" id="1_3bm1q"]
 [ext_resource type="Texture2D" uid="uid://crea8cnh3wlvo" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/flexible_arrow.svg" id="3_sqcq8"]
 [ext_resource type="Texture2D" uid="uid://ccgwp42l8amhl" path="res://addons/mpewsey.maniamap/scenes/layout_graph_editor/fixed_arrow.svg" id="4_e38em"]
 
